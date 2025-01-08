@@ -1,0 +1,64 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3.9-management
+    container_name: gpt_bot_rabbit
+    ports:
+      - "5672:5672"  # AMQP порт
+      - "15672:15672"  # Management UI
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: [ "CMD", "rabbitmqctl", "status" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  db:
+    image: postgres:latest
+    container_name: gpt_bot_db
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - "5432:5432"
+
+  redis:
+    build:
+      context: redis
+      dockerfile: redis.dockerfile
+    container_name: redis_cache
+    restart: on-failure
+    volumes:
+       - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: [ "CMD", "redis-cli", "-a", "root", "ping" ]
+      interval: 60s
+      timeout: 5s
+      retries: 3
+
+  bot:
+    build:
+      context: .
+    container_name: gpt_bot
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+      - rabbitmq
+    volumes:
+      - .:/app
+
+volumes:
+  rabbitmq_data:
+  postgres_data:
+  redis_data:
