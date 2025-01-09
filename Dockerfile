@@ -21,9 +21,6 @@ COPY pyproject.toml poetry.lock ./
 # Устанавливаем зависимости проекта с помощью Poetry (без установки текущего проекта)
 RUN poetry install --no-root
 
-# Устанавливаем aio_pika отдельно
-RUN pip install aio_pika
-
 # Копируем остальные файлы проекта
 COPY . .
 
