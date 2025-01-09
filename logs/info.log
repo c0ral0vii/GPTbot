@@ -2,3 +2,34 @@
 2025-01-08 16:42:10,693 - __main__ - INFO - Запуск бота
 2025-01-08 16:44:46,634 - __main__ - INFO - Инициализация комманд
 2025-01-08 16:44:46,694 - __main__ - INFO - Запуск бота
+2025-01-08 20:27:36,229 - __main__ - INFO - Инициализация комманд
+2025-01-08 20:27:36,284 - __main__ - INFO - Запуск бота
+2025-01-08 20:35:41,609 - __main__ - INFO - Инициализация комманд
+2025-01-08 20:35:41,729 - __main__ - INFO - Запуск бота
+2025-01-08 20:38:36,602 - __main__ - INFO - Инициализация комманд
+2025-01-08 20:38:36,695 - __main__ - INFO - Запуск бота
+2025-01-09 03:16:39,906 - __main__ - INFO - Инициализация комманд
+2025-01-09 03:16:40,032 - __main__ - INFO - Запуск бота
+2025-01-09 03:18:46,331 - __main__ - INFO - Инициализация комманд
+2025-01-09 03:18:46,440 - __main__ - INFO - Запуск бота
+2025-01-09 03:19:54,893 - __main__ - INFO - Инициализация комманд
+2025-01-09 03:19:55,005 - __main__ - INFO - Запуск бота
+2025-01-09 04:45:44,237 - __main__ - INFO - Инициализация комманд
+2025-01-09 04:45:44,329 - __main__ - INFO - Запуск бота
+2025-01-09 04:45:56,971 - src.utils.queue.rabbit_queue - ERROR - Error declaring queue claude: 'RabbitQueue' object has no attribute 'channel'
+2025-01-09 04:45:56,971 - src.utils.queue.rabbit_queue - ERROR - Error publishing message to claude: 'RabbitQueue' object has no attribute 'channel'
+2025-01-09 04:47:20,499 - __main__ - INFO - Инициализация комманд
+2025-01-09 04:47:20,563 - __main__ - INFO - Запуск бота
+2025-01-09 04:47:29,211 - src.utils.queue.rabbit_queue - ERROR - Error publishing message to chat_gpt_o1: 'coroutine' object has no attribute 'channel'
+2025-01-09 04:48:17,312 - __main__ - INFO - Инициализация комманд
+2025-01-09 04:48:17,718 - __main__ - INFO - Запуск бота
+2025-01-09 04:48:42,887 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 04:48:42,919 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 04:48:42,933 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 04:48:42,935 - src.utils.queue.rabbit_queue - ERROR - Error publishing message to chat_gpt_o1: Object of type Message is not JSON serializable
+2025-01-09 04:52:12,415 - __main__ - INFO - Инициализация комманд
+2025-01-09 04:52:12,474 - __main__ - INFO - Запуск бота
+2025-01-09 04:52:22,953 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 04:52:22,955 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 04:52:22,957 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 04:52:22,963 - src.utils.queue.rabbit_queue - INFO - Published message to queue chat_gpt_o1

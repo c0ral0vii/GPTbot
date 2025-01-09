@@ -9,12 +9,11 @@ from sqlalchemy import (
     Text,
     Boolean,
     Numeric,
-
     Table,
     Column,
     Date,
-    select
-    )
+    select,
+)
 
 from sqlalchemy.orm import Mapped, mapped_column, DeclarativeBase, relationship
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -23,11 +22,13 @@ from enum import Enum
 
 class Base(DeclarativeBase):
     created: Mapped[DateTime] = mapped_column(DateTime, default=func.now())
-    updated: Mapped[DateTime] = mapped_column(DateTime, default=func.now(), onupdate=func.now())
+    updated: Mapped[DateTime] = mapped_column(
+        DateTime, default=func.now(), onupdate=func.now()
+    )
 
 
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = "users"
 
     id: Mapped[int] = Column(Integer, primary_key=True)
     user_id: Mapped[int] = Column(BigInteger, nullable=False, unique=True)
@@ -36,7 +37,7 @@ class User(Base):
 
 
 class PremiumUser(Base):
-    __tablename__ = 'premium_users'
+    __tablename__ = "premium_users"
 
     id: Mapped[int] = Column(Integer, primary_key=True)
     user: Mapped["User"] = ForeignKey("users.id")

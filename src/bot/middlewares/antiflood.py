@@ -20,12 +20,12 @@ class RateLimitMiddleware(BaseMiddleware):
             if isinstance(event, types.Message):
                 await event.answer(
                     "⛔ Вы слишком часто используете бота. Пожалуйста, попробуйте позже.",
-                    show_alert=True
+                    show_alert=True,
                 )
             elif isinstance(event, types.CallbackQuery):
                 await event.answer(
                     "⛔ Вы слишком часто используете бота. Пожалуйста, попробуйте позже.",
-                    show_alert=True
+                    show_alert=True,
                 )
             return
 

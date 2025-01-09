@@ -1,0 +1,4 @@
+2025-01-09 04:45:56,971 - src.utils.queue.rabbit_queue - ERROR - Error declaring queue claude: 'RabbitQueue' object has no attribute 'channel'
+2025-01-09 04:45:56,971 - src.utils.queue.rabbit_queue - ERROR - Error publishing message to claude: 'RabbitQueue' object has no attribute 'channel'
+2025-01-09 04:47:29,211 - src.utils.queue.rabbit_queue - ERROR - Error publishing message to chat_gpt_o1: 'coroutine' object has no attribute 'channel'
+2025-01-09 04:48:42,935 - src.utils.queue.rabbit_queue - ERROR - Error publishing message to chat_gpt_o1: Object of type Message is not JSON serializable
