@@ -3,7 +3,7 @@ import asyncio
 from aiogram import Bot, Dispatcher, types
 from aiogram.fsm.storage.redis import RedisStorage as redis_storage
 
-from src.scripts.antropic.claude_gpt import ClaudeGPT
+
 from src.utils.queue.worker import QueueWorker
 from src.utils.redis_cache.redis_cache import redis_manager
 from src.config.config import settings
@@ -16,11 +16,13 @@ from src.bot.handlers import (
     text_handler,
 )
 from src.bot.middlewares.antiflood import RateLimitMiddleware
+from src.bot.filters.chat_type import ChatTypeFilter
 
 bot = Bot(token=settings.bot_api)
 dp = Dispatcher(storage=redis_storage(redis=redis_manager.get_redis_manager()))
 
 dp.message.middleware(RateLimitMiddleware())
+dp.message.filter(ChatTypeFilter(["private"]))
 
 logger = setup_logger(__name__)
 
