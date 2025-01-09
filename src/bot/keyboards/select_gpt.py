@@ -38,5 +38,6 @@ def upgrade_message() -> InlineKeyboardMarkup:
                 InlineKeyboardButton(text="Сохранить", callback_data="save_message"),
             ],
             [InlineKeyboardButton(text="Переслать", callback_data="retwit_message")],
+            [InlineKeyboardButton(text="Отмена", callback_data="cancel")],
         ]
     )

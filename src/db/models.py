@@ -33,7 +33,7 @@ class User(Base):
     id: Mapped[int] = Column(Integer, primary_key=True)
     user_id: Mapped[int] = Column(BigInteger, nullable=False, unique=True)
 
-    use_count: Mapped[int] = Column(BigInteger, nullable=True)
+    energy: Mapped[int] = Column(Integer, nullable=True)
 
 
 class PremiumUser(Base):

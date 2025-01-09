@@ -18,13 +18,14 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-target_metadata = None
+from src.db.models import Base
+target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
-
+config.set_main_option("sqlalchemy.url", f"postgresql+psycopg://root:root@0.0.0.0:5432/gpt_bot")
 
 def run_migrations_offline() -> None:
     """Run migrations in 'offline' mode.

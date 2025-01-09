@@ -33,3 +33,704 @@
 2025-01-09 04:52:22,955 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
 2025-01-09 04:52:22,957 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
 2025-01-09 04:52:22,963 - src.utils.queue.rabbit_queue - INFO - Published message to queue chat_gpt_o1
+2025-01-09 05:57:27,870 - __main__ - INFO - Инициализация комманд
+2025-01-09 05:57:27,931 - __main__ - INFO - Запуск бота
+2025-01-09 05:58:07,779 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 05:58:07,781 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 05:58:07,782 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 05:58:07,800 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 05:58:07,808 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 05:58:07,818 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 05:58:07,834 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 05:58:07,850 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 05:58:07,866 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 05:58:07,881 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 05:58:07,893 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 05:58:07,907 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 05:58:07,922 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 05:58:07,932 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 05:58:08,050 - src.utils.queue.rabbit_queue - ERROR - Error setting up consumer for claude: PRECONDITION_FAILED - inequivalent arg 'x-max-priority' for queue 'claude' in vhost '/': received none but current is the value '10' of type 'byte'
+2025-01-09 05:58:08,050 - src.utils.queue.worker - ERROR - Error starting parsing worker: PRECONDITION_FAILED - inequivalent arg 'x-max-priority' for queue 'claude' in vhost '/': received none but current is the value '10' of type 'byte'
+2025-01-09 06:01:45,400 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:01:45,402 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:01:45,402 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:01:45,403 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:01:45,404 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:01:45,404 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:01:45,405 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:01:45,406 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:01:45,406 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:01:45,407 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:01:45,407 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:01:45,408 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:01:45,408 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:01:45,409 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:01:45,420 - src.utils.queue.rabbit_queue - ERROR - Error setting up consumer for claude: 'NoneType' object has no attribute 'consume'
+2025-01-09 06:01:45,420 - src.utils.queue.worker - ERROR - Error starting parsing worker: 'NoneType' object has no attribute 'consume'
+2025-01-09 06:02:26,672 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:02:26,674 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:02:26,675 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:02:26,676 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:02:26,677 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:02:26,678 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:02:26,678 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:02:26,679 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:02:26,680 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:02:26,680 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:02:26,681 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:02:26,682 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:02:26,683 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:02:26,684 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:02:26,696 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 06:02:34,226 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:02:34,226 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:02:34,227 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:02:34,228 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:02:34,229 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:02:34,230 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:02:34,231 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:02:34,232 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:02:34,233 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:02:34,233 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:02:34,234 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:02:34,235 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:02:34,237 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:02:34,238 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:02:34,253 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 06:02:34,424 - __main__ - INFO - Инициализация комманд
+2025-01-09 06:02:34,526 - __main__ - INFO - Запуск бота
+2025-01-09 06:03:56,621 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:03:56,622 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:03:56,623 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:03:56,624 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:03:56,625 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:03:56,626 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:03:56,626 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:03:56,627 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:03:56,628 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:03:56,629 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:03:56,629 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:03:56,630 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:03:56,631 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:03:56,632 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:03:56,643 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 06:03:56,809 - __main__ - INFO - Инициализация комманд
+2025-01-09 06:03:56,896 - __main__ - INFO - Запуск бота
+2025-01-09 06:05:19,123 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:05:19,124 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:05:19,125 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:05:19,126 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:05:19,127 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:05:19,128 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:05:19,129 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:05:19,130 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:05:19,131 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:05:19,133 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:05:19,134 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:05:19,135 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:05:19,136 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:05:19,137 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:05:19,155 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 06:05:19,378 - __main__ - INFO - Инициализация комманд
+2025-01-09 06:05:19,459 - __main__ - INFO - Запуск бота
+2025-01-09 06:05:38,821 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:05:38,822 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:05:38,823 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:05:38,823 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:05:38,824 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:05:38,825 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:05:38,825 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:05:38,826 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:05:38,826 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:05:38,827 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:05:38,827 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:05:38,828 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:05:38,828 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:05:38,829 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:05:38,837 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 06:05:38,997 - __main__ - INFO - Инициализация комманд
+2025-01-09 06:05:39,076 - __main__ - INFO - Запуск бота
+2025-01-09 06:05:49,169 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:05:49,169 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:05:49,171 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:05:49,171 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:05:49,173 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:05:49,173 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:05:49,175 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:05:49,175 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:05:49,177 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:05:49,177 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:05:49,178 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:05:49,178 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:05:49,180 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:05:49,180 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:05:49,181 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:05:49,181 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:05:49,183 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:05:49,183 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:05:49,185 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:05:49,185 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:05:49,186 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:05:49,186 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:05:49,188 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:05:49,188 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:05:49,190 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:05:49,190 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:05:49,192 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:05:49,192 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:05:49,200 - src.utils.queue.rabbit_queue - INFO - Published message to queue claude
+2025-01-09 06:05:49,200 - src.utils.queue.rabbit_queue - INFO - Published message to queue claude
+2025-01-09 06:07:28,079 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:07:28,081 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:07:28,081 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:07:28,082 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:07:28,083 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:07:28,084 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:07:28,084 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:07:28,085 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:07:28,086 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:07:28,087 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:07:28,087 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:07:28,088 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:07:28,089 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:07:28,090 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:07:28,099 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 06:07:28,100 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: 'coroutine' object has no attribute 'content'
+2025-01-09 06:07:28,100 - src.utils.queue.rabbit_queue - ERROR - Error processing message: 'coroutine' object has no attribute 'content'
+2025-01-09 06:07:36,320 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:07:36,321 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:07:36,322 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:07:36,323 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:07:36,323 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:07:36,324 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:07:36,324 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:07:36,325 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:07:36,326 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:07:36,327 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:07:36,327 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:07:36,328 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:07:36,329 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:07:36,330 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:07:36,347 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 06:07:36,347 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: 'coroutine' object has no attribute 'content'
+2025-01-09 06:07:36,347 - src.utils.queue.rabbit_queue - ERROR - Error processing message: 'coroutine' object has no attribute 'content'
+2025-01-09 06:07:36,512 - __main__ - INFO - Инициализация комманд
+2025-01-09 06:07:36,569 - __main__ - INFO - Запуск бота
+2025-01-09 06:07:57,529 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:07:57,530 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:07:57,530 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:07:57,531 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:07:57,532 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:07:57,532 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:07:57,533 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:07:57,533 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:07:57,534 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:07:57,535 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:07:57,535 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:07:57,536 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:07:57,537 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:07:57,538 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:07:57,550 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 06:07:57,698 - __main__ - INFO - Инициализация комманд
+2025-01-09 06:07:57,753 - __main__ - INFO - Запуск бота
+2025-01-09 06:08:10,265 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:08:10,265 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:08:10,266 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:08:10,266 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:08:10,272 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:08:10,272 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:08:10,274 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:08:10,274 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:08:10,277 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:08:10,277 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:08:10,279 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:08:10,279 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:08:10,281 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:08:10,281 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:08:10,284 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:08:10,284 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:08:10,286 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:08:10,286 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:08:10,289 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:08:10,289 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:08:10,291 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:08:10,291 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:08:10,293 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:08:10,293 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:08:10,295 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:08:10,295 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:08:10,297 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:08:10,297 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:08:10,302 - src.utils.queue.rabbit_queue - INFO - Published message to queue claude
+2025-01-09 06:08:10,302 - src.utils.queue.rabbit_queue - INFO - Published message to queue claude
+2025-01-09 06:12:55,018 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: Error code: 403 - {'error': {'type': 'forbidden', 'message': 'Request not allowed'}}
+2025-01-09 06:16:42,236 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: Connection error.
+2025-01-09 06:16:53,907 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: Connection error.
+2025-01-09 06:17:21,702 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: Error code: 403 - {'error': {'type': 'forbidden', 'message': 'Request not allowed'}}
+2025-01-09 06:18:42,589 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:18:42,598 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:18:42,600 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:18:42,600 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:18:42,601 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:18:42,602 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:18:42,603 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:18:42,604 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:18:42,604 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:18:42,605 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:18:42,606 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:18:42,607 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:18:42,608 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:18:42,609 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:18:42,626 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 06:20:51,157 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:20:51,158 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:20:51,159 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:20:51,160 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:20:51,160 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:20:51,162 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:20:51,163 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:20:51,164 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:20:51,165 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:20:51,166 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:20:51,167 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:20:51,168 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:20:51,169 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:20:51,170 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:20:51,187 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 06:23:18,064 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: 'list' object has no attribute 'text'
+2025-01-09 06:30:24,192 - __main__ - INFO - Инициализация комманд
+2025-01-09 06:30:25,461 - __main__ - INFO - Запуск бота
+2025-01-09 06:30:25,606 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:30:25,607 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:30:25,608 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:30:25,609 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:30:25,609 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:30:25,611 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:30:25,611 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:30:25,612 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:30:25,613 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:30:25,614 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:30:25,615 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:30:25,615 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:30:25,616 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:30:25,617 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:30:25,631 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 06:31:25,093 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:31:25,093 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 06:31:25,095 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:31:25,095 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 06:31:25,099 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:31:25,099 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 06:31:25,100 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:31:25,100 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 06:31:25,102 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:31:25,102 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 06:31:25,103 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:31:25,103 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 06:31:25,105 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:31:25,105 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 06:31:25,106 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:31:25,106 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 06:31:25,108 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:31:25,108 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 06:31:25,109 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:31:25,109 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 06:31:25,111 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:31:25,111 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 06:31:25,112 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:31:25,112 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 06:31:25,113 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:31:25,113 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 06:31:25,115 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:31:25,115 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 06:31:25,120 - src.utils.queue.rabbit_queue - INFO - Published message to queue claude
+2025-01-09 06:31:25,120 - src.utils.queue.rabbit_queue - INFO - Published message to queue claude
+2025-01-09 07:13:49,009 - __main__ - INFO - Инициализация комманд
+2025-01-09 07:13:49,136 - __main__ - INFO - Запуск воркера
+2025-01-09 07:13:49,291 - __main__ - INFO - Запуск бота
+2025-01-09 07:13:49,314 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:13:49,316 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:13:49,317 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:13:49,317 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:13:49,318 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:13:49,318 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:13:49,319 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:13:49,319 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:13:49,320 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:13:49,320 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:13:49,321 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:13:49,321 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:13:49,322 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:13:49,322 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:13:49,335 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 07:14:09,902 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:14:09,902 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:14:09,904 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:14:09,904 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:14:09,905 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:14:09,905 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:14:09,907 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:14:09,907 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:14:09,909 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:14:09,909 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:14:09,910 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:14:09,910 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:14:09,912 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:14:09,912 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:14:09,913 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:14:09,913 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:14:09,915 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:14:09,915 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:14:09,917 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:14:09,917 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:14:09,918 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:14:09,918 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:14:09,920 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:14:09,920 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:14:09,921 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:14:09,921 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:14:09,923 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:14:09,923 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:14:09,929 - src.utils.queue.rabbit_queue - INFO - Published message to queue claude
+2025-01-09 07:14:09,929 - src.utils.queue.rabbit_queue - INFO - Published message to queue claude
+2025-01-09 07:14:16,799 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: 'TextBlock' object is not subscriptable
+2025-01-09 07:14:16,800 - src.utils.queue.rabbit_queue - ERROR - Error processing message: 'TextBlock' object is not subscriptable
+2025-01-09 07:14:16,800 - src.utils.queue.rabbit_queue - ERROR - Error processing message: 'TextBlock' object is not subscriptable
+2025-01-09 07:16:32,870 - __main__ - INFO - Инициализация комманд
+2025-01-09 07:16:33,014 - __main__ - INFO - Запуск воркера
+2025-01-09 07:16:33,171 - __main__ - INFO - Запуск бота
+2025-01-09 07:16:33,176 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:16:33,177 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:16:33,177 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:16:33,177 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:16:33,178 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:16:33,178 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:16:33,179 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:16:33,179 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:16:33,179 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:16:33,180 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:16:33,180 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:16:33,181 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:16:33,181 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:16:33,182 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:16:33,189 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 07:16:49,818 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:16:49,818 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:16:49,820 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:16:49,820 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:16:49,821 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:16:49,821 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:16:49,822 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:16:49,822 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:16:49,823 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:16:49,823 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:16:49,824 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:16:49,824 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:16:49,825 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:16:49,825 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:16:49,826 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:16:49,826 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:16:49,828 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:16:49,828 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:16:49,829 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:16:49,829 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:16:49,830 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:16:49,830 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:16:49,832 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:16:49,832 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:16:49,834 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:16:49,834 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:16:49,836 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:16:49,836 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:16:49,838 - src.utils.queue.rabbit_queue - INFO - Published message to queue claude
+2025-01-09 07:16:49,838 - src.utils.queue.rabbit_queue - INFO - Published message to queue claude
+2025-01-09 07:17:10,588 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:17:10,588 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:17:10,588 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:17:10,590 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:17:10,590 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:17:10,590 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:17:10,592 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:17:10,592 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:17:10,592 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:17:10,594 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:17:10,594 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:17:10,594 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:17:10,599 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:17:10,599 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:17:10,599 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:17:10,601 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:17:10,601 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:17:10,601 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:17:10,602 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:17:10,602 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:17:10,602 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:17:10,604 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:17:10,604 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:17:10,604 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:17:10,605 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:17:10,605 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:17:10,605 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:17:10,607 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:17:10,607 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:17:10,607 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:17:10,609 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:17:10,609 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:17:10,609 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:17:10,611 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:17:10,611 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:17:10,611 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:17:10,612 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:17:10,612 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:17:10,612 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:17:10,614 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:17:10,614 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:17:10,614 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:17:10,617 - src.utils.queue.rabbit_queue - INFO - Published message to queue claude
+2025-01-09 07:17:10,617 - src.utils.queue.rabbit_queue - INFO - Published message to queue claude
+2025-01-09 07:17:10,617 - src.utils.queue.rabbit_queue - INFO - Published message to queue claude
+2025-01-09 07:26:32,696 - __main__ - INFO - Инициализация комманд
+2025-01-09 07:26:32,827 - __main__ - INFO - Запуск воркера
+2025-01-09 07:26:33,032 - __main__ - INFO - Запуск бота
+2025-01-09 07:26:33,067 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:26:33,070 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:26:33,071 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:26:33,071 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:26:33,072 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:26:33,073 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:26:33,073 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:26:33,074 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:26:33,074 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:26:33,074 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:26:33,075 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:26:33,075 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:26:33,076 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:26:33,076 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:26:33,096 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 07:26:38,914 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Error code: 404 - {'error': {'message': 'The model `gpt-4` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-01-09 07:26:38,914 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 404 - {'error': {'message': 'The model `gpt-4` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-01-09 07:26:52,123 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:26:52,123 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:26:52,125 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:26:52,125 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:26:52,126 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:26:52,126 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:26:52,128 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:26:52,128 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:26:52,129 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:26:52,129 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:26:52,131 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:26:52,131 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:26:52,132 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:26:52,132 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:26:52,134 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:26:52,134 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:26:52,136 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:26:52,136 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:26:52,137 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:26:52,137 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:26:52,139 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:26:52,139 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:26:52,141 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:26:52,141 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:26:52,142 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:26:52,142 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:26:52,143 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:26:52,143 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:26:52,149 - src.utils.queue.rabbit_queue - INFO - Published message to queue chat_gpt_o1
+2025-01-09 07:26:52,149 - src.utils.queue.rabbit_queue - INFO - Published message to queue chat_gpt_o1
+2025-01-09 07:26:52,702 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Error code: 404 - {'error': {'message': 'The model `gpt-4` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-01-09 07:26:52,702 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 404 - {'error': {'message': 'The model `gpt-4` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-01-09 07:26:52,702 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 404 - {'error': {'message': 'The model `gpt-4` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
+2025-01-09 07:26:52,711 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:26:52,711 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:26:52,713 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:26:52,713 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:26:52,714 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:26:52,714 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:26:52,715 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:26:52,715 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:26:52,716 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:26:52,716 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:26:52,718 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:26:52,718 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:26:52,719 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:26:52,719 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:26:52,721 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:26:52,721 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:26:52,722 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:26:52,722 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:26:52,723 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:26:52,723 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:26:52,725 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:26:52,725 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:26:52,726 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:26:52,726 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:26:52,727 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:26:52,727 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:26:52,729 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:26:52,729 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:26:52,730 - src.utils.queue.rabbit_queue - ERROR - Error publishing message to chat_gpt_o1_errors: 'int' object has no attribute 'message_id'
+2025-01-09 07:26:52,730 - src.utils.queue.rabbit_queue - ERROR - Error publishing message to chat_gpt_o1_errors: 'int' object has no attribute 'message_id'
+2025-01-09 07:29:53,761 - __main__ - INFO - Инициализация комманд
+2025-01-09 07:29:53,876 - __main__ - INFO - Запуск воркера
+2025-01-09 07:29:54,078 - __main__ - INFO - Запуск бота
+2025-01-09 07:29:54,086 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:29:54,086 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:29:54,087 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:29:54,088 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:29:54,088 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:29:54,089 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:29:54,090 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:29:54,091 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:29:54,092 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:29:54,093 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:29:54,094 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:29:54,094 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:29:54,095 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:29:54,096 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:29:54,114 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 07:30:04,971 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:30:04,971 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:30:04,973 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:30:04,973 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:30:04,974 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:30:04,974 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:30:04,975 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:30:04,975 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:30:04,976 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:30:04,976 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:30:04,977 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:30:04,977 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:30:04,979 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:30:04,979 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:30:04,980 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:30:04,980 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:30:04,982 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:30:04,982 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:30:04,983 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:30:04,983 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:30:04,985 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:30:04,985 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:30:04,986 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:30:04,986 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:30:04,987 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:30:04,987 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:30:04,989 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:30:04,989 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:30:04,992 - src.utils.queue.rabbit_queue - INFO - Published message to queue chat_gpt_o1
+2025-01-09 07:30:04,992 - src.utils.queue.rabbit_queue - INFO - Published message to queue chat_gpt_o1
+2025-01-09 07:30:07,539 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-01-09 07:30:07,544 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-01-09 07:30:07,544 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-01-09 07:30:07,552 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:30:07,552 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:30:07,554 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:30:07,554 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:30:07,555 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:30:07,555 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:30:07,556 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:30:07,556 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:30:07,557 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:30:07,557 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:30:07,558 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:30:07,558 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:30:07,559 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:30:07,559 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:30:07,560 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:30:07,560 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:30:07,561 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:30:07,561 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:30:07,562 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:30:07,562 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:30:07,564 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:30:07,564 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:30:07,565 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:30:07,565 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:30:07,566 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:30:07,566 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:30:07,567 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:30:07,567 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:30:07,571 - src.utils.queue.rabbit_queue - INFO - Published message to queue chat_gpt_o1_errors
+2025-01-09 07:30:07,571 - src.utils.queue.rabbit_queue - INFO - Published message to queue chat_gpt_o1_errors
+2025-01-09 07:31:07,737 - __main__ - INFO - Инициализация комманд
+2025-01-09 07:31:08,079 - __main__ - INFO - Запуск воркера
+2025-01-09 07:31:08,284 - __main__ - INFO - Запуск бота
+2025-01-09 07:31:08,291 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:31:08,291 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:31:08,292 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:31:08,293 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:31:08,293 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:31:08,294 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:31:08,294 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:31:08,295 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:31:08,295 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:31:08,296 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:31:08,296 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:31:08,297 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:31:08,298 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:31:08,299 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:31:08,311 - src.utils.queue.worker - INFO - queue worker started successfully
+2025-01-09 07:31:16,113 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:31:16,113 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:31:16,115 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:31:16,115 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:31:16,117 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:31:16,117 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:31:16,119 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:31:16,119 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:31:16,120 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:31:16,120 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:31:16,123 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:31:16,123 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:31:16,124 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:31:16,124 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:31:16,126 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:31:16,126 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:31:16,128 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:31:16,128 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:31:16,130 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:31:16,130 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:31:16,132 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:31:16,132 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:31:16,134 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:31:16,134 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:31:16,136 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:31:16,136 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:31:16,138 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:31:16,138 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:31:16,142 - src.utils.queue.rabbit_queue - INFO - Published message to queue chat_gpt_o1
+2025-01-09 07:31:16,142 - src.utils.queue.rabbit_queue - INFO - Published message to queue chat_gpt_o1
+2025-01-09 07:31:18,832 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-01-09 07:31:18,833 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-01-09 07:31:18,833 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
+2025-01-09 07:31:18,842 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:31:18,842 - src.utils.queue.rabbit_queue - INFO - Initializing queue
+2025-01-09 07:31:18,843 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:31:18,843 - src.utils.queue.rabbit_queue - INFO - Queue chat_gpt_o1 initialized
+2025-01-09 07:31:18,844 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:31:18,844 - src.utils.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-09 07:31:18,846 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:31:18,846 - src.utils.queue.rabbit_queue - INFO - Queue gpt_assist initialized
+2025-01-09 07:31:18,847 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:31:18,847 - src.utils.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-09 07:31:18,848 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:31:18,848 - src.utils.queue.rabbit_queue - INFO - Queue flux initialized
+2025-01-09 07:31:18,850 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:31:18,850 - src.utils.queue.rabbit_queue - INFO - Queue dall_e initialized
+2025-01-09 07:31:18,851 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:31:18,851 - src.utils.queue.rabbit_queue - INFO - Queue stable_diffusion initialized
+2025-01-09 07:31:18,852 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:31:18,852 - src.utils.queue.rabbit_queue - INFO - Queue openai codex initialized
+2025-01-09 07:31:18,853 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:31:18,853 - src.utils.queue.rabbit_queue - INFO - Queue openai_whisper initialized
+2025-01-09 07:31:18,855 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:31:18,855 - src.utils.queue.rabbit_queue - INFO - Queue tts initialized
+2025-01-09 07:31:18,856 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:31:18,856 - src.utils.queue.rabbit_queue - INFO - Queue deepl initialized
+2025-01-09 07:31:18,857 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:31:18,857 - src.utils.queue.rabbit_queue - INFO - Queue speechmatics initialized
+2025-01-09 07:31:18,859 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:31:18,859 - src.utils.queue.rabbit_queue - INFO - Queue openai_embeddings initialized
+2025-01-09 07:31:18,862 - src.utils.queue.rabbit_queue - INFO - Published message to queue chat_gpt_o1_errors
+2025-01-09 07:31:18,862 - src.utils.queue.rabbit_queue - INFO - Published message to queue chat_gpt_o1_errors

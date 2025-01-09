@@ -20,8 +20,8 @@ services:
     image: postgres:latest
     container_name: gpt_bot_db
     restart: always
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+#    volumes:
+#      - postgres_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=${DB_PASS}
       - POSTGRES_USER=${DB_USER}
@@ -60,5 +60,5 @@ services:
 
 volumes:
   rabbitmq_data:
-  postgres_data:
+#  postgres_data:
   redis_data:

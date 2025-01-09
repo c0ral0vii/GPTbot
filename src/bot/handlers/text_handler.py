@@ -23,7 +23,7 @@ async def text_handler(message: types.Message, state: FSMContext):
 async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
     gpt_select = callback.data.replace("select_", "")
     await state.update_data(type_gpt=gpt_select)
-
+    await callback.message.delete()
     await callback.message.answer(
         f"Выбраная вами модель - {gpt_select}\n\nОтправьте ваш текст:",
         reply_markup=cancel_kb(),
@@ -36,10 +36,11 @@ async def text_handler(message: types.Message, state: FSMContext, bot: Bot):
     data = await state.get_data()
     text = message.text
     answer_message = await message.answer("⏳ Подождите ваше сообщение в обработке...")
-
-    await RabbitQueue.publish_message(
+    model = RabbitQueue()
+    await model.publish_message(
         queue_name=data.get("type_gpt"),
         message=text,
-        answer_message=answer_message,
+        user_id=message.from_user.id,
+        answer_message=answer_message.message_id,
     )
 

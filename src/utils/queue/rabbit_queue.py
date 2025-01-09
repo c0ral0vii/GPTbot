@@ -50,7 +50,7 @@ class RabbitQueue:
             queue = await self.channel.declare_queue(
                 queue_name, arguments={"x-max-priority": 10}
             )
-
+            return queue
         except Exception as e:
             self.logger.error(f"Error declaring queue {queue_name}: {e}")
             raise
@@ -59,8 +59,8 @@ class RabbitQueue:
         self,
         queue_name: str,
         message: str,
-        bot: Bot = None,
-        answer_message: types.Message = None,
+        user_id: int,
+        answer_message: int,
         priority: int = 0,
     ) -> None:
         try:
@@ -72,8 +72,8 @@ class RabbitQueue:
                 {
                     "retry_count": 0,
                     "message": message,
-                    "answer_message": answer_message.model_dump(),
-                    "bot": str(bot),
+                    "answer_message": answer_message,
+                    "user_id": user_id,
                     "timestamp": datetime.now(timezone.utc).isoformat(),
                 }
             ).encode()
@@ -95,7 +95,7 @@ class RabbitQueue:
     async def consume_messages(self, queue_name: str, callback: Callable, prefetch_count: int = 10) -> None:
         try:
             await self.channel.set_qos(prefetch_count=prefetch_count)
-            queue = await self.channel.declare_queue(queue_name)
+            queue = await self.declare_queue(queue_name)
 
             async def process_message(message: aio_pika.IncomingMessage) -> None:
                 async with message.process():
@@ -108,6 +108,7 @@ class RabbitQueue:
                             f"{queue_name}_errors",
                             message=body["message"],
                             answer_message=body["answer_message"],
+                            user_id=body["user_id"],
                         )
 
             await queue.consume(process_message)

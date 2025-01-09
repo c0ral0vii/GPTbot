@@ -3,6 +3,8 @@ import asyncio
 from aiogram import Bot, Dispatcher, types
 from aiogram.fsm.storage.redis import RedisStorage as redis_storage
 
+from src.scripts.antropic.claude_gpt import ClaudeGPT
+from src.utils.queue.worker import QueueWorker
 from src.utils.redis_cache.redis_cache import redis_manager
 from src.config.config import settings
 from src.utils.logger import setup_logger
@@ -47,6 +49,11 @@ async def on_startup():
 async def run():
     await bot.delete_webhook(drop_pending_updates=True)
     await on_startup()
+
+    logger.info("Запуск воркера")
+
+    worker = QueueWorker()
+    asyncio.create_task(worker.start())
 
     logger.info("Запуск бота")
 
