@@ -24,6 +24,8 @@ class ClaudeGPT:
         """Отправка сообщения"""
 
         try:
+
+
             message = await self.client.messages.create(
                 max_tokens=1024,
                 messages=[
@@ -42,5 +44,6 @@ class ClaudeGPT:
 
         except Exception as e:
             self.logger.error(f"Failed to send message: {e}")
+            await self.message_client.answer_message(data)
             raise
 

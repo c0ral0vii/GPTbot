@@ -1,8 +1,8 @@
-import asyncio
 from src.scripts.antropic.claude_gpt import ClaudeGPT
 from src.scripts.chat_gpt.chat_gpt_o1 import ChatGPT
+from src.scripts.midjourney.service import MidjourneyService
 from src.utils.logger import setup_logger
-from src.utils.queue.rabbit_queue import RabbitQueue
+from src.scripts.queue.rabbit_queue import RabbitQueue
 
 class QueueWorker:
     def __init__(self):
@@ -10,6 +10,8 @@ class QueueWorker:
 
         self.claude = ClaudeGPT()
         self.chat_gpt = ChatGPT()
+
+        self.midjourney = MidjourneyService()
 
         self.logger = setup_logger(__name__)
 
@@ -19,23 +21,25 @@ class QueueWorker:
         try:
             await self.queue_service.connect()
 
-            queues = ["chat_gpt_o1", "claude", "gpt_assist",
-                      "midjourney", "flux", "dall_e", "stable_diffusion",
-                      "openai codex", "openai_whisper", "tts", "deepl", "speechmatics",
-                      "openai_embeddings"]
+            queues = ["chat_gpt", "claude", "midjourney",]
 
             for queue_name in queues:
                 await self.queue_service.declare_queue(queue_name)
                 await self.queue_service.declare_queue(f"{queue_name}_errors")
 
             await self.queue_service.consume_messages(
-                "chat_gpt_o1",
+                "chat_gpt",
                 self.chat_gpt.send_message,
             )
 
             await self.queue_service.consume_messages(
                 "claude",
                 self.claude.send_message,
+            )
+
+            await self.queue_service.consume_messages(
+                "midjourney",
+                self.midjourney.generate_photo,
             )
 
             self.logger.info("queue worker started successfully")

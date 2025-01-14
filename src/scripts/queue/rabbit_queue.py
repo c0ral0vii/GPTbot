@@ -4,16 +4,18 @@ from typing import Dict, Any, Callable
 
 import aio_pika
 from aiogram import types, Bot
+from psycopg.pq import error_message
 from sqlalchemy.util import await_only
 
 from src.config.config import settings
+from src.scripts.answer_messages.answer_message import AnswerMessage
 from src.utils.logger import setup_logger
 
 
 class RabbitQueue:
     def __init__(self):
         self.logger = setup_logger(__name__)
-
+        self.message_client = AnswerMessage()
 
     async def connect(self):
         self.connection = await aio_pika.connect_robust(
@@ -32,10 +34,7 @@ class RabbitQueue:
         try:
             self.logger.info("Initializing queue")
 
-            queues = ["chat_gpt_o1", "claude", "gpt_assist",
-                      "midjourney", "flux", "dall_e", "stable_diffusion",
-                      "openai codex", "openai_whisper", "tts", "deepl", "speechmatics",
-                      "openai_embeddings"]
+            queues = ["chat_gpt", "claude", "midjourney",]
 
             for queue_name in queues:
                 await self.declare_queue(queue_name)
@@ -62,6 +61,7 @@ class RabbitQueue:
         user_id: int,
         answer_message: int,
         priority: int = 0,
+        **kwargs,
     ) -> None:
         try:
             await self.connect()
@@ -104,6 +104,10 @@ class RabbitQueue:
                         await callback(body)
                     except Exception as e:
                         self.logger.error(f"Error processing message: {e}")
+                        body["text"] = "Ошибка при отправке запроса"
+
+                        await self.message_client.answer_message(body)
+
                         await self.publish_message(
                             f"{queue_name}_errors",
                             message=body["message"],

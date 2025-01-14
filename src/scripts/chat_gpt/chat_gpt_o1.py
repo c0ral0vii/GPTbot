@@ -39,4 +39,5 @@ class ChatGPT:
 
         except Exception as e:
             self.logger.error(f"Ошибка при отправке сообщения: {e}")
+            await self.message_client.answer_message(data)
             raise

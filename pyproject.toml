@@ -23,6 +23,8 @@ dependencies = [
     "psycopg (>=3.2.3,<4.0.0)",
     "psycopg-binary (>=3.2.3,<4.0.0)",
     "openai (>=1.59.5,<2.0.0)",
+    "aiogoogletrans (>=3.3.3,<4.0.0)",
+    "pillow (>=11.1.0,<12.0.0)",
 ]
 
 

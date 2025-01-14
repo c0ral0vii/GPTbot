@@ -4,7 +4,7 @@ from aiogram import Bot, Dispatcher, types
 from aiogram.fsm.storage.redis import RedisStorage as redis_storage
 
 
-from src.utils.queue.worker import QueueWorker
+from src.scripts.queue.worker import QueueWorker
 from src.utils.redis_cache.redis_cache import redis_manager
 from src.config.config import settings
 from src.utils.logger import setup_logger
@@ -40,9 +40,16 @@ async def on_startup():
 
     commands = [
         types.BotCommand(command="/start", description="Перезапуск бота (Restart bot)"),
+
         types.BotCommand(command="/text", description="Работа с текстовыми ИИ"),
         types.BotCommand(command="/image", description="Работа с ИИ для изображений"),
         types.BotCommand(command="/code", description="Работа с ИИ для кода"),
+
+        types.BotCommand(command="/profile", description="Баланс генераций"),
+        types.BotCommand(command="/invite", description="Пригласить друга"),
+        types.BotCommand(command="/premium", description="🌟 Premium подписка"),
+        types.BotCommand(command="/bonus", description="Бесплатный нейро-курс (до +70💎 генераций)"),
+
     ]
 
     await bot.set_my_commands(commands)
