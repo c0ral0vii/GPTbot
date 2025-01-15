@@ -25,7 +25,6 @@ class RabbitQueue:
         self.channel = await self.connection.channel()
         await self.init_queue()
 
-
     async def stop(self):
         if self.connection:
             await self.connection.close()
@@ -34,7 +33,12 @@ class RabbitQueue:
         try:
             self.logger.info("Initializing queue")
 
-            queues = ["chat_gpt", "claude", "midjourney",]
+            queues = [
+                "chat_gpt",
+                "claude",
+                "midjourney",
+                "referral",
+            ]
 
             for queue_name in queues:
                 await self.declare_queue(queue_name)
@@ -57,9 +61,9 @@ class RabbitQueue:
     async def publish_message(
         self,
         queue_name: str,
-        message: str,
-        user_id: int,
-        answer_message: int,
+        message: str = None,
+        user_id: int = None,
+        answer_message: int = None,
         priority: int = 0,
         **kwargs,
     ) -> None:
@@ -71,10 +75,12 @@ class RabbitQueue:
             message_body = json.dumps(
                 {
                     "retry_count": 0,
+                    "type": queue_name,
                     "message": message,
                     "answer_message": answer_message,
                     "user_id": user_id,
                     "timestamp": datetime.now(timezone.utc).isoformat(),
+                    **kwargs,
                 }
             ).encode()
 
@@ -92,7 +98,9 @@ class RabbitQueue:
             self.logger.error(f"Error publishing message to {queue_name}: {e}")
             raise
 
-    async def consume_messages(self, queue_name: str, callback: Callable, prefetch_count: int = 10) -> None:
+    async def consume_messages(
+        self, queue_name: str, callback: Callable, prefetch_count: int = 10
+    ) -> None:
         try:
             await self.channel.set_qos(prefetch_count=prefetch_count)
             queue = await self.declare_queue(queue_name)
@@ -120,3 +128,6 @@ class RabbitQueue:
         except Exception as e:
             self.logger.error(f"Error setting up consumer for {queue_name}: {e}")
             raise
+
+
+model = RabbitQueue()

@@ -14,10 +14,10 @@ from src.scripts.answer_messages.answer_message import AnswerMessage
 
 logger = setup_logger(__name__)
 
+
 class TranslateService:
     def __init__(self):
         self.language = "en"
-
 
     async def translate(self, text: str) -> str:
         translator = Translator()
@@ -43,25 +43,28 @@ class MidjourneyService:
             "api-key": self.API_KEY,
         }
 
-
     async def generate_photo(self, body: Dict[str, Any]):
         generate_url = self.BASE_URL + "/midjourney/v2/imagine"
 
         async with aiohttp.ClientSession() as session:
             try:
                 translate_message = await self.translator.translate(body["message"])
-                data = json.dumps({
-                    "prompt": f"{translate_message} --ar 4:5",
-                }).encode()
+                data = json.dumps(
+                    {
+                        "prompt": f"{translate_message}",
+                    }
+                ).encode()
 
-                result = await session.post(generate_url, headers=self.HEADER, data=data)
+                result = await session.post(
+                    generate_url, headers=self.HEADER, data=data
+                )
 
                 if result.status == 200:
                     response = await result.json()
                     body["hash"] = response["hash"]
                     logger.debug(body)
 
-                    await self.check_status(body=body, session=session)
+                    await self._check_status(body=body, session=session)
 
                 else:
                     await self.message_handler.answer_message(data=body)
@@ -70,7 +73,7 @@ class MidjourneyService:
                 logger.error(e)
                 raise
 
-    async def check_status(self, body: Dict[str, Any], session: aiohttp.ClientSession):
+    async def _check_status(self, body: Dict[str, Any], session: aiohttp.ClientSession):
         try:
             check_url = self.BASE_URL + "/midjourney/v2/status?hash=" + body["hash"]
             result = await session.get(check_url, headers=self.HEADER)
@@ -81,7 +84,9 @@ class MidjourneyService:
                 if response["status"] == "done":
                     body["original_link"] = response["result"]["url"]
                     if response["result"]["size"] > 5500000:
-                        body["photo"] = await self._resize_image(response["result"]["url"])
+                        body["photo"] = await self._resize_image(
+                            response["result"]["url"]
+                        )
                     else:
                         body["photo"] = response["result"]["url"]
 
@@ -91,26 +96,30 @@ class MidjourneyService:
                     await self.message_handler.answer_photo(data=body)
                 else:
                     await asyncio.sleep(2)
-                    await self.check_status(body=body, session=session)
+                    await self._check_status(body=body, session=session)
 
         except Exception as e:
             logger.error(e)
             raise
-
 
     async def refresh_generate(self):
         """Повторная генерация"""
 
         ...
 
-
-    async def _resize_image(self, url):
-        """Улучшение одной версии"""
+    async def select_photo(self, caption: int, data: Dict[str, Any]):
+        """Выбрать одно фото"""
 
         ...
 
+    async def upgrade_photo(self, caption: int, data: Dict[str, Any]):
+        """Улучшить одно фото"""
 
-    async def _resize_image(self, url: str, max_size: int = 5500000, target_width: int = 800):
+        ...
+
+    async def _resize_image(
+        self, url: str, max_size: int = 5500000, target_width: int = 800
+    ):
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(url) as response:
@@ -129,14 +138,18 @@ class MidjourneyService:
                             buffer.seek(0)
 
                             logger.info(
-                                f"Image resized: original {original_size} bytes, resized {len(buffer.getvalue())} bytes")
+                                f"Image resized: original {original_size} bytes, resized {len(buffer.getvalue())} bytes"
+                            )
                             return buffer.getvalue()
                         else:
-                            logger.info("Image size is within limits, no resizing needed.")
+                            logger.info(
+                                "Image size is within limits, no resizing needed."
+                            )
                             return data
                     else:
                         logger.error(f"Failed to fetch image: {response.status}")
                         return None
+
         except Exception as e:
             logger.error(f"Error while resizing image: {e}")
             raise

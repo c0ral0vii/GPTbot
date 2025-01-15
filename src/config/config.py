@@ -55,6 +55,7 @@ class Settings(BaseSettings):
 
     @property
     def get_database_link(self):
-        return rf'postgresql+asyncpg://{self.DB_USER}:{self.DB_PASS}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}'
+        return rf"postgresql+asyncpg://{self.DB_USER}:{self.DB_PASS}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
+
 
 settings = Settings()

@@ -5,6 +5,7 @@ import asyncio
 import os
 
 from src.config.config import settings
+from src.db.orm.user_orm import UserORM
 from src.scripts.answer_messages.answer_message import AnswerMessage
 from src.utils.logger import setup_logger
 
@@ -24,7 +25,13 @@ class ClaudeGPT:
         """Отправка сообщения"""
 
         try:
-
+            text = await UserORM.remove_energy(data["user_id"], data["energy_cost"])
+            if text.get("error"):
+                data["text"] = text["text"]
+                data["energy_text"] = None
+                await self.message_client.answer_message(data)
+                return
+            data["energy_text"] = text["text"]
 
             message = await self.client.messages.create(
                 max_tokens=1024,
@@ -38,7 +45,9 @@ class ClaudeGPT:
             )
 
             self.logger.debug(message.content)
-            data["text"] = " ".join([block.text for block in message.content if block.type == "text"])
+            data["text"] = " ".join(
+                [block.text for block in message.content if block.type == "text"]
+            )
 
             await self.message_client.answer_message(data)
 
@@ -46,4 +55,3 @@ class ClaudeGPT:
             self.logger.error(f"Failed to send message: {e}")
             await self.message_client.answer_message(data)
             raise
-

@@ -14,6 +14,7 @@ from src.bot.handlers import (
     code_handler,
     image_handler,
     text_handler,
+    profile_handler,
 )
 from src.bot.middlewares.antiflood import RateLimitMiddleware
 from src.bot.filters.chat_type import ChatTypeFilter
@@ -29,6 +30,8 @@ logger = setup_logger(__name__)
 dp.include_routers(
     cancel_handler.router,
     start_handler.router,
+    profile_handler.router,
+
     code_handler.router,
     image_handler.router,
     text_handler.router,
@@ -40,16 +43,15 @@ async def on_startup():
 
     commands = [
         types.BotCommand(command="/start", description="Перезапуск бота (Restart bot)"),
-
         types.BotCommand(command="/text", description="Работа с текстовыми ИИ"),
         types.BotCommand(command="/image", description="Работа с ИИ для изображений"),
         types.BotCommand(command="/code", description="Работа с ИИ для кода"),
-
         types.BotCommand(command="/profile", description="Баланс генераций"),
         types.BotCommand(command="/invite", description="Пригласить друга"),
         types.BotCommand(command="/premium", description="🌟 Premium подписка"),
-        types.BotCommand(command="/bonus", description="Бесплатный нейро-курс (до +70💎 генераций)"),
-
+        types.BotCommand(
+            command="/bonus", description="Бесплатный нейро-курс (до +70💎 генераций)"
+        ),
     ]
 
     await bot.set_my_commands(commands)

@@ -3,6 +3,7 @@ from openai import AsyncOpenAI
 import asyncio
 
 from src.config.config import settings
+from src.db.orm.user_orm import UserORM
 from src.scripts.answer_messages.answer_message import AnswerMessage
 from src.utils.logger import setup_logger
 
@@ -21,6 +22,14 @@ class ChatGPT:
     async def send_message(self, data: Dict[str, Any]):
         """Отправка сообщения и возврат текстового ответа."""
         try:
+            text = await UserORM.remove_energy(data["user_id"], data["energy_cost"])
+            if text.get("error"):
+                data["text"] = text["text"]
+                data["energy_text"] = None
+                await self.message_client.answer_message(data)
+                return
+            data["energy_text"] = text["text"]
+
             response = await self.client.chat.completions.create(
                 model="gpt-3.5-turbo",
                 messages=[

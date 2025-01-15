@@ -4,9 +4,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 def select_text_gpt() -> InlineKeyboardMarkup:
 
-    chat_gpt = InlineKeyboardButton(
-        text="🤖 Chat GPT", callback_data="select_chat_gpt"
-    )
+    chat_gpt = InlineKeyboardButton(text="🤖 Chat GPT", callback_data="select_chat_gpt")
 
     claude = InlineKeyboardButton(
         text="🤖 Claude Sonnet", callback_data="select_claude"
@@ -24,9 +22,7 @@ def select_text_gpt() -> InlineKeyboardMarkup:
 
 def select_image_model() -> InlineKeyboardMarkup:
 
-    mj = InlineKeyboardButton(
-        text="🤖 Midjourney", callback_data="select_midjourney"
-    )
+    mj = InlineKeyboardButton(text="🤖 Midjourney", callback_data="select_midjourney")
 
     kb = InlineKeyboardMarkup(
         inline_keyboard=[
@@ -61,13 +57,14 @@ def upgrade_message() -> InlineKeyboardMarkup:
 def upgrade_photo() -> InlineKeyboardMarkup:
     kb = InlineKeyboardBuilder()
 
-    for i in range(1,5):
+    for i in range(1, 5):
         kb.add(InlineKeyboardButton(text=f"U{i}", callback_data=f"upscale_{i}"))
 
-    for i in range(1,5):
+    for i in range(1, 5):
         kb.add(InlineKeyboardButton(text=f"S{i}", callback_data=f"select_{i}"))
 
+    kb.add(InlineKeyboardButton(text="Выгрузить все", callback_data="get_all_photo"))
     kb.add(InlineKeyboardButton(text="Отмена", callback_data="cancel"))
 
-    kb.adjust(2,2,2,2,1)
+    kb.adjust(2, 2, 2, 2, 1, 1)
     return kb.as_markup()

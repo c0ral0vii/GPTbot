@@ -15,7 +15,9 @@ router = Router()
 @router.message(Command("image"))
 async def handle_image(message: types.Message, state: FSMContext):
     await state.set_state(ImageState.type)
-    await message.answer("Выбери искуственный интелект для обработки:", reply_markup=select_image_model())
+    await message.answer(
+        "Выбери искуственный интелект для обработки:", reply_markup=select_image_model()
+    )
 
 
 @router.callback_query(F.data.startswith("select_"), StateFilter(ImageState.type))
@@ -23,7 +25,9 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
     gpt_select = callback.data.replace("select_", "")
     await state.update_data(type_gpt=gpt_select)
     await callback.message.delete()
-    await callback.message.answer("Отправьте текст для генерации:", reply_markup=cancel_kb())
+    await callback.message.answer(
+        "Отправьте текст для генерации:", reply_markup=cancel_kb()
+    )
 
     await state.set_state(ImageState.text)
 
