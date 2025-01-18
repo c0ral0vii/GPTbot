@@ -30,14 +30,20 @@ class ChatGPT:
                 return
             data["energy_text"] = text["text"]
 
+            assistant = {"role": "assistant", "content": data.get("last_message", "")}
+            messages = [
+                {"role": "developer", "content": "Ты помогающий ассистент."},
+                assistant,
+                {
+                    "role": "user",
+                    "content": data["message"],
+                }
+            ]
+
+
             response = await self.client.chat.completions.create(
-                model="gpt-3.5-turbo",
-                messages=[
-                    {
-                        "role": "user",
-                        "content": data["message"],
-                    }
-                ],
+                model="gpt-4o-mini",
+                messages=messages,
                 max_tokens=1024,
             )
 
@@ -47,6 +53,7 @@ class ChatGPT:
             await self.message_client.answer_message(data)
 
         except Exception as e:
+            await UserORM.add_energy(data["user_id"], data["energy_cost"])
             self.logger.error(f"Ошибка при отправке сообщения: {e}")
-            await self.message_client.answer_message(data)
+            # await self.message_client.answer_message(data)
             raise

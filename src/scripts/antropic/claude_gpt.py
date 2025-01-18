@@ -33,14 +33,19 @@ class ClaudeGPT:
                 return
             data["energy_text"] = text["text"]
 
+
+            assistant = {"role": "assistant", "content": data.get("last_message", "Ты пока ничего не писал, считай это сообщение пустым")}
+            messages = [
+                assistant,
+                {
+                    "role": "user",
+                    "content": data["message"],
+                }
+            ]
+
             message = await self.client.messages.create(
                 max_tokens=1024,
-                messages=[
-                    {
-                        "role": "user",
-                        "content": data["message"],
-                    }
-                ],
+                messages=messages,
                 model="claude-3-5-sonnet-latest",
             )
 
@@ -52,6 +57,7 @@ class ClaudeGPT:
             await self.message_client.answer_message(data)
 
         except Exception as e:
+            await UserORM.add_energy(data["user_id"], data["energy_cost"])
             self.logger.error(f"Failed to send message: {e}")
-            await self.message_client.answer_message(data)
+            # await self.message_client.answer_message(data)
             raise

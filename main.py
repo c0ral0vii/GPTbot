@@ -31,7 +31,6 @@ dp.include_routers(
     cancel_handler.router,
     start_handler.router,
     profile_handler.router,
-
     code_handler.router,
     image_handler.router,
     text_handler.router,

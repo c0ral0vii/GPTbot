@@ -33,7 +33,9 @@ class User(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     user_id: Mapped[int] = mapped_column(BigInteger, nullable=False, unique=True)
 
-    energy: Mapped[Decimal] = mapped_column(DECIMAL(15, 1), nullable=True, default=Decimal("10"))
+    energy: Mapped[Decimal] = mapped_column(
+        DECIMAL(15, 1), nullable=True, default=Decimal("10")
+    )
 
     referral_link: Mapped[str] = mapped_column(nullable=True)
     use_referral_link: Mapped[str] = mapped_column(nullable=True)

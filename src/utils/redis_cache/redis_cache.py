@@ -1,5 +1,8 @@
 from redis.asyncio import Redis
 from src.config.config import settings
+from src.utils.logger import setup_logger
+
+logger = setup_logger(__name__)
 
 
 class RedisCache:
@@ -23,5 +26,28 @@ class RedisCache:
             return True
         return False
 
+    async def set_hset(self, key: str, **kwargs):
+        """Установка hset"""
+        try:
+            await self.redis.hset(key, mapping={**kwargs})
+        except Exception as e:
+            logger.error(e)
+
+    async def get_hgetall(self, key: str):
+        return await self.redis.hgetall(key)
+
+    async def set(self, key: str, value: str):
+        """Установка set"""
+        try:
+            await self.redis.set(name=key, value=value)
+        except Exception as e:
+            logger.error(e)
+
+    async def delete(self, key: str):
+        try:
+            await self.redis.delete(key)
+        except Exception as e:
+            logger.error(e)
+            return
 
 redis_manager = RedisCache()

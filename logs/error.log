@@ -883,3 +883,73 @@ DETAIL:  Key (user_id)=(944360812) already exists.
 2025-01-15 07:31:06,490 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
 2025-01-15 07:31:06,490 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
 2025-01-15 07:31:06,490 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 00:06:25,815 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
+2025-01-18 00:06:25,815 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
+2025-01-18 00:06:25,815 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
+2025-01-18 00:06:25,815 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
+2025-01-18 00:06:25,815 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
+2025-01-18 00:06:25,815 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
+2025-01-18 00:06:25,815 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
+2025-01-18 00:07:38,252 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
+2025-01-18 00:07:38,252 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
+2025-01-18 00:07:38,252 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
+2025-01-18 00:07:38,252 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
+2025-01-18 00:07:38,252 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
+2025-01-18 00:07:38,252 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
+2025-01-18 00:07:38,252 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
+2025-01-18 01:09:00,652 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-01-18 01:09:00,995 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-01-18 01:09:00,995 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-01-18 01:09:00,995 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-01-18 01:29:55,771 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: 'code'
+2025-01-18 01:29:56,350 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'code'
+2025-01-18 01:29:56,350 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'code'
+2025-01-18 01:29:56,350 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'code'
+2025-01-18 01:32:40,718 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Error code: 400 - {'error': {'message': "Invalid value for 'content': expected a string, got null.", 'type': 'invalid_request_error', 'param': 'messages.[1].content', 'code': None}}
+2025-01-18 01:32:40,719 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'error': {'message': "Invalid value for 'content': expected a string, got null.", 'type': 'invalid_request_error', 'param': 'messages.[1].content', 'code': None}}
+2025-01-18 01:32:40,719 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'error': {'message': "Invalid value for 'content': expected a string, got null.", 'type': 'invalid_request_error', 'param': 'messages.[1].content', 'code': None}}
+2025-01-18 01:32:40,719 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'error': {'message': "Invalid value for 'content': expected a string, got null.", 'type': 'invalid_request_error', 'param': 'messages.[1].content', 'code': None}}
+2025-01-18 01:32:41,067 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:32:41,067 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:32:41,067 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:32:41,067 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:32:41,067 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:32:41,067 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:32:41,067 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:33:44,114 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:33:44,114 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:33:44,114 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:33:44,114 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:33:44,114 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:33:44,114 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:33:44,114 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:02,917 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:02,917 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:02,917 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:02,917 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:02,917 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:02,917 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:02,917 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:21,893 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:21,893 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:21,893 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:21,893 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:21,893 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:21,893 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:21,893 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:45,218 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:45,218 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:45,218 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:45,218 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:45,218 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:45,218 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:35:45,218 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-01-18 01:43:03,951 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "developer". Allowed roles are "user" or "assistant"'}}
+2025-01-18 01:43:03,951 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "developer". Allowed roles are "user" or "assistant"'}}
+2025-01-18 01:43:03,951 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "developer". Allowed roles are "user" or "assistant"'}}
+2025-01-18 01:43:03,951 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "developer". Allowed roles are "user" or "assistant"'}}
+2025-01-18 01:43:38,286 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: all messages must have non-empty content except for the optional final assistant message'}}
+2025-01-18 01:43:38,287 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: all messages must have non-empty content except for the optional final assistant message'}}
+2025-01-18 01:43:38,287 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: all messages must have non-empty content except for the optional final assistant message'}}
+2025-01-18 01:43:38,287 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: all messages must have non-empty content except for the optional final assistant message'}}
+2025-01-18 01:51:57,105 - src.db.orm.user_orm - ERROR - 'decimal.Decimal' object is not subscriptable

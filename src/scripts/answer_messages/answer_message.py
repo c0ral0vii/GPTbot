@@ -17,9 +17,9 @@ class AnswerMessage:
 
     async def send_referral_message(self, data: Dict[str, Any]) -> None:
         try:
-            await self.bot.send_message(chat_id=data['user_id'], text=data['text'])
+            await self.bot.send_message(chat_id=data["user_id"], text=data["text"])
 
-            await UserORM.add_energy(data['user_id'], 20)
+            await UserORM.add_energy(data["user_id"], 20)
         except Exception as e:
             self.logger.error(e)
             return
@@ -33,10 +33,13 @@ class AnswerMessage:
                 chat_id=data["user_id"],
                 message_id=data["answer_message"],
                 text=data["text"],
+                parse_mode="Markdown",
                 reply_markup=upgrade_message(),
             )
             if data["energy_text"]:
-                await self.bot.send_message(chat_id=data["user_id"], text=data["energy_text"])
+                await self.bot.send_message(
+                    chat_id=data["user_id"], text=data["energy_text"]
+                )
         except Exception as e:
             self.logger.error(f"Failed to answer message: {e}")
             return
@@ -77,8 +80,10 @@ class AnswerMessage:
                 reply_markup=upgrade_photo(),
             )
 
-            await UserORM.remove_energy(data["user_id"], data["energy_cost"])
-
+            text = await UserORM.remove_energy(data["user_id"], data["energy_cost"])
+            await self.bot.send_message(
+                chat_id=data["user_id"], text=text["text"]
+            )
         except Exception as e:
-            self.logger.error(f"Failed to answer photo: {e}")
+            self.logger.error(f"Failed to answer photo: {e}", exc_info=True)
             return

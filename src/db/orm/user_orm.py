@@ -14,7 +14,9 @@ logger = setup_logger(__name__)
 
 class UserORM:
     @staticmethod
-    async def create_user(user_id: int, use_referral_link: str = None) -> dict[str, Any]:
+    async def create_user(
+        user_id: int, use_referral_link: str = None
+    ) -> dict[str, Any]:
         try:
             async with async_session() as session:
                 stmt = select(User).where(User.user_id == user_id)
@@ -87,14 +89,14 @@ class UserORM:
                 else:
                     return {
                         "error": True,
-                        "text": f"⚡ Недостаточно энергии, у вас осталось {user.energy}",
+                        "text": f"⚡ Недостаточно энергии, у вас осталось {float(user.energy):.1f}",
                     }
 
                 session.add(user)
                 await session.commit()
                 return {
                     "error": False,
-                    "text": f"Списано ⚡ {count}, у вас осталось ⚡ {user.energy}",
+                    "text": f"Списано ⚡ {count}, у вас осталось ⚡ {float(user.energy):.1f}",
                 }
 
         except Exception as e:
@@ -115,13 +117,12 @@ class UserORM:
                 await session.commit()
 
                 return {
-                    "text": f"Добавлено ⚡ {count}, теперь у вас ⚡ {user.energy}",
+                    "text": f"Добавлено ⚡ {count}, теперь у вас ⚡ {float(user.energy):.1f}",
                 }
 
         except Exception as e:
             logger.error(e)
             return {"text": "Ошибка, попробуйте еще раз"}
-
 
     @staticmethod
     async def get_referral_link(user_id: int) -> int:
@@ -147,7 +148,9 @@ class UserORM:
 
                 referral_link = user.referral_link
 
-                stmt = select(func.count()).where(User.use_referral_link == referral_link)
+                stmt = select(func.count()).where(
+                    User.use_referral_link == referral_link
+                )
                 result = await session.execute(stmt)
                 referrals_count = result.scalar()
 

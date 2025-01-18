@@ -6,36 +6,45 @@ from src.bot.keyboards.main_menu import main_menu_kb
 from src.db.orm.user_orm import UserORM
 from src.utils.logger import setup_logger
 from src.scripts.queue.rabbit_queue import model
+from src.utils.redis_cache.redis_cache import redis_manager
 
 
 router = Router()
 logger = setup_logger(__name__)
 
+
 @router.message(CommandStart())
 async def start_handler(message: types.Message, state: FSMContext):
     try:
         logger.debug(message.text)
-        if message.text.find("="):
-            referral_link = message.text.split(" ")
-            if referral_link[-1] != "/start":
-                user = await UserORM.create_user(message.from_user.id, referral_link[-1])
+        key = f"{message.from_user.id}:profile"
 
-                if not user.get("duplicate"):
-                    owner = await UserORM.get_owner_referral(referral_link[-1])
+        if not await redis_manager.get(key):
+            if message.text.find("="):
+                await redis_manager.set(key, "profile")
 
-                    if owner:
-                        await model.publish_message(
-                            queue_name="referral",
-                            user_id=owner.get("user_id"),
-                            text="❗ У вас новый рефералл, вы получили +20 ⚡ энергии.",
-                        )
-                        await UserORM.add_energy(message.from_user.id, 20)
+                referral_link = message.text.split(" ")
+                if referral_link[-1] != "/start":
+                    user = await UserORM.create_user(
+                        message.from_user.id, referral_link[-1]
+                    )
+
+                    if not user.get("duplicate"):
+                        owner = await UserORM.get_owner_referral(referral_link[-1])
+
+                        if owner:
+                            await model.publish_message(
+                                queue_name="referral",
+                                user_id=owner.get("user_id"),
+                                text="❗ У вас новый рефералл, вы получили +20 ⚡ энергии.",
+                            )
+                            await UserORM.add_energy(message.from_user.id, 20)
+                else:
+                    await UserORM.create_user(message.from_user.id)
+
             else:
                 await UserORM.create_user(message.from_user.id)
-
-        else:
-            await UserORM.create_user(message.from_user.id)
-
+                await redis_manager.set(key, "profile")
 
         await message.answer(
             "Выберите нейросеть:\n\n"

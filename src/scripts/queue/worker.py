@@ -55,6 +55,7 @@ class QueueWorker:
                 "referral",
                 self.message_service.send_referral_message,
             )
+
             self.logger.info("queue worker started successfully")
 
         except Exception as e:
@@ -65,5 +66,3 @@ class QueueWorker:
 async def worker_start():
     worker = QueueWorker()
     await worker.start()
-
-

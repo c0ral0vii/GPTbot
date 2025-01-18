@@ -21,7 +21,6 @@ async def profile_handler(message: types.Message, state: FSMContext):
             f"⚡ Энергия: {profile_info.energy}\n"
             f"👥 Рефералы: {referrals} человек\n\n"
             "Приглашайте новых участников для получения энергии /invite!",
-
             parse_mode="Markdown",
         )
     except Exception as e:

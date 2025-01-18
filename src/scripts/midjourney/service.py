@@ -102,10 +102,36 @@ class MidjourneyService:
             logger.error(e)
             raise
 
-    async def refresh_generate(self):
+    async def refresh_generate(self, body: Dict[str, Any]):
         """Повторная генерация"""
 
-        ...
+        reroll_url = self.BASE_URL + "/midjourney/v2/reroll"
+
+        async with aiohttp.ClientSession() as session:
+            try:
+                data = json.dumps(
+                    {
+                        "hash": f"{body['hash']}",
+                    }
+                ).encode()
+
+                result = await session.post(
+                    reroll_url, headers=self.HEADER, data=data,
+                )
+
+                if result.status == 200:
+                    response = await result.json()
+                    body["hash"] = response["hash"]
+                    logger.debug(body)
+
+                    await self._check_status(body=body, session=session)
+                else:
+                    await self.message_handler.answer_message(data=body)
+
+            except Exception as e:
+                logger.error(e)
+                raise
+
 
     async def select_photo(self, caption: int, data: Dict[str, Any]):
         """Выбрать одно фото"""

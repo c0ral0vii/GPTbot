@@ -36,7 +36,7 @@ def select_image_model() -> InlineKeyboardMarkup:
 def cancel_kb() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="Отмена", callback_data="cancel")],
+            [InlineKeyboardButton(text="❌ Отмена", callback_data="cancel")],
         ]
     )
 
@@ -49,7 +49,7 @@ def upgrade_message() -> InlineKeyboardMarkup:
                     text="Доработать", callback_data="upgrade_message"
                 ),
             ],
-            [InlineKeyboardButton(text="Отмена", callback_data="cancel")],
+            [InlineKeyboardButton(text="❌ Отмена", callback_data="cancel")],
         ]
     )
 
@@ -63,8 +63,8 @@ def upgrade_photo() -> InlineKeyboardMarkup:
     for i in range(1, 5):
         kb.add(InlineKeyboardButton(text=f"S{i}", callback_data=f"select_{i}"))
 
-    kb.add(InlineKeyboardButton(text="Выгрузить все", callback_data="get_all_photo"))
-    kb.add(InlineKeyboardButton(text="Отмена", callback_data="cancel"))
+    kb.add(InlineKeyboardButton(text="🔄", callback_data="refresh_photo"))
+    kb.add(InlineKeyboardButton(text="❌ Отмена", callback_data="cancel"))
 
     kb.adjust(2, 2, 2, 2, 1, 1)
     return kb.as_markup()

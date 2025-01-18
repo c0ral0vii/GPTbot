@@ -10,6 +10,7 @@ from sqlalchemy.util import await_only
 from src.config.config import settings
 from src.scripts.answer_messages.answer_message import AnswerMessage
 from src.utils.logger import setup_logger
+from src.utils.redis_cache.redis_cache import redis_manager
 
 
 class RabbitQueue:
@@ -110,6 +111,8 @@ class RabbitQueue:
                     try:
                         body = json.loads(message.body.decode())
                         await callback(body)
+                        await redis_manager.delete(f"{body.get("user_id")}:generate")
+
                     except Exception as e:
                         self.logger.error(f"Error processing message: {e}")
                         body["text"] = "Ошибка при отправке запроса"
@@ -122,6 +125,8 @@ class RabbitQueue:
                             answer_message=body["answer_message"],
                             user_id=body["user_id"],
                         )
+
+                        await redis_manager.delete(f"{body.get("user_id")}:generate")
 
             await queue.consume(process_message)
 
