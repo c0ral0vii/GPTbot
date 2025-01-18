@@ -1,6 +1,6 @@
 services:
   rabbitmq:
-    image: rabbitmq:3.9-management
+    image: rabbitmq:4.0-management
     container_name: gpt_bot_rabbit
     ports:
       - "5672:5672"  # AMQP порт

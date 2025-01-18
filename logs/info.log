@@ -6543,3 +6543,22 @@ DETAIL:  Key (user_id)=(944360812) already exists.
 2025-01-18 01:55:49,327 - src.scripts.queue.rabbit_queue - INFO - Published message to queue claude
 2025-01-18 01:55:49,327 - src.scripts.queue.rabbit_queue - INFO - Published message to queue claude
 2025-01-18 01:55:49,327 - src.scripts.queue.rabbit_queue - INFO - Published message to queue claude
+2025-01-18 02:07:03,870 - __main__ - INFO - Инициализация комманд
+2025-01-18 02:07:03,955 - __main__ - INFO - Запуск воркера
+2025-01-18 02:07:04,283 - __main__ - INFO - Запуск бота
+2025-01-18 02:07:04,317 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-01-18 02:07:04,317 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-01-18 02:07:04,317 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-01-18 02:07:04,321 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-01-18 02:07:04,321 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-01-18 02:07:04,321 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-01-18 02:07:04,322 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-18 02:07:04,322 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-18 02:07:04,322 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-01-18 02:07:04,324 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-18 02:07:04,324 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-18 02:07:04,324 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-01-18 02:07:04,326 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-01-18 02:07:04,326 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-01-18 02:07:04,326 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-01-18 02:07:04,475 - src.scripts.queue.worker - INFO - queue worker started successfully
