@@ -13,7 +13,7 @@ router = Router()
 logger = setup_logger(__name__)
 
 
-@router.message(Command("text"))
+@router.message(Command("text", "code"))
 @router.message(F.text == "💡 Chat GPT/Claude")
 async def text_handler(message: types.Message, state: FSMContext):
     await message.answer(

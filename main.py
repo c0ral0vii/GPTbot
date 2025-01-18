@@ -11,7 +11,6 @@ from src.utils.logger import setup_logger
 from src.bot.handlers import (
     cancel_handler,
     start_handler,
-    code_handler,
     image_handler,
     text_handler,
     profile_handler,
@@ -31,7 +30,6 @@ dp.include_routers(
     cancel_handler.router,
     start_handler.router,
     profile_handler.router,
-    code_handler.router,
     image_handler.router,
     text_handler.router,
 )
