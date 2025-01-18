@@ -19,7 +19,7 @@ async def handle_image(message: types.Message, state: FSMContext):
     await message.answer(
         "Эти ИИ могут помочь с генерацией реалистичных фотографий только по вашему тексту.\n\n"
         "💡 Выберите вашу модель для работы:",
-        reply_markup=select_image_model()
+        reply_markup=select_image_model(),
     )
 
 
@@ -69,5 +69,3 @@ async def handle_text(message: types.Message, state: FSMContext):
     )
 
     await redis_manager.set(key=key, value="generate")
-
-

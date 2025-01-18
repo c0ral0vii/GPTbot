@@ -39,7 +39,9 @@ async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
         energy_cost = 1
         select_model = gpt_select
 
-    await state.update_data(type_gpt=gpt_select, energy_cost=energy_cost, bot_message=None)
+    await state.update_data(
+        type_gpt=gpt_select, energy_cost=energy_cost, bot_message=None
+    )
 
     await callback.message.answer(
         f"Выбраная вами модель - {select_model}\n"
@@ -89,7 +91,8 @@ async def text_handler(message: types.Message, state: FSMContext, bot: Bot):
 
 @router.callback_query(F.data == "upgrade_message")
 async def upgrade_message(callback: types.CallbackQuery, state: FSMContext, bot: Bot):
-    await callback.message.answer("Отправьте сообщение для доработки:",
-                                  reply_markup=cancel_kb())
+    await callback.message.answer(
+        "Отправьте сообщение для доработки:", reply_markup=cancel_kb()
+    )
 
     await state.update_data(bot_message=callback.message.text)

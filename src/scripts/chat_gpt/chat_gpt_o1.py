@@ -37,9 +37,8 @@ class ChatGPT:
                 {
                     "role": "user",
                     "content": data["message"],
-                }
+                },
             ]
-
 
             response = await self.client.chat.completions.create(
                 model="gpt-4o-mini",

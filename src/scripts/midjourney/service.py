@@ -116,7 +116,9 @@ class MidjourneyService:
                 ).encode()
 
                 result = await session.post(
-                    reroll_url, headers=self.HEADER, data=data,
+                    reroll_url,
+                    headers=self.HEADER,
+                    data=data,
                 )
 
                 if result.status == 200:
@@ -131,7 +133,6 @@ class MidjourneyService:
             except Exception as e:
                 logger.error(e)
                 raise
-
 
     async def select_photo(self, caption: int, data: Dict[str, Any]):
         """Выбрать одно фото"""

@@ -50,4 +50,5 @@ class RedisCache:
             logger.error(e)
             return
 
+
 redis_manager = RedisCache()

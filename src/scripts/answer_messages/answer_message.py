@@ -81,9 +81,7 @@ class AnswerMessage:
             )
 
             text = await UserORM.remove_energy(data["user_id"], data["energy_cost"])
-            await self.bot.send_message(
-                chat_id=data["user_id"], text=text["text"]
-            )
+            await self.bot.send_message(chat_id=data["user_id"], text=text["text"])
         except Exception as e:
             self.logger.error(f"Failed to answer photo: {e}", exc_info=True)
             return

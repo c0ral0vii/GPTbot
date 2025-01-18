@@ -33,14 +33,19 @@ class ClaudeGPT:
                 return
             data["energy_text"] = text["text"]
 
-
-            assistant = {"role": "assistant", "content": data.get("last_message", "Ты пока ничего не писал, считай это сообщение пустым")}
+            assistant = {
+                "role": "assistant",
+                "content": data.get(
+                    "last_message",
+                    "Ты пока ничего не писал, считай это сообщение пустым",
+                ),
+            }
             messages = [
                 assistant,
                 {
                     "role": "user",
                     "content": data["message"],
-                }
+                },
             ]
 
             message = await self.client.messages.create(
