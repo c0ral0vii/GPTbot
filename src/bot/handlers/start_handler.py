@@ -74,7 +74,7 @@ async def invite_handler(message: types.Message, state: FSMContext, bot: Bot):
         referral_link = await UserORM.get_referral_link(message.from_user.id)
         await message.answer(
             f"Регистрируйся по ссылке и получишь +20 ⚡ бесплатной энергии:\n"
-            f"https://t.me/galsfhdjkjas_bot?start={referral_link}",
+            f"https://t.me/woome_bot?start={referral_link}",
         )
 
     except Exception as e:
