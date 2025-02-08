@@ -8,8 +8,8 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
-    volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
+#    volumes:
+#      - rabbitmq_data:/var/lib/rabbitmq
     healthcheck:
       test: [ "CMD", "rabbitmqctl", "status" ]
       interval: 30s
@@ -59,6 +59,6 @@ services:
       - .:/app
 
 volumes:
-  rabbitmq_data:
+#  rabbitmq_data:
 #  postgres_data:
   redis_data:

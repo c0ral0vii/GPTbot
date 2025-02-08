@@ -10,6 +10,7 @@ import aiohttp
 from src.config.config import settings
 from src.utils.logger import setup_logger
 from src.scripts.answer_messages.answer_message import AnswerMessage
+from src.db.orm.user_orm import ImageORM
 
 
 logger = setup_logger(__name__)
@@ -80,22 +81,33 @@ class MidjourneyService:
 
             if result.status == 200:
                 response = await result.json()
+                if response["status"] == "error":
+                    logger.error(response["status_reason"])
+                    return
 
                 if response["status"] == "done":
                     body["original_link"] = response["result"]["url"]
-                    if response["result"]["size"] > 5500000:
+                    if response["result"]["size"] >= 5500000:
                         body["photo"] = await self._resize_image(
                             response["result"]["url"]
                         )
+
                     else:
                         body["photo"] = response["result"]["url"]
 
                     logger.debug(body)
-                    logger.debug(response)
+
+                    if not body.get("image_id"):
+                        image = await ImageORM.create_image(
+                            prompt=body["message"],
+                            hash=body["hash"],
+                            image_name=body["original_link"],
+                        )
+                        body["image_id"] = image.id
 
                     await self.message_handler.answer_photo(data=body)
                 else:
-                    await asyncio.sleep(2)
+                    await asyncio.sleep(1)
                     await self._check_status(body=body, session=session)
 
         except Exception as e:
@@ -106,12 +118,15 @@ class MidjourneyService:
         """Повторная генерация"""
 
         reroll_url = self.BASE_URL + "/midjourney/v2/reroll"
+        image_data = await ImageORM.get_image(id=body["image_id"])
+        body["message"] = image_data.prompt
 
         async with aiohttp.ClientSession() as session:
             try:
                 data = json.dumps(
                     {
-                        "hash": f"{body['hash']}",
+                        "hash": image_data.hash,
+                        "prompt": image_data.prompt,
                     }
                 ).encode()
 
@@ -121,13 +136,17 @@ class MidjourneyService:
                     data=data,
                 )
 
+                logger.debug(result.status)
+
                 if result.status == 200:
                     response = await result.json()
+                    logger.debug(response)
                     body["hash"] = response["hash"]
                     logger.debug(body)
 
                     await self._check_status(body=body, session=session)
                 else:
+                    logger.debug(body)
                     await self.message_handler.answer_message(data=body)
 
             except Exception as e:
@@ -164,9 +183,6 @@ class MidjourneyService:
                             resized_image.save(buffer, format="JPEG", quality=85)
                             buffer.seek(0)
 
-                            logger.info(
-                                f"Image resized: original {original_size} bytes, resized {len(buffer.getvalue())} bytes"
-                            )
                             return buffer.getvalue()
                         else:
                             logger.info(

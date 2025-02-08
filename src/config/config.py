@@ -29,9 +29,37 @@ class Settings(BaseSettings):
     MJ_KEY: str = None
     FLUX_KEY: str = None
     DALL_KEY: str = None
+    #YOOMONEY_API
+    YOOMONEY_API: str = None
 
+    # admin token
+    ADMIN_TOKEN: str = None
     # debug
     DEBUG: bool = False
+
+
+
+    @property
+    def TEXT_GPT(self):
+        return {
+            "chatgpt": {
+                "energy_cost": 0.5,
+                "select_model": "ChatGPT 4o"
+            },
+            "claude": {
+                "energy_cost": 0.7,
+                "select_model": "Claude Sonnet"
+            }
+        }
+
+    @property
+    def IMAGE_GPT(self):
+        return {
+            "midjourney": {
+                "energy_cost": 1,
+                "select_model": "Midjourney"
+            }
+        }
 
     @property
     def bot_api(self) -> str:

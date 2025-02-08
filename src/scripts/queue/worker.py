@@ -29,6 +29,7 @@ class QueueWorker:
                 "chat_gpt",
                 "claude",
                 "midjourney",
+                "refresh_midjourney",
                 "referral",
             ]
 
@@ -54,6 +55,11 @@ class QueueWorker:
             await self.queue_service.consume_messages(
                 "referral",
                 self.message_service.send_referral_message,
+            )
+
+            await self.queue_service.consume_messages(
+                "refresh_midjourney",
+                self.midjourney.refresh_generate
             )
 
             self.logger.info("queue worker started successfully")

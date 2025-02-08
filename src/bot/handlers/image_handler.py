@@ -5,11 +5,15 @@ from aiogram.fsm.context import FSMContext
 from src.bot.keyboards.select_gpt import select_image_model, cancel_kb
 from src.bot.states.image_state import ImageState
 from src.scripts.queue.rabbit_queue import RabbitQueue
+from src.utils.logger import setup_logger
 from src.utils.redis_cache.redis_cache import redis_manager
+from src.config.config import settings
+
 
 model = RabbitQueue()
 
 router = Router()
+logger = setup_logger(__name__)
 
 
 @router.message(Command("image"))
@@ -28,9 +32,9 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
     gpt_select = callback.data.replace("select_", "")
     await callback.message.delete()
 
-    if gpt_select == "midjourney":
-        energy_cost = 1
-        select_model = "Midjourney"
+    if settings.IMAGE_GPT.get(gpt_select):
+        energy_cost = settings.IMAGE_GPT.get(gpt_select).get("energy_cost")
+        select_model = settings.IMAGE_GPT.get(gpt_select).get("select_model")
     else:
         energy_cost = 1
         select_model = gpt_select
@@ -69,3 +73,38 @@ async def handle_text(message: types.Message, state: FSMContext):
     )
 
     await redis_manager.set(key=key, value="generate")
+
+
+@router.callback_query(F.data.startswith("refresh_"))
+async def refresh_image(callback_data: types.CallbackQuery, state: FSMContext):
+    logger.debug(callback_data.data)
+    image_id = callback_data.data.split("_")[-1]
+    user_id = callback_data.from_user.id
+    key = f"{user_id}:generate"
+
+    if await redis_manager.get(key):
+        await callback_data.message.answer("⏳ Подождите пока идет генерация.")
+        return
+
+    answer_message = await callback_data.message.answer("⏳ Подождите ваше сообщение в обработке...")
+    state_data = await state.get_data()
+
+    gpt_select = state_data["type_gpt"]
+
+    if settings.IMAGE_GPT.get(gpt_select):
+        energy_cost = settings.IMAGE_GPT.get(gpt_select).get("energy_cost")
+        select_model = settings.IMAGE_GPT.get(gpt_select).get("select_model")
+    else:
+        energy_cost = 1
+        select_model = gpt_select
+    logger.debug(image_id)
+    await model.publish_message(
+        queue_name="refresh_midjourney",
+        message="",
+        user_id=user_id,
+        answer_message=answer_message.message_id,
+        energy_cost=energy_cost,
+        image_id=int(image_id),
+
+        key=key,
+    )

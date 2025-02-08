@@ -60,3 +60,13 @@ class BannedUser(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     user_id: Mapped[int] = mapped_column(BigInteger, nullable=False, unique=True)
+
+
+class GenerateImage(Base):
+    __tablename__ = "generate_images"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+
+    image_name: Mapped[str] = mapped_column(nullable=True)
+    prompt: Mapped[str] = mapped_column(nullable=True)
+    hash: Mapped[str] = mapped_column(nullable=False)

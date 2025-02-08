@@ -14,11 +14,13 @@ from src.bot.handlers import (
     image_handler,
     text_handler,
     profile_handler,
+    premium_handler,
 )
 from src.bot.middlewares.antiflood import RateLimitMiddleware
 from src.bot.filters.chat_type import ChatTypeFilter
+from src.scripts.payment.service import PaymentService
 
-bot = Bot(token=settings.bot_api)
+bot = Bot(token=settings.BOT_API)
 dp = Dispatcher(storage=redis_storage(redis=redis_manager.get_redis_manager()))
 
 dp.message.middleware(RateLimitMiddleware())
@@ -29,6 +31,7 @@ logger = setup_logger(__name__)
 dp.include_routers(
     cancel_handler.router,
     start_handler.router,
+    premium_handler.router,
     profile_handler.router,
     image_handler.router,
     text_handler.router,
@@ -60,13 +63,18 @@ async def run():
 
     logger.info("Запуск воркера")
 
-    worker = QueueWorker()
-    asyncio.create_task(worker.start())
+    await run_workers()
 
     logger.info("Запуск бота")
 
     await dp.start_polling(bot)
 
+async def run_workers():
+    worker = QueueWorker()
+    asyncio.create_task(worker.start())
+
 
 if __name__ == "__main__":
     asyncio.run(run())
+    # payment = PaymentService()
+    # asyncio.run(payment.generate_link(91234412))

@@ -1,955 +1,248 @@
-2025-01-09 04:45:56,971 - src.utils.queue.rabbit_queue - ERROR - Error declaring queue claude: 'RabbitQueue' object has no attribute 'channel'
-2025-01-09 04:45:56,971 - src.utils.queue.rabbit_queue - ERROR - Error publishing message to claude: 'RabbitQueue' object has no attribute 'channel'
-2025-01-09 04:47:29,211 - src.utils.queue.rabbit_queue - ERROR - Error publishing message to chat_gpt_o1: 'coroutine' object has no attribute 'channel'
-2025-01-09 04:48:42,935 - src.utils.queue.rabbit_queue - ERROR - Error publishing message to chat_gpt_o1: Object of type Message is not JSON serializable
-2025-01-09 05:58:08,050 - src.utils.queue.rabbit_queue - ERROR - Error setting up consumer for claude: PRECONDITION_FAILED - inequivalent arg 'x-max-priority' for queue 'claude' in vhost '/': received none but current is the value '10' of type 'byte'
-2025-01-09 05:58:08,050 - src.utils.queue.worker - ERROR - Error starting parsing worker: PRECONDITION_FAILED - inequivalent arg 'x-max-priority' for queue 'claude' in vhost '/': received none but current is the value '10' of type 'byte'
-2025-01-09 06:01:45,420 - src.utils.queue.rabbit_queue - ERROR - Error setting up consumer for claude: 'NoneType' object has no attribute 'consume'
-2025-01-09 06:01:45,420 - src.utils.queue.worker - ERROR - Error starting parsing worker: 'NoneType' object has no attribute 'consume'
-2025-01-09 06:07:28,100 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: 'coroutine' object has no attribute 'content'
-2025-01-09 06:07:28,100 - src.utils.queue.rabbit_queue - ERROR - Error processing message: 'coroutine' object has no attribute 'content'
-2025-01-09 06:07:36,347 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: 'coroutine' object has no attribute 'content'
-2025-01-09 06:07:36,347 - src.utils.queue.rabbit_queue - ERROR - Error processing message: 'coroutine' object has no attribute 'content'
-2025-01-09 06:12:55,018 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: Error code: 403 - {'error': {'type': 'forbidden', 'message': 'Request not allowed'}}
-2025-01-09 06:16:42,236 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: Connection error.
-2025-01-09 06:16:53,907 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: Connection error.
-2025-01-09 06:17:21,702 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: Error code: 403 - {'error': {'type': 'forbidden', 'message': 'Request not allowed'}}
-2025-01-09 06:23:18,064 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: 'list' object has no attribute 'text'
-2025-01-09 07:14:16,799 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: 'TextBlock' object is not subscriptable
-2025-01-09 07:14:16,800 - src.utils.queue.rabbit_queue - ERROR - Error processing message: 'TextBlock' object is not subscriptable
-2025-01-09 07:14:16,800 - src.utils.queue.rabbit_queue - ERROR - Error processing message: 'TextBlock' object is not subscriptable
-2025-01-09 07:26:38,914 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Error code: 404 - {'error': {'message': 'The model `gpt-4` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
-2025-01-09 07:26:38,914 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 404 - {'error': {'message': 'The model `gpt-4` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
-2025-01-09 07:26:52,702 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Error code: 404 - {'error': {'message': 'The model `gpt-4` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
-2025-01-09 07:26:52,702 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 404 - {'error': {'message': 'The model `gpt-4` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
-2025-01-09 07:26:52,702 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 404 - {'error': {'message': 'The model `gpt-4` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'param': None, 'code': 'model_not_found'}}
-2025-01-09 07:26:52,730 - src.utils.queue.rabbit_queue - ERROR - Error publishing message to chat_gpt_o1_errors: 'int' object has no attribute 'message_id'
-2025-01-09 07:26:52,730 - src.utils.queue.rabbit_queue - ERROR - Error publishing message to chat_gpt_o1_errors: 'int' object has no attribute 'message_id'
-2025-01-09 07:30:07,539 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
-2025-01-09 07:30:07,544 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
-2025-01-09 07:30:07,544 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
-2025-01-09 07:31:18,832 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
-2025-01-09 07:31:18,833 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
-2025-01-09 07:31:18,833 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 429 - {'error': {'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, read the docs: https://platform.openai.com/docs/guides/error-codes/api-errors.', 'type': 'insufficient_quota', 'param': None, 'code': 'insufficient_quota'}}
-2025-01-11 16:02:49,084 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: Error code: 403 - {'error': {'type': 'forbidden', 'message': 'Request not allowed'}}
-2025-01-11 16:02:49,289 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'type': 'forbidden', 'message': 'Request not allowed'}}
-2025-01-11 16:02:49,289 - src.utils.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'type': 'forbidden', 'message': 'Request not allowed'}}
-2025-01-12 22:38:40,105 - src.scripts.midjourney.service - ERROR - Object of type coroutine is not JSON serializable
-2025-01-12 22:38:40,106 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Object of type coroutine is not JSON serializable
-2025-01-12 22:38:40,106 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Object of type coroutine is not JSON serializable
-2025-01-12 22:38:40,106 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Object of type coroutine is not JSON serializable
-2025-01-12 23:06:24,585 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,585 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,585 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,585 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,585 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,585 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,585 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,585 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,585 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,585 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,585 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,585 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,585 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,586 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,586 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,586 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,586 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,586 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,586 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,586 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,586 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,586 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,586 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,586 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,586 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:06:24,586 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,074 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,074 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,074 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,074 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,074 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,074 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,080 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,080 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,081 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,081 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,081 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,081 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,081 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,082 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,082 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,082 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,082 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,082 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,083 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,083 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,083 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,084 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,084 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:12:08,084 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,463 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,463 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,463 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,463 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,463 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,463 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,469 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,470 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,470 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,470 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,470 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,470 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,471 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,471 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,471 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,471 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,471 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,471 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,472 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,472 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,472 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,473 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,473 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:19:35,473 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,028 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,028 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,028 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,028 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,028 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,028 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,030 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,030 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,030 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,030 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,030 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,030 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,030 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,030 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,030 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,031 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,031 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,031 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,031 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,031 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,031 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,031 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,031 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:25:38,031 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:48:45,673 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:48:45,673 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:48:45,673 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:48:45,673 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:48:45,673 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:48:45,673 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:48:45,675 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:48:45,675 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:48:45,676 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:48:45,676 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:48:45,676 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:48:45,676 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:49:36,142 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:49:36,142 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:49:36,142 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:49:36,142 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:49:36,142 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:49:36,142 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:49:36,142 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:49:36,142 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:49:36,142 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:49:36,143 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:49:36,143 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:49:36,143 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: message is not modified: specified new message content and reply markup are exactly the same as a current content and reply markup of the message
-2025-01-12 23:51:48,689 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,689 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,689 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,689 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,689 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,689 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,695 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,695 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,696 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,696 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,696 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,696 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,696 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,697 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,697 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,697 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,697 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,697 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,697 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,698 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,698 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,698 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-12 23:51:48,698 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,494 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,494 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,494 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,494 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,494 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,494 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,495 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,496 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,496 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,496 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,496 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,496 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,496 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,496 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,496 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,496 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,496 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,496 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,496 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,496 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,496 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,497 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,497 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 00:54:49,497 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: failed to get HTTP URL content
-2025-01-13 01:38:40,918 - src.scripts.midjourney.service - ERROR - Error while resizing image: type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,918 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,918 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,918 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,918 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,919 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,919 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,919 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,919 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,919 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,920 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,920 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,920 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,920 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,920 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,920 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,920 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,920 - src.scripts.midjourney.service - ERROR - type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,920 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,920 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:38:40,920 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: type object 'typing.io' has no attribute 'BytesIO'
-2025-01-13 01:42:57,940 - src.scripts.midjourney.service - ERROR - Error while resizing image: module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,941 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,941 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,941 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,941 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,941 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,941 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,941 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,941 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,941 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,941 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,942 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,942 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,942 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,942 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,942 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,942 - src.scripts.midjourney.service - ERROR - module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,942 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,942 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:42:57,942 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: module 'PIL.Image' has no attribute 'ANTIALIAS'
-2025-01-13 01:45:06,767 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,767 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,767 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,767 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,767 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,767 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,768 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,778 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,787 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,797 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,806 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,815 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,825 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,836 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,845 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,855 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,864 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,874 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,883 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,893 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,903 - src.scripts.midjourney.service - ERROR - 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,914 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,914 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:45:06,914 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 2 validation errors for InputMediaPhoto
-media.str
-  Input should be a valid string, unable to parse raw data as a unicode string [type=string_unicode, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/string_unicode
-media.is-instance[InputFile]
-  Input should be an instance of InputFile [type=is_instance_of, input_value=b'\xff\xd8\xff\xe0\x00\x1...ce\xa2\xb92MSv?\xff\xd9', input_type=bytes]
-    For further information visit https://errors.pydantic.dev/2.10/v/is_instance_of
-2025-01-13 01:47:07,691 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,691 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,691 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,691 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,691 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,691 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,692 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,692 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,692 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,692 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,692 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,693 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,693 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,693 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,693 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,693 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,693 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,693 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,694 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,694 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,694 - src.scripts.midjourney.service - ERROR - 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,694 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,694 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-13 01:47:07,694 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 5 validation errors for EditMessageMedia
-media.InputMediaAnimation
-  Input should be a valid dictionary or instance of InputMediaAnimation [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaDocument
-  Input should be a valid dictionary or instance of InputMediaDocument [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaAudio
-  Input should be a valid dictionary or instance of InputMediaAudio [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaPhoto
-  Input should be a valid dictionary or instance of InputMediaPhoto [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-media.InputMediaVideo
-  Input should be a valid dictionary or instance of InputMediaVideo [type=model_type, input_value=<aiogram.types.input_file...bject at 0x781d5a08a7b0>, input_type=URLInputFile]
-    For further information visit https://errors.pydantic.dev/2.10/v/model_type
-2025-01-14 21:44:56,964 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,964 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,964 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,964 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,964 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,964 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,966 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,966 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,966 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,966 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,966 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,967 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,967 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,967 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,967 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,968 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,968 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,968 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,968 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,968 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,969 - src.scripts.midjourney.service - ERROR - Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,969 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,969 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:56,969 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Telegram server says - Bad Request: can't parse entities: Can't find end tag corresponding to start tag "a"
-2025-01-14 21:44:57,099 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
-2025-01-14 21:44:57,099 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
-2025-01-14 21:44:57,099 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
-2025-01-14 21:44:57,099 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
-2025-01-14 21:44:57,099 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
-2025-01-14 21:44:57,099 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
-2025-01-15 02:43:30,067 - src.db.orm.user_orm - ERROR - Could not determine join condition between parent/child tables on relationship User.premium_status - there are no foreign keys linking these tables.  Ensure that referencing columns are associated with a ForeignKey or ForeignKeyConstraint, or specify a 'primaryjoin' expression.
-2025-01-15 02:57:43,185 - src.db.orm.user_orm - ERROR - 'referal_link' is an invalid keyword argument for User
-2025-01-15 03:25:34,962 - src.db.orm.user_orm - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.UniqueViolationError'>: duplicate key value violates unique constraint "users_user_id_key"
-DETAIL:  Key (user_id)=(944360812) already exists.
-[SQL: INSERT INTO users (user_id, energy, referral_link, use_referral_link, created, updated) VALUES ($1::BIGINT, $2::NUMERIC(15, 1), $3::VARCHAR, $4::VARCHAR, now(), now()) RETURNING users.id, users.created, users.updated]
-[parameters: (944360812, None, '3d49f536-2f7a-4cc4-971e-26d1ab6d5f1e', None)]
-(Background on this error at: https://sqlalche.me/e/20/gkpj)
-2025-01-15 03:26:29,455 - src.db.orm.user_orm - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.UniqueViolationError'>: duplicate key value violates unique constraint "users_user_id_key"
-DETAIL:  Key (user_id)=(944360812) already exists.
-[SQL: INSERT INTO users (user_id, energy, referral_link, use_referral_link, created, updated) VALUES ($1::BIGINT, $2::NUMERIC(15, 1), $3::VARCHAR, $4::VARCHAR, now(), now()) RETURNING users.id, users.created, users.updated]
-[parameters: (944360812, None, '8802f103-abd3-4cea-bc21-ab5f4e7e6084', None)]
-(Background on this error at: https://sqlalche.me/e/20/gkpj)
-2025-01-15 03:30:57,239 - src.db.orm.user_orm - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.UniqueViolationError'>: duplicate key value violates unique constraint "users_user_id_key"
-DETAIL:  Key (user_id)=(944360812) already exists.
-[SQL: INSERT INTO users (user_id, energy, referral_link, use_referral_link, created, updated) VALUES ($1::BIGINT, $2::NUMERIC(15, 1), $3::VARCHAR, $4::VARCHAR, now(), now()) RETURNING users.id, users.created, users.updated]
-[parameters: (944360812, None, 'b083a882-6f02-44e9-831a-f58412444cee', None)]
-(Background on this error at: https://sqlalche.me/e/20/gkpj)
-2025-01-15 05:46:54,010 - src.db.orm.user_orm - ERROR - No row was found when one was required
-2025-01-15 05:46:54,011 - src.bot.handlers.start_handler - ERROR - No row was found when one was required
-2025-01-15 05:47:02,932 - src.db.orm.user_orm - ERROR - No row was found when one was required
-2025-01-15 05:47:02,932 - src.bot.handlers.start_handler - ERROR - No row was found when one was required
-2025-01-15 05:47:09,861 - src.db.orm.user_orm - ERROR - No row was found when one was required
-2025-01-15 05:47:09,861 - src.bot.handlers.start_handler - ERROR - No row was found when one was required
-2025-01-15 05:47:47,135 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
-2025-01-15 05:47:47,136 - src.bot.handlers.start_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
-2025-01-15 05:47:55,635 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
-2025-01-15 05:47:55,635 - src.bot.handlers.start_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
-2025-01-15 05:52:42,482 - src.bot.handlers.start_handler - ERROR - empty separator
-2025-01-15 05:53:17,880 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
-2025-01-15 05:53:17,880 - src.bot.handlers.start_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
-2025-01-15 07:02:31,192 - src.db.orm.user_orm - ERROR - unsupported operand type(s) for +=: 'NoneType' and 'decimal.Decimal'
-2025-01-15 07:02:45,447 - src.db.orm.user_orm - ERROR - unsupported operand type(s) for +=: 'NoneType' and 'decimal.Decimal'
-2025-01-15 07:05:34,614 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
-2025-01-15 07:05:34,614 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
-2025-01-15 07:07:07,421 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'user_id'
-2025-01-15 07:07:07,421 - src.bot.handlers.start_handler - ERROR - 'NoneType' object has no attribute 'user_id'
-2025-01-15 07:12:10,889 - src.db.orm.user_orm - ERROR - object NoneType can't be used in 'await' expression
-2025-01-15 07:15:21,038 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'user_id'
-2025-01-15 07:15:21,039 - src.bot.handlers.start_handler - ERROR - 'NoneType' object has no attribute 'user_id'
-2025-01-15 07:15:24,215 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'user_id'
-2025-01-15 07:15:24,215 - src.bot.handlers.start_handler - ERROR - 'NoneType' object has no attribute 'user_id'
-2025-01-15 07:17:44,365 - src.bot.handlers.start_handler - ERROR - 'NoneType' object has no attribute 'get'
-2025-01-15 07:17:46,723 - src.bot.handlers.start_handler - ERROR - 'NoneType' object has no attribute 'get'
-2025-01-15 07:18:10,208 - src.bot.handlers.start_handler - ERROR - 'NoneType' object has no attribute 'get'
-2025-01-15 07:21:04,005 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'user_id'
-2025-01-15 07:21:04,006 - src.bot.handlers.start_handler - ERROR - 'NoneType' object has no attribute 'user_id'
-2025-01-15 07:31:06,490 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-15 07:31:06,490 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-15 07:31:06,490 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-15 07:31:06,490 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-15 07:31:06,490 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-15 07:31:06,490 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-15 07:31:06,490 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 00:06:25,815 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
-2025-01-18 00:06:25,815 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
-2025-01-18 00:06:25,815 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
-2025-01-18 00:06:25,815 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
-2025-01-18 00:06:25,815 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
-2025-01-18 00:06:25,815 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
-2025-01-18 00:06:25,815 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
-2025-01-18 00:07:38,252 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
-2025-01-18 00:07:38,252 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
-2025-01-18 00:07:38,252 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
-2025-01-18 00:07:38,252 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
-2025-01-18 00:07:38,252 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
-2025-01-18 00:07:38,252 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
-2025-01-18 00:07:38,252 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer photo: 'user_id'
-2025-01-18 01:09:00,652 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
-2025-01-18 01:09:00,995 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
-2025-01-18 01:09:00,995 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
-2025-01-18 01:09:00,995 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
-2025-01-18 01:29:55,771 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: 'code'
-2025-01-18 01:29:56,350 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'code'
-2025-01-18 01:29:56,350 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'code'
-2025-01-18 01:29:56,350 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'code'
-2025-01-18 01:32:40,718 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Error code: 400 - {'error': {'message': "Invalid value for 'content': expected a string, got null.", 'type': 'invalid_request_error', 'param': 'messages.[1].content', 'code': None}}
-2025-01-18 01:32:40,719 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'error': {'message': "Invalid value for 'content': expected a string, got null.", 'type': 'invalid_request_error', 'param': 'messages.[1].content', 'code': None}}
-2025-01-18 01:32:40,719 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'error': {'message': "Invalid value for 'content': expected a string, got null.", 'type': 'invalid_request_error', 'param': 'messages.[1].content', 'code': None}}
-2025-01-18 01:32:40,719 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'error': {'message': "Invalid value for 'content': expected a string, got null.", 'type': 'invalid_request_error', 'param': 'messages.[1].content', 'code': None}}
-2025-01-18 01:32:41,067 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:32:41,067 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:32:41,067 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:32:41,067 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:32:41,067 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:32:41,067 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:32:41,067 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:33:44,114 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:33:44,114 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:33:44,114 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:33:44,114 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:33:44,114 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:33:44,114 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:33:44,114 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:02,917 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:02,917 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:02,917 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:02,917 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:02,917 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:02,917 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:02,917 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:21,893 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:21,893 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:21,893 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:21,893 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:21,893 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:21,893 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:21,893 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:45,218 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:45,218 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:45,218 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:45,218 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:45,218 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:45,218 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:35:45,218 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
-2025-01-18 01:43:03,951 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "developer". Allowed roles are "user" or "assistant"'}}
-2025-01-18 01:43:03,951 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "developer". Allowed roles are "user" or "assistant"'}}
-2025-01-18 01:43:03,951 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "developer". Allowed roles are "user" or "assistant"'}}
-2025-01-18 01:43:03,951 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages: Unexpected role "developer". Allowed roles are "user" or "assistant"'}}
-2025-01-18 01:43:38,286 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: all messages must have non-empty content except for the optional final assistant message'}}
-2025-01-18 01:43:38,287 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: all messages must have non-empty content except for the optional final assistant message'}}
-2025-01-18 01:43:38,287 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: all messages must have non-empty content except for the optional final assistant message'}}
-2025-01-18 01:43:38,287 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'messages.1: all messages must have non-empty content except for the optional final assistant message'}}
-2025-01-18 01:51:57,105 - src.db.orm.user_orm - ERROR - 'decimal.Decimal' object is not subscriptable
+2025-02-02 00:01:39,981 - src.db.orm.user_orm - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedTableError'>: relation "users" does not exist
+[SQL: SELECT users.id, users.user_id, users.energy, users.referral_link, users.use_referral_link, users.created, users.updated 
+FROM users 
+WHERE users.user_id = $1::BIGINT]
+[parameters: (944360812,)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-02-03 03:12:50,596 - src.scripts.midjourney.service - ERROR - 'image_id'
+2025-02-03 03:12:50,597 - src.scripts.midjourney.service - ERROR - 'image_id'
+2025-02-03 03:12:50,597 - src.scripts.midjourney.service - ERROR - 'image_id'
+2025-02-03 03:12:50,597 - src.scripts.midjourney.service - ERROR - 'image_id'
+2025-02-03 03:12:50,597 - src.scripts.midjourney.service - ERROR - 'image_id'
+2025-02-03 03:12:50,598 - src.scripts.midjourney.service - ERROR - 'image_id'
+2025-02-03 03:12:50,598 - src.scripts.midjourney.service - ERROR - 'image_id'
+2025-02-03 03:12:50,598 - src.scripts.midjourney.service - ERROR - 'image_id'
+2025-02-03 03:12:50,598 - src.scripts.midjourney.service - ERROR - 'image_id'
+2025-02-03 03:12:50,598 - src.scripts.midjourney.service - ERROR - 'image_id'
+2025-02-03 03:12:50,598 - src.scripts.midjourney.service - ERROR - 'image_id'
+2025-02-03 03:12:50,598 - src.scripts.midjourney.service - ERROR - 'image_id'
+2025-02-03 03:12:50,598 - src.scripts.midjourney.service - ERROR - 'image_id'
+2025-02-03 03:12:50,599 - src.scripts.midjourney.service - ERROR - 'image_id'
+2025-02-03 03:12:50,599 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'image_id'
+2025-02-03 03:12:50,599 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'image_id'
+2025-02-03 03:12:50,599 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'image_id'
+2025-02-03 03:12:50,785 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:12:50,785 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:12:50,785 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:12:50,785 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:12:50,785 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:12:50,785 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:12:50,785 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:15:22,238 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'energy'
+2025-02-03 03:24:33,700 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'energy'
+2025-02-03 03:25:56,727 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-03 03:25:56,727 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-03 03:29:39,039 - src.scripts.midjourney.service - ERROR - 'hash'
+2025-02-03 03:29:39,039 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'hash'
+2025-02-03 03:29:39,039 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'hash'
+2025-02-03 03:29:39,039 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'hash'
+2025-02-03 03:29:39,220 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:29:39,220 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:29:39,220 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:29:39,220 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:29:39,220 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:29:39,220 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:29:39,220 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:52:15,695 - src.db.orm.user_orm - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: integer = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT generate_images.id, generate_images.image_name, generate_images.prompt, generate_images.hash, generate_images.created, generate_images.updated 
+FROM generate_images 
+WHERE generate_images.id = $1::VARCHAR]
+[parameters: ('<src.db.models.GenerateImage object at 0x7560d2488800>',)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-02-03 03:52:15,696 - src.scripts.midjourney.service - ERROR - 'NoneType' object has no attribute 'hash'
+2025-02-03 03:52:15,696 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 03:52:15,696 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 03:52:15,696 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 03:52:15,884 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:52:15,884 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:52:15,884 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:52:15,884 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:52:15,884 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:52:15,884 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 03:52:15,884 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:00:18,544 - src.db.orm.user_orm - ERROR - invalid literal for int() with base 10: '<src.db.models.GenerateImage object at 0x7560d2488800>'
+2025-02-03 04:00:18,545 - src.scripts.midjourney.service - ERROR - 'NoneType' object has no attribute 'hash'
+2025-02-03 04:00:18,546 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:00:18,546 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:00:18,546 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:00:18,772 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:00:18,772 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:00:18,772 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:00:18,772 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:00:18,772 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:00:18,772 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:00:18,772 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:02:40,725 - src.db.orm.user_orm - ERROR - invalid literal for int() with base 10: '<src.db.models.GenerateImage object at 0x7560d2488800>'
+2025-02-03 04:02:40,726 - src.scripts.midjourney.service - ERROR - 'NoneType' object has no attribute 'hash'
+2025-02-03 04:02:40,726 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:02:40,726 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:02:40,726 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:02:40,906 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:02:40,906 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:02:40,906 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:02:40,906 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:02:40,906 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:02:40,906 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:02:40,906 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:06:34,637 - src.db.orm.user_orm - ERROR - invalid literal for int() with base 10: '<src.db.models.GenerateImage object at 0x76ced1537920>'
+2025-02-03 04:06:34,639 - src.scripts.midjourney.service - ERROR - 'NoneType' object has no attribute 'hash'
+2025-02-03 04:06:34,639 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:06:34,639 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:06:34,639 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:06:34,777 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:06:34,777 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:06:34,777 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:06:34,777 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:06:34,777 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:06:34,777 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:06:34,777 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,137 - src.db.orm.user_orm - ERROR - 'int' object has no attribute 'id'
+2025-02-03 04:08:09,137 - src.scripts.midjourney.service - ERROR - 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:09,138 - src.db.orm.user_orm - ERROR - 'int' object has no attribute 'id'
+2025-02-03 04:08:09,138 - src.scripts.midjourney.service - ERROR - 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:09,138 - src.db.orm.user_orm - ERROR - 'int' object has no attribute 'id'
+2025-02-03 04:08:09,138 - src.scripts.midjourney.service - ERROR - 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:09,138 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:09,138 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:09,138 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:09,139 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:09,139 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:09,139 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:09,141 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:09,141 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:09,141 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:09,333 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,333 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,333 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,333 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,333 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,333 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,333 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,335 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,335 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,335 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,335 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,335 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,335 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,335 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,339 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,339 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,339 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,339 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,339 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,339 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:09,339 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:11,786 - src.db.orm.user_orm - ERROR - 'str' object has no attribute 'id'
+2025-02-03 04:08:11,786 - src.scripts.midjourney.service - ERROR - 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:11,787 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:11,787 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:11,787 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:11,876 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:11,876 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:11,876 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:11,876 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:11,876 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:11,876 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:11,876 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:41,771 - src.db.orm.user_orm - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: integer = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT generate_images.id, generate_images.image_name, generate_images.prompt, generate_images.hash, generate_images.created, generate_images.updated 
+FROM generate_images 
+WHERE generate_images.id = $1::VARCHAR]
+[parameters: ('<src.db.models.GenerateImage object at 0x76ced1537920>',)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-02-03 04:08:41,772 - src.scripts.midjourney.service - ERROR - 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:41,773 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:41,773 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:41,773 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:08:41,946 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:41,946 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:41,946 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:41,946 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:41,946 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:41,946 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:08:41,946 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:09:41,577 - src.db.orm.user_orm - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: integer = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT generate_images.id, generate_images.image_name, generate_images.prompt, generate_images.hash, generate_images.created, generate_images.updated 
+FROM generate_images 
+WHERE generate_images.id = $1::VARCHAR]
+[parameters: ('<src.db.models.GenerateImage object at 0x76ced1537920>',)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-02-03 04:09:41,578 - src.scripts.midjourney.service - ERROR - 'NoneType' object has no attribute 'hash'
+2025-02-03 04:09:41,578 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:09:41,578 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:09:41,578 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:09:41,796 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:09:41,796 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:09:41,796 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:09:41,796 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:09:41,796 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:09:41,796 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:09:41,796 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:12:41,291 - src.db.orm.user_orm - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: integer = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT generate_images.id, generate_images.image_name, generate_images.prompt, generate_images.hash, generate_images.created, generate_images.updated 
+FROM generate_images 
+WHERE generate_images.id = $1::VARCHAR]
+[parameters: ('<src.db.models.GenerateImage object at 0x76ced1537920>',)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-02-03 04:12:41,293 - src.scripts.midjourney.service - ERROR - 'NoneType' object has no attribute 'hash'
+2025-02-03 04:12:41,293 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:12:41,293 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:12:41,293 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:12:41,828 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:12:41,828 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:12:41,828 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:12:41,828 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:12:41,828 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:12:41,828 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:12:41,828 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:14:28,957 - src.db.orm.user_orm - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: integer = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT generate_images.id, generate_images.image_name, generate_images.prompt, generate_images.hash, generate_images.created, generate_images.updated 
+FROM generate_images 
+WHERE generate_images.id = $1::VARCHAR]
+[parameters: ('5',)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-02-03 04:14:28,958 - src.scripts.midjourney.service - ERROR - 'NoneType' object has no attribute 'hash'
+2025-02-03 04:14:28,958 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:14:28,958 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:14:28,958 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object has no attribute 'hash'
+2025-02-03 04:14:29,199 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:14:29,199 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:14:29,199 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:14:29,199 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:14:29,199 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:14:29,199 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:14:29,199 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-03 04:22:21,462 - src.scripts.midjourney.service - ERROR - all requests for this subscription plan have been used
+2025-02-03 04:24:08,481 - src.scripts.midjourney.service - ERROR - not found an active Discord account
+2025-02-03 04:26:17,892 - src.scripts.midjourney.service - ERROR - not found an active Discord account
+2025-02-03 04:26:24,536 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: Error code: 403 - {'error': {'type': 'forbidden', 'message': 'Request not allowed'}}
+2025-02-03 04:26:24,536 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'type': 'forbidden', 'message': 'Request not allowed'}}
+2025-02-03 04:26:24,536 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'type': 'forbidden', 'message': 'Request not allowed'}}
+2025-02-03 04:26:24,536 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'type': 'forbidden', 'message': 'Request not allowed'}}
+2025-02-03 04:26:50,177 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-02-03 04:26:50,177 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-02-03 04:26:50,177 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-02-03 04:26:50,177 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-02-03 04:31:59,782 - src.scripts.midjourney.service - ERROR - not found an active Discord account
+2025-02-03 22:54:17,342 - src.scripts.midjourney.service - ERROR - all requests for this subscription plan have been used
+2025-02-05 02:17:50,640 - src.scripts.midjourney.service - ERROR - not found an active Discord account
+2025-02-05 03:35:51,682 - src.scripts.midjourney.service - ERROR - [Errno 104] Connection reset by peer
+2025-02-05 03:35:51,684 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: [Errno 104] Connection reset by peer
+2025-02-05 03:35:51,684 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: [Errno 104] Connection reset by peer
+2025-02-05 03:35:51,684 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: [Errno 104] Connection reset by peer
+2025-02-05 03:35:51,984 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-05 03:35:51,984 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-05 03:35:51,984 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-05 03:35:51,984 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-05 03:35:51,984 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-05 03:35:51,984 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-05 03:35:51,984 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'energy_text'
+2025-02-05 03:36:43,663 - src.scripts.midjourney.service - ERROR - not found an active Discord account
+2025-02-07 02:23:02,750 - src.scripts.queue.worker - ERROR - Error starting parsing worker: [Errno -3] Temporary failure in name resolution
+2025-02-06 23:34:21,196 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 400, body: {"message": "\u041d\u0435\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u0430\u044f \u0444\u043e\u0440\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0433\u043e \u0442\u0435\u043a\u0441\u0442\u0430", "code": 50035, "errors": {"data": {"components": {"0": {"_errors": [{"components": {"0": {"_errors": [{"value": {"_errors": [{"code": "BASE_TYPE_REQUIRED", "message": "\u041e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u0435"}]}}]}}}]}}}}}
+2025-02-06 23:50:02,149 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 400, body: {"message": "\u041d\u0435\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u0430\u044f \u0444\u043e\u0440\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0433\u043e \u0442\u0435\u043a\u0441\u0442\u0430", "code": 50035, "errors": {"data": {"components": {"0": {"_errors": [{"components": {"0": {"_errors": [{"value": {"_errors": [{"code": "BASE_TYPE_REQUIRED", "message": "\u041e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u0435"}]}}]}}}]}}}}}

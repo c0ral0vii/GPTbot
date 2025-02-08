@@ -1,7 +1,7 @@
 from decimal import Decimal
 from typing import Optional, Dict, Any
 
-from src.db.models import User
+from src.db.models import User, GenerateImage
 from src.utils.logger import setup_logger
 
 from src.db.database import async_session
@@ -172,3 +172,40 @@ class UserORM:
         except Exception as e:
             logger.error(e)
             raise
+
+
+class ImageORM:
+    @staticmethod
+    async def create_image(prompt: str, image_name: str, hash: str) -> GenerateImage:
+        try:
+            async with async_session() as session:
+                image = GenerateImage(
+                    prompt=prompt,
+                    image_name=image_name,
+                    hash=hash,
+                )
+
+                session.add(image)
+                await session.commit()
+                await session.refresh(image)
+
+                return image
+
+        except Exception as e:
+            logger.error(e)
+
+    @staticmethod
+    async def get_image(id: int) -> GenerateImage:
+        try:
+            async with async_session() as session:
+                stmt = select(GenerateImage).where(GenerateImage.id == id)
+                result = await session.execute(stmt)
+                image = result.scalar_one_or_none()
+
+                if image is None:
+                    return None
+
+                return image
+
+        except Exception as e:
+            logger.error(e)

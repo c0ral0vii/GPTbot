@@ -36,10 +36,14 @@ class AnswerMessage:
                 parse_mode="Markdown",
                 reply_markup=upgrade_message(),
             )
-            if data["energy_text"]:
+            
+            energy_text = data.get("energy_text", None)
+
+            if energy_text:
                 await self.bot.send_message(
                     chat_id=data["user_id"], text=data["energy_text"]
                 )
+
         except Exception as e:
             self.logger.error(f"Failed to answer message: {e}")
             return
@@ -68,6 +72,7 @@ class AnswerMessage:
             await self.bot.edit_message_media(
                 chat_id=data["user_id"], message_id=data["answer_message"], media=photo
             )
+
             await self.bot.edit_message_caption(
                 chat_id=data["user_id"],
                 message_id=data["answer_message"],
@@ -77,7 +82,9 @@ class AnswerMessage:
                     f"Модель: <code>#{data['type'].upper()}</code>\n"
                 ),
                 parse_mode="HTML",
-                reply_markup=upgrade_photo(),
+                reply_markup=await upgrade_photo(
+                    image_id=data["image_id"]
+                ),
             )
 
             text = await UserORM.remove_energy(data["user_id"], data["energy_cost"])
