@@ -2198,3 +2198,299 @@ WHERE generate_images.id = $1::VARCHAR]
 2025-02-06 23:51:50,969 - src.scripts.queue.rabbit_queue - INFO - Published message to queue refresh_midjourney
 2025-02-06 23:51:50,969 - src.scripts.queue.rabbit_queue - INFO - Published message to queue refresh_midjourney
 2025-02-06 23:51:50,969 - src.scripts.queue.rabbit_queue - INFO - Published message to queue refresh_midjourney
+2025-02-19 21:05:20,968 - __main__ - INFO - Инициализация комманд
+2025-02-19 21:05:21,104 - __main__ - INFO - Запуск воркера
+2025-02-19 21:05:21,307 - __main__ - INFO - Запуск бота
+2025-02-19 21:05:21,323 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:05:21,323 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:05:21,323 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:05:21,331 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:05:21,331 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:05:21,331 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:05:21,338 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:05:21,338 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:05:21,338 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:05:21,346 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:05:21,346 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:05:21,346 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:05:21,354 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:05:21,354 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:05:21,354 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:05:21,363 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:05:21,363 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:05:21,363 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:05:21,373 - src.scripts.queue.rabbit_queue - INFO - Queue upgrade_midjourney initialized
+2025-02-19 21:05:21,373 - src.scripts.queue.rabbit_queue - INFO - Queue upgrade_midjourney initialized
+2025-02-19 21:05:21,373 - src.scripts.queue.rabbit_queue - INFO - Queue upgrade_midjourney initialized
+2025-02-19 21:05:21,379 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:05:21,379 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:05:21,379 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:05:21,445 - src.scripts.queue.worker - ERROR - Error starting parsing worker: 'MidjourneyService' object has no attribute 'variation_photo'
+2025-02-19 21:07:37,915 - __main__ - INFO - Инициализация комманд
+2025-02-19 21:07:37,990 - __main__ - INFO - Запуск воркера
+2025-02-19 21:07:38,298 - __main__ - INFO - Запуск бота
+2025-02-19 21:07:38,315 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:07:38,315 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:07:38,315 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:07:38,316 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:07:38,316 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:07:38,316 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:07:38,317 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:07:38,317 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:07:38,317 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:07:38,319 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:07:38,319 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:07:38,319 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:07:38,321 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:07:38,321 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:07:38,321 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:07:38,323 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:07:38,323 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:07:38,323 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:07:38,324 - src.scripts.queue.rabbit_queue - INFO - Queue upgrade_midjourney initialized
+2025-02-19 21:07:38,324 - src.scripts.queue.rabbit_queue - INFO - Queue upgrade_midjourney initialized
+2025-02-19 21:07:38,324 - src.scripts.queue.rabbit_queue - INFO - Queue upgrade_midjourney initialized
+2025-02-19 21:07:38,325 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:07:38,325 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:07:38,325 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:07:38,347 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-02-19 21:07:54,405 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:07:54,405 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:07:54,405 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:07:54,407 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:07:54,407 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:07:54,407 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:07:54,408 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:07:54,408 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:07:54,408 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:07:54,410 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:07:54,410 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:07:54,410 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:07:54,412 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:07:54,412 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:07:54,412 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:07:54,415 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:07:54,415 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:07:54,415 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:07:54,417 - src.scripts.queue.rabbit_queue - INFO - Queue upgrade_midjourney initialized
+2025-02-19 21:07:54,417 - src.scripts.queue.rabbit_queue - INFO - Queue upgrade_midjourney initialized
+2025-02-19 21:07:54,417 - src.scripts.queue.rabbit_queue - INFO - Queue upgrade_midjourney initialized
+2025-02-19 21:07:54,419 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:07:54,419 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:07:54,419 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:07:54,423 - src.scripts.queue.rabbit_queue - INFO - Published message to queue midjourney
+2025-02-19 21:07:54,423 - src.scripts.queue.rabbit_queue - INFO - Published message to queue midjourney
+2025-02-19 21:07:54,423 - src.scripts.queue.rabbit_queue - INFO - Published message to queue midjourney
+2025-02-19 21:08:29,922 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:08:29,922 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:08:29,922 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:08:29,923 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:08:29,923 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:08:29,923 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:08:29,925 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:08:29,925 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:08:29,925 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:08:29,926 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:08:29,926 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:08:29,926 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:08:29,927 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:08:29,927 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:08:29,927 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:08:29,928 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:08:29,928 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:08:29,928 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:08:29,930 - src.scripts.queue.rabbit_queue - INFO - Queue upgrade_midjourney initialized
+2025-02-19 21:08:29,930 - src.scripts.queue.rabbit_queue - INFO - Queue upgrade_midjourney initialized
+2025-02-19 21:08:29,930 - src.scripts.queue.rabbit_queue - INFO - Queue upgrade_midjourney initialized
+2025-02-19 21:08:29,931 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:08:29,931 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:08:29,931 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:08:29,934 - src.scripts.queue.rabbit_queue - INFO - Published message to queue refresh_midjourney
+2025-02-19 21:08:29,934 - src.scripts.queue.rabbit_queue - INFO - Published message to queue refresh_midjourney
+2025-02-19 21:08:29,934 - src.scripts.queue.rabbit_queue - INFO - Published message to queue refresh_midjourney
+2025-02-19 21:28:27,606 - __main__ - INFO - Инициализация комманд
+2025-02-19 21:28:27,951 - __main__ - INFO - Запуск воркера
+2025-02-19 21:28:28,204 - __main__ - INFO - Запуск бота
+2025-02-19 21:28:28,263 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:28:28,263 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:28:28,263 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:28:28,274 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:28:28,274 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:28:28,274 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:28:28,275 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:28:28,275 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:28:28,275 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:28:28,278 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:28:28,278 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:28:28,278 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:28:28,280 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:28:28,280 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:28:28,280 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:28:28,282 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:28:28,282 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:28:28,282 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:28:28,315 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:28:28,315 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:28:28,315 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:28:28,317 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:28:28,317 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:28:28,317 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:28:28,354 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-02-19 21:28:53,137 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:28:53,138 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:28:57,491 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:28:57,492 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:30:22,453 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:30:22,453 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:30:22,453 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:30:22,458 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:30:22,458 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:30:22,458 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:30:22,461 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:30:22,461 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:30:22,461 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:30:22,463 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:30:22,463 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:30:22,463 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:30:22,465 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:30:22,465 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:30:22,465 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:30:22,468 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:30:22,468 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:30:22,468 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:30:22,471 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:30:22,471 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:30:22,471 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:30:22,473 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:30:22,473 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:30:22,473 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:30:22,484 - src.scripts.queue.rabbit_queue - INFO - Published message to queue midjourney
+2025-02-19 21:30:22,484 - src.scripts.queue.rabbit_queue - INFO - Published message to queue midjourney
+2025-02-19 21:30:22,484 - src.scripts.queue.rabbit_queue - INFO - Published message to queue midjourney
+2025-02-19 21:30:48,448 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'energy'
+2025-02-19 21:35:24,718 - __main__ - INFO - Инициализация комманд
+2025-02-19 21:35:24,822 - __main__ - INFO - Запуск воркера
+2025-02-19 21:35:25,037 - __main__ - INFO - Запуск бота
+2025-02-19 21:35:25,078 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:35:25,078 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:35:25,078 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:35:25,082 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:35:25,082 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:35:25,082 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:35:25,083 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:35:25,083 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:35:25,083 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:35:25,084 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:35:25,084 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:35:25,084 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:35:25,085 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:35:25,085 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:35:25,085 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:35:25,086 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:35:25,086 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:35:25,086 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:35:25,086 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:35:25,086 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:35:25,086 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:35:25,087 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:35:25,087 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:35:25,087 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:35:25,105 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-02-19 21:35:32,858 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:35:32,859 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:35:41,524 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:35:41,525 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:36:44,367 - __main__ - INFO - Инициализация комманд
+2025-02-19 21:36:44,439 - __main__ - INFO - Запуск воркера
+2025-02-19 21:36:44,754 - __main__ - INFO - Запуск бота
+2025-02-19 21:36:44,769 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:36:44,769 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:36:44,769 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:36:44,770 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:36:44,770 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:36:44,770 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:36:44,772 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:36:44,772 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:36:44,772 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:36:44,773 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:36:44,773 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:36:44,773 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:36:44,774 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:36:44,774 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:36:44,774 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:36:44,775 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:36:44,775 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:36:44,775 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:36:44,777 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:36:44,777 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:36:44,777 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:36:44,777 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:36:44,777 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:36:44,777 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:36:44,795 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-02-19 21:36:50,644 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:36:50,645 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:36:53,308 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:36:53,309 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:37:43,622 - __main__ - INFO - Инициализация комманд
+2025-02-19 21:37:43,711 - __main__ - INFO - Запуск воркера
+2025-02-19 21:37:44,027 - __main__ - INFO - Запуск бота
+2025-02-19 21:37:44,045 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:37:44,045 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:37:44,045 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:37:44,053 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:37:44,053 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:37:44,053 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:37:44,060 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:37:44,060 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:37:44,060 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:37:44,068 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:37:44,068 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:37:44,068 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:37:44,076 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:37:44,076 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:37:44,076 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:37:44,084 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:37:44,084 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:37:44,084 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:37:44,095 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:37:44,095 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:37:44,095 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:37:44,105 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:37:44,105 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:37:44,105 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:37:44,206 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-02-19 21:37:48,503 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:37:48,504 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:38:47,784 - __main__ - INFO - Инициализация комманд
+2025-02-19 21:38:47,962 - __main__ - INFO - Запуск воркера
+2025-02-19 21:38:48,170 - __main__ - INFO - Запуск бота
+2025-02-19 21:38:48,177 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:38:48,177 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:38:48,177 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-19 21:38:48,178 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:38:48,178 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:38:48,178 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-19 21:38:48,178 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:38:48,178 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:38:48,178 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-19 21:38:48,179 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:38:48,179 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:38:48,179 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-19 21:38:48,180 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:38:48,180 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:38:48,180 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-19 21:38:48,180 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:38:48,180 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:38:48,180 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-19 21:38:48,181 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:38:48,181 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:38:48,181 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-19 21:38:48,182 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:38:48,182 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:38:48,182 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-19 21:38:48,195 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-02-19 21:38:51,536 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:38:51,537 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:40:27,995 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:40:27,997 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'

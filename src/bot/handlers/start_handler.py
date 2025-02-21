@@ -20,11 +20,11 @@ async def start_handler(message: types.Message, state: FSMContext):
         key = f"{message.from_user.id}:profile"
 
         if not await redis_manager.get(key):
-            if message.text.find("="):
+            if "=" in message.text:
                 await redis_manager.set(key, "profile")
 
-                referral_link = message.text.split(" ")
-                if referral_link[-1] != "/start":
+                referral_link = message.text.split("=")[-1]
+                if len(referral_link) > 1 and referral_link[-1] != "/start":
                     user = await UserORM.create_user(
                         message.from_user.id, referral_link[-1]
                     )

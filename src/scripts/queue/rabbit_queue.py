@@ -3,9 +3,6 @@ from datetime import datetime, timezone
 from typing import Dict, Any, Callable
 
 import aio_pika
-from aiogram import types, Bot
-from psycopg.pq import error_message
-from sqlalchemy.util import await_only
 
 from src.config.config import settings
 from src.scripts.answer_messages.answer_message import AnswerMessage
@@ -37,7 +34,11 @@ class RabbitQueue:
             queues = [
                 "chat_gpt",
                 "claude",
+                # Миджорни
                 "midjourney",
+                "refresh_midjourney",
+                "select_midjourney",
+                "upscale_midjourney",
                 "referral",
             ]
 
@@ -133,6 +134,10 @@ class RabbitQueue:
         except Exception as e:
             self.logger.error(f"Error setting up consumer for {queue_name}: {e}")
             raise
+
+    async def get_analytics_quese(self):
+        """"""
+        ...
 
 
 model = RabbitQueue()

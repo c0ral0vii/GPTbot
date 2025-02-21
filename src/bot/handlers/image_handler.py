@@ -77,26 +77,25 @@ async def handle_text(message: types.Message, state: FSMContext):
 
 @router.callback_query(F.data.startswith("refresh_"))
 async def refresh_image(callback_data: types.CallbackQuery, state: FSMContext):
-    logger.debug(callback_data.data)
     image_id = callback_data.data.split("_")[-1]
     user_id = callback_data.from_user.id
-    key = f"{user_id}:generate"
 
-    if await redis_manager.get(key):
-        await callback_data.message.answer("⏳ Подождите пока идет генерация.")
+    check_user_in_redis = await _check_generation(callback_data)
+    if check_user_in_redis:
         return
 
-    answer_message = await callback_data.message.answer("⏳ Подождите ваше сообщение в обработке...")
+    answer_message = await callback_data.message.answer(
+        "⏳ Подождите ваше сообщение в обработке..."
+    )
     state_data = await state.get_data()
 
     gpt_select = state_data["type_gpt"]
 
     if settings.IMAGE_GPT.get(gpt_select):
         energy_cost = settings.IMAGE_GPT.get(gpt_select).get("energy_cost")
-        select_model = settings.IMAGE_GPT.get(gpt_select).get("select_model")
     else:
         energy_cost = 1
-        select_model = gpt_select
+
     logger.debug(image_id)
     await model.publish_message(
         queue_name="refresh_midjourney",
@@ -105,6 +104,48 @@ async def refresh_image(callback_data: types.CallbackQuery, state: FSMContext):
         answer_message=answer_message.message_id,
         energy_cost=energy_cost,
         image_id=int(image_id),
-
-        key=key,
+        key=check_user_in_redis,
     )
+
+
+@router.callback_query(F.data.startswith("upscale_"))
+async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
+    image_id = callback_data.data.split("_")
+    user_id = callback_data.from_user.id
+
+    check_user_in_redis = await _check_generation(callback_data)
+    if check_user_in_redis:
+        return
+
+    answer_message = await callback_data.message.answer(
+        "⏳ Подождите ваше сообщение в обработке..."
+    )
+    state_data = await state.get_data()
+
+    gpt_select = state_data["type_gpt"]
+
+    if settings.IMAGE_GPT.get(gpt_select):
+        energy_cost = settings.IMAGE_GPT.get(gpt_select).get("energy_cost")
+    else:
+        energy_cost = 1
+
+    await model.publish_message(
+        queue_name="upscale_midjourney",
+        message="",
+        user_id=user_id,
+        answer_message=answer_message.message_id,
+        energy_cost=energy_cost,
+        choice=int(image_id[-2]),
+        image_id=int(image_id[-1]),
+        key=check_user_in_redis,
+    )
+
+
+async def _check_generation(callback_data: types.CallbackQuery):
+    user_id = callback_data.from_user.id
+    key = f"{user_id}:generate"
+
+    if await redis_manager.get(key):
+        await callback_data.message.answer("⏳ Подождите пока идет генерация.")
+        return True
+    return key

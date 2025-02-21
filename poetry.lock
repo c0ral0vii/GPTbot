@@ -46,14 +46,14 @@ httpx = {version = "0.23.0", extras = ["http2"]}
 
 [[package]]
 name = "aiogram"
-version = "3.17.0"
+version = "3.18.0"
 description = "Modern and fully asynchronous framework for Telegram Bot API"
 optional = false
 python-versions = ">=3.9"
 groups = ["main"]
 files = [
-    {file = "aiogram-3.17.0-py3-none-any.whl", hash = "sha256:251738331107ce2a679a901354b1409b7544d9f030d8092dcc68f2bb3bb0c467"},
-    {file = "aiogram-3.17.0.tar.gz", hash = "sha256:01bffbf43d6fb4a31e3c668a601bc7e71c2cf3919bd831ba6c179ef86034c2f4"},
+    {file = "aiogram-3.18.0-py3-none-any.whl", hash = "sha256:ea2a2fbd11e4fffbba14a2081eb6322482ae569c6348618de5f7b6b41b52384d"},
+    {file = "aiogram-3.18.0.tar.gz", hash = "sha256:429883a419751bfebeeafdc74804807d0abd5c9879ab0f06c045130de4752605"},
 ]
 
 [package.dependencies]
@@ -72,7 +72,7 @@ fast = ["aiodns (>=3.0.0)", "uvloop (>=0.17.0)", "uvloop (>=0.21.0)"]
 i18n = ["babel (>=2.13.0,<2.14.0)"]
 mongo = ["motor (>=3.3.2,<3.7.0)"]
 proxy = ["aiohttp-socks (>=0.8.3,<0.9.0)"]
-redis = ["redis[hiredis] (>=5.0.1,<5.1.0)"]
+redis = ["redis[hiredis] (>=5.0.1,<5.3.0)"]
 test = ["aresponses (>=2.1.6,<2.2.0)", "pycryptodomex (>=3.19.0,<3.20.0)", "pytest (>=7.4.2,<7.5.0)", "pytest-aiohttp (>=1.0.5,<1.1.0)", "pytest-asyncio (>=0.21.1,<0.22.0)", "pytest-cov (>=4.1.0,<4.2.0)", "pytest-html (>=4.0.2,<4.1.0)", "pytest-lazy-fixture (>=0.6.3,<0.7.0)", "pytest-mock (>=3.12.0,<3.13.0)", "pytest-mypy (>=0.10.3,<0.11.0)", "pytz (>=2023.3,<2024.0)"]
 
 [[package]]
@@ -1344,14 +1344,14 @@ nicer-shell = ["ipython"]
 
 [[package]]
 name = "openai"
-version = "1.61.1"
+version = "1.63.2"
 description = "The official Python library for the openai API"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "openai-1.61.1-py3-none-any.whl", hash = "sha256:72b0826240ce26026ac2cd17951691f046e5be82ad122d20a8e1b30ca18bd11e"},
-    {file = "openai-1.61.1.tar.gz", hash = "sha256:ce1851507218209961f89f3520e06726c0aa7d0512386f0f977e3ac3e4f2472e"},
+    {file = "openai-1.63.2-py3-none-any.whl", hash = "sha256:1f38b27b5a40814c2b7d8759ec78110df58c4a614c25f182809ca52b080ff4d4"},
+    {file = "openai-1.63.2.tar.gz", hash = "sha256:aeabeec984a7d2957b4928ceaa339e2ead19c61cfcf35ae62b7c363368d26360"},
 ]
 
 [package.dependencies]

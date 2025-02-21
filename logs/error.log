@@ -246,3 +246,23 @@ WHERE generate_images.id = $1::VARCHAR]
 2025-02-07 02:23:02,750 - src.scripts.queue.worker - ERROR - Error starting parsing worker: [Errno -3] Temporary failure in name resolution
 2025-02-06 23:34:21,196 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 400, body: {"message": "\u041d\u0435\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u0430\u044f \u0444\u043e\u0440\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0433\u043e \u0442\u0435\u043a\u0441\u0442\u0430", "code": 50035, "errors": {"data": {"components": {"0": {"_errors": [{"components": {"0": {"_errors": [{"value": {"_errors": [{"code": "BASE_TYPE_REQUIRED", "message": "\u041e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u0435"}]}}]}}}]}}}}}
 2025-02-06 23:50:02,149 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 400, body: {"message": "\u041d\u0435\u043a\u043e\u0440\u0440\u0435\u043a\u0442\u043d\u0430\u044f \u0444\u043e\u0440\u043c\u0430 \u043e\u0441\u043d\u043e\u0432\u043d\u043e\u0433\u043e \u0442\u0435\u043a\u0441\u0442\u0430", "code": 50035, "errors": {"data": {"components": {"0": {"_errors": [{"components": {"0": {"_errors": [{"value": {"_errors": [{"code": "BASE_TYPE_REQUIRED", "message": "\u041e\u0431\u044f\u0437\u0430\u0442\u0435\u043b\u044c\u043d\u043e\u0435 \u043f\u043e\u043b\u0435"}]}}]}}}]}}}}}
+2025-02-19 21:05:21,445 - src.scripts.queue.worker - ERROR - Error starting parsing worker: 'MidjourneyService' object has no attribute 'variation_photo'
+2025-02-19 21:28:53,137 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:28:53,138 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:28:57,491 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:28:57,492 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:30:48,448 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'energy'
+2025-02-19 21:35:32,858 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:35:32,859 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:35:41,524 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:35:41,525 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:36:50,644 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:36:50,645 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:36:53,308 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:36:53,309 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:37:48,503 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:37:48,504 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:38:51,536 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:38:51,537 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:40:27,995 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'referral_link'
+2025-02-19 21:40:27,997 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'referral_link'

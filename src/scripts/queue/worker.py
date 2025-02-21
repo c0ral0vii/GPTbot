@@ -28,8 +28,13 @@ class QueueWorker:
             queues = [
                 "chat_gpt",
                 "claude",
+                # Миджорни
                 "midjourney",
                 "refresh_midjourney",
+                "variation_midjourney",
+                "upgrade_midjourney",
+                "upscale_midjourney",
+                # Рефаральные сообщения
                 "referral",
             ]
 
@@ -60,6 +65,11 @@ class QueueWorker:
             await self.queue_service.consume_messages(
                 "refresh_midjourney",
                 self.midjourney.refresh_generate
+            )
+
+            await self.queue_service.consume_messages(
+                "upscale_midjourney",
+                self.midjourney.upscale_photo
             )
 
             self.logger.info("queue worker started successfully")

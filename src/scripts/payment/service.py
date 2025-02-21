@@ -15,11 +15,9 @@ class PaymentService:
         self.logger = setup_logger(__name__)
         self.API_KEY = settings.YOOMONEY_API
 
-        self.API_ENDPOINT = 'https://api.yookassa.ru/v3/'
-
+        self.API_ENDPOINT = "https://api.yookassa.ru/v3/"
 
         Configuration.configure("1020161", self.API_KEY)
-
 
     async def generate_link(self, user_id: int) -> Dict[str, Any]:
         """Генерация ссылки на покупку"""

@@ -153,12 +153,49 @@ class MidjourneyService:
                 logger.error(e)
                 raise
 
-    async def select_photo(self, caption: int, data: Dict[str, Any]):
+    async def upscale_photo(self, body: Dict[str, Any]):
         """Выбрать одно фото"""
 
-        ...
+        # Можно сделать получение настроек пользователя
 
-    async def upgrade_photo(self, caption: int, data: Dict[str, Any]):
+        upscale_url = self.BASE_URL + "/midjourney/v2/upscale"
+        image_data = await ImageORM.get_image(id=body["image_id"])
+        body["message"] = image_data.prompt
+
+        async with aiohttp.ClientSession() as session:
+            try:
+                data = json.dumps(
+                    {
+                        "hash": image_data.hash,
+                        "choice": int(body["choice"]),
+                        "prompt": image_data.prompt,
+                    }
+                ).encode()
+
+                result = await session.post(
+                    upscale_url,
+                    headers=self.HEADER,
+                    data=data,
+                )
+
+                logger.debug(result.status)
+
+                if result.status == 200:
+                    response = await result.json()
+                    logger.debug(response)
+                    body["hash"] = response["hash"]
+                    logger.debug(body)
+
+                    await self._check_status(body=body, session=session)
+                else:
+                    logger.debug(body)
+                    await self.message_handler.answer_message(data=body)
+
+            except Exception as e:
+                logger.error(e)
+                raise
+
+    async def vary_photo(self, caption: int, data: Dict[str, Any]):
         """Улучшить одно фото"""
 
         ...

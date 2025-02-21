@@ -22,6 +22,7 @@ app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 app.include_router(router, prefix="/api/v1")
 
+
 @app.get("/", response_class=HTMLResponse)
 async def root():
     return """
@@ -29,6 +30,7 @@ async def root():
         window.location.href = '/static/index.html';
     </script>
     """
+
 
 if __name__ == "__main__":
     import uvicorn

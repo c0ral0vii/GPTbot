@@ -17,6 +17,7 @@ class UserORM:
     async def create_user(
         user_id: int, use_referral_link: str = None
     ) -> dict[str, Any]:
+
         try:
             async with async_session() as session:
                 stmt = select(User).where(User.user_id == user_id)
@@ -37,6 +38,7 @@ class UserORM:
                 if use_referral_link == referral_link:
                     user.referral_link = None
                     logger.debug("Попытка ввести свой же инвайт код")
+                    
                 user = User(
                     user_id=user_id,
                     referral_link=referral_link,

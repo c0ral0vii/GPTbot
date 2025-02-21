@@ -36,7 +36,7 @@ class AnswerMessage:
                 parse_mode="Markdown",
                 reply_markup=upgrade_message(),
             )
-            
+
             energy_text = data.get("energy_text", None)
 
             if energy_text:
@@ -82,9 +82,7 @@ class AnswerMessage:
                     f"Модель: <code>#{data['type'].upper()}</code>\n"
                 ),
                 parse_mode="HTML",
-                reply_markup=await upgrade_photo(
-                    image_id=data["image_id"]
-                ),
+                reply_markup=await upgrade_photo(image_id=data["image_id"]),
             )
 
             text = await UserORM.remove_energy(data["user_id"], data["energy_cost"])

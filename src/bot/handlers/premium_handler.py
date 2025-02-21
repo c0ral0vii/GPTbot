@@ -9,6 +9,7 @@ router = Router()
 logger = setup_logger(__name__)
 PRIVACY_POLICY = "https://gradov.online/ofertaneurokesh"
 
+
 @router.message(Command("premium"))
 async def premium_handle(message: types.Message):
     await message.answer(
@@ -18,9 +19,13 @@ async def premium_handle(message: types.Message):
         parse_mode="HTML",
         reply_markup=types.InlineKeyboardMarkup(
             inline_keyboard=[
-                [InlineKeyboardButton(text="Продолжить", callback_data="continue_premium")]
+                [
+                    InlineKeyboardButton(
+                        text="Продолжить", callback_data="continue_premium"
+                    )
+                ]
             ]
-        )
+        ),
     )
 
 
@@ -28,9 +33,11 @@ async def premium_handle(message: types.Message):
 async def buy_premium_link(callback: types.CallbackQuery):
     payment_link = await generate_payment(callback.from_user.id)
 
-    await callback.message.answer("Для покупки перейдите по ссылке снизу",
-                          reply_markup=InlineKeyboardMarkup(
-                              inline_keyboard=[
-                                  [InlineKeyboardButton(text="Оплатить", url=payment_link)],
-                              ]
-                          ))
+    await callback.message.answer(
+        "Для покупки перейдите по ссылке снизу",
+        reply_markup=InlineKeyboardMarkup(
+            inline_keyboard=[
+                [InlineKeyboardButton(text="Оплатить", url=payment_link)],
+            ]
+        ),
+    )

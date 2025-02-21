@@ -49,9 +49,6 @@ async def on_startup():
         types.BotCommand(command="/profile", description="Баланс генераций"),
         types.BotCommand(command="/invite", description="Пригласить друга"),
         types.BotCommand(command="/premium", description="🌟 Premium подписка"),
-        types.BotCommand(
-            command="/bonus", description="Бесплатный нейро-курс (до +70💎 генераций)"
-        ),
     ]
 
     await bot.set_my_commands(commands)
@@ -68,6 +65,7 @@ async def run():
     logger.info("Запуск бота")
 
     await dp.start_polling(bot)
+
 
 async def run_workers():
     worker = QueueWorker()
