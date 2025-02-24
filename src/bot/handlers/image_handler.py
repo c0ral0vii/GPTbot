@@ -29,6 +29,8 @@ async def handle_image(message: types.Message, state: FSMContext):
 
 @router.callback_query(F.data.startswith("select_"), StateFilter(ImageState.type))
 async def select_image(callback: types.CallbackQuery, state: FSMContext):
+    """Выбор модели"""
+
     gpt_select = callback.data.replace("select_", "")
     await callback.message.delete()
 
@@ -53,6 +55,8 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
 
 @router.message(F.text, StateFilter(ImageState.text))
 async def handle_text(message: types.Message, state: FSMContext):
+    """Генерация фотографий от миджорни"""
+
     data = await state.get_data()
     text = message.text
     key = f"{message.from_user.id}:generate"
@@ -77,11 +81,14 @@ async def handle_text(message: types.Message, state: FSMContext):
 
 @router.callback_query(F.data.startswith("refresh_"))
 async def refresh_image(callback_data: types.CallbackQuery, state: FSMContext):
+    """Кнопка refresh в боте"""
+
     image_id = callback_data.data.split("_")[-1]
     user_id = callback_data.from_user.id
 
-    check_user_in_redis = await _check_generation(callback_data)
-    if check_user_in_redis:
+    key = await _check_generation(callback_data)
+
+    if key is False:
         return
 
     answer_message = await callback_data.message.answer(
@@ -104,17 +111,60 @@ async def refresh_image(callback_data: types.CallbackQuery, state: FSMContext):
         answer_message=answer_message.message_id,
         energy_cost=energy_cost,
         image_id=int(image_id),
-        key=check_user_in_redis,
+        key=key,
     )
+
+    await redis_manager.set(key=key, value="generate")
+
+
+@router.callback_query(F.data.startswith("variation_"))
+async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
+    """Кнопка Vi в боте"""
+
+    image_id = callback_data.data.split("_")
+    user_id = callback_data.from_user.id
+
+    key = await _check_generation(callback_data)
+
+    if key is False:
+        return
+
+    answer_message = await callback_data.message.answer(
+        "⏳ Подождите ваше сообщение в обработке..."
+    )
+    state_data = await state.get_data()
+
+    gpt_select = state_data["type_gpt"]
+
+    if settings.IMAGE_GPT.get(gpt_select):
+        energy_cost = settings.IMAGE_GPT.get(gpt_select).get("energy_cost")
+    else:
+        energy_cost = 1
+
+    await model.publish_message(
+        queue_name="variation_midjourney",
+        message="",
+        user_id=user_id,
+        answer_message=answer_message.message_id,
+        energy_cost=energy_cost,
+        choice=int(image_id[-2]),
+        image_id=int(image_id[-1]),
+        key=key,
+    )
+
+    await redis_manager.set(key=key, value="generate")
 
 
 @router.callback_query(F.data.startswith("upscale_"))
 async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
+    """Кнопка Ui в боте"""
+
     image_id = callback_data.data.split("_")
     user_id = callback_data.from_user.id
 
-    check_user_in_redis = await _check_generation(callback_data)
-    if check_user_in_redis:
+    key = await _check_generation(callback_data)
+
+    if key is False:
         return
 
     answer_message = await callback_data.message.answer(
@@ -137,8 +187,10 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
         energy_cost=energy_cost,
         choice=int(image_id[-2]),
         image_id=int(image_id[-1]),
-        key=check_user_in_redis,
+        key=key,
     )
+
+    await redis_manager.set(key=key, value="generate")
 
 
 async def _check_generation(callback_data: types.CallbackQuery):
@@ -147,5 +199,5 @@ async def _check_generation(callback_data: types.CallbackQuery):
 
     if await redis_manager.get(key):
         await callback_data.message.answer("⏳ Подождите пока идет генерация.")
-        return True
+        return False
     return key

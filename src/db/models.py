@@ -34,7 +34,7 @@ class User(Base):
     user_id: Mapped[int] = mapped_column(BigInteger, nullable=False, unique=True)
 
     energy: Mapped[Decimal] = mapped_column(
-        DECIMAL(15, 1), nullable=True, default=Decimal("10")
+        DECIMAL(15, 1), nullable=False, default=Decimal("10")
     )
 
     referral_link: Mapped[str] = mapped_column(nullable=True)
@@ -70,3 +70,15 @@ class GenerateImage(Base):
     image_name: Mapped[str] = mapped_column(nullable=True)
     prompt: Mapped[str] = mapped_column(nullable=True)
     hash: Mapped[str] = mapped_column(nullable=False)
+    first_hash: Mapped[str] = mapped_column(nullable=False)
+
+
+class BonusLink(Base):
+    __tablename__ = "bonus_links"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+
+    energy_bonus: Mapped[Decimal] = mapped_column(
+        DECIMAL(15, 1), nullable=False, default=Decimal("10")
+    )
+    link: Mapped[str] = mapped_column(nullable=True)

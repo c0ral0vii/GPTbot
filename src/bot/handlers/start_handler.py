@@ -24,10 +24,12 @@ async def start_handler(message: types.Message, state: FSMContext):
                 await redis_manager.set(key, "profile")
 
                 referral_link = message.text.split("=")[-1]
+                logger.debug(referral_link)
                 if len(referral_link) > 1 and referral_link[-1] != "/start":
                     user = await UserORM.create_user(
                         message.from_user.id, referral_link[-1]
                     )
+                    logger.debug(user)
 
                     if not user.get("duplicate"):
                         owner = await UserORM.get_owner_referral(referral_link[-1])

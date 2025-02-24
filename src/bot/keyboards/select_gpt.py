@@ -64,7 +64,9 @@ async def upgrade_photo(image_id: int) -> InlineKeyboardMarkup:
 
     for i in range(1, 5):
         kb.add(
-            InlineKeyboardButton(text=f"V{i}", callback_data=f"variation_{i}_{image_id}")
+            InlineKeyboardButton(
+                text=f"V{i}", callback_data=f"variation_{i}_{image_id}"
+            )
         )
 
     kb.add(InlineKeyboardButton(text="🔄", callback_data=f"refresh_{image_id}"))

@@ -6,6 +6,7 @@ from typing import Dict, Any
 from PIL import Image
 from aiogoogletrans import Translator
 import aiohttp
+from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 from src.config.config import settings
 from src.utils.logger import setup_logger
@@ -78,7 +79,6 @@ class MidjourneyService:
         try:
             check_url = self.BASE_URL + "/midjourney/v2/status?hash=" + body["hash"]
             result = await session.get(check_url, headers=self.HEADER)
-
             if result.status == 200:
                 response = await result.json()
                 if response["status"] == "error":
@@ -95,15 +95,20 @@ class MidjourneyService:
                     else:
                         body["photo"] = response["result"]["url"]
 
-                    logger.debug(body)
 
                     if not body.get("image_id"):
                         image = await ImageORM.create_image(
                             prompt=body["message"],
                             hash=body["hash"],
+                            first_hash=body["hash"],
                             image_name=body["original_link"],
                         )
                         body["image_id"] = image.id
+                    else:
+                        await ImageORM.change_image_hash(
+                            image_id=body["image_id"],
+                            hash=body["hash"],
+                        )
 
                     await self.message_handler.answer_photo(data=body)
                 else:
@@ -125,7 +130,7 @@ class MidjourneyService:
             try:
                 data = json.dumps(
                     {
-                        "hash": image_data.hash,
+                        "hash": image_data.first_hash,
                         "prompt": image_data.prompt,
                     }
                 ).encode()
@@ -185,7 +190,12 @@ class MidjourneyService:
                     logger.debug(response)
                     body["hash"] = response["hash"]
                     logger.debug(body)
-
+                    body["keyboard"] = InlineKeyboardMarkup(
+                        inline_keyboard=[
+                            [InlineKeyboardButton(text="🔄", callback_data=f"refresh_{body["image_id"]}")],
+                            [InlineKeyboardButton(text="❌ Отмена", callback_data="cancel")],
+                        ]
+                    )
                     await self._check_status(body=body, session=session)
                 else:
                     logger.debug(body)
@@ -195,10 +205,45 @@ class MidjourneyService:
                 logger.error(e)
                 raise
 
-    async def vary_photo(self, caption: int, data: Dict[str, Any]):
-        """Улучшить одно фото"""
+    async def vary_photo(self, body: Dict[str, Any]):
+        """Создать вариации одной фотографии"""
 
-        ...
+        upscale_url = self.BASE_URL + "/midjourney/v2/variation"
+        image_data = await ImageORM.get_image(id=body["image_id"])
+        body["message"] = image_data.prompt
+
+        async with aiohttp.ClientSession() as session:
+            try:
+                data = json.dumps(
+                    {
+                        "hash": image_data.hash,
+                        "choice": int(body["choice"]),
+                        "prompt": image_data.prompt,
+                    }
+                ).encode()
+
+                result = await session.post(
+                    upscale_url,
+                    headers=self.HEADER,
+                    data=data,
+                )
+
+                logger.debug(result.status)
+
+                if result.status == 200:
+                    response = await result.json()
+                    logger.debug(response)
+                    body["hash"] = response["hash"]
+                    logger.debug(body)
+
+                    await self._check_status(body=body, session=session)
+                else:
+                    logger.debug(body)
+                    await self.message_handler.answer_message(data=body)
+
+            except Exception as e:
+                logger.error(e)
+                raise
 
     async def _resize_image(
         self, url: str, max_size: int = 5500000, target_width: int = 800

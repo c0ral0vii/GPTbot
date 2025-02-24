@@ -38,7 +38,7 @@ class UserORM:
                 if use_referral_link == referral_link:
                     user.referral_link = None
                     logger.debug("Попытка ввести свой же инвайт код")
-                    
+
                 user = User(
                     user_id=user_id,
                     referral_link=referral_link,
@@ -162,29 +162,32 @@ class UserORM:
             raise
 
     @staticmethod
-    async def get_user(user_id: int) -> User:
-        try:
-            async with async_session() as session:
+    async def get_user(user_id: int) -> User | None:
+        async with async_session() as session:
+            try:
                 stmt = select(User).where(User.user_id == user_id)
                 result = await session.execute(stmt)
                 user = result.scalar_one_or_none()
+                if not user:
+                    return None
 
                 return user
 
-        except Exception as e:
-            logger.error(e)
-            raise
+            except Exception as e:
+                logger.error(e)
+                raise
 
 
 class ImageORM:
     @staticmethod
-    async def create_image(prompt: str, image_name: str, hash: str) -> GenerateImage:
+    async def create_image(prompt: str, image_name: str, hash: str, first_hash: str | None) -> GenerateImage:
         try:
             async with async_session() as session:
                 image = GenerateImage(
                     prompt=prompt,
                     image_name=image_name,
                     hash=hash,
+                    first_hash=first_hash if first_hash else None,
                 )
 
                 session.add(image)
@@ -197,7 +200,7 @@ class ImageORM:
             logger.error(e)
 
     @staticmethod
-    async def get_image(id: int) -> GenerateImage:
+    async def get_image(id: int) -> GenerateImage | None:
         try:
             async with async_session() as session:
                 stmt = select(GenerateImage).where(GenerateImage.id == id)
@@ -211,3 +214,26 @@ class ImageORM:
 
         except Exception as e:
             logger.error(e)
+
+    @staticmethod
+    async def change_image_hash(image_id: int | str, hash: str) -> bool:
+        if isinstance(image_id, str) and image_id.isdigit():
+            image_id = int(image_id)
+
+        async with async_session() as session:
+            try:
+                stmt = select(GenerateImage).where(GenerateImage.id == image_id)
+                result = await session.execute(stmt)
+                image = result.scalar_one_or_none()
+                if not image:
+                    return False
+
+                image.hash = hash
+
+                session.add(image)
+                await session.commit()
+                await session.refresh(image)
+
+            except Exception as e:
+                logger.error(e)
+                return False

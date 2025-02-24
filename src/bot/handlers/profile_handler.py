@@ -14,6 +14,8 @@ logger = setup_logger(__name__)
 async def profile_handler(message: types.Message, state: FSMContext):
     try:
         profile_info = await UserORM.get_user(message.from_user.id)
+        if profile_info is None:
+            await UserORM.create_user(message.from_user.id)
         referrals = await UserORM.get_count_referrals(message.from_user.id)
 
         await message.answer(

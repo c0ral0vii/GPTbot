@@ -44,7 +44,7 @@ async def get_user_data():
 
     return JSONResponse(
         content={
-            "values": [], # non-prime, prime
+            "values": [],  # non-prime, prime
         }
     )
 
@@ -66,5 +66,4 @@ async def get_user_info(user_id: str):
 
 
 @router.get("/payment")
-async def get_payment_data():
-    ...
+async def get_payment_data(): ...
