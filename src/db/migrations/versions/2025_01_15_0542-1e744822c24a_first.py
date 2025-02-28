@@ -1,7 +1,7 @@
 """first
 
 Revision ID: 1e744822c24a
-Revises: 
+Revises:
 Create Date: 2025-01-15 05:42:07.764724
 
 """

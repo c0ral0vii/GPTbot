@@ -2325,3 +2325,57 @@ Traceback (most recent call last):
     kb = data["keyboard"]
          ~~~~^^^^^^^^^^^^
 KeyError: 'keyboard'
+2025-02-28 03:02:47,977 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:02:48,008 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:02:49,121 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:02:49,130 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:03:19,193 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:03:19,203 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:03:53,223 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:03:53,230 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:04:23,224 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:04:23,230 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:04:53,223 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:04:53,229 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:05:23,225 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:05:23,233 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:05:53,223 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:05:53,229 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:06:32,800 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:06:32,807 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:09:00,656 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:09:00,661 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:11:08,079 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:11:08,086 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:15:55,444 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:15:55,452 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:16:25,446 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:16:25,453 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:17:17,457 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:17:17,464 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:17:55,401 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:17:55,406 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:19:39,783 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:19:39,792 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:21:00,655 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:21:00,662 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:22:54,868 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:22:54,876 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 01:31:27,394 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Connection error.
+2025-02-28 01:31:27,395 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Connection error.
+2025-02-28 01:31:27,395 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Connection error.
+2025-02-28 01:31:27,395 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Connection error.
+orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:38:10,124 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:38:40,150 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:38:40,155 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:39:11,322 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:39:11,329 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:39:43,810 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:39:43,817 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:40:13,812 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:40:13,819 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:40:53,811 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:40:53,818 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:41:23,817 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:41:23,832 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known

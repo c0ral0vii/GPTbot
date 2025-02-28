@@ -26,12 +26,12 @@ async function loadOverviewStats() {
         console.error('Error loading stats:', error);
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadOverviewStats();
-
-    setInterval(loadOverviewStats, 30000);
-})
+//
+// document.addEventListener('DOMContentLoaded', () => {
+//     loadOverviewStats();
+//
+//     setInterval(loadOverviewStats, 30000);
+// })
 
 
 class AdminDashboard {
@@ -54,6 +54,7 @@ class AdminDashboard {
         try {
             await Promise.all([
                 this.charts.updateCharts(),
+                loadOverviewStats(),
             ]);
         } catch (error) {
             console.error("Error updating dashboard: ", error);
@@ -70,6 +71,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 class AdminPanel {
     constructor() {
         this.charts = null;
+        this.currentUsersPage = 1;
+        this.usersPerPage = 50;
+        this.searchTerm = '';
         this.initializeEventListeners();
     }
 
@@ -78,10 +82,15 @@ class AdminPanel {
 
         await this.loadDashboardData();
 
-        setInterval(() => this.refreshData(), 30000);
+        // setInterval(() => this.refreshData(), 30000);
     }
 
     initializeEventListeners() {
+         document.getElementById('groupSearch').addEventListener('input', (e) => {
+            this.searchTerm = e.target.value;
+            this.loadItems();
+        });
+
         document.getElementById('refreshButton').addEventListener('click', () => {
             this.refreshData();
         });
@@ -110,10 +119,13 @@ class AdminPanel {
         try {
             this.showLoader();
 
-            const [overviewData] = await Promise.all([
-                fetchAPI('/stats/overview')
+            const [overviewData, userData] = await Promise.all([
+                fetchAPI('/stats/overview'),
+                fetchAPI('/users')
             ]);
+
             this.updateOverviewStats(overviewData);
+            this.updateUserTable(userData)
 
             this.updateLastUpdateTime();
 
@@ -125,9 +137,180 @@ class AdminPanel {
         }
     }
 
+    async saveChange(user_id) {
+        console.log("save")
+    }
+
+    async getMoreInfo(user_id) {
+        const data = await this.fetchAPI(`/users/${user_id}/info`)
+        const modal = new bootstrap.Modal(document.getElementById('editModal'));
+
+        document.getElementById("saveItemButton").onclick = function () {
+            adminPanel.saveChange(user_id);
+        };
+
+        modal.show();
+
+        await this.loadDashboardData()
+    }
+
+    async bannedUser(user_id) {
+        await this.fetchAPI(`/users/${user_id}/banned`)
+
+        await this.showToast("Пользователь заблокирован")
+        await this.loadDashboardData()
+    }
+
+    updateUserTable(data) {
+        const tbody = document.querySelector('#groupsTable tbody');
+        tbody.innerHTML = '';
+
+        data.items.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.id}</td>
+                <td>${item.user_id}</td>
+                <td>${item.status}</td>
+                <td>${item.energy}</td>
+                <td>${item.created}</td>
+                <td>${item.updated}</td>
+                   
+                <td>
+                    <div class="btn-group">
+                        <button class="btn btn-sm btn-outline-primary"
+                            onclick="adminPanel.getMoreInfo(${item.id})">
+                            Изменить
+                        </button>
+                        <button class="btn btn-sm btn-danger"
+                            onclick="adminPanel.bannedUser(${item.id})">
+                            Заблокировать
+                        </button>
+                    </div>
+                </td>
+                
+            `;
+            tbody.appendChild(row);
+        });
+
+        this.updatePagination(data.total, data.page, data.total_pages);
+    }
+
+    updatePagination(total, currentPage, totalPages) {
+        const pagination = document.getElementById('groupsPagination');
+        pagination.innerHTML = '';
+
+        document.getElementById('showingCount').textContent = Math.min(this.usersPerPage, total);
+        document.getElementById('totalCount').textContent = total;
+
+        if (totalPages > 1) {
+            const pages = [];
+
+            pages.push(1);
+
+            for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+                pages.push(i);
+            }
+
+            if (totalPages > 1) {
+                pages.push(totalPages);
+            }
+
+            pages.forEach((page, index) => {
+                if (index > 0 && pages[index] - pages[index - 1] > 1) {
+                    pagination.appendChild(this.createPaginationItem('...', false));
+                }
+                pagination.appendChild(this.createPaginationItem(page, page === currentPage));
+            });
+        }
+    }
+
+    createPaginationItem(text, isActive) {
+        const li = document.createElement('li');
+        li.className = `page-item${isActive ? ' active' : ''}`;
+
+        const a = document.createElement('a');
+        a.className = 'page-link';
+        a.href = '#';
+        a.textContent = text;
+
+        if (text !== '...') {
+            a.onclick = (e) => {
+                e.preventDefault();
+                this.currentUsersPage = parseInt(text);
+                this.loadItems();
+            };
+        }
+
+        li.appendChild(a);
+        return li;
+    }
+
+    async fetchAPI(endpoint, options = {}) {
+        const response = await fetch(`/api/v1${endpoint}`, {
+            ...options,
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`API Error: ${response.statusText}`);
+        }
+
+        return response.json();
+    }
+
+    async loadItems() {
+            try {
+                const params = new URLSearchParams({
+                    skip: (this.currentUsersPage - 1) * this.usersPerPage,
+                    limit: this.usersPerPage,
+                    search: this.searchTerm,
+                });
+
+                const groupsData = await this.fetchAPI(`/users?${params}`);
+                this.updateUserTable(groupsData);
+
+            } catch (error) {
+                console.error('Error loading items:', error);
+                this.showError('Failed to load items');
+            }
+        }
+
     updateLastUpdateTime() {
         const now = new Date();
         document.getElementById('lastUpdateTime').textContent = now.toLocaleTimeString();
+    }
+
+    async showToast(message) {
+        const toastContainer = document.getElementById('toastContainer');
+
+        const toast = document.createElement('div');
+        toast.className = 'toast align-items-center text-bg-success border-0 position-relative';
+        toast.role = 'alert';
+        toast.ariaLive = 'assertive';
+        toast.ariaAtomic = 'true';
+        toast.innerHTML = `
+            <div class="d-flex">
+                <div class="toast-body">
+                    ${message}
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        `;
+
+        toastContainer.appendChild(toast);
+
+        const bootstrapToast = new bootstrap.Toast(toast, {
+            delay: 2000
+        });
+        bootstrapToast.show();
+
+        // Optional: Remove the toast after it’s hidden
+        toast.addEventListener('hidden.bs.toast', () => {
+            toast.remove();
+        });
     }
 
     showLoader() {

@@ -95,7 +95,6 @@ class MidjourneyService:
                     else:
                         body["photo"] = response["result"]["url"]
 
-
                     if not body.get("image_id"):
                         image = await ImageORM.create_image(
                             prompt=body["message"],
@@ -192,8 +191,17 @@ class MidjourneyService:
                     logger.debug(body)
                     body["keyboard"] = InlineKeyboardMarkup(
                         inline_keyboard=[
-                            [InlineKeyboardButton(text="🔄", callback_data=f"refresh_{body["image_id"]}")],
-                            [InlineKeyboardButton(text="❌ Отмена", callback_data="cancel")],
+                            [
+                                InlineKeyboardButton(
+                                    text="🔄",
+                                    callback_data=f"refresh_{body["image_id"]}",
+                                )
+                            ],
+                            [
+                                InlineKeyboardButton(
+                                    text="❌ Отмена", callback_data="cancel"
+                                )
+                            ],
                         ]
                     )
                     await self._check_status(body=body, session=session)

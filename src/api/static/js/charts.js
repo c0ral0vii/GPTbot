@@ -73,7 +73,7 @@ class DashboardCharts {
 
     async fetchUsersData() {
         try {
-            const response = await fetch("/api/v1/users")
+            const response = await fetch("/api/v1/analytics/users")
             return response.json()
         } catch (error) {
             console.error('Error fetching users data:', error);

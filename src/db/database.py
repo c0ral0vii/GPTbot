@@ -6,6 +6,7 @@ BASE_URL = settings.get_database_link
 
 engine = create_async_engine(
     url=BASE_URL,
+    pool_pre_ping=True,
     max_overflow=15,
 )
 

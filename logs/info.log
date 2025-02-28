@@ -6467,3 +6467,125 @@ KeyError: 'keyboard'
 2025-02-24 01:34:53,584 - src.scripts.queue.rabbit_queue - INFO - Published message to queue upscale_midjourney
 2025-02-24 01:34:53,584 - src.scripts.queue.rabbit_queue - INFO - Published message to queue upscale_midjourney
 2025-02-24 01:34:53,584 - src.scripts.queue.rabbit_queue - INFO - Published message to queue upscale_midjourney
+2025-02-28 03:02:47,977 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:02:48,008 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:02:49,121 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:02:49,130 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:03:19,193 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:03:19,203 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:03:53,223 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:03:53,230 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:04:23,224 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:04:23,230 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:04:53,223 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:04:53,229 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:05:23,225 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:05:23,233 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:05:53,223 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:05:53,229 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:06:32,800 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:06:32,807 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:09:00,656 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:09:00,661 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:11:08,079 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:11:08,086 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:15:55,444 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:15:55,452 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:16:25,446 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:16:25,453 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:17:17,457 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:17:17,464 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:17:55,401 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:17:55,406 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:19:39,783 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:19:39,792 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:21:00,655 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:21:00,662 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:22:54,868 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:22:54,876 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 00:37:09,016 - __main__ - INFO - Инициализация комманд
+2025-02-28 00:37:09,077 - __main__ - INFO - Запуск воркера
+2025-02-28 00:37:09,293 - __main__ - INFO - Запуск бота
+2025-02-28 00:37:09,316 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-28 00:37:09,316 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-28 00:37:09,316 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-28 00:37:09,336 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-28 00:37:09,336 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-28 00:37:09,336 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-28 00:37:09,360 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-28 00:37:09,360 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-28 00:37:09,360 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-28 00:37:09,386 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-28 00:37:09,386 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-28 00:37:09,386 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-28 00:37:09,409 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-28 00:37:09,409 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-28 00:37:09,409 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-28 00:37:09,428 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-28 00:37:09,428 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-28 00:37:09,428 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-28 00:37:09,446 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-28 00:37:09,446 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-28 00:37:09,446 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-28 00:37:09,464 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-28 00:37:09,464 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-28 00:37:09,464 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-28 00:37:09,634 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-02-28 01:31:25,833 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-28 01:31:25,833 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-28 01:31:25,833 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-28 01:31:25,836 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-28 01:31:25,836 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-28 01:31:25,836 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-28 01:31:25,838 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-28 01:31:25,838 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-28 01:31:25,838 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-28 01:31:25,840 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-28 01:31:25,840 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-28 01:31:25,840 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-28 01:31:25,842 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-28 01:31:25,842 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-28 01:31:25,842 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-28 01:31:25,844 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-28 01:31:25,844 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-28 01:31:25,844 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-28 01:31:25,846 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-28 01:31:25,846 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-28 01:31:25,846 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-28 01:31:25,848 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-28 01:31:25,848 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-28 01:31:25,848 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-28 01:31:25,851 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chat_gpt
+2025-02-28 01:31:25,851 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chat_gpt
+2025-02-28 01:31:25,851 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chat_gpt
+2025-02-28 01:31:27,394 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Connection error.
+2025-02-28 01:31:27,395 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Connection error.
+2025-02-28 01:31:27,395 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Connection error.
+2025-02-28 01:31:27,395 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Connection error.
+2025-02-28 01:31:27,692 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-28 01:31:27,692 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-28 01:31:27,692 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-02-28 01:31:27,694 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-28 01:31:27,694 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-28 01:31:27,694 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-02-28 01:31:27,695 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-28 01:31:27,695 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-28 01:31:27,695 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-02-28 01:31:27,697 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-28 01:31:27,697 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-28 01:31:27,697 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-02-28 01:31:27,698 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-28 01:31:27,698 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-28 01:31:27,698 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-02-28 01:31:27,700 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-28 01:31:27,700 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-28 01:31:27,700 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-02-28 01:31:27,702 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-28 01:31:27,702 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-28 01:31:27,702 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-02-28 01:31:27,704 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-28 01:31:27,704 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-28 01:31:27,704 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-02-28 01:31:27,706 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chat_gpt_errors
+2025-02-28 01:31:27,706 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chat_gpt_errors
+2025-02-28 01:31:27,706 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chat_gpt_errors

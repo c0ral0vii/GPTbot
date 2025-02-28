@@ -1,7 +1,9 @@
 import random
 
 from fastapi import APIRouter, Request
-from starlette.responses import JSONResponse
+from fastapi.responses import JSONResponse
+from src.db.orm.user_orm import AnalyticsORM
+
 
 router = APIRouter()
 
@@ -14,11 +16,13 @@ async def buy_premium_user(request: Request): ...
 async def get_overview_stats():
     """Получение общей статистики"""
 
+    users_data = await AnalyticsORM.get_user_for_analytics()
+
     data = {
-        "total_users": 0,
-        "active_today": 0,
-        "active_subscriptions": 0,
-        "total_revenue": 0,
+        "total_users": users_data.get("total_users_count", 0),
+        "active_today": users_data.get("active_users_today_count", 0),
+        "active_subscriptions": users_data.get("premium_users_count", 0),
+        "total_revenue": users_data.get("revenue", 0),
         "system_status": "HEALTHY",
         "system_load": f"-",
     }
@@ -28,10 +32,9 @@ async def get_overview_stats():
 
 @router.get("/analytics/activity")
 async def get_activity_data():
-    hours = list(range(24))
-    values = [random.randint(10, 100) for _ in range(24)]
+    data = await AnalyticsORM.get_user_for_analytics()
 
-    return JSONResponse(content={"labels": hours, "values": values})
+    return JSONResponse(content={"labels": data.get('labels'), "values": data.get('values')})
 
 
 @router.get("/analytics/queues")
@@ -39,14 +42,33 @@ async def get_queue_data():
     return JSONResponse(content={"labels": [], "values": []})
 
 
-@router.get("/users")
+@router.get("/analytics/users")
 async def get_user_data():
+    users_data = await AnalyticsORM.get_user_for_analytics()
 
     return JSONResponse(
         content={
-            "values": [],  # non-prime, prime
+            "values": [users_data.get("total_users_count", 0), users_data.get("premium_users_count", 0)],  # non-prime, prime
         }
     )
+
+
+@router.get("/users")
+async def get_all_users(
+    skip: int = 0,
+    limit: int = 50,
+    search: str = "",
+):
+    users = await AnalyticsORM.get_all_users_analytics()
+
+    data = {
+        "items": users[skip : skip + limit] if len(users) >= limit else users,
+        "total": len(users),
+        "page": skip // limit + 1 if search == "" else 1,
+        "total_pages": (len(users) + limit - 1) // limit,
+    }
+
+    return JSONResponse(content=data)
 
 
 @router.put("/users/{user_id}/banned")

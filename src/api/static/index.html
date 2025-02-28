@@ -11,13 +11,65 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="/static/css/style.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 </head>
 <body>
 
     <div id="loader" class="loader-overlay">
         <div class="loader-spinner"></div>
     </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Редактирование пользователя:</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="user_id" class="form-label">User id</label>
+                            <input class="form-control" id="user_id">
+                        </div>
+                        <div class="mb-3">
+                            <label for="energy" class="form-label">Энергия пользователя</label>
+                            <input class="form-control" id="energy">
+                        </div>
+                        <div class="mb-3">
+                            <label for="referral_link" class="form-label">Реферальная ссылка пользователя</label>
+                            <input class="form-control" id="referral_link">
+                        </div>
+                        <div class="mb-3">
+                            <label for="use_referral_link" class="form-label">Использованая реферальная ссылка</label>
+                            <input class="form-control" id="use_referral_link">
+                        </div>
+                        <div class="mb-3">
+                            <input type="checkbox" class="form-check-input" id="premium_active">
+                            <label for="premium_active" class="form-label">Активен премиум</label>
+                        </div>
+                        <div class="mb-3">
+                            <input type="checkbox" class="form-check-input" id="banned_user">
+                            <label for="banned_user" class="form-label">Пользователь заблокирован</label>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="created" class="form-label">Дата создания:</label>
+                            <input class="form-control" id="created">
+                        </div>
+                        <div class="mb-3">
+                            <label for="last_used" class="form-label">Последнее использование:</label>
+                            <input class="form-control" id="last_used">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary" id="saveItemButton" data-bs-dismiss="modal">Сохранить изменения</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
@@ -111,11 +163,6 @@
                             <h5 class="card-title">Пользователи бота</h5>
                             <div class="d-flex gap-2">
                                 <input type="text" class="form-control form-control-sm" id="groupSearch" placeholder="Поиск пользователя...">
-                                <select class="form-select form-select-sm" id="groupFilter" style="width: auto;">
-                                    <option value="all">Все пользователи</option>
-                                    <option value="banned">Заблокированные</option>
-                                    <option value="premium">Премиум</option>
-                                </select>
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -123,9 +170,8 @@
                                 <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Имя пользователя</th>
                                         <th>User ID</th>
-                                        <th>Статус</th>
+                                        <th>Премиум статус</th>
                                         <th>Энергия</th>
                                         <th>Дата создания</th>
                                         <th>Последняя активность</th>

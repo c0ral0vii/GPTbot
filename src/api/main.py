@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from v1.routes import router
+from src.api.v1.routes import router
 
 app = FastAPI(title="Admin Woome AI")
 
@@ -30,9 +30,3 @@ async def root():
         window.location.href = '/static/index.html';
     </script>
     """
-
-
-if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -1,7 +1,10 @@
+from datetime import datetime, timedelta
 from decimal import Decimal
 from typing import Optional, Dict, Any
 
-from src.db.models import User, GenerateImage
+from sqlalchemy.orm import selectinload
+
+from src.db.models import User, GenerateImage, PremiumUser
 from src.utils.logger import setup_logger
 
 from src.db.database import async_session
@@ -180,7 +183,9 @@ class UserORM:
 
 class ImageORM:
     @staticmethod
-    async def create_image(prompt: str, image_name: str, hash: str, first_hash: str | None) -> GenerateImage:
+    async def create_image(
+        prompt: str, image_name: str, hash: str, first_hash: str | None
+    ) -> GenerateImage:
         try:
             async with async_session() as session:
                 image = GenerateImage(
@@ -237,3 +242,81 @@ class ImageORM:
             except Exception as e:
                 logger.error(e)
                 return False
+
+
+class AnalyticsORM:
+    @staticmethod
+    async def get_user_for_analytics() -> Optional[dict[str, int]]:
+        today = datetime.today().date()
+        async with async_session() as session:
+            stmt = select(func.count(User.id))
+            result = await session.execute(stmt)
+            total_users_count = result.scalar()
+
+            stmt = select(func.count(User.id)).where(func.date(User.updated) == today)
+            result = await session.execute(stmt)
+            active_users_today_count = result.scalar()
+
+            stmt = select(func.count(User.id)).join(PremiumUser).where(PremiumUser.premium_active == True)
+            result = await session.execute(stmt)
+            premium_users_count = result.scalar()
+
+            data = {
+                "total_users_count": total_users_count,
+                "active_users_today_count": active_users_today_count,
+                "premium_users_count": premium_users_count,
+                "revenue": premium_users_count,
+            }
+            return data
+
+
+    @staticmethod
+    async def get_activity_users():
+        hours = list(range(24))
+        values = []
+        today = datetime.today().date()
+        async with async_session() as session:
+            for hour in hours:
+                start_time = datetime.combine(today, datetime.min.time()) + timedelta(hours=hour)
+                end_time = start_time + timedelta(hours=1)
+
+                # Получаем количество пользователей, которые были активны в этот час
+                stmt = select(func.count(User.id)).where(
+                    User.updated >= start_time, User.updated < end_time
+                )
+                result = await session.execute(stmt)
+                active_users_count = result.scalar()
+
+                values.append(active_users_count)
+
+            return {"labels": hours, "values": values}
+
+
+    @staticmethod
+    async def get_all_users_analytics():
+        async with async_session() as session:
+            result = []
+
+            stmt_users = select(User).options(selectinload(User.premium_status))
+            result_users = await session.execute(stmt_users)
+            users = result_users.scalars().all()
+
+            for user in users:
+                user_data = {
+                    "table": "users",
+                    "id": user.id,
+                    "user_id": user.user_id,
+                    "energy": float(user.energy) if user.energy else None,
+                    "referral_link": user.referral_link,
+                    "use_referral_link": user.use_referral_link,
+                    "status": user.premium_status.premium_active if user.premium_status else "-",
+                    "premium_dates": {
+                        "premium_active": user.premium_status.premium_active if user.premium_status else None,
+                        "premium_to_date": user.premium_status.premium_to_date.isoformat() if user.premium_status and user.premium_status.premium_to_date else None,
+                    } if user.premium_status else None,
+                    "created": user.created.isoformat() if user.created else None,
+                    "updated": user.updated.isoformat() if user.updated else None,
+                }
+                result.append(user_data)
+
+            return result

@@ -84,7 +84,11 @@ class AnswerMessage:
                     f"Модель: <code>#{data['type'].upper()}</code>\n"
                 ),
                 parse_mode="HTML",
-                reply_markup=await upgrade_photo(image_id=data["image_id"]) if not kb else data["keyboard"],
+                reply_markup=(
+                    await upgrade_photo(image_id=data["image_id"])
+                    if not kb
+                    else data["keyboard"]
+                ),
             )
 
             text = await UserORM.remove_energy(data["user_id"], data["energy_cost"])
