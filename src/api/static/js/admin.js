@@ -95,6 +95,15 @@ class AdminPanel {
             this.refreshData();
         });
 
+        document.getElementById('premium_active').addEventListener('change', function() {
+            const premiumDatesContainer = document.getElementById('premium_dates');
+            if (this.checked) {
+                premiumDatesContainer.style.display = 'block'; // Показываем поля
+            } else {
+                premiumDatesContainer.style.display = 'none'; // Скрываем поля
+            }
+        });
+
         document.querySelectorAll('[data-period]').forEach(button => {
             button.addEventListener('click', (e) => {
                 const period = e.target.dataset.period;
@@ -138,11 +147,41 @@ class AdminPanel {
     }
 
     async saveChange(user_id) {
-        console.log("save")
+        let updatedData = {
+            "user_id": document.getElementById('user_id').value,
+            "energy": document.getElementById('energy').value,
+            "referral_link": document.getElementById('referral_link').value,
+            "use_referral_link": document.getElementById('use_referral_link').value,
+            "premium_active": document.getElementById('premium_active').checked, // Чекбокс, используем .checked
+            "banned_user": document.getElementById('banned_user').checked, // Чекбокс, используем .checked
+            "created": document.getElementById('created').value,
+            "last_used": document.getElementById('last_used').value,
+        };
+        console.log(updatedData);
+        const response = await this.fetchAPI(`/users/${user_id}/change`, {
+            "method": "PUT",
+            "body": JSON.stringify(updatedData)
+        });
+
+        if (response.ok) {
+            await this.showToast("Изменения успешно сохранены");
+        } else {
+            await this.showError("Ошибка при сохранении изменений");
+        }
+        await this.loadDashboardData();
     }
 
     async getMoreInfo(user_id) {
         const data = await this.fetchAPI(`/users/${user_id}/info`)
+        document.getElementById('user_id').value = data.user_id;
+        document.getElementById('energy').value = data.energy;
+        document.getElementById('referral_link').value = data.referral_link;
+        document.getElementById('use_referral_link').value = data.use_referral_link;
+        document.getElementById('premium_active').checked = data.status; // Чекбокс
+        document.getElementById('banned_user').checked = data.banned_user; // Чекбокс
+        document.getElementById('created').value = data.created;
+        document.getElementById('last_used').value = data.last_used;
+
         const modal = new bootstrap.Modal(document.getElementById('editModal'));
 
         document.getElementById("saveItemButton").onclick = function () {

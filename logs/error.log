@@ -2379,3 +2379,4 @@ orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
 2025-02-28 03:40:53,818 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
 2025-02-28 03:41:23,817 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
 2025-02-28 03:41:23,832 - src.db.orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
+2025-02-28 03:22:36,925 - src.scripts.queue.worker - ERROR - Error starting parsing worker: [Errno 111] Connect call failed ('172.20.0.4', 5672)

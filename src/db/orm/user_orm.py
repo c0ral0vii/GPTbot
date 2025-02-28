@@ -2,9 +2,9 @@ from datetime import datetime, timedelta
 from decimal import Decimal
 from typing import Optional, Dict, Any
 
-from sqlalchemy.orm import selectinload
+from sqlalchemy.orm import selectinload, joinedload
 
-from src.db.models import User, GenerateImage, PremiumUser
+from src.db.models import User, GenerateImage, PremiumUser, BannedUser
 from src.utils.logger import setup_logger
 
 from src.db.database import async_session
@@ -302,6 +302,8 @@ class AnalyticsORM:
             users = result_users.scalars().all()
 
             for user in users:
+                created_date = user.created.strftime('%H:%M:%S %Y-%m-%d') if user.created else None
+                last_used_date = user.updated.strftime('%H:%M:%S %Y-%m-%d') if user.updated else None
                 user_data = {
                     "table": "users",
                     "id": user.id,
@@ -309,14 +311,63 @@ class AnalyticsORM:
                     "energy": float(user.energy) if user.energy else None,
                     "referral_link": user.referral_link,
                     "use_referral_link": user.use_referral_link,
-                    "status": user.premium_status.premium_active if user.premium_status else "-",
+                    "status": user.premium_status.premium_active if user.premium_status else False,
                     "premium_dates": {
                         "premium_active": user.premium_status.premium_active if user.premium_status else None,
                         "premium_to_date": user.premium_status.premium_to_date.isoformat() if user.premium_status and user.premium_status.premium_to_date else None,
                     } if user.premium_status else None,
-                    "created": user.created.isoformat() if user.created else None,
-                    "updated": user.updated.isoformat() if user.updated else None,
+                    "created": created_date,
+                    "updated": last_used_date,
                 }
                 result.append(user_data)
 
             return result
+
+    @staticmethod
+    async def get_all_user_info(user_id: int):
+        async with async_session() as session:
+            stmt = select(User).where(User.id == user_id).options(selectinload(User.premium_status))
+            result = await session.execute(stmt)
+            user = result.scalars().first()
+
+            stmt = select(BannedUser).where(BannedUser.user_id == user.user_id)
+            result = await session.execute(stmt)
+            banned_user = result.scalars().first()
+
+            if not banned_user:
+                banned = False
+            else:
+                banned = True
+            created_date = user.created.strftime('%H:%M:%S %Y-%m-%d') if user.created else None
+            last_used_date = user.updated.strftime('%H:%M:%S %Y-%m-%d') if user.updated else None
+
+            return {
+                "user_id": user.user_id,
+                "energy": float(user.energy),
+                "referral_link": user.referral_link,
+                "use_referral_link": user.use_referral_link,
+                "status": True if user.premium_status else False,
+                "banned_user": banned,
+                "created": created_date,
+                "last_used": last_used_date,
+            }
+
+    @staticmethod
+    async def banned_user(user_id: int):
+        async with async_session() as session:
+            try:
+                banned_user = BannedUser(
+                    user_id=user_id,
+                )
+
+                session.add(banned_user)
+                await session.commit()
+            except IntegrityError:
+                await session.rollback()
+            except Exception as e:
+                await session.rollback()
+
+    @staticmethod
+    async def change_user(user_id, data):
+        async with async_session() as session:
+            ...

@@ -71,8 +71,11 @@ async def get_all_users(
     return JSONResponse(content=data)
 
 
-@router.put("/users/{user_id}/banned")
+@router.get("/users/{user_id}/banned")
 async def get_banned_user_data(user_id: int):
+
+    await AnalyticsORM.banned_user(user_id)
+
     return JSONResponse(
         content={
             "status": "banned",
@@ -82,9 +85,20 @@ async def get_banned_user_data(user_id: int):
 
 
 @router.get("/users/{user_id}/info")
-async def get_user_info(user_id: str):
+async def get_user_info(user_id: int):
+    """Получение информации о пользователе"""
 
-    return JSONResponse(content={})
+    user_info = await AnalyticsORM.get_all_user_info(user_id)
+
+    return JSONResponse(content=user_info)
+
+
+@router.put("/users/{user_id}/change")
+async def change_user_data(user_id: int, request: Request):
+
+    response = await AnalyticsORM.change_user(user_id, request.json())
+
+    return JSONResponse(content={"status": "ok"})
 
 
 @router.get("/payment")
