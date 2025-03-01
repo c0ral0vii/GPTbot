@@ -34,6 +34,8 @@ class Settings(BaseSettings):
 
     # admin token
     ADMIN_TOKEN: str = None
+    ADMIN_USER: str = "root"
+    ADMIN_PASS: str = "root"
     # debug
     DEBUG: bool = False
 

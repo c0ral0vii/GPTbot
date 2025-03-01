@@ -172,26 +172,33 @@ class AdminPanel {
     }
 
     async getMoreInfo(user_id) {
-        const data = await this.fetchAPI(`/users/${user_id}/info`)
+        const data = await this.fetchAPI(`/users/${user_id}/info`);
+
         document.getElementById('user_id').value = data.user_id;
         document.getElementById('energy').value = data.energy;
         document.getElementById('referral_link').value = data.referral_link;
         document.getElementById('use_referral_link').value = data.use_referral_link;
-        document.getElementById('premium_active').checked = data.status; // Чекбокс
-        document.getElementById('banned_user').checked = data.banned_user; // Чекбокс
+
+        // Обновляем чекбокс премиума
+        const premiumCheckbox = document.getElementById('premium_active');
+        const premiumDatesContainer = document.getElementById('premium_dates');
+
+        premiumCheckbox.checked = data.status;
+        premiumDatesContainer.style.display = data.status ? 'block' : 'none';
+
+        document.getElementById('banned_user').checked = data.banned_user;
         document.getElementById('created').value = data.created;
         document.getElementById('last_used').value = data.last_used;
 
         const modal = new bootstrap.Modal(document.getElementById('editModal'));
-
-        document.getElementById("saveItemButton").onclick = function () {
+        document.getElementById("saveItemButton").onclick = () => {
             adminPanel.saveChange(user_id);
         };
 
         modal.show();
-
-        await this.loadDashboardData()
+        await this.loadDashboardData();
     }
+
 
     async bannedUser(user_id) {
         await this.fetchAPI(`/users/${user_id}/banned`)
@@ -364,7 +371,7 @@ class AdminPanel {
         document.getElementById('totalUsers').textContent = data.total_users;
         document.getElementById('activeToday').textContent = data.active_today;
         document.getElementById('activeSubscriptions').textContent = data.active_subscriptions;
-        document.getElementById('totalRevenue').textContent = `$${data.total_revenue}`;
+        document.getElementById('totalRevenue').textContent = `${data.total_revenue}₽`;
 
         const statusElement = document.getElementById('systemStatus');
         statusElement.textContent = data.system_status;

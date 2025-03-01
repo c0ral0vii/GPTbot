@@ -82,3 +82,5 @@ class BonusLink(Base):
         DECIMAL(15, 1), nullable=False, default=Decimal("10")
     )
     link: Mapped[str] = mapped_column(nullable=True)
+    active: Mapped[bool] = mapped_column(default=True)
+    active_count: Mapped[int] = mapped_column(default=0)

@@ -8,7 +8,7 @@ from src.db.models import User, GenerateImage, PremiumUser, BannedUser
 from src.utils.logger import setup_logger
 
 from src.db.database import async_session
-from sqlalchemy import select, func
+from sqlalchemy import select, func, or_, cast, String
 from sqlalchemy.exc import IntegrityError
 
 
@@ -265,13 +265,13 @@ class AnalyticsORM:
                 "total_users_count": total_users_count,
                 "active_users_today_count": active_users_today_count,
                 "premium_users_count": premium_users_count,
-                "revenue": premium_users_count,
+                "revenue": 990 * premium_users_count,
             }
             return data
 
 
     @staticmethod
-    async def get_activity_users():
+    async def get_activity_users_per_24h():
         hours = list(range(24))
         values = []
         today = datetime.today().date()
@@ -291,13 +291,44 @@ class AnalyticsORM:
 
             return {"labels": hours, "values": values}
 
+    @staticmethod
+    async def get_activity_users():
+        days = [(datetime.today().date() - timedelta(days=i)).strftime("%Y-%m-%d") for i in range(6, -1, -1)]
+        values = []
+
+        async with async_session() as session:
+            for day in days:
+                start_time = datetime.strptime(day, "%Y-%m-%d")
+                end_time = start_time + timedelta(days=1)
+
+                # Получаем количество пользователей, активных в этот день
+                stmt = select(func.count(User.id)).where(
+                    User.updated >= start_time, User.updated < end_time
+                )
+                result = await session.execute(stmt)
+                active_users_count = result.scalar()
+
+                values.append(active_users_count or 0)
+
+        return {"labels": days, "values": values}
 
     @staticmethod
-    async def get_all_users_analytics():
+    async def get_all_users_analytics(
+            search: str = "",
+    ):
         async with async_session() as session:
             result = []
 
             stmt_users = select(User).options(selectinload(User.premium_status))
+            if search != "":
+                stmt_users = stmt_users.where(
+                    or_(
+                        cast(User.user_id, String).ilike(f"%{search}%"),  # Приводим user_id к строке
+                        User.referral_link.ilike(f"%{search}%"),
+                        User.use_referral_link.ilike(f"%{search}%")
+                    )
+                )
+
             result_users = await session.execute(stmt_users)
             users = result_users.scalars().all()
 
@@ -330,7 +361,7 @@ class AnalyticsORM:
             result = await session.execute(stmt)
             user = result.scalars().first()
 
-            stmt = select(BannedUser).where(BannedUser.user_id == user.user_id)
+            stmt = select(BannedUser).where(BannedUser.user_id == user.id)
             result = await session.execute(stmt)
             banned_user = result.scalars().first()
 
@@ -371,3 +402,7 @@ class AnalyticsORM:
     async def change_user(user_id, data):
         async with async_session() as session:
             ...
+
+    @staticmethod
+    async def add_new_promo():
+        ...

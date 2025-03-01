@@ -32,7 +32,7 @@ async def get_overview_stats():
 
 @router.get("/analytics/activity")
 async def get_activity_data():
-    data = await AnalyticsORM.get_user_for_analytics()
+    data = await AnalyticsORM.get_activity_users()
 
     return JSONResponse(content={"labels": data.get('labels'), "values": data.get('values')})
 
@@ -59,7 +59,7 @@ async def get_all_users(
     limit: int = 50,
     search: str = "",
 ):
-    users = await AnalyticsORM.get_all_users_analytics()
+    users = await AnalyticsORM.get_all_users_analytics(search)
 
     data = {
         "items": users[skip : skip + limit] if len(users) >= limit else users,
