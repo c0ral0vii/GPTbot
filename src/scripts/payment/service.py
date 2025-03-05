@@ -40,5 +40,6 @@ class PaymentService:
             },
             uuid.uuid4(),
         )
+
         self.logger.debug(payment.json())
         return payment.confirmation.confirmation_url

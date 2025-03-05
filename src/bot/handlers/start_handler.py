@@ -18,21 +18,23 @@ async def start_handler(message: types.Message, state: FSMContext):
     try:
         logger.debug(message.text)
         key = f"{message.from_user.id}:profile"
+        check_user = await UserORM.get_user(message.from_user.id)
+        logger.debug(check_user)
 
-        if not await redis_manager.get(key):
-            if "=" in message.text:
-                await redis_manager.set(key, "profile")
+        if not check_user:
+            if len(message.text) >= 9:
+                logger.debug(f"All text {message.text}")
+                referral_link = message.text.split(" ")[-1]
+                logger.debug(f"Refferal link {referral_link}")
 
-                referral_link = message.text.split("=")[-1]
-                logger.debug(referral_link)
-                if len(referral_link) > 1 and referral_link[-1] != "/start":
+                if referral_link != "/start":
                     user = await UserORM.create_user(
-                        message.from_user.id, referral_link[-1]
+                        message.from_user.id, referral_link
                     )
                     logger.debug(user)
 
                     if not user.get("duplicate"):
-                        owner = await UserORM.get_owner_referral(referral_link[-1])
+                        owner = await UserORM.get_owner_referral(referral_link)
 
                         if owner:
                             await model.publish_message(
@@ -46,7 +48,6 @@ async def start_handler(message: types.Message, state: FSMContext):
 
             else:
                 await UserORM.create_user(message.from_user.id)
-                await redis_manager.set(key, "profile")
 
         await message.answer(
             "Выберите нейросеть:\n\n"

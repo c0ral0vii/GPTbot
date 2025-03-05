@@ -101,5 +101,9 @@ async def change_user_data(user_id: int, request: Request):
     return JSONResponse(content={"status": "ok"})
 
 
-@router.get("/payment")
+@router.get("/payment/yookassa/success")
+async def get_payment_data(): ...
+
+
+@router.get("/payment/next/success")
 async def get_payment_data(): ...

@@ -65,7 +65,7 @@ class UserORM:
             return
 
     @staticmethod
-    async def get_owner_referral(referral_code: str) -> Dict[str, Any]:
+    async def get_owner_referral(referral_code: str) -> Dict[str, Any] | None:
         try:
             async with async_session() as session:
                 stmt = select(User).where(User.referral_link == referral_code)
@@ -79,7 +79,7 @@ class UserORM:
 
         except Exception as e:
             logger.error(e)
-            raise
+            return None
 
     @staticmethod
     async def remove_energy(user_id: int, count: int | str) -> Dict[str, Any]:

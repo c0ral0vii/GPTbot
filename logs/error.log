@@ -2384,3 +2384,75 @@ orm.user_orm - ERROR - [Errno 8] nodename nor servname provided, or not known
 2025-02-28 23:51:09,570 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Connection error.
 2025-02-28 23:51:09,570 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Connection error.
 2025-02-28 23:51:09,570 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Connection error.
+2025-03-05 21:55:48,799 - src.db.orm.user_orm - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 21:55:48,802 - src.bot.handlers.profile_handler - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 21:55:52,990 - src.db.orm.user_orm - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 21:55:52,991 - src.bot.handlers.profile_handler - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 21:55:58,170 - src.db.orm.user_orm - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 21:55:58,172 - src.bot.handlers.profile_handler - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 21:56:00,071 - src.db.orm.user_orm - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 21:56:00,072 - src.bot.handlers.profile_handler - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 22:06:21,366 - src.db.orm.user_orm - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 22:06:21,367 - src.bot.handlers.start_handler - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 22:06:22,577 - src.db.orm.user_orm - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 22:06:22,578 - src.bot.handlers.start_handler - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 22:08:30,861 - src.db.orm.user_orm - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 22:08:30,862 - src.bot.handlers.start_handler - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 22:09:29,786 - src.db.orm.user_orm - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 22:09:29,787 - src.bot.handlers.start_handler - ERROR - [Errno 111] Connect call failed ('0.0.0.0', 5432)
+2025-03-05 22:29:17,085 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'user_id'
+2025-03-05 22:29:17,087 - src.bot.handlers.start_handler - ERROR - 'NoneType' object has no attribute 'user_id'
+2025-03-05 22:36:15,909 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'user_id'
+2025-03-05 22:36:15,959 - src.scripts.answer_messages.answer_message - ERROR - 2 validation errors for SendMessage
+chat_id.int
+  Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.10/v/int_type
+chat_id.str
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.10/v/string_type
+2025-03-05 22:36:15,959 - src.scripts.answer_messages.answer_message - ERROR - 2 validation errors for SendMessage
+chat_id.int
+  Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.10/v/int_type
+chat_id.str
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.10/v/string_type
+2025-03-05 22:36:15,959 - src.scripts.answer_messages.answer_message - ERROR - 2 validation errors for SendMessage
+chat_id.int
+  Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.10/v/int_type
+chat_id.str
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.10/v/string_type
+2025-03-05 22:36:15,959 - src.scripts.answer_messages.answer_message - ERROR - 2 validation errors for SendMessage
+chat_id.int
+  Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.10/v/int_type
+chat_id.str
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.10/v/string_type
+2025-03-05 22:36:15,959 - src.scripts.answer_messages.answer_message - ERROR - 2 validation errors for SendMessage
+chat_id.int
+  Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.10/v/int_type
+chat_id.str
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.10/v/string_type
+2025-03-05 22:36:15,959 - src.scripts.answer_messages.answer_message - ERROR - 2 validation errors for SendMessage
+chat_id.int
+  Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.10/v/int_type
+chat_id.str
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.10/v/string_type
+2025-03-05 22:36:15,959 - src.scripts.answer_messages.answer_message - ERROR - 2 validation errors for SendMessage
+chat_id.int
+  Input should be a valid integer [type=int_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.10/v/int_type
+chat_id.str
+  Input should be a valid string [type=string_type, input_value=None, input_type=NoneType]
+    For further information visit https://errors.pydantic.dev/2.10/v/string_type
+2025-03-05 22:38:12,925 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'user_id'
+2025-03-05 22:39:28,935 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'user_id'
+2025-03-05 22:41:01,131 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'user_id'
+2025-03-05 22:41:31,465 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'user_id'
