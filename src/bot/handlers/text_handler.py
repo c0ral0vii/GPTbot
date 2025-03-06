@@ -4,6 +4,7 @@ from aiogram.fsm.context import FSMContext
 
 from src.bot.keyboards.select_gpt import select_text_gpt, cancel_kb
 from src.bot.states.text_state import TextState
+from src.config.config import settings
 from src.scripts.queue.rabbit_queue import model
 from src.utils.logger import setup_logger
 from src.utils.redis_cache.redis_cache import redis_manager
@@ -29,12 +30,9 @@ async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
     gpt_select = callback.data.replace("select_", "")
     await callback.message.delete()
 
-    if gpt_select == "chat_gpt":
-        energy_cost = 0.5
-        select_model = "Chat GPT 4o"
-    elif gpt_select == "claude":
-        energy_cost = 0.7
-        select_model = "Claude Sonnet"
+    if settings.TEXT_GPT.get(gpt_select):
+        energy_cost = settings.TEXT_GPT.get(gpt_select).get("energy_cost")
+        select_model = settings.TEXT_GPT.get(gpt_select).get("select_model")
     else:
         energy_cost = 1
         select_model = gpt_select

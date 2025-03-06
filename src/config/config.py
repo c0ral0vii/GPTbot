@@ -42,13 +42,13 @@ class Settings(BaseSettings):
     @property
     def TEXT_GPT(self):
         return {
-            "chatgpt": {"energy_cost": 0.5, "select_model": "ChatGPT 4o"},
-            "claude": {"energy_cost": 0.7, "select_model": "Claude Sonnet"},
+            "chatgpt4o": {"energy_cost": 2, "select_model": "ChatGPT 4o"},
+            "claude35": {"energy_cost": 3, "select_model": "Claude Sonnet 3.5"},
         }
 
     @property
     def IMAGE_GPT(self):
-        return {"midjourney": {"energy_cost": 1, "select_model": "Midjourney"}}
+        return {"midjourney": {"energy_cost": 2.5, "select_model": "Midjourney"}}
 
     @property
     def bot_api(self) -> str:

@@ -31,8 +31,8 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - admin_network
       - bot_network
+      - admin_network
 
   redis:
     build:

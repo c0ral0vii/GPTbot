@@ -43,12 +43,12 @@ class QueueWorker:
                 await self.queue_service.declare_queue(f"{queue_name}_errors")
 
             await self.queue_service.consume_messages(
-                "chat_gpt",
+                "chatgpt4o",
                 self.chat_gpt.send_message,
             )
 
             await self.queue_service.consume_messages(
-                "claude",
+                "claude35",
                 self.claude.send_message,
             )
 

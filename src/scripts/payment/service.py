@@ -19,7 +19,7 @@ class PaymentService:
 
         Configuration.configure("1020161", self.API_KEY)
 
-    async def generate_link(self, user_id: int) -> Dict[str, Any]:
+    async def generate_yookassa_link(self, user_id: int) -> Dict[str, Any]:
         """Генерация ссылки на покупку"""
 
         payment = Payment.create(
@@ -43,3 +43,7 @@ class PaymentService:
 
         self.logger.debug(payment.json())
         return payment.confirmation.confirmation_url
+
+
+    async def generate_prodamus_link(self, user_id: int) -> Dict[str, Any]:
+        """Генеоация ссылки продамус"""

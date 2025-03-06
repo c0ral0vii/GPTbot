@@ -4,10 +4,10 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 def select_text_gpt() -> InlineKeyboardMarkup:
 
-    chat_gpt = InlineKeyboardButton(text="🤖 Chat GPT", callback_data="select_chat_gpt")
+    chat_gpt = InlineKeyboardButton(text="🤖 Chat GPT 4o", callback_data="select_chatgpt4o")
 
     claude = InlineKeyboardButton(
-        text="🤖 Claude Sonnet", callback_data="select_claude"
+        text="🤖 Claude Sonnet 3.5", callback_data="select_claude35"
     )
 
     kb = InlineKeyboardMarkup(

@@ -2467,3 +2467,15 @@ chat_id.str
 2025-03-05 23:53:00,947 - src.bot.handlers.profile_handler - ERROR - [Errno -2] Name or service not known
 2025-03-05 23:53:16,260 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
 2025-03-05 23:53:16,262 - src.bot.handlers.start_handler - ERROR - [Errno -2] Name or service not known
+2025-03-06 00:19:45,979 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
+2025-03-06 00:19:45,980 - src.bot.handlers.start_handler - ERROR - [Errno -2] Name or service not known
+2025-03-06 00:20:41,142 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
+2025-03-06 00:20:41,144 - src.bot.handlers.start_handler - ERROR - [Errno -2] Name or service not known
+2025-03-06 00:20:56,588 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
+2025-03-06 00:20:56,589 - src.bot.handlers.start_handler - ERROR - [Errno -2] Name or service not known
+2025-03-06 00:22:28,726 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
+2025-03-06 00:22:28,727 - src.bot.handlers.start_handler - ERROR - [Errno -2] Name or service not known
+2025-03-06 00:27:36,143 - src.scripts.chat_gpt.chat_gpt_o1 - ERROR - Ошибка при отправке сообщения: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-06 00:27:36,144 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-06 00:27:36,144 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-06 00:27:36,144 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
