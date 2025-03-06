@@ -7306,3 +7306,45 @@ chat_id.str
 2025-03-05 22:43:42,971 - src.scripts.queue.rabbit_queue - INFO - Published message to queue referral
 2025-03-05 22:43:42,971 - src.scripts.queue.rabbit_queue - INFO - Published message to queue referral
 2025-03-05 22:43:42,971 - src.scripts.queue.rabbit_queue - INFO - Published message to queue referral
+2025-03-05 23:50:29,679 - __main__ - INFO - Инициализация комманд
+2025-03-05 23:50:29,761 - __main__ - INFO - Запуск воркера
+2025-03-05 23:50:29,976 - __main__ - INFO - Запуск бота
+2025-03-05 23:50:29,985 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-05 23:50:29,985 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-05 23:50:29,985 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-05 23:50:29,987 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-03-05 23:50:29,987 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-03-05 23:50:29,987 - src.scripts.queue.rabbit_queue - INFO - Queue chat_gpt initialized
+2025-03-05 23:50:29,989 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-03-05 23:50:29,989 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-03-05 23:50:29,989 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-03-05 23:50:29,990 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-05 23:50:29,990 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-05 23:50:29,990 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-05 23:50:29,992 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-03-05 23:50:29,992 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-03-05 23:50:29,992 - src.scripts.queue.rabbit_queue - INFO - Queue refresh_midjourney initialized
+2025-03-05 23:50:29,993 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-05 23:50:29,993 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-05 23:50:29,993 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-05 23:50:29,995 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-05 23:50:29,995 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-05 23:50:29,995 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-05 23:50:29,996 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-05 23:50:29,996 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-05 23:50:29,996 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-05 23:50:30,013 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-05 23:50:31,482 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:50:31,483 - src.bot.handlers.start_handler - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:50:34,183 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:50:34,184 - src.bot.handlers.profile_handler - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:52:13,936 - __main__ - INFO - Инициализация комманд
+2025-03-05 23:52:14,030 - __main__ - INFO - Запуск воркера
+2025-03-05 23:52:14,554 - __main__ - INFO - Запуск бота
+2025-03-05 23:52:14,560 - src.scripts.queue.worker - ERROR - Error starting parsing worker: [Errno 111] Connect call failed ('172.20.0.2', 5672)
+2025-03-05 23:52:58,944 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:52:58,945 - src.bot.handlers.start_handler - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:53:00,946 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:53:00,947 - src.bot.handlers.profile_handler - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:53:16,260 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:53:16,262 - src.bot.handlers.start_handler - ERROR - [Errno -2] Name or service not known

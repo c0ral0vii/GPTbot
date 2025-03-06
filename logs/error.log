@@ -2456,3 +2456,14 @@ chat_id.str
 2025-03-05 22:39:28,935 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'user_id'
 2025-03-05 22:41:01,131 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'user_id'
 2025-03-05 22:41:31,465 - src.db.orm.user_orm - ERROR - 'NoneType' object has no attribute 'user_id'
+2025-03-05 23:50:31,482 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:50:31,483 - src.bot.handlers.start_handler - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:50:34,183 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:50:34,184 - src.bot.handlers.profile_handler - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:52:14,560 - src.scripts.queue.worker - ERROR - Error starting parsing worker: [Errno 111] Connect call failed ('172.20.0.2', 5672)
+2025-03-05 23:52:58,944 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:52:58,945 - src.bot.handlers.start_handler - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:53:00,946 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:53:00,947 - src.bot.handlers.profile_handler - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:53:16,260 - src.db.orm.user_orm - ERROR - [Errno -2] Name or service not known
+2025-03-05 23:53:16,262 - src.bot.handlers.start_handler - ERROR - [Errno -2] Name or service not known
