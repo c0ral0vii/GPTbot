@@ -152,17 +152,19 @@ class AdminPanel {
             "energy": document.getElementById('energy').value,
             "referral_link": document.getElementById('referral_link').value,
             "use_referral_link": document.getElementById('use_referral_link').value,
-            "premium_active": document.getElementById('premium_active').checked, // Чекбокс, используем .checked
-            "banned_user": document.getElementById('banned_user').checked, // Чекбокс, используем .checked
+            "premium_active": document.getElementById('premium_active').checked,
+            "premium_dates": {"from": document.getElementById("premium_from").valueOf(), "to": document.getElementById("premium_to").valueOf()}, // Чекбокс, используем .checked
+            "banned_user": document.getElementById('banned_user').checked,
             "created": document.getElementById('created').value,
             "last_used": document.getElementById('last_used').value,
         };
+
         console.log(updatedData);
         const response = await this.fetchAPI(`/users/${user_id}/change`, {
             "method": "PUT",
             "body": JSON.stringify(updatedData)
         });
-
+        console.log(response);
         if (response.ok) {
             await this.showToast("Изменения успешно сохранены");
         } else {

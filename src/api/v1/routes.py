@@ -96,14 +96,15 @@ async def get_user_info(user_id: int):
 @router.put("/users/{user_id}/change")
 async def change_user_data(user_id: int, request: Request):
 
-    response = await AnalyticsORM.change_user(user_id, request.json())
-
-    return JSONResponse(content={"status": "ok"})
+    # response = await AnalyticsORM.change_user(user_id, request.json())
+    json_response = await request.json()
+    ## сделать обработку изменений
+    return JSONResponse(content=json_response)
 
 
 @router.get("/payment/yookassa/success")
-async def get_payment_data(): ...
+async def get_payment_data(): ... # добавить обработку платежки
 
 
 @router.get("/payment/next/success")
-async def get_payment_data(): ...
+async def get_payment_data(): ... # добавить обработку второй платежки
