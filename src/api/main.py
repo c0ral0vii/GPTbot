@@ -1,12 +1,15 @@
 import os
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse, FileResponse
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from src.api.v1 import routes, auth
 
+
 app = FastAPI(title="Admin Woome AI")
+
+
 
 app.add_middleware(
     CORSMiddleware,
@@ -24,7 +27,7 @@ app.include_router(routes.router, prefix="/api/v1", tags=["Analytic API"])
 app.include_router(auth.router, prefix='/api/auth', tags=["Auth API"])
 
 
-@app.get("/admin", response_class=FileResponse)
+@app.get("/admin", response_class=FileResponse, dependencies=[Depends(auth.security.access_token_required)])
 async def root():
     index_html = static_dir + "/index.html"
     return FileResponse(index_html)
