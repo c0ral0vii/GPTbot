@@ -81,7 +81,7 @@ class AdminPanel {
         this.charts = new DashboardCharts();
 
         await this.loadDashboardData();
-
+        await this.refresh_queues_info();
         // setInterval(() => this.refreshData(), 30000);
     }
 
@@ -95,20 +95,38 @@ class AdminPanel {
             this.refreshData();
         });
 
-        document.getElementById('premium_active').addEventListener('change', function() {
-            const premiumDatesContainer = document.getElementById('premium_dates');
-            if (this.checked) {
-                premiumDatesContainer.style.display = 'block'; // Показываем поля
-            } else {
-                premiumDatesContainer.style.display = 'none'; // Скрываем поля
-            }
+        // document.getElementById('premium_active').addEventListener('change', function () {
+        //     const premiumDatesContainer = document.getElementById('premium_dates');
+        //     premiumDatesContainer.style.display = this.checked ? 'block' : 'none';
+        // });
+
+
+        document.getElementById('premium_active').addEventListener('change', function () {
+            document.getElementById('premium_dates').style.display = this.checked ? 'block' : 'none';
         });
 
-        document.querySelectorAll('[data-period]').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const period = e.target.dataset.period;
-                this.charts.updateActivityPeriod(period);
-            });
+        document.getElementById('refreshQueues').addEventListener('click', () => {
+            this.refresh_queues_info();
+        });
+    }
+
+    async refresh_queues_info() {
+        const data = await this.fetchAPI("/analytics/queues");
+        const queueStatsElement = document.getElementById('queueStats');
+        queueStatsElement.innerHTML = ''; // Clear existing content first
+
+        Object.keys(data).forEach(queue => {
+            const queueData = data[queue];
+            const queueCard = document.createElement('div');
+            queueCard.classList.add('card', 'mb-2');
+            queueCard.innerHTML = `
+                <div class="card-body">
+                    <h6 class="card-title">${queueData.name}</h6>
+                    <p>Колличество запросов: ${queueData.message_count}</p>
+                    <p>Статус: ${queueData.status}</p>
+                </div>
+            `;
+            queueStatsElement.appendChild(queueCard);
         });
     }
 
@@ -153,40 +171,62 @@ class AdminPanel {
             "referral_link": document.getElementById('referral_link').value,
             "use_referral_link": document.getElementById('use_referral_link').value,
             "premium_active": document.getElementById('premium_active').checked,
-            "premium_dates": {"from": document.getElementById("premium_from").valueOf(), "to": document.getElementById("premium_to").valueOf()}, // Чекбокс, используем .checked
             "banned_user": document.getElementById('banned_user').checked,
             "created": document.getElementById('created').value,
             "last_used": document.getElementById('last_used').value,
         };
 
-        console.log(updatedData);
-        const response = await this.fetchAPI(`/users/${user_id}/change`, {
-            "method": "PUT",
-            "body": JSON.stringify(updatedData)
-        });
-        console.log(response);
-        if (response.ok) {
-            await this.showToast("Изменения успешно сохранены");
-        } else {
-            await this.showError("Ошибка при сохранении изменений");
+        // Добавляем premium_dates, если премиум включен
+        if (updatedData.premium_active) {
+            updatedData.premium_dates = {
+                "from": document.getElementById("premium_from").value,
+                "to": document.getElementById("premium_to").value
+            };
         }
+
+        console.log(updatedData);
+
+        const response = await this.fetchAPI(`/users/${user_id}/change`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedData)
+        });
+
+        console.log(response);
+
+        if (response.success) {
+            await this.showToast("✅ Изменения успешно сохранены!");
+        } else {
+            await this.showError("❌ Ошибка при сохранении изменений!");
+        }
+
         await this.loadDashboardData();
     }
 
     async getMoreInfo(user_id) {
         const data = await this.fetchAPI(`/users/${user_id}/info`);
+        console.log(data);
 
         document.getElementById('user_id').value = data.user_id;
         document.getElementById('energy').value = data.energy;
         document.getElementById('referral_link').value = data.referral_link;
         document.getElementById('use_referral_link').value = data.use_referral_link;
 
-        // Обновляем чекбокс премиума
         const premiumCheckbox = document.getElementById('premium_active');
         const premiumDatesContainer = document.getElementById('premium_dates');
 
-        premiumCheckbox.checked = data.status;
-        premiumDatesContainer.style.display = data.status ? 'block' : 'none';
+        premiumCheckbox.checked = data.premium_active;
+        premiumDatesContainer.style.display = data.premium_active ? 'block' : 'none';
+
+        if (data.premium_dates) {
+            document.getElementById('premium_from').value = data.premium_dates.from;
+            document.getElementById('premium_to').value = data.premium_dates.to;
+        } else {
+            document.getElementById('premium_from').value = "";
+            document.getElementById('premium_to').value = "";
+        }
 
         document.getElementById('banned_user').checked = data.banned_user;
         document.getElementById('created').value = data.created;
@@ -202,12 +242,13 @@ class AdminPanel {
     }
 
 
-    async bannedUser(user_id) {
-        await this.fetchAPI(`/users/${user_id}/banned`)
 
-        await this.showToast("Пользователь заблокирован")
-        await this.loadDashboardData()
-    }
+    // async bannedUser(user_id) {
+    //     await this.fetchAPI(`/users/${user_id}/banned`)
+    //
+    //     await this.showToast("Пользователь заблокирован")
+    //     await this.loadDashboardData()
+    // }
 
     updateUserTable(data) {
         const tbody = document.querySelector('#groupsTable tbody');
@@ -229,10 +270,7 @@ class AdminPanel {
                             onclick="adminPanel.getMoreInfo(${item.id})">
                             Изменить
                         </button>
-                        <button class="btn btn-sm btn-danger"
-                            onclick="adminPanel.bannedUser(${item.id})">
-                            Заблокировать
-                        </button>
+                        
                     </div>
                 </td>
                 

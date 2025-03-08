@@ -1,15 +1,12 @@
-import random
+import asyncio
 
 from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
 from src.db.orm.user_orm import AnalyticsORM
-
+from src.api.models.models import ChangeUserSchema
+from src.scripts.queue.rabbit_queue import model
 
 router = APIRouter()
-
-
-@router.post("/premium/buy")
-async def buy_premium_user(request: Request): ...
 
 
 @router.get("/stats/overview")
@@ -34,13 +31,15 @@ async def get_overview_stats():
 async def get_activity_data():
     data = await AnalyticsORM.get_activity_users()
 
-    return JSONResponse(content={"labels": data.get('labels'), "values": data.get('values')})
+    return JSONResponse(
+        content={"labels": data.get("labels"), "values": data.get("values")}
+    )
 
 
 @router.get("/analytics/queues")
 async def get_queue_data():
-    return JSONResponse(content={"labels": [], "values": []})
-
+    # analytics = await model.get_analytics_queue()
+    return JSONResponse(content={})
 
 @router.get("/analytics/users")
 async def get_user_data():
@@ -48,7 +47,10 @@ async def get_user_data():
 
     return JSONResponse(
         content={
-            "values": [users_data.get("total_users_count", 0), users_data.get("premium_users_count", 0)],  # non-prime, prime
+            "values": [
+                users_data.get("non_premium_users_count", 0),
+                users_data.get("premium_users_count", 0),
+            ],  # non-prime, prime
         }
     )
 
@@ -71,17 +73,17 @@ async def get_all_users(
     return JSONResponse(content=data)
 
 
-@router.get("/users/{user_id}/banned")
-async def get_banned_user_data(user_id: int):
-
-    await AnalyticsORM.banned_user(user_id)
-
-    return JSONResponse(
-        content={
-            "status": "banned",
-            "user_id": user_id,
-        }
-    )
+# @router.get("/users/{user_id}/banned")
+# async def get_banned_user_data(user_id: int):
+#
+#     await AnalyticsORM.banned_user(user_id)
+#
+#     return JSONResponse(
+#         content={
+#             "status": "banned",
+#             "user_id": user_id,
+#         }
+#     )
 
 
 @router.get("/users/{user_id}/info")
@@ -94,17 +96,10 @@ async def get_user_info(user_id: int):
 
 
 @router.put("/users/{user_id}/change")
-async def change_user_data(user_id: int, request: Request):
+async def change_user_data(user_id: int, user_data: ChangeUserSchema):
+    try:
+        response = await AnalyticsORM.change_user(user_id, user_data.model_dump())
 
-    # response = await AnalyticsORM.change_user(user_id, request.json())
-    json_response = await request.json()
-    ## сделать обработку изменений
-    return JSONResponse(content=json_response)
-
-
-@router.get("/payment/yookassa/success")
-async def get_payment_data(): ... # добавить обработку платежки
-
-
-@router.get("/payment/next/success")
-async def get_payment_data(): ... # добавить обработку второй платежки
+        return JSONResponse(content=response, status_code=200)
+    except Exception as e:
+        return JSONResponse(content={"status": False, "user_id": user_id}, status_code=500)

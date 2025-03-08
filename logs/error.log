@@ -2479,3 +2479,54 @@ chat_id.str
 2025-03-06 00:27:36,144 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
 2025-03-06 00:27:36,144 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
 2025-03-06 00:27:36,144 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-08 03:56:14,211 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 03:56:14,213 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:02:22,073 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-08 04:06:21,448 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-08 04:06:23,630 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-08 04:07:05,566 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: [Errno -2] Name or service not known
+2025-03-08 04:10:10,486 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-08 04:12:52,421 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-08 04:14:22,992 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: [Errno -2] Name or service not known
+2025-03-08 04:16:21,485 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: [Errno -2] Name or service not known
+2025-03-08 04:16:21,486 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: [Errno -2] Name or service not known
+2025-03-08 04:16:21,486 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: [Errno -2] Name or service not known
+2025-03-08 04:16:21,486 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: [Errno -2] Name or service not known
+2025-03-08 04:16:28,633 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: [Errno -2] Name or service not known
+2025-03-08 04:16:28,640 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: [Errno -2] Name or service not known
+2025-03-08 04:16:28,789 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: [Errno -2] Name or service not known
+2025-03-08 04:16:28,974 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: [Errno -2] Name or service not known
+2025-03-08 04:16:35,545 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: [Errno -2] Name or service not known
+2025-03-08 04:16:35,629 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: [Errno -2] Name or service not known
+2025-03-08 04:16:35,681 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: [Errno -2] Name or service not known
+2025-03-08 04:16:35,724 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: [Errno -2] Name or service not known
+2025-03-08 04:19:32,201 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:32,201 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:32,202 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:32,202 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:32,203 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:32,204 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:32,206 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:32,207 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:39,187 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:39,188 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:39,188 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:39,188 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:39,196 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:39,196 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:39,221 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:39,222 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:49,021 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:49,022 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:49,026 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:49,026 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:49,035 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:49,036 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:49,046 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:19:49,047 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:20:35,508 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:20:35,510 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:20:42,855 - src.scripts.queue.rabbit_queue - ERROR - Error declaring queue chatgpt4o: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:20:42,857 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
+2025-03-08 04:41:48,672 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-08 16:44:38,441 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'energy'

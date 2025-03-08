@@ -26,18 +26,15 @@ class QueueWorker:
             await self.queue_service.connect()
 
             queues = [
-                "chat_gpt",
-                "claude",
+                "chatgpt4o",
+                "claude35",
                 # Миджорни
                 "midjourney",
-                "refresh_midjourney",
-                "variation_midjourney",
-                "upgrade_midjourney",
                 "upscale_midjourney",
-                # Рефаральные сообщения
+                "select_midjourney",
+                "variation_midjourney",
                 "referral",
             ]
-
             for queue_name in queues:
                 await self.queue_service.declare_queue(queue_name)
                 await self.queue_service.declare_queue(f"{queue_name}_errors")

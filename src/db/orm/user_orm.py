@@ -1,7 +1,8 @@
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 from decimal import Decimal
 from typing import Optional, Dict, Any
 
+from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload, joinedload
 
 from src.db.models import User, GenerateImage, PremiumUser, BannedUser
@@ -257,18 +258,22 @@ class AnalyticsORM:
             result = await session.execute(stmt)
             active_users_today_count = result.scalar()
 
-            stmt = select(func.count(User.id)).join(PremiumUser).where(PremiumUser.premium_active == True)
+            stmt = (
+                select(func.count(User.id))
+                .join(PremiumUser)
+                .where(PremiumUser.premium_active == True)
+            )
             result = await session.execute(stmt)
             premium_users_count = result.scalar()
-
+            non_premium_users_count = total_users_count - premium_users_count
             data = {
+                "non_premium_users_count": non_premium_users_count,
                 "total_users_count": total_users_count,
                 "active_users_today_count": active_users_today_count,
                 "premium_users_count": premium_users_count,
                 "revenue": 990 * premium_users_count,
             }
             return data
-
 
     @staticmethod
     async def get_activity_users_per_24h():
@@ -277,7 +282,9 @@ class AnalyticsORM:
         today = datetime.today().date()
         async with async_session() as session:
             for hour in hours:
-                start_time = datetime.combine(today, datetime.min.time()) + timedelta(hours=hour)
+                start_time = datetime.combine(today, datetime.min.time()) + timedelta(
+                    hours=hour
+                )
                 end_time = start_time + timedelta(hours=1)
 
                 # Получаем количество пользователей, которые были активны в этот час
@@ -293,7 +300,10 @@ class AnalyticsORM:
 
     @staticmethod
     async def get_activity_users():
-        days = [(datetime.today().date() - timedelta(days=i)).strftime("%Y-%m-%d") for i in range(6, -1, -1)]
+        days = [
+            (datetime.today().date() - timedelta(days=i)).strftime("%Y-%m-%d")
+            for i in range(6, -1, -1)
+        ]
         values = []
 
         async with async_session() as session:
@@ -314,7 +324,7 @@ class AnalyticsORM:
 
     @staticmethod
     async def get_all_users_analytics(
-            search: str = "",
+        search: str = "",
     ):
         async with async_session() as session:
             result = []
@@ -323,9 +333,11 @@ class AnalyticsORM:
             if search != "":
                 stmt_users = stmt_users.where(
                     or_(
-                        cast(User.user_id, String).ilike(f"%{search}%"),  # Приводим user_id к строке
+                        cast(User.user_id, String).ilike(
+                            f"%{search}%"
+                        ),  # Приводим user_id к строке
                         User.referral_link.ilike(f"%{search}%"),
-                        User.use_referral_link.ilike(f"%{search}%")
+                        User.use_referral_link.ilike(f"%{search}%"),
                     )
                 )
 
@@ -333,8 +345,12 @@ class AnalyticsORM:
             users = result_users.scalars().all()
 
             for user in users:
-                created_date = user.created.strftime('%H:%M:%S %Y-%m-%d') if user.created else None
-                last_used_date = user.updated.strftime('%H:%M:%S %Y-%m-%d') if user.updated else None
+                created_date = (
+                    user.created.strftime("%H:%M:%S %Y-%m-%d") if user.created else None
+                )
+                last_used_date = (
+                    user.updated.strftime("%H:%M:%S %Y-%m-%d") if user.updated else None
+                )
                 user_data = {
                     "table": "users",
                     "id": user.id,
@@ -342,11 +358,28 @@ class AnalyticsORM:
                     "energy": float(user.energy) if user.energy else None,
                     "referral_link": user.referral_link,
                     "use_referral_link": user.use_referral_link,
-                    "status": user.premium_status.premium_active if user.premium_status else False,
-                    "premium_dates": {
-                        "premium_active": user.premium_status.premium_active if user.premium_status else None,
-                        "premium_to_date": user.premium_status.premium_to_date.isoformat() if user.premium_status and user.premium_status.premium_to_date else None,
-                    } if user.premium_status else None,
+                    "status": (
+                        user.premium_status.premium_active
+                        if user.premium_status
+                        else False
+                    ),
+                    "premium_dates": (
+                        {
+                            "premium_active": (
+                                user.premium_status.premium_active
+                                if user.premium_status
+                                else None
+                            ),
+                            "premium_to_date": (
+                                user.premium_status.premium_to_date.isoformat()
+                                if user.premium_status
+                                and user.premium_status.premium_to_date
+                                else None
+                            ),
+                        }
+                        if user.premium_status
+                        else None
+                    ),
                     "created": created_date,
                     "updated": last_used_date,
                 }
@@ -357,27 +390,51 @@ class AnalyticsORM:
     @staticmethod
     async def get_all_user_info(user_id: int):
         async with async_session() as session:
-            stmt = select(User).where(User.id == user_id).options(selectinload(User.premium_status))
+            stmt = (
+                select(User)
+                .where(User.id == user_id)
+                .options(selectinload(User.premium_status))
+            )
             result = await session.execute(stmt)
             user = result.scalars().first()
+
+            if not user:
+                return {"error": "User not found"}
 
             stmt = select(BannedUser).where(BannedUser.user_id == user.id)
             result = await session.execute(stmt)
             banned_user = result.scalars().first()
+            banned = bool(banned_user)
 
-            if not banned_user:
-                banned = False
-            else:
-                banned = True
-            created_date = user.created.strftime('%H:%M:%S %Y-%m-%d') if user.created else None
-            last_used_date = user.updated.strftime('%H:%M:%S %Y-%m-%d') if user.updated else None
+            created_date = (
+                user.created.strftime("%H:%M:%S %Y-%m-%d") if user.created else None
+            )
+            last_used_date = (
+                user.updated.strftime("%H:%M:%S %Y-%m-%d") if user.updated else None
+            )
+
+            premium_status = user.premium_status
+            premium_active = premium_status.premium_active if premium_status else False
+            premium_from = (
+                premium_status.premium_from_date.strftime("%Y-%m-%d")
+                if premium_status and premium_status.premium_from_date
+                else None
+            )
+            premium_to = (
+                premium_status.premium_to_date.strftime("%Y-%m-%d")
+                if premium_status and premium_status.premium_to_date
+                else None
+            )
 
             return {
                 "user_id": user.user_id,
                 "energy": float(user.energy),
                 "referral_link": user.referral_link,
                 "use_referral_link": user.use_referral_link,
-                "status": True if user.premium_status else False,
+                "premium_active": premium_active,
+                "premium_dates": (
+                    {"from": premium_from, "to": premium_to} if premium_active else None
+                ),
                 "banned_user": banned,
                 "created": created_date,
                 "last_used": last_used_date,
@@ -399,10 +456,80 @@ class AnalyticsORM:
                 await session.rollback()
 
     @staticmethod
-    async def change_user(user_id, data):
+    async def change_user(user_id: int, data: Dict[str, Any]) -> Dict[str, Any]:
         async with async_session() as session:
-            ...
+            stmt = (
+                select(User)
+                .where(User.id == user_id)
+                .options(selectinload(User.premium_status))
+            )
+            result = await session.execute(stmt)
+            user = result.scalars().first()
+
+            if not user:
+                return {"error": "User not found"}
+
+            # Обновляем основные данные пользователя
+            await AnalyticsORM._banned_user_or_unbanned(
+                user_id=user.id, session=session, ban=data.get("banned_user", False)
+            )
+            user.energy = Decimal(data["energy"]) if "energy" in data else user.energy
+            user.referral_link = data.get("referral_link", user.referral_link)
+            user.use_referral_link = data.get(
+                "use_referral_link", user.use_referral_link
+            )
+
+            # Обрабатываем премиум-статус
+            if data.get("premium_active"):
+                premium_dates = data.get("premium_dates", {})
+                premium_from = premium_dates.get("from")
+                premium_to = premium_dates.get("to")
+
+                if premium_from and premium_to:
+                    premium_from = date.fromisoformat(premium_from)
+                    premium_to = date.fromisoformat(premium_to)
+
+                    if user.premium_status:
+                        # Обновляем существующую премиум-запись
+                        user.premium_status.premium_active = True
+                        user.premium_status.premium_from_date = premium_from
+                        user.premium_status.premium_to_date = premium_to
+                    else:
+                        # Создаём новую премиум-запись
+                        new_premium = PremiumUser(
+                            user_id=user.id,
+                            premium_active=True,
+                            premium_from_date=premium_from,
+                            premium_to_date=premium_to,
+                        )
+                        session.add(new_premium)
+            else:
+                # Если премиум выключен, удаляем статус, если он был
+                if user.premium_status:
+                    await session.delete(user.premium_status)
+
+            session.add(user)
+            await session.commit()
+            return {"success": True, "user_id": user.id}
 
     @staticmethod
-    async def add_new_promo():
-        ...
+    async def _banned_user_or_unbanned(
+        user_id: int, session: AsyncSession, ban: bool
+    ) -> bool:
+        stmt = select(BannedUser).where(BannedUser.user_id == user_id)
+        result = await session.execute(stmt)
+        banned_user = result.scalars().one_or_none()
+
+        if ban:
+            if not banned_user:
+                new_banned_user = BannedUser(user_id=user_id)
+                session.add(new_banned_user)
+        else:
+            if banned_user:
+                await session.delete(banned_user)
+
+        await session.commit()
+        return True
+
+    @staticmethod
+    async def add_new_promo(): ...

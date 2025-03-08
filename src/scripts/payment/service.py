@@ -44,6 +44,5 @@ class PaymentService:
         self.logger.debug(payment.json())
         return payment.confirmation.confirmation_url
 
-
     async def generate_prodamus_link(self, user_id: int) -> Dict[str, Any]:
         """Генеоация ссылки продамус"""

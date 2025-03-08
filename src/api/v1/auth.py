@@ -14,6 +14,7 @@ config.JWT_TOKEN_LOCATION = ["cookies"]
 
 security = AuthX(config=config)
 
+
 @router.post("/login")
 async def login(creds: UserLoginSchema):
     if creds.username == settings.ADMIN_USER and creds.password == settings.ADMIN_PASS:
@@ -21,10 +22,7 @@ async def login(creds: UserLoginSchema):
 
         print("✅ Устанавливаем куку my_access_token")
         data = JSONResponse({"access_token": token})
-        data.set_cookie(key=config.JWT_ACCESS_COOKIE_NAME,
-            value=token)
+        data.set_cookie(key=config.JWT_ACCESS_COOKIE_NAME, value=token)
         return data
 
     raise HTTPException(status_code=401, detail="Invalid username or password")
-
-

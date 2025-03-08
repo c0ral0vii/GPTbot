@@ -45,7 +45,7 @@ class Settings(BaseSettings):
         return {
             "chatgpt4o": {"energy_cost": 2, "select_model": "ChatGPT 4o"},
             "claude35": {"energy_cost": 3, "select_model": "Claude Sonnet 3.5"},
-            "claude37": {"energy_cost": 4, "select_model": "Claude Sonnet 3.7"}
+            "claude37": {"energy_cost": 4, "select_model": "Claude Sonnet 3.7"},
         }
 
     @property

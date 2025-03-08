@@ -49,6 +49,7 @@ class PremiumUser(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
 
     premium_active: Mapped[bool] = mapped_column(Boolean, default=False)
+    premium_from_date: Mapped[Date] = mapped_column(Date, default=False)
     premium_to_date: Mapped[Date] = mapped_column(Date, default=False)
 
     user_id: Mapped["User"] = mapped_column(ForeignKey("users.id"))

@@ -32,13 +32,13 @@ class RabbitQueue:
             self.logger.info("Initializing queue")
 
             queues = [
-                "chat_gpt",
-                "claude",
+                "chatgpt4o",
+                "claude35",
                 # Миджорни
                 "midjourney",
-                "refresh_midjourney",
-                "select_midjourney",
                 "upscale_midjourney",
+                "select_midjourney",
+                "variation_midjourney",
                 "referral",
             ]
 
@@ -135,9 +135,50 @@ class RabbitQueue:
             self.logger.error(f"Error setting up consumer for {queue_name}: {e}")
             raise
 
-    async def get_analytics_quese(self):
-        """"""
-        ...
+    async def get_analytics_queue(self) -> Dict[str, Any]:
+        """Retrieve the queue status for all declared queues."""
+        try:
+            queues = [
+                "chatgpt4o",
+                "claude35",
+                "midjourney",
+                "upscale_midjourney",
+                "select_midjourney",
+                "variation_midjourney",
+                "referral",
+            ]
+
+            queue_stats = {}
+
+            # Declare and check the message count for each queue
+            for queue_name in queues:
+                queue = await self.declare_queue(queue_name)
+
+                # Получение статистики для очереди (например, с использованием другой библиотеки или метода)
+                message_count = await self.get_message_count(queue)
+
+                # Add information about the queue to the stats dictionary
+                queue_stats[queue_name] = {
+                    "name": queue_name,
+                    "message_count": message_count,
+                    "status": "active" if message_count > 0 else "empty",  # Determine the status based on message count
+                }
+
+            return queue_stats
+        except Exception as e:
+            self.logger.error(f"Error fetching queue analytics: {e}")
+            raise
+
+    async def get_message_count(self, queue) -> int:
+        """Retrieve the message count for a queue."""
+        try:
+            # Использование другого метода для получения статистики (например, через AMQP API или стороннюю библиотеку)
+            # Для получения точного количества сообщений можно использовать другие возможности API RabbitMQ
+            # Данный метод просто возвращает 0 как временное решение
+            return 0
+        except Exception as e:
+            self.logger.error(f"Error getting message count for {queue}: {e}")
+            return 0
 
 
 model = RabbitQueue()

@@ -8,7 +8,7 @@ async function login(event) {
 
     try {
         const response = await fetch(`${API_BASE}/login`, {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -23,7 +23,7 @@ async function login(event) {
 
         if (response.ok) {
             console.log("Авторизация успешна, переадресация...");
-            // window.location.href = '/admin';
+            window.location.href = '/admin';
         } else {
             console.log("Ошибка авторизации:", responseData);
             const alertBox = document.getElementById('alertBox');
