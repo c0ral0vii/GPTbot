@@ -2530,3 +2530,45 @@ chat_id.str
 2025-03-08 04:20:42,857 - src.scripts.queue.rabbit_queue - ERROR - Error fetching queue analytics: 'RabbitQueue' object has no attribute 'channel'
 2025-03-08 04:41:48,672 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
 2025-03-08 16:44:38,441 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'energy'
+2025-03-09 12:59:34,609 - src.db.orm.user_orm - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: character varying = integer
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT count(*) AS count_1 
+FROM users 
+WHERE users.use_referral_link = $1::INTEGER]
+[parameters: (944360812,)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-09 12:59:34,610 - src.bot.handlers.profile_handler - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: character varying = integer
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT count(*) AS count_1 
+FROM users 
+WHERE users.use_referral_link = $1::INTEGER]
+[parameters: (944360812,)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-09 13:00:14,571 - src.db.orm.user_orm - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: character varying = integer
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT count(*) AS count_1 
+FROM users 
+WHERE users.use_referral_link = $1::INTEGER]
+[parameters: (944360812,)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-09 13:00:14,573 - src.bot.handlers.profile_handler - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: character varying = integer
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT count(*) AS count_1 
+FROM users 
+WHERE users.use_referral_link = $1::INTEGER]
+[parameters: (944360812,)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-09 13:09:26,145 - src.db.orm.user_orm - ERROR - Mapper 'Mapper[User(users)]' has no property 'user_config'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+2025-03-09 13:09:26,147 - src.bot.handlers.start_handler - ERROR - Mapper 'Mapper[User(users)]' has no property 'user_config'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+2025-03-09 13:11:29,041 - src.db.orm.user_orm - ERROR - Mapper 'Mapper[User(users)]' has no property 'user_config_model'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+2025-03-09 13:11:29,043 - src.bot.handlers.start_handler - ERROR - Mapper 'Mapper[User(users)]' has no property 'user_config_model'.  If this property was indicated from other mappers or configure events, ensure registry.configure() has been called.
+2025-03-09 13:14:46,262 - src.db.orm.user_orm - ERROR - 'referral_link' is an invalid keyword argument for User
+2025-03-09 13:15:00,640 - src.db.orm.user_orm - ERROR - 'referral_link' is an invalid keyword argument for User
+2025-03-09 13:15:00,648 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'energy'
+2025-03-09 13:17:02,656 - src.db.orm.user_orm - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: bigint = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT users.id, users.user_id, users.energy, users.use_referral_link, users.created, users.updated 
+FROM users 
+WHERE users.user_id = $1::VARCHAR]
+[parameters: ('944360812',)]
+(Background on this error at: https://sqlalche.me/e/20/f405)

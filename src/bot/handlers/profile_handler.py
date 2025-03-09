@@ -21,7 +21,9 @@ async def profile_handler(message: types.Message, state: FSMContext):
         await message.answer(
             f"*👤 Профиль {message.from_user.username}:*\n\n"
             f"⚡ Энергия: {profile_info.energy}\n"
-            f"👥 Рефералы: {referrals} человек\n\n"
+            f"👥 Рефералы: {referrals} человек\n"
+            f"🌟 Cтатус премиума: {"✅" if profile_info.premium_status and profile_info.premium_status.premium_active else "❌"}\n\n"
+            
             "Приглашайте новых участников для получения энергии /invite!",
             parse_mode="Markdown",
         )

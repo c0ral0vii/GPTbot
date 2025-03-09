@@ -37,10 +37,6 @@
                             <input class="form-control" id="energy">
                         </div>
                         <div class="mb-3">
-                            <label for="referral_link" class="form-label">Реферальная ссылка пользователя</label>
-                            <input class="form-control" id="referral_link">
-                        </div>
-                        <div class="mb-3">
                             <label for="use_referral_link" class="form-label">Использованая реферальная ссылка</label>
                             <input class="form-control" id="use_referral_link">
                         </div>
@@ -202,20 +198,12 @@
             </div>
         </div>
 
-
         <div class="row mt-4">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h5 class="card-title">Статус очередей</h5>
-                            <button class="btn btn-outline-secondary btn-sm" id="refreshQueues">
-                                <i class="fas fa-sync-alt"></i>
-                            </button>
-                        </div>
-                        <div id="queueStats" class="queue-stats"></div>
-                    </div>
-                </div>
+            <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addReferralModal">
+                    <i class="fas fa-plus me-2"></i>
+                    Добавить бонусную ссылку
+                </button>
             </div>
         </div>
     </div>

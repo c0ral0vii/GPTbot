@@ -5,7 +5,7 @@ from typing import Optional, Dict, Any
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload, joinedload
 
-from src.db.models import User, GenerateImage, PremiumUser, BannedUser
+from src.db.models import User, GenerateImage, PremiumUser, BannedUser, BonusLink
 from src.utils.logger import setup_logger
 
 from src.db.database import async_session
@@ -33,19 +33,8 @@ class UserORM:
                         "duplicate": True,
                     }
 
-                async def create_referral_link():
-                    import uuid
-
-                    return str(uuid.uuid4())
-
-                referral_link = await create_referral_link()
-                if use_referral_link == referral_link:
-                    user.referral_link = None
-                    logger.debug("Попытка ввести свой же инвайт код")
-
                 user = User(
                     user_id=user_id,
-                    referral_link=referral_link,
                     use_referral_link=use_referral_link,
                 )
 
@@ -66,10 +55,10 @@ class UserORM:
             return
 
     @staticmethod
-    async def get_owner_referral(referral_code: str) -> Dict[str, Any] | None:
+    async def get_owner_referral(referral_code: int) -> Dict[str, Any] | None:
         try:
             async with async_session() as session:
-                stmt = select(User).where(User.referral_link == referral_code)
+                stmt = select(User).where(User.user_id == referral_code)
                 result = await session.execute(stmt)
                 owner = result.scalar_one_or_none()
 
@@ -138,7 +127,7 @@ class UserORM:
                 result = await session.execute(stmt)
                 user = result.scalar_one_or_none()
 
-                return user.referral_link
+                return user.user_id
 
         except Exception as e:
             logger.error(e)
@@ -148,15 +137,14 @@ class UserORM:
     async def get_count_referrals(user_id: int) -> int:
         try:
             async with async_session() as session:
-                stmt = select(User).where(User.user_id == user_id)
-                result = await session.execute(stmt)
-                user = result.scalar_one_or_none()
-
-                referral_link = user.referral_link
+                # stmt = select(User).where(User.user_id == user_id)
+                # result = await session.execute(stmt)
+                # user = result.scalar_one_or_none()
 
                 stmt = select(func.count()).where(
-                    User.use_referral_link == referral_link
+                    User.use_referral_link == user_id
                 )
+
                 result = await session.execute(stmt)
                 referrals_count = result.scalar()
 
@@ -169,7 +157,7 @@ class UserORM:
     async def get_user(user_id: int) -> User | None:
         async with async_session() as session:
             try:
-                stmt = select(User).where(User.user_id == user_id)
+                stmt = select(User).where(User.user_id == user_id).options(selectinload(User.premium_status))
                 result = await session.execute(stmt)
                 user = result.scalar_one_or_none()
                 if not user:
@@ -356,7 +344,6 @@ class AnalyticsORM:
                     "id": user.id,
                     "user_id": user.user_id,
                     "energy": float(user.energy) if user.energy else None,
-                    "referral_link": user.referral_link,
                     "use_referral_link": user.use_referral_link,
                     "status": (
                         user.premium_status.premium_active
@@ -429,7 +416,6 @@ class AnalyticsORM:
             return {
                 "user_id": user.user_id,
                 "energy": float(user.energy),
-                "referral_link": user.referral_link,
                 "use_referral_link": user.use_referral_link,
                 "premium_active": premium_active,
                 "premium_dates": (
@@ -532,4 +518,31 @@ class AnalyticsORM:
         return True
 
     @staticmethod
-    async def add_new_promo(): ...
+    async def add_or_change_promo(
+            data: Dict[str, Any]
+    ):
+        async with async_session() as session:
+            stmt = select(BonusLink).where(
+                data.get("link")
+            )
+            result = await session.execute(stmt)
+            bonus_link = result.scalars().one_or_none()
+            if data.get("active_count", 0) <= 0:
+                data["active"] = False
+
+            if bonus_link:
+                bonus_link.active = data.get("active", False)
+                bonus_link.active_count = data.get("active_count", 0)
+                bonus_link.energy_bonus = Decimal(data.get("energy_bonus", 0))
+                await session.commit()
+                return {"success": True}
+
+            new_bonus_link = BonusLink(
+                energy_bonus=Decimal(data.get("energy_bonus", 0)),
+                link=data.get("link"),
+                active=data.get("active", False),
+                active_count=data.get("active_count", 0),
+            )
+            session.add(new_bonus_link)
+            await session.commit()
+            return {"success": True}

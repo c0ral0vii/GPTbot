@@ -1,8 +1,8 @@
-"""add new user energy
+"""create config
 
-Revision ID: 913526a5d0ba
-Revises: e739535f89d0
-Create Date: 2025-01-15 10:13:44.668445
+Revision ID: 8f8fdfbdcc59
+Revises: 1c4ad63e87be
+Create Date: 2025-03-09 16:13:04.808080
 
 """
 
@@ -13,8 +13,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = "913526a5d0ba"
-down_revision: Union[str, None] = "e739535f89d0"
+revision: str = "8f8fdfbdcc59"
+down_revision: Union[str, None] = "1c4ad63e87be"
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 

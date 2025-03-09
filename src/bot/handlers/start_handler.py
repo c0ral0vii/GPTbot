@@ -22,19 +22,18 @@ async def start_handler(message: types.Message, state: FSMContext):
         logger.debug(check_user)
 
         if not check_user:
-            if len(message.text) >= 9:
+            if len(message.text) >= 7:
                 logger.debug(f"All text {message.text}")
                 referral_link = message.text.split(" ")[-1]
-                logger.debug(f"Refferal link {referral_link}")
 
                 if referral_link != "/start":
                     user = await UserORM.create_user(
-                        message.from_user.id, referral_link
+                        message.from_user.id
                     )
                     logger.debug(user)
 
-                    if not user.get("duplicate"):
-                        owner = await UserORM.get_owner_referral(referral_link)
+                    if not user.get("duplicate") and referral_link.isdigit():
+                        owner = await UserORM.get_owner_referral(int(referral_link))
 
                         if owner:
                             await model.publish_message(

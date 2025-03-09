@@ -104,31 +104,8 @@ class AdminPanel {
         document.getElementById('premium_active').addEventListener('change', function () {
             document.getElementById('premium_dates').style.display = this.checked ? 'block' : 'none';
         });
-
-        document.getElementById('refreshQueues').addEventListener('click', () => {
-            this.refresh_queues_info();
-        });
     }
 
-    async refresh_queues_info() {
-        const data = await this.fetchAPI("/analytics/queues");
-        const queueStatsElement = document.getElementById('queueStats');
-        queueStatsElement.innerHTML = ''; // Clear existing content first
-
-        Object.keys(data).forEach(queue => {
-            const queueData = data[queue];
-            const queueCard = document.createElement('div');
-            queueCard.classList.add('card', 'mb-2');
-            queueCard.innerHTML = `
-                <div class="card-body">
-                    <h6 class="card-title">${queueData.name}</h6>
-                    <p>Колличество запросов: ${queueData.message_count}</p>
-                    <p>Статус: ${queueData.status}</p>
-                </div>
-            `;
-            queueStatsElement.appendChild(queueCard);
-        });
-    }
 
     showError(message) {
         const alertDiv = document.createElement('div');
@@ -168,7 +145,6 @@ class AdminPanel {
         let updatedData = {
             "user_id": document.getElementById('user_id').value,
             "energy": document.getElementById('energy').value,
-            "referral_link": document.getElementById('referral_link').value,
             "use_referral_link": document.getElementById('use_referral_link').value,
             "premium_active": document.getElementById('premium_active').checked,
             "banned_user": document.getElementById('banned_user').checked,

@@ -37,11 +37,16 @@ class User(Base):
         DECIMAL(15, 1), nullable=False, default=Decimal("10")
     )
 
-    referral_link: Mapped[str] = mapped_column(nullable=True)
-    use_referral_link: Mapped[str] = mapped_column(nullable=True)
+    use_referral_link: Mapped[int] = mapped_column(BigInteger, nullable=True)
 
     premium_status: Mapped["PremiumUser"] = relationship(back_populates="user")
+    user_config_model: Mapped["UserConfig"] = relationship(back_populates="user")
 
+class UserConfig(Base):
+    __tablename__ = "user_config"
+
+    user_id: Mapped["User"] = mapped_column(ForeignKey("users.id"), primary_key=True)
+    user: Mapped["User"] = relationship("User", back_populates="user_config_model")
 
 class PremiumUser(Base):
     __tablename__ = "premium_users"
