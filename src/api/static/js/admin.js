@@ -148,8 +148,6 @@ class AdminPanel {
             "use_referral_link": document.getElementById('use_referral_link').value,
             "premium_active": document.getElementById('premium_active').checked,
             "banned_user": document.getElementById('banned_user').checked,
-            "created": document.getElementById('created').value,
-            "last_used": document.getElementById('last_used').value,
         };
 
         // Добавляем premium_dates, если премиум включен

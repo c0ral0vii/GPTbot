@@ -458,10 +458,13 @@ class AnalyticsORM:
             await AnalyticsORM._banned_user_or_unbanned(
                 user_id=user.id, session=session, ban=data.get("banned_user", False)
             )
-            user.energy = Decimal(data["energy"]) if "energy" in data else user.energy
-            user.use_referral_link = data.get(
-                "use_referral_link", user.use_referral_link
-            )
+            user.energy = Decimal(data["energy"])
+            if data.get("use_referral_link") == "":
+                user.use_referral_link = None
+            else:
+                user.use_referral_link = data.get(
+                    "use_referral_link", None
+                )
 
             # Обрабатываем премиум-статус
             if data.get("premium_active"):
