@@ -1,9 +1,7 @@
+import json
 from typing import Dict, Any
 
 import aiohttp
-from yookassa import Configuration, Payment
-from yookassa.domain.models import Currency
-from yookassa.domain.request import PaymentRequestBuilder
 import uuid
 
 from src.config.config import settings
@@ -13,36 +11,64 @@ from src.utils.logger import setup_logger
 class PaymentService:
     def __init__(self):
         self.logger = setup_logger(__name__)
-        self.API_KEY = settings.YOOMONEY_API
+        self.PRODAMUS_API = settings.PRODAMUS_API
 
-        self.API_ENDPOINT = "https://api.yookassa.ru/v3/"
+        self.API_ENDPOINT = "https://gradov.payform.ru/"
 
-        Configuration.configure("1020161", self.API_KEY)
+    async def generate_prodamus_payment_link(self, user_id: int):
+        """Генерация ссылки на оплату подписки от продамуса"""
 
-    async def generate_yookassa_link(self, user_id: int) -> Dict[str, Any]:
-        """Генерация ссылки на покупку"""
+        data = {
+            "do": "link",
+             "products": [
+                {
+                    "name": "Подписка бота на 1 месяц",
+                    "price": 990,
+                    "quantity": 1,
+                }
+            ],
+            "type": "json",
+            "callbackType": "json",
+            "currency": "rub",
+            "payments_limit": 1,
+            "order_id": 1,
+            "paid_content": "Спасибо за покупку!",
+            "sys": "",
+        }
 
-        payment = Payment.create(
-            {
-                "amount": {
-                    "value": 990,
-                    "currency": "RUB",
-                },
-                "confirmation": {
-                    "type": "redirect",
-                    "return_url": "https://yookassa.ru",
-                },
-                "metadata": {
-                    "user_id": user_id,
-                },
-                "capture": True,
-                "description": "Покупка премиума на 1 месяц",
-            },
-            uuid.uuid4(),
-        )
+        data["signature"] = self._create_hmac_signature(data, self.PRODAMUS_API)
 
-        self.logger.debug(payment.json())
-        return payment.confirmation.confirmation_url
+        async with aiohttp.ClientSession() as session:
+            async with session.post(
+                    self.API_ENDPOINT,
+                    json=data,
+                    headers={"Content-Type": "application/json"},
+            ) as response:
+                if response.status == 200:
+                    text = await response.text()
+                    self.logger.info(text)
+                    response_data = await response.json()
+                    return response_data.get("url")  # Возвращаем ссылку на оплату
+                else:
+                    self.logger.error(f"Ошибка при генерации ссылки: {response.status}")
+                    raise Exception("Не удалось создать платежную ссылку")
 
-    async def generate_prodamus_link(self, user_id: int) -> Dict[str, Any]:
-        """Генеоация ссылки продамус"""
+    def _create_hmac_signature(self, data: Dict[str, Any], secret_key: str) -> str:
+        """Создает HMAC-подпись для данных."""
+        import hmac
+        import hashlib
+
+        # Сортируем данные по ключам
+        sorted_data = sorted(data.items(), key=lambda x: x[0])
+
+        # Преобразуем данные в строку
+        data_string = "&".join([f"{key}={value}" for key, value in sorted_data])
+
+        # Создаем HMAC-подпись с использованием SHA-256
+        signature = hmac.new(
+            secret_key.encode("utf-8"),
+            data_string.encode("utf-8"),
+            hashlib.sha256,
+        ).hexdigest()
+
+        return signature

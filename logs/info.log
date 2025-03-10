@@ -8825,3 +8825,937 @@ WHERE users.user_id = $1::VARCHAR]
 2025-03-09 13:21:05,843 - src.scripts.queue.rabbit_queue - INFO - Published message to queue refresh_midjourney
 2025-03-09 13:21:05,843 - src.scripts.queue.rabbit_queue - INFO - Published message to queue refresh_midjourney
 2025-03-09 13:21:05,843 - src.scripts.queue.rabbit_queue - INFO - Published message to queue refresh_midjourney
+2025-03-09 22:04:05,891 - __main__ - INFO - Инициализация комманд
+2025-03-09 22:04:05,992 - __main__ - INFO - Запуск воркера
+2025-03-09 22:04:06,321 - __main__ - INFO - Запуск бота
+2025-03-09 22:04:06,365 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:04:06,365 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:04:06,365 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:04:06,405 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:04:06,405 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:04:06,405 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:04:06,452 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:04:06,452 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:04:06,452 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:04:06,486 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:04:06,486 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:04:06,486 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:04:06,531 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:04:06,531 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:04:06,531 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:04:06,569 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:04:06,569 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:04:06,569 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:04:06,607 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:04:06,607 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:04:06,607 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:04:06,638 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:04:06,638 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:04:06,638 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:04:06,790 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-09 22:05:34,226 - __main__ - INFO - Инициализация комманд
+2025-03-09 22:05:34,310 - __main__ - INFO - Запуск воркера
+2025-03-09 22:05:34,540 - __main__ - INFO - Запуск бота
+2025-03-09 22:05:34,550 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:05:34,550 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:05:34,550 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:05:34,552 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:05:34,552 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:05:34,552 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:05:34,555 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:05:34,555 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:05:34,555 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:05:34,558 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:05:34,558 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:05:34,558 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:05:34,561 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:05:34,561 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:05:34,561 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:05:34,565 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:05:34,565 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:05:34,565 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:05:34,567 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:05:34,567 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:05:34,567 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:05:34,569 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:05:34,569 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:05:34,569 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:05:34,600 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-09 22:08:35,873 - __main__ - INFO - Инициализация комманд
+2025-03-09 22:08:35,954 - __main__ - INFO - Запуск воркера
+2025-03-09 22:08:36,184 - __main__ - INFO - Запуск бота
+2025-03-09 22:08:36,193 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:08:36,193 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:08:36,193 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:08:36,196 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:08:36,196 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:08:36,196 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:08:36,199 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:08:36,199 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:08:36,199 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:08:36,202 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:08:36,202 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:08:36,202 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:08:36,205 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:08:36,205 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:08:36,205 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:08:36,209 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:08:36,209 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:08:36,209 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:08:36,211 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:08:36,211 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:08:36,211 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:08:36,213 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:08:36,213 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:08:36,213 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:08:36,243 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-09 22:10:32,769 - __main__ - INFO - Инициализация комманд
+2025-03-09 22:10:32,872 - __main__ - INFO - Запуск воркера
+2025-03-09 22:10:33,171 - __main__ - INFO - Запуск бота
+2025-03-09 22:10:33,179 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:10:33,179 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:10:33,179 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:10:33,182 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:10:33,182 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:10:33,182 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:10:33,184 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:10:33,184 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:10:33,184 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:10:33,186 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:10:33,186 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:10:33,186 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:10:33,189 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:10:33,189 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:10:33,189 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:10:33,191 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:10:33,191 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:10:33,191 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:10:33,194 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:10:33,194 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:10:33,194 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:10:33,197 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:10:33,197 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:10:33,197 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:10:33,224 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-09 22:11:08,767 - src.scripts.payment.service - INFO - <!DOCTYPE html>
+<html lang="ru" class="">
+<head>
+<meta charset="windows-1251" />
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Оплатить онлайн | demo.payform.ru</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link href="/assets/plugins/bootstrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" />
+<link href="/assets/plugins/bootstrap-datepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+<link href="/assets/plugins/font-awesome/css/font-awesome.css?v=4.7" rel="stylesheet" type="text/css" />
+<link href="/assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="/assets/plugins/jquery-metrojs/MetroJs.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="/assets/plugins/jquery-formstyler/jquery.formstyler.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/assets/plugins/intl-tel-input/build/css/intlTelInput.css?v=1">
+<link href="/assets/pages/css/pages.css?v=31" rel="stylesheet" type="text/css" />
+<link href="/assets/pages/css/quiz.css?v=2" rel="stylesheet" type="text/css" />
+<link href="/assets/pages/css/pages-icons.css" rel="1stylesheet" type="text/css">
+<link href="/style.css" rel="stylesheet" type="text/css" />
+<link href="/getfile/widgets/css/jquery.ui.1.8.17.custom.css" rel="stylesheet" type="text/css" />
+<link href="/getfile/widgets/jquery.allwidgets.css" rel="stylesheet" type="text/css" />
+<link href="/authorize/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Editor -->
+<!-- /Editor -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<!-- jQuery Modal -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+</head>
+<body>
+<script>
+	window.siteInFrame = (window!=window.top);
+</script>
+<style>
+</style>
+<div class="table no-margin full-height">
+<div class="table-tr">
+<div class="table-td" id="table-form">
+<div class="full-width full-height table m-b-0 padding-40 ">
+<div class="table-tr h-100">
+<div class="table-td v-align-top h-100">
+<div class="user-logo h-100 editor-pane-img" data-template-path="domain._parameter.logo_url"><img class="mwp-100 full-height" src="/files/other/demo.payform.ru/35b0b092ec833a2f652c80eaf005312c.png"></div>
+</div>
+</div>
+<div class="table-tr">
+<div class="table-td align-left p-t-40 p-b-40">
+<script type="text/javascript">
+	window.localStorage.setItem('setNotBackRedirect', 0);
+</script>
+<div class="mw-700 centered">
+<div class="hidden showPaidContent">
+<input type="hidden" name="showPaidContent" value="">
+<input type="hidden" name="paidContentOrderId" value="">
+<input type="hidden" name="orderSign" value="">
+</div>
+<div class="paid-content-placeholder-timeout hidden padding-20 m-b-30 fs-18">
+<i class="fa fa-spinner fa-pulse fa-1x fa-fw orange"></i> Подтверждение от банка задерживается. Материалы придут Вам на указанную электронную почту.
+</div>
+<div class="messages bg-warning padding-20 m-b-30 fs-18">
+<div class="break"><i class="fa fa-warning"></i> Оплата работает в демо-режиме.</div>
+<!--div class="break"><i class="fa fa-warning"></i> Форма paygoods.</div-->
+</div>
+<div id="debug" style="display: none;">
+$params.payform_disabled = 0
+$params.payform_refresh_visible = 0
+$smarty.server.PRODAMUS.MANAGER_ACCESS = NULL
+$showRefresh = bool(false)
+</div>
+<form action="/" method="POST" id="general_paygoods_form" class="paygoods" data-default-product-name="Авансовый платеж по заказу">
+<input id="applepay" type="hidden" name="applepay" value="0" />
+<input id="googlepay" type="hidden" name="googlepay" value="0" />
+<input id="invoice_id" type="hidden" name="invoice_id" value="" />
+<input type="hidden" name="source_invoice_id" value="" />
+<script>
+			let ApplePayError;
+
+			if (!window.ApplePaySession) {
+				applePayError('Браузер не поддерживается');
+			}
+			else if (!ApplePaySession.canMakePayments()) {
+				applePayError('Устройство не поддерживается');
+			}
+			else {
+				document.getElementById('applepay').value = 1;
+			}
+
+			function applePayError(msg) {
+				document.getElementById('applepay').value = 0;
+				// console.log(msg);
+
+				// document.getElementById('ApplePayMessages').innerHTML = '<div class="break"><i class="fa fa-warning"></i> ApplePay: ' + msg + '</div>';
+				// document.getElementById('ApplePayMessages').style.display = 'block';
+			}
+		</script>
+<label><span class="editor-pane-text" data-template-path="pages.4091._parameter.paygoods_label_order">Name</span>:</label>
+<div class="row">
+<div class="col-xs-6 p-l-0 p-r-0">
+<div class="input-group full-width h-45 m-b-15 input-order-id ">
+<span class="input-group-addon master h-45"><b class="grey"><i class="fa fa-grav" aria-hidden="true"></i></b></span>
+<input
+type="text"
+name="order_id"
+placeholder="John Doe"
+class="form-control h-45"
+value=""
+data-fill-indicator-target="order_id"
+>
+</div>
+</div>
+<div class="col-xs-6 p-r-0 align-right h-45 lh-40">
+&nbsp;
+</div>
+</div>
+<!-- Поле Телефон : Начало  -->
+<label>
+<span class="editor-pane-text" data-template-path="pages.4091._parameter.paygoods_label_phone">
+phone number&nbsp;</span>:
+</label>
+<label class="addon-right pull-right">
+<span class="tt padding-0" data-tooltip="Если вы хотите указать номер телефона другой страны, то нажмите на флажок и выберите необходимый вариант кода.">
+<a class="another-country cursor nowrap info">другая страна?</a>
+</span>
+</label>
+<div class="input-group full-width h-45 m-b-15  ">
+<span class="input-group-addon master h-45"><i class="fa fa-phone"></i></span>
+<input
+type="tel"
+name="customer_phone"
+placeholder="+7 000 000-00-00"
+class="form-control h-45 intlTelInput"
+data-init-plugin="jquery.inputmask"
+data-mask-format="+7 000 000-00-00"
+value=""
+data-fill-indicator-target="customer_phone"
+>
+<input type="hidden" name="customer_phone_flag" value="default">
+</div>
+<!-- Поле Телефон : Конец  -->
+<label><span class="editor-pane-text" data-template-path="pages.4091._parameter.paygoods_label_email">e-mail адрес</span>:</label>
+<div class="input-group full-width h-45 m-b-15 ">
+<span class="input-group-addon master h-45"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+<input
+type="text"
+name="customer_email"
+placeholder="email@domain.com"
+class="form-control h-45"
+value=""
+data-fill-indicator-target="customer_email"
+>
+</div>
+<div class="row currency">
+<div class="col-xs-6 col-sm-6 p-l-0 p-r-0 m-b-10">
+<label>валюта:</label>
+<div class="input-group full-width input-currency">
+<span class="input-group-addon master h-45"><b class="grey currency-icon">&#8381;</b></span>
+<input type="hidden" name="currency" value="rub" />
+<input type="text" name="currency" value="RUB" class="form-control h-45" disabled />
+</div>
+</div>
+</div>
+<div class="full-width row m-b-30 hidden">
+<div class="col-xs-6 p-l-0">
+<label>сумма заказа:</label>
+<div class="input-group full-width h-45">
+<span class="input-group-addon master h-45"><b class="grey currency-icon">&#8381;</b></span>
+<input
+type="text"
+id="order_sum_base"
+name="order_sum_base"
+placeholder="00.00"
+class="form-control h-45 money"
+value=""
+disabled
+>
+</div>
+</div>
+<div class="col-xs-6 p-l-0">
+<label>сумма скидки:</label>
+<div class="input-group full-width h-45">
+<span class="input-group-addon master h-45"><b class="grey currency-icon">&#8381;</b></span>
+<input
+type="text"
+name="order_discount"
+placeholder="00.00"
+class="form-control product-discount h-45 money"
+value="0"
+autocomplete="off"
+disabled
+>
+</div>
+</div>
+</div>
+<div class="full-width row m-b-30">
+<div class="col-xs-6 p-l-0">
+<label>сумма к оплате:</label>
+<div class="input-group full-width h-45 ">
+<span class="input-group-addon master h-45"><b class="grey currency-icon">&#8381;</b></span>
+<input
+id="order_sum"
+type="text"
+name="order_sum"
+placeholder="00.00"
+class="form-control h-45 money"
+value=""
+data-fill-indicator-target="order_sum"
+>
+</div>
+</div>
+<div class="col-xs-7 col-sm-3 p-l-0 discount-row">
+<label>&nbsp;</label>
+<div class="input-group full-width h-45 lh-45 hidden">
+<span class="discount price-box text-black inline nowrap h-45 lh-45">с учетом скидки. Без скидки <span></span> <span class="currency-icon">&#8381;</span></span>
+</div>
+</div>
+</div>
+<div class="full-width text-center " id="btnPay-wrapper">
+<button
+type="submit"
+name="do"
+value="pay"
+class="btn btn-lg btn-danger p-r-30 p-l-30"
+data-action="https://demo.payform.ru/"
+onclick="this.form.action=this.dataset.action"
+>				<span class="currency-icon">&#8381;</span>
+Оплатить</button>
+</div>
+<p>Нажимая кнопку «ОПЛАТИТЬ» я даю <a target="_blank" href="/assets/pdf/consent_to_the_processing_of_personal_data.pdf">Согласие на обработку персональных данных</a> и принимаю <a target="_blank" href="/assets/pdf/privacy.pdf">Политику обработки персональных данных ООО «Продамус»</a> (не является продавцом Вашего заказа)</p>
+<input type="hidden" name="date" value="">
+<input type="hidden" name="request_origin" value="webiface">
+</form>
+</div>
+<div class="mw-500 centered text-center p-t-30 hidden-md hidden-lg hint-text">
+<i class="fa fa-warning"></i> Нажимая на кнопки и отправляя данные формы, Вы даёте согласие на обработку <a href="/warranty/privacy/">персональных данных</a> и соглашаетесь с <a href="/warranty/privacy/">политикой конфиденциальности</a>.
+</div>
+</div>
+</div>
+<div class="table-tr minh-130 h-130">
+<div class="table-td v-align-bottom b-t b-dashed b-grey select-tab">
+<div class="mw-700 centered">
+<div class="row m-b-20 m-t-25">
+<div class="col-xs-3 text-center editor-pane-img img-gray lh-40" data-template-path="page._parameter.more_info01"><img class="mw-60 mh-40" src="/assets/img/icon-cards.png"></div>
+<div class="col-xs-3 text-center editor-pane-img img-gray lh-40" data-template-path="page._parameter.more_info02"><img class="mw-60 mh-40" src="/assets/img/icon-yamoney.png"></div>
+<div class="col-xs-3 text-center editor-pane-img img-gray lh-40" data-template-path="page._parameter.more_info03"><img class="mw-60 mh-40" src="/assets/img/icon-applepay.png"></div>
+<div class="col-xs-3 text-center editor-pane-img img-gray lh-40" data-template-path="page._parameter.more_info04"><img class="mw-60 mh-40" src="/assets/img/icon-googlepay.png"></div>
+</div>
+</div>
+<div class="m-b-25 fs-16 hint-text m-b-25">
+<span class="btn hidden-xs active">Оплата онлайн</span>
+<a href="/warranty/rules/" class="btn hidden-xs">Правила клуба</a>
+<a href="/warranty/information/" class="btn">Юридические сведения</a>
+<a href="/warranty/privacy/" class="btn hidden-xs">Конфиденциальность</a>
+<a href="/warranty/complaint/" class="btn btn-complaint">Жалоба</a>
+<a href="/warranty/privacy/" class="btn hidden-sm hidden-md hidden-lg">Конфиденциальность</a>
+<a href="/authorize/login/" class="btn" data-prodamus-open="auth.login"><i class="fa fa-lock hint-text"></i></a>
+<div class="login-point" style="display:none;"></div>
+</div>
+<div class="full-width text-center">
+<a href="https://payform.ru/" target="payform"><img height="22" src="/assets/img/prodamus.png"></a>
+</div>
+</div>
+</div>
+<div class="selector-btn instruction ru">Инструкции</div>
+</div>
+</div>
+<div class="table-td bg-warning right-block hidden-xs hidden-sm align-left padding-40 v-align-top" id="table-instruction">
+<a class="back-selector-btn btn m-l-0"><i class="fa fa-long-arrow-left"></i> <span id="back-selector-text"><span></a>
+<h1 class="p-r-25"><span class="editor-pane-line" data-template-path="domain._parameter.site_name">Официальная платёжная страница, Красивое название</span></h1>
+<ol class="m-t-40 m-l-20 hint-text">
+<li class="m-b-10 " data-fill-indicator="manager"><span class="editor-pane-text" data-template-path="pages.4091._parameter.payform_checklist_1">Согласуйте заказ с менеджером</span></li>
+<li class="m-b-10 " data-fill-indicator="order_id"><span class="editor-pane-text" data-template-path="pages.4091._parameter.payform_checklist_2">Введите ФИО</span></li>
+<li class="m-b-10 " data-fill-indicator="customer_phone"><span class="editor-pane-text" data-template-path="pages.4091._parameter.paypreset_checklist_3">Введите номер мобильного телефона</span></li>
+<li class="m-b-10 " data-fill-indicator="order_sum"><span class="editor-pane-text" data-template-path="pages.4091._parameter.payform_checklist_4">Укажите сумму оплаты</span></li>
+<li class="m-b-10 ">Нажмите кнопку «Оплатить»</li>
+<li class="m-b-10">Выберите метод оплаты</li>
+</ol>
+<p class="m-t-40 hint-text">
+<i class="fa fa-warning" data-test="test1 143"></i> Для приёма платежей мы используем надёжное и безопасное платёжное решение. Процедура оплаты проста, деньги зачисляются мгновенно. Ваши данные передаются по&nbsp;защищённым каналам связи.
+</p>
+<div class="m-t-20">
+По любым вопросам обращайтесь:<br>
+<div class="edit-pane-action-hidden">
+<span class="fs-32">8 (495) 150-08-71</span>
+<br>
+</div>
+<div class="edit-pane-action-hidden break">
+<a href="https://prodamus.ru/" target="https://prodamus.ru/">https://prodamus.ru/</a><br>
+</div>
+</div>
+<a class="close-selector-btn btn m-l-0">Закрыть</a>
+</div>
+</div>
+</div>
+<script src="/getfile/widgets/jquery.allwidgets-1.11.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="/assets/plugins/jquery/jquery-easy.js" type="text/javascript"></script>
+<script src="/assets/plugins/moment/moment-with-locales.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/bootstrapv3/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="/assets/plugins/bootstrap-datepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<script src="/assets/plugins/classie/classie.js" type="text/javascript"></script>
+<script src="/assets/plugins/switchery/0.8.2/switchery.js" type="text/javascript"></script>
+<script src="/assets/plugins/jquery-formstyler/jquery.formstyler.js?v=1"></script>
+<script src="/assets/plugins/jquery-mask/jquery.maskedinput.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/intl-tel-input/build/js/intlTelInput-jquery.js" charset="utf-8"></script>
+<script src="/assets/plugins/clipboard/clipboard.min.js" type="text/javascript"></script>
+<script src="/authorize/script.js?v=1" type="text/javascript" charset="utf-8"></script>
+<script defer src="/assets/js/popper.min.js"></script>
+<script defer src="/assets/js/tippy-bundle.umd.min.js"></script>
+<script src="/assets/js/site.js?v=32" type="text/javascript" charset="utf-8"></script>
+<script src="/assets/plugins/fingerprint/iife.min.js?v=2"></script>
+<script src="/assets/js/stat-fingerprint.js?v=3" type="text/javascript" charset="utf-8"></script>
+<script src="/assets/js/site-paygoods.js?v=13.1.7" type="text/javascript"></script>
+<!-- Editor -->
+<!-- /Editor -->
+<script>
+	prodamus = prodamus || {};
+	prodamus.auth = prodamus.auth || {};
+	prodamus.fingerprint = prodamus.fingerprint || {};
+	prodamus.auth.formlistExclude = prodamus.auth.formlistExclude || [];
+	prodamus.auth.formlistExclude.push('registration');
+
+	if (window == window.top) {
+		$(function(){
+			$('html').removeClass('vk');
+		});
+	}
+
+	// detect touch
+	if (!("ontouchstart" in document.documentElement)) {
+		document.documentElement.className += " no-touch";
+		//console.log("ontouchstart not in document.documentElement");
+	}
+	else {
+		//console.log("ontouchstart in document.documentElement");
+	}
+
+	$('a').on('touchstart touchend', function(e) {
+		$(this).toggleClass('touch-over');
+	});
+</script>
+<script>
+    prodamus.fingerprint.url = "/";
+</script>
+<script src="/assets/js/detect.min.js"></script>
+<script src="/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+<script>
+	$(function(){
+		var uagent = detect.parse(navigator.userAgent)
+			, cagent = $.cookie('__ua_detect1');
+
+		if (uagent && (!cagent || cagent != uagent.browser.name)) {
+			$.ajax({
+				url : '/rest/uagent/',
+				method : 'POST',
+				data : uagent,
+				// dataType : 'json',
+				error : function(jqXHR, textStatus, errorThrown) {
+					console.log('error', jqXHR, textStatus, errorThrown);
+					console.log('cagent = ', $.cookie('__ua_detect1'));
+				},
+				success : function(data, textStatus, jqXHR) {
+					console.log('success', data, textStatus, jqXHR);
+					console.log('cagent = ', $.cookie('__ua_detect1'));
+				},
+				complete : function(jqXHR, textStatus) {
+					console.log('complete', jqXHR, textStatus);
+					console.log('cagent = ', $.cookie('__ua_detect1'));
+				},
+			});
+			console.log($.ajax);
+		}
+	});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+	(function(m,e,t,r,i,k,a){
+		m[i]=m[i]||function(){
+			(m[i].a=m[i].a||[]).push(arguments)
+		};
+		m[i].l=1*new Date();
+		k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+	})
+	(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+	ym(84880090, "init", {
+		clickmap:true,
+		trackLinks:true,
+		accurateTrackBounce:true,
+		webvisor:true
+	});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/84880090" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>
+2025-03-09 22:33:55,167 - __main__ - INFO - Инициализация комманд
+2025-03-09 22:33:55,251 - __main__ - INFO - Запуск воркера
+2025-03-09 22:33:55,477 - __main__ - INFO - Запуск бота
+2025-03-09 22:33:55,491 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:33:55,491 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:33:55,491 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-09 22:33:55,493 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:33:55,493 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:33:55,493 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-09 22:33:55,495 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:33:55,495 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:33:55,495 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-09 22:33:55,497 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:33:55,497 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:33:55,497 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-09 22:33:55,500 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:33:55,500 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:33:55,500 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-09 22:33:55,502 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:33:55,502 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:33:55,502 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-09 22:33:55,506 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:33:55,506 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:33:55,506 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-09 22:33:55,508 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:33:55,508 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:33:55,508 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-09 22:33:55,534 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-09 22:34:11,072 - src.scripts.payment.service - INFO - <!DOCTYPE html>
+<html lang="ru" class="">
+<head>
+<meta charset="windows-1251" />
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<title>Оплатить онлайн | gradov.payform.ru</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link href="/assets/plugins/bootstrapv3/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" />
+<link href="/assets/plugins/bootstrap-datepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css" />
+<link href="/assets/plugins/font-awesome/css/font-awesome.css?v=4.7" rel="stylesheet" type="text/css" />
+<link href="/assets/plugins/switchery/css/switchery.min.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="/assets/plugins/jquery-metrojs/MetroJs.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="/assets/plugins/jquery-formstyler/jquery.formstyler.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/assets/plugins/intl-tel-input/build/css/intlTelInput.css?v=1">
+<link href="/assets/pages/css/pages.css?v=31" rel="stylesheet" type="text/css" />
+<link href="/assets/pages/css/quiz.css?v=2" rel="stylesheet" type="text/css" />
+<link href="/assets/pages/css/pages-icons.css" rel="1stylesheet" type="text/css">
+<link href="/style.css" rel="stylesheet" type="text/css" />
+<link href="/getfile/widgets/css/jquery.ui.1.8.17.custom.css" rel="stylesheet" type="text/css" />
+<link href="/getfile/widgets/jquery.allwidgets.css" rel="stylesheet" type="text/css" />
+<link href="/authorize/style.css" rel="stylesheet" type="text/css" media="all" />
+<!-- Editor -->
+<!-- /Editor -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<!-- jQuery Modal -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+</head>
+<body>
+<script>
+	window.siteInFrame = (window!=window.top);
+</script>
+<style>
+</style>
+<div class="table no-margin full-height">
+<div class="table-tr">
+<div class="table-td" id="table-form">
+<div class="full-width full-height table m-b-0 padding-40 ">
+<div class="table-tr h-100">
+<div class="table-td v-align-top h-100">
+<div class="user-logo h-100 editor-pane-img" data-template-path="domain._parameter.logo_url"><img class="mwp-100 full-height" src=""></div>
+</div>
+</div>
+<div class="table-tr">
+<div class="table-td align-left p-t-40 p-b-40">
+<script type="text/javascript">
+	window.localStorage.setItem('setNotBackRedirect', 0);
+</script>
+<div class="mw-700 centered">
+<div class="hidden showPaidContent">
+<input type="hidden" name="showPaidContent" value="">
+<input type="hidden" name="paidContentOrderId" value="">
+<input type="hidden" name="orderSign" value="">
+</div>
+<div class="paid-content-placeholder-timeout hidden padding-20 m-b-30 fs-18">
+<i class="fa fa-spinner fa-pulse fa-1x fa-fw orange"></i> Подтверждение от банка задерживается. Материалы придут Вам на указанную электронную почту.
+</div>
+<div id="debug" style="display: none;">
+$params.payform_disabled = 
+$params.payform_refresh_visible = 0
+$smarty.server.PRODAMUS.MANAGER_ACCESS = NULL
+$showRefresh = bool(false)
+</div>
+<form action="/" method="POST" id="general_paygoods_form" class="paygoods" data-default-product-name="доступ к обучающим материалам">
+<input id="applepay" type="hidden" name="applepay" value="0" />
+<input id="googlepay" type="hidden" name="googlepay" value="0" />
+<input id="invoice_id" type="hidden" name="invoice_id" value="" />
+<input type="hidden" name="source_invoice_id" value="" />
+<script>
+			let ApplePayError;
+
+			if (!window.ApplePaySession) {
+				applePayError('Браузер не поддерживается');
+			}
+			else if (!ApplePaySession.canMakePayments()) {
+				applePayError('Устройство не поддерживается');
+			}
+			else {
+				document.getElementById('applepay').value = 1;
+			}
+
+			function applePayError(msg) {
+				document.getElementById('applepay').value = 0;
+				// console.log(msg);
+
+				// document.getElementById('ApplePayMessages').innerHTML = '<div class="break"><i class="fa fa-warning"></i> ApplePay: ' + msg + '</div>';
+				// document.getElementById('ApplePayMessages').style.display = 'block';
+			}
+		</script>
+<label><span class="editor-pane-text" data-template-path="pages.1944361._parameter.paygoods_label_order">номер заказа</span>:</label>
+<div class="row">
+<div class="col-xs-6 p-l-0 p-r-0">
+<div class="input-group full-width h-45 m-b-15 input-order-id ">
+<span class="input-group-addon master h-45"><b class="grey">№</b></span>
+<input
+type="text"
+name="order_id"
+placeholder="счет-001"
+class="form-control h-45"
+value=""
+data-fill-indicator-target="order_id"
+>
+</div>
+</div>
+<div class="col-xs-6 p-r-0 align-right h-45 lh-40">
+&nbsp;
+</div>
+</div>
+<!-- Поле Телефон : Начало  -->
+<label>
+<span class="editor-pane-text" data-template-path="pages.1944361._parameter.paygoods_label_phone">
+мобильный телефон</span>:
+</label>
+<label class="addon-right pull-right">
+<span class="tt padding-0" data-tooltip="Если вы хотите указать номер телефона другой страны, то нажмите на флажок и выберите необходимый вариант кода.">
+<a class="another-country cursor nowrap info">другая страна?</a>
+</span>
+</label>
+<div class="input-group full-width h-45 m-b-15  ">
+<span class="input-group-addon master h-45"><i class="fa fa-phone"></i></span>
+<input
+type="tel"
+name="customer_phone"
+placeholder="+7 000 000-00-00"
+class="form-control h-45 intlTelInput"
+data-init-plugin="jquery.inputmask"
+data-mask-format="+7 000 000-00-00"
+value=""
+data-fill-indicator-target="customer_phone"
+>
+<input type="hidden" name="customer_phone_flag" value="default">
+</div>
+<!-- Поле Телефон : Конец  -->
+<label><span class="editor-pane-text" data-template-path="pages.1944361._parameter.paygoods_label_email">e-mail адрес</span>:</label>
+<div class="input-group full-width h-45 m-b-15 ">
+<span class="input-group-addon master h-45"><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
+<input
+type="text"
+name="customer_email"
+placeholder="email@domain.com"
+class="form-control h-45"
+value=""
+data-fill-indicator-target="customer_email"
+>
+</div>
+<div class="row currency">
+<div class="col-xs-6 col-sm-6 p-l-0 p-r-0 m-b-10">
+<label>валюта:</label>
+<div class="input-group full-width input-currency">
+<span class="input-group-addon master h-45"><b class="grey currency-icon">&#8381;</b></span>
+<input type="hidden" name="currency" value="rub" />
+<input type="text" name="currency" value="RUB" class="form-control h-45" disabled />
+</div>
+</div>
+</div>
+<div class="full-width row m-b-30 hidden">
+<div class="col-xs-6 p-l-0">
+<label>сумма заказа:</label>
+<div class="input-group full-width h-45">
+<span class="input-group-addon master h-45"><b class="grey currency-icon">&#8381;</b></span>
+<input
+type="text"
+id="order_sum_base"
+name="order_sum_base"
+placeholder="00.00"
+class="form-control h-45 money"
+value=""
+disabled
+>
+</div>
+</div>
+<div class="col-xs-6 p-l-0">
+<label>сумма скидки:</label>
+<div class="input-group full-width h-45">
+<span class="input-group-addon master h-45"><b class="grey currency-icon">&#8381;</b></span>
+<input
+type="text"
+name="order_discount"
+placeholder="00.00"
+class="form-control product-discount h-45 money"
+value="0"
+autocomplete="off"
+disabled
+>
+</div>
+</div>
+</div>
+<div class="full-width row m-b-30">
+<div class="col-xs-6 p-l-0">
+<label>сумма к оплате:</label>
+<div class="input-group full-width h-45 ">
+<span class="input-group-addon master h-45"><b class="grey currency-icon">&#8381;</b></span>
+<input
+id="order_sum"
+type="text"
+name="order_sum"
+placeholder="00.00"
+class="form-control h-45 money"
+value=""
+data-fill-indicator-target="order_sum"
+>
+</div>
+</div>
+<div class="col-xs-7 col-sm-3 p-l-0 discount-row">
+<label>&nbsp;</label>
+<div class="input-group full-width h-45 lh-45 hidden">
+<span class="discount price-box text-black inline nowrap h-45 lh-45">с учетом скидки. Без скидки <span></span> <span class="currency-icon">&#8381;</span></span>
+</div>
+</div>
+</div>
+<div class="full-width text-center " id="btnPay-wrapper">
+<button
+type="submit"
+name="do"
+value="pay"
+class="btn btn-lg btn-danger p-r-30 p-l-30"
+data-action="https://gradov.payform.ru/"
+onclick="this.form.action=this.dataset.action"
+>				<span class="currency-icon">&#8381;</span>
+Оплатить</button>
+</div>
+<p>Нажимая кнопку «ОПЛАТИТЬ» я даю <a target="_blank" href="/assets/pdf/consent_to_the_processing_of_personal_data.pdf">Согласие на обработку персональных данных</a> и принимаю <a target="_blank" href="/assets/pdf/privacy.pdf">Политику обработки персональных данных ООО «Продамус»</a> (не является продавцом Вашего заказа)</p>
+<input type="hidden" name="date" value="">
+<input type="hidden" name="request_origin" value="webiface">
+</form>
+</div>
+<div class="mw-500 centered text-center p-t-30 hidden-md hidden-lg hint-text">
+<i class="fa fa-warning"></i> Нажимая на кнопки и отправляя данные формы, Вы даёте согласие на обработку <a href="/warranty/privacy/">персональных данных</a> и соглашаетесь с <a href="/warranty/privacy/">политикой конфиденциальности</a>.
+</div>
+</div>
+</div>
+<div class="table-tr minh-130 h-130">
+<div class="table-td v-align-bottom b-t b-dashed b-grey select-tab">
+<div class="mw-700 centered">
+<div class="row m-b-20 m-t-25">
+<div class="col-xs-3 text-center editor-pane-img img-gray lh-40" data-template-path="page._parameter.more_info01"><img class="mw-60 mh-40" src="/assets/img/icon-cards.png"></div>
+<div class="col-xs-3 text-center editor-pane-img img-gray lh-40" data-template-path="page._parameter.more_info02"><img class="mw-60 mh-40" src="/assets/img/icon-yamoney.png"></div>
+<div class="col-xs-3 text-center editor-pane-img img-gray lh-40" data-template-path="page._parameter.more_info03"><img class="mw-60 mh-40" src="/assets/img/icon-applepay.png"></div>
+<div class="col-xs-3 text-center editor-pane-img img-gray lh-40" data-template-path="page._parameter.more_info04"><img class="mw-60 mh-40" src="/assets/img/icon-googlepay.png"></div>
+</div>
+</div>
+<div class="m-b-25 fs-16 hint-text m-b-25">
+<span class="btn hidden-xs active">Оплата онлайн</span>
+<a href="/warranty/information/" class="btn">Юридические сведения</a>
+<a href="/warranty/privacy/" class="btn hidden-xs">Конфиденциальность</a>
+<a href="/warranty/complaint/" class="btn btn-complaint">Жалоба</a>
+<a href="/warranty/privacy/" class="btn hidden-sm hidden-md hidden-lg">Конфиденциальность</a>
+<a href="/authorize/login/" class="btn" data-prodamus-open="auth.login"><i class="fa fa-lock hint-text"></i></a>
+<div class="login-point" style="display:none;"></div>
+</div>
+<div class="full-width text-center">
+<a href="https://payform.ru/" target="payform"><img height="22" src="/assets/img/prodamus.png"></a>
+</div>
+</div>
+</div>
+<div class="selector-btn instruction ru">Инструкции</div>
+</div>
+</div>
+<div class="table-td bg-warning right-block hidden-xs hidden-sm align-left padding-40 v-align-top" id="table-instruction">
+<a class="back-selector-btn btn m-l-0"><i class="fa fa-long-arrow-left"></i> <span id="back-selector-text"><span></a>
+<h1 class="p-r-25"><span class="editor-pane-line" data-template-path="domain._parameter.site_name">Официальная платёжная страница, доступ к обучающим материалам</span></h1>
+<ol class="m-t-40 m-l-20 hint-text">
+<li class="m-b-10 " data-fill-indicator="manager"><span class="editor-pane-text" data-template-path="pages.1944361._parameter.payform_checklist_1">Согласуйте заказ с менеджером</span></li>
+<li class="m-b-10 " data-fill-indicator="order_id"><span class="editor-pane-text" data-template-path="pages.1944361._parameter.payform_checklist_2">Введите номер заказа</span></li>
+<li class="m-b-10 " data-fill-indicator="customer_phone"><span class="editor-pane-text" data-template-path="pages.1944361._parameter.paypreset_checklist_3">Введите номер мобильного телефона</span></li>
+<li class="m-b-10 " data-fill-indicator="order_sum"><span class="editor-pane-text" data-template-path="pages.1944361._parameter.payform_checklist_4">Укажите сумму оплаты</span></li>
+<li class="m-b-10 ">Нажмите кнопку «Оплатить»</li>
+<li class="m-b-10">Выберите метод оплаты</li>
+</ol>
+<p class="m-t-40 hint-text">
+<i class="fa fa-warning" data-test="test1 51302"></i> Для приёма платежей мы используем надёжное и безопасное платёжное решение. Процедура оплаты проста, деньги зачисляются мгновенно. Ваши данные передаются по&nbsp;защищённым каналам связи.
+</p>
+<div class="m-t-20">
+По любым вопросам обращайтесь:<br>
+<div class="edit-pane-action-hidden">
+<span class="fs-32">8 (981) 688-55-55</span>
+<br>
+</div>
+<div class="edit-pane-action-hidden break">
+<a href="https://dzen.guru/" target="https://dzen.guru/">https://dzen.guru/</a><br>
+<a href="mailto:dzenguru.students@yandex.ru">dzenguru.students@yandex.ru</a>
+</div>
+</div>
+<a class="close-selector-btn btn m-l-0">Закрыть</a>
+</div>
+</div>
+</div>
+<script src="/getfile/widgets/jquery.allwidgets-1.11.1.js" type="text/javascript" charset="utf-8"></script>
+<script src="/assets/plugins/jquery/jquery-easy.js" type="text/javascript"></script>
+<script src="/assets/plugins/moment/moment-with-locales.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/bootstrapv3/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="/assets/plugins/bootstrap-datepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<script src="/assets/plugins/classie/classie.js" type="text/javascript"></script>
+<script src="/assets/plugins/switchery/0.8.2/switchery.js" type="text/javascript"></script>
+<script src="/assets/plugins/jquery-formstyler/jquery.formstyler.js?v=1"></script>
+<script src="/assets/plugins/jquery-mask/jquery.maskedinput.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js" type="text/javascript"></script>
+<script src="/assets/plugins/intl-tel-input/build/js/intlTelInput-jquery.js" charset="utf-8"></script>
+<script src="/assets/plugins/clipboard/clipboard.min.js" type="text/javascript"></script>
+<script src="/authorize/script.js?v=1" type="text/javascript" charset="utf-8"></script>
+<script defer src="/assets/js/popper.min.js"></script>
+<script defer src="/assets/js/tippy-bundle.umd.min.js"></script>
+<script src="/assets/js/site.js?v=32" type="text/javascript" charset="utf-8"></script>
+<script src="/assets/plugins/fingerprint/iife.min.js?v=2"></script>
+<script src="/assets/js/stat-fingerprint.js?v=3" type="text/javascript" charset="utf-8"></script>
+<script src="/assets/js/site-paygoods.js?v=13.1.7" type="text/javascript"></script>
+<!-- Editor -->
+<!-- /Editor -->
+<script>
+	prodamus = prodamus || {};
+	prodamus.auth = prodamus.auth || {};
+	prodamus.fingerprint = prodamus.fingerprint || {};
+	prodamus.auth.formlistExclude = prodamus.auth.formlistExclude || [];
+	prodamus.auth.formlistExclude.push('registration');
+
+	if (window == window.top) {
+		$(function(){
+			$('html').removeClass('vk');
+		});
+	}
+
+	// detect touch
+	if (!("ontouchstart" in document.documentElement)) {
+		document.documentElement.className += " no-touch";
+		//console.log("ontouchstart not in document.documentElement");
+	}
+	else {
+		//console.log("ontouchstart in document.documentElement");
+	}
+
+	$('a').on('touchstart touchend', function(e) {
+		$(this).toggleClass('touch-over');
+	});
+</script>
+<script>
+    prodamus.fingerprint.url = "/";
+</script>
+<script src="/assets/js/detect.min.js"></script>
+<script src="/assets/plugins/jquery-cookie/jquery.cookie.js"></script>
+<script>
+	$(function(){
+		var uagent = detect.parse(navigator.userAgent)
+			, cagent = $.cookie('__ua_detect1');
+
+		if (uagent && (!cagent || cagent != uagent.browser.name)) {
+			$.ajax({
+				url : '/rest/uagent/',
+				method : 'POST',
+				data : uagent,
+				// dataType : 'json',
+				error : function(jqXHR, textStatus, errorThrown) {
+					console.log('error', jqXHR, textStatus, errorThrown);
+					console.log('cagent = ', $.cookie('__ua_detect1'));
+				},
+				success : function(data, textStatus, jqXHR) {
+					console.log('success', data, textStatus, jqXHR);
+					console.log('cagent = ', $.cookie('__ua_detect1'));
+				},
+				complete : function(jqXHR, textStatus) {
+					console.log('complete', jqXHR, textStatus);
+					console.log('cagent = ', $.cookie('__ua_detect1'));
+				},
+			});
+			console.log($.ajax);
+		}
+	});
+</script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+	(function(m,e,t,r,i,k,a){
+		m[i]=m[i]||function(){
+			(m[i].a=m[i].a||[]).push(arguments)
+		};
+		m[i].l=1*new Date();
+		k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+	})
+	(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+	ym(84880090, "init", {
+		clickmap:true,
+		trackLinks:true,
+		accurateTrackBounce:true,
+		webvisor:true
+	});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/84880090" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>
