@@ -2572,3 +2572,4 @@ FROM users
 WHERE users.user_id = $1::VARCHAR]
 [parameters: ('944360812',)]
 (Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-10 01:49:29,663 - src.scripts.queue.worker - ERROR - Error starting parsing worker: [Errno 111] Connect call failed ('172.22.0.5', 5672)

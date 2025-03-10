@@ -324,7 +324,6 @@ class AnalyticsORM:
                         cast(User.user_id, String).ilike(
                             f"%{search}%"
                         ),  # Приводим user_id к строке
-                        User.referral_link.ilike(f"%{search}%"),
                         User.use_referral_link.ilike(f"%{search}%"),
                     )
                 )
@@ -460,7 +459,6 @@ class AnalyticsORM:
                 user_id=user.id, session=session, ban=data.get("banned_user", False)
             )
             user.energy = Decimal(data["energy"]) if "energy" in data else user.energy
-            user.referral_link = data.get("referral_link", user.referral_link)
             user.use_referral_link = data.get(
                 "use_referral_link", user.use_referral_link
             )
