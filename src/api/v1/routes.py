@@ -102,4 +102,4 @@ async def change_user_data(user_id: int, user_data: ChangeUserSchema):
 
         return JSONResponse(content=response, status_code=200)
     except Exception as e:
-        return JSONResponse(content={"status": False, "user_id": user_id}, status_code=500)
+        return JSONResponse(content={"status": False, "error": str(e), "user_id": user_id}, status_code=500)
