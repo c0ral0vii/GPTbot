@@ -30,6 +30,7 @@ class Settings(BaseSettings):
     FLUX_KEY: str = None
     DALL_KEY: str = None
     # YOOMONEY_API
+    YOOMONEY_API: str = None
     PRODAMUS_API: str = None
 
     # admin token
