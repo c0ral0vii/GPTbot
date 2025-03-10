@@ -187,7 +187,6 @@ class AdminPanel {
 
         document.getElementById('user_id').value = data.user_id;
         document.getElementById('energy').value = data.energy;
-        document.getElementById('referral_link').value = data.referral_link;
         document.getElementById('use_referral_link').value = data.use_referral_link;
 
         const premiumCheckbox = document.getElementById('premium_active');
