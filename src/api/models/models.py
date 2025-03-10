@@ -9,9 +9,9 @@ class UserLoginSchema(BaseModel):
 
 class ChangeUserSchema(BaseModel):
     banned_user: Optional[bool] = False
-    energy: int
+    energy: int | str
     premium_active: Optional[bool] = False
     use_referral_link: Optional[str] = None
-    user_id: int
+    user_id: int | str
 
     premium_dates: Optional[Dict[str, str]] = None
