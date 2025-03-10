@@ -95,16 +95,6 @@ services:
     networks:
       - admin_network
 
-  certbot:
-    image: certbot/certbot
-    volumes:
-      - ./certbot/www:/var/www/certbot
-      - ./certbot/conf:/etc/letsencrypt
-    entrypoint: sh -c "trap exit TERM; while :; do certbot renew --webroot -w /var/www/certbot && sleep 12h & wait $${!}; done"
-    depends_on:
-      - nginx
-    networks:
-      - admin_network
 
 volumes:
 #  rabbitmq_data:
