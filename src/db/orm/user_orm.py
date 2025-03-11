@@ -37,9 +37,9 @@ class UserORM:
             if user:
                 user.premium_status = premium_user
             else:
-                await session.add(premium_user)
+                session.add(premium_user)
 
-            session.commit()
+            await session.commit()
             return premium_user
 
     @staticmethod
