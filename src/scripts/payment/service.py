@@ -16,7 +16,7 @@ class PaymentService:
 
         self.API_ENDPOINT = "https://api.yookassa.ru/v3/"
 
-        Configuration.configure("1020161", self.API_KEY)
+        Configuration.configure("1013385", self.API_KEY)
 
     async def generate_yookassa_link(self, user_id: int) -> Dict[str, Any]:
         """Генерация ссылки на покупку"""
