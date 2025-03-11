@@ -14,7 +14,7 @@ async def get_payment_data(data: PaymentSchema):
     payment_info = data.model_dump()
 
     if payment_info["event"] == "payment.succeeded":
-        user_id = payment_info["object"]["metadata"]["user_id"]
+        user_id = int(payment_info["object"]["metadata"]["user_id"])
 
         await UserORM.add_energy(user_id, 1000)
 
