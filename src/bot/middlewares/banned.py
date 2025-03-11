@@ -11,7 +11,7 @@ class BlockMiddleware(BaseMiddleware):
 
         key = f"{user_id}:block_user"
 
-        if redis_manager.get(key):
+        if await redis_manager.get(key):
             await event.answer(
                 "⛔ Вы были заблокированы. Вам запрещено пользоваться ботом!"
             )

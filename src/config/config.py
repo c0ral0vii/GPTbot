@@ -43,9 +43,9 @@ class Settings(BaseSettings):
     @property
     def TEXT_GPT(self):
         return {
-            "chatgpt4o": {"energy_cost": 2, "select_model": "ChatGPT 4o"},
-            "claude35": {"energy_cost": 3, "select_model": "Claude Sonnet 3.5"},
-            "claude37": {"energy_cost": 4, "select_model": "Claude Sonnet 3.7"},
+            "chatgpt4o": {"energy_cost": 2, "select_model": "ChatGPT"},
+            "claude35": {"energy_cost": 3, "select_model": "Claude Sonnet"},
+            "claude37": {"energy_cost": 4, "select_model": "Claude Sonnet"},
         }
 
     @property
