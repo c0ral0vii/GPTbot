@@ -56,8 +56,8 @@ async def start_handler(message: types.Message, state: FSMContext):
             "• /code — Работа с кодом. \n"
             "\n*⚙️ Управление:* \n\n"
             "• /profile — Баланс генераций \n"
-            "• /invite — Пригласить друга (+20💎 генераций) \n"
-            "• /premium — 🌟 Premium подписка (1000💎 генераций) \n\n"
+            "• /invite — Пригласить друга (+20⚡ генераций) \n"
+            "• /premium — 🌟 Premium подписка (1000⚡ генераций) \n\n"
             "/start — Сменить нейросеть",
             parse_mode="Markdown",
             reply_markup=await main_menu_kb(),
@@ -74,7 +74,7 @@ async def invite_handler(message: types.Message, state: FSMContext, bot: Bot):
     try:
         referral_link = await UserORM.get_referral_link(message.from_user.id)
         await message.answer(
-            f"Регистрируйся по ссылке и получишь +20 ⚡ бесплатной энергии:\n"
+            f"🚀Регистрируйся по ссылке и получишь +20 ⚡ бесплатной энергии:\n"
             f"https://t.me/woome_bot?start={referral_link}",
         )
 
