@@ -15,3 +15,9 @@ class ChangeUserSchema(BaseModel):
     user_id: int
 
     premium_dates: Optional[Dict[str, str]] = None
+
+class BonusLinkSchema(BaseModel):
+    energy_bonus: str | int = 0
+    link: str
+    active: bool = True
+    active_count: int | str = 1

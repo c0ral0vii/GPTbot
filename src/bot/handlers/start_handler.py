@@ -28,7 +28,7 @@ async def start_handler(message: types.Message, state: FSMContext):
 
                 if referral_link != "/start":
                     user = await UserORM.create_user(
-                        message.from_user.id
+                        message.from_user.id, int(referral_link)
                     )
                     logger.debug(user)
 

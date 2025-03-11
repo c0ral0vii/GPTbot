@@ -4,7 +4,7 @@ from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-from src.api.v1 import routes, auth
+from src.api.v1 import routes, auth, payment
 
 
 app = FastAPI(title="Admin Woome AI")
@@ -24,6 +24,7 @@ app.mount("/static", StaticFiles(directory=static_dir), name="static")
 
 app.include_router(routes.router, prefix="/api/v1", tags=["Analytic API"])
 app.include_router(auth.router, prefix="/api/auth", tags=["Auth API"])
+app.include_router(payment.router, prefix="/payment", tags=["Payment API"])
 
 
 @app.get(

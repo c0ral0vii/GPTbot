@@ -18,11 +18,12 @@ from src.bot.handlers import (
 )
 from src.bot.middlewares.antiflood import RateLimitMiddleware
 from src.bot.filters.chat_type import ChatTypeFilter
-from src.scripts.payment.service import PaymentService
+from src.bot.middlewares.banned import BlockMiddleware
 
 bot = Bot(token=settings.BOT_API)
 dp = Dispatcher(storage=redis_storage(redis=redis_manager.get_redis_manager()))
 
+dp.message.middleware(BlockMiddleware())
 dp.message.middleware(RateLimitMiddleware())
 dp.message.filter(ChatTypeFilter(["private"]))
 

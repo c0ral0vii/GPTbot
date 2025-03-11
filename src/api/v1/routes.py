@@ -3,7 +3,7 @@ import asyncio
 from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
 from src.db.orm.user_orm import AnalyticsORM
-from src.api.models.models import ChangeUserSchema
+from src.api.models.models import ChangeUserSchema, BonusLinkSchema
 from src.scripts.queue.rabbit_queue import model
 
 router = APIRouter()
@@ -103,3 +103,13 @@ async def change_user_data(user_id: int, user_data: ChangeUserSchema):
         return JSONResponse(content=response, status_code=200)
     except Exception as e:
         return JSONResponse(content={"status": False, "error": str(e), "user_id": user_id}, status_code=500)
+
+
+@router.post("/bonus_link/add")
+async def add_new_bonus_link(data: BonusLinkSchema):
+    try:
+        response = await AnalyticsORM.add_or_change_promo(data.model_dump())
+
+        return JSONResponse(content=response, status_code=200)
+    except Exception as e:
+        return JSONResponse(content={"status": False, "error": str(e)}, status_code=500)

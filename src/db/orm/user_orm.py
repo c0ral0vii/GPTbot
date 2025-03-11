@@ -19,7 +19,7 @@ logger = setup_logger(__name__)
 class UserORM:
     @staticmethod
     async def create_user(
-        user_id: int, use_referral_link: str = None
+        user_id: int, use_referral_link: int = None
     ) -> dict[str, Any]:
 
         try:
@@ -323,8 +323,7 @@ class AnalyticsORM:
                     or_(
                         cast(User.user_id, String).ilike(
                             f"%{search}%"
-                        ),  # Приводим user_id к строке
-                        User.use_referral_link.ilike(f"%{search}%"),
+                        ),
                     )
                 )
 
@@ -390,7 +389,7 @@ class AnalyticsORM:
             stmt = select(BannedUser).where(BannedUser.user_id == user.id)
             result = await session.execute(stmt)
             banned_user = result.scalars().first()
-            banned = bool(banned_user)
+
 
             created_date = (
                 user.created.strftime("%H:%M:%S %Y-%m-%d") if user.created else None
@@ -420,7 +419,7 @@ class AnalyticsORM:
                 "premium_dates": (
                     {"from": premium_from, "to": premium_to} if premium_active else None
                 ),
-                "banned_user": banned,
+                "banned_user": True if banned_user else False,
                 "created": created_date,
                 "last_used": last_used_date,
             }
@@ -547,3 +546,16 @@ class AnalyticsORM:
             session.add(new_bonus_link)
             await session.commit()
             return {"success": True}
+
+
+class BannedUserORM:
+    @staticmethod
+    async def check_banned_user(user_id: int) -> bool:
+        async with async_session() as session:
+            stmt = select(BannedUser).where(BannedUser.user_id == user_id)
+            result = await session.execute(stmt)
+            banned_user = result.scalars().one_or_none()
+
+            if banned_user:
+                return True
+            return False
