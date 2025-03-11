@@ -90,6 +90,8 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./src/api/static:/app/src/api/static
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/www/certbot:/var/www/certbot
     depends_on:
       - db
       - admin
