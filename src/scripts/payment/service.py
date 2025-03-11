@@ -37,9 +37,6 @@ class PaymentService:
                 "capture": True,
                 "description": "Покупка премиума на 1 месяц",
                 "receipt": {
-                    "customer": {
-                        "user_id": user_id,
-                    },
                     "items": [
                         {
                             "description": "Премиум подписка",
