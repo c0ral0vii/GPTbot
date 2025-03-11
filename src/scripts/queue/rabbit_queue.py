@@ -161,7 +161,9 @@ class RabbitQueue:
                 queue_stats[queue_name] = {
                     "name": queue_name,
                     "message_count": message_count,
-                    "status": "active" if message_count > 0 else "empty",  # Determine the status based on message count
+                    "status": (
+                        "active" if message_count > 0 else "empty"
+                    ),  # Determine the status based on message count
                 }
 
             return queue_stats

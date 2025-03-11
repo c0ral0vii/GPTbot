@@ -15,6 +15,13 @@ class AnswerMessage:
         self.logger = setup_logger(__name__)
         self.bot = Bot(token=settings.BOT_API)
 
+    async def send_notification(self, data: Dict[str, Any]) -> bool:
+        try:
+            await self.bot.send_message(chat_id=data["user_id"], text=data["text"])
+            return True
+        except Exception as e:
+            return False
+
     async def send_referral_message(self, data: Dict[str, Any]) -> None:
         try:
             await self.bot.send_message(chat_id=data["user_id"], text=data["text"])

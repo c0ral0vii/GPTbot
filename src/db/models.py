@@ -42,11 +42,13 @@ class User(Base):
     premium_status: Mapped["PremiumUser"] = relationship(back_populates="user")
     user_config_model: Mapped["UserConfig"] = relationship(back_populates="user")
 
+
 class UserConfig(Base):
     __tablename__ = "user_config"
 
     user_id: Mapped["User"] = mapped_column(ForeignKey("users.id"), primary_key=True)
     user: Mapped["User"] = relationship("User", back_populates="user_config_model")
+
 
 class PremiumUser(Base):
     __tablename__ = "premium_users"

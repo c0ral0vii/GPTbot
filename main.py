@@ -73,6 +73,7 @@ async def run_workers():
     task = asyncio.create_task(worker.start())
     await task
 
+
 if __name__ == "__main__":
     asyncio.run(run())
     # payment = PaymentService()

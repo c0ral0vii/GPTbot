@@ -33,9 +33,7 @@ def upgrade() -> None:
     op.create_table(
         "bonus_links",
         sa.Column("id", sa.Integer(), nullable=False),
-        sa.Column(
-            "energy_bonus", sa.DECIMAL(precision=15, scale=1), nullable=False
-        ),
+        sa.Column("energy_bonus", sa.DECIMAL(precision=15, scale=1), nullable=False),
         sa.Column("link", sa.String(), nullable=True),
         sa.Column("active", sa.Boolean(), nullable=False),
         sa.Column("active_count", sa.Integer(), nullable=False),

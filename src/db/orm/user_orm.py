@@ -18,6 +18,31 @@ logger = setup_logger(__name__)
 
 class UserORM:
     @staticmethod
+    async def create_premium_user(user_id: int) -> Optional[PremiumUser]:
+        today = datetime.now().date()
+        end_date = today + timedelta(days=30)
+
+        async with async_session() as session:
+            stmt = select(User).where(User.user_id == user_id).options(selectinload(User.premium_status))
+            result = await session.execute(stmt)
+            user = result.scalar_one_or_none()
+
+            premium_user = PremiumUser(
+                premium_active=True,
+                premium_from_date=today,
+                premium_to_date=end_date,
+                user_id=user.id,
+            )
+
+            if user:
+                user.premium_status = premium_user
+            else:
+                await session.add(premium_user)
+
+            session.commit()
+            return premium_user
+
+    @staticmethod
     async def create_user(
         user_id: int, use_referral_link: int = None
     ) -> dict[str, Any]:
@@ -141,9 +166,7 @@ class UserORM:
                 # result = await session.execute(stmt)
                 # user = result.scalar_one_or_none()
 
-                stmt = select(func.count()).where(
-                    User.use_referral_link == user_id
-                )
+                stmt = select(func.count()).where(User.use_referral_link == user_id)
 
                 result = await session.execute(stmt)
                 referrals_count = result.scalar()
@@ -157,7 +180,11 @@ class UserORM:
     async def get_user(user_id: int) -> User | None:
         async with async_session() as session:
             try:
-                stmt = select(User).where(User.user_id == user_id).options(selectinload(User.premium_status))
+                stmt = (
+                    select(User)
+                    .where(User.user_id == user_id)
+                    .options(selectinload(User.premium_status))
+                )
                 result = await session.execute(stmt)
                 user = result.scalar_one_or_none()
                 if not user:
@@ -321,9 +348,7 @@ class AnalyticsORM:
             if search != "":
                 stmt_users = stmt_users.where(
                     or_(
-                        cast(User.user_id, String).ilike(
-                            f"%{search}%"
-                        ),
+                        cast(User.user_id, String).ilike(f"%{search}%"),
                     )
                 )
 
@@ -389,7 +414,6 @@ class AnalyticsORM:
             stmt = select(BannedUser).where(BannedUser.user_id == user.id)
             result = await session.execute(stmt)
             banned_user = result.scalars().first()
-
 
             created_date = (
                 user.created.strftime("%H:%M:%S %Y-%m-%d") if user.created else None
@@ -461,9 +485,7 @@ class AnalyticsORM:
             if data.get("use_referral_link") == "":
                 user.use_referral_link = None
             else:
-                user.use_referral_link = data.get(
-                    "use_referral_link", None
-                )
+                user.use_referral_link = data.get("use_referral_link", None)
 
             # Обрабатываем премиум-статус
             if data.get("premium_active"):
@@ -518,13 +540,9 @@ class AnalyticsORM:
         return True
 
     @staticmethod
-    async def add_or_change_promo(
-            data: Dict[str, Any]
-    ):
+    async def add_or_change_promo(data: Dict[str, Any]):
         async with async_session() as session:
-            stmt = select(BonusLink).where(
-                data.get("link")
-            )
+            stmt = select(BonusLink).where(data.get("link"))
             result = await session.execute(stmt)
             bonus_link = result.scalars().one_or_none()
             if data.get("active_count", 0) <= 0:
