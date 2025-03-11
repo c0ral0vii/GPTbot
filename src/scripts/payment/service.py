@@ -37,7 +37,11 @@ class PaymentService:
                 "capture": True,
                 "description": "Покупка премиума на 1 месяц",
                 "receipt": {
-                    "items": [
+                    "customer": {
+                        "email": "metlinahelen@yandex.ru",
+                        "phone": "79119118595",
+                    },
+                "items": [
                         {
                             "description": "Премиум подписка",
                             "quantity": 1.000,
