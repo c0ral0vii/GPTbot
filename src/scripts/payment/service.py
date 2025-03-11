@@ -36,6 +36,24 @@ class PaymentService:
                 },
                 "capture": True,
                 "description": "Покупка премиума на 1 месяц",
+                "receipt": {
+                    "customer": {
+                        "user_id": user_id,
+                    },
+                    "items": [
+                        {
+                            "description": "Премиум подписка",
+                            "quantity": 1.000,
+                            "amount": {
+                                "value": "990.00",
+                                "currency": "RUB"
+                            },
+                            "vat_code": 4,
+                            "payment_mode": "full_payment",
+                            "payment_subject": "service"
+                        }
+                    ]
+                }
             },
             uuid.uuid4(),
         )
