@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Any
 
 
 class UserLoginSchema(BaseModel):
@@ -21,3 +21,9 @@ class BonusLinkSchema(BaseModel):
     link: str
     active: bool = True
     active_count: int | str = 1
+
+
+class PaymentSchema(BaseModel):
+    type: str
+    event: str
+    object: Dict[str, Any]

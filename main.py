@@ -71,7 +71,7 @@ async def run():
 async def run_workers():
     worker = QueueWorker()
     task = asyncio.create_task(worker.start())
-    return task
+    await task
 
 if __name__ == "__main__":
     asyncio.run(run())
