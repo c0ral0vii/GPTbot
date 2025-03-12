@@ -20,10 +20,11 @@ class RedisCache:
         return await self.redis.get(key)
 
     async def set_with_ttl(self, key: str, value: str, ttl):
+    try:
         res = await self.redis.set(name=key, value=value, ex=ttl)
-
-        if res is True:
-            return True
+        return res is True
+    except redis.exceptions.ReadOnlyError:
+        logger.error("Redis is in read-only mode! Cannot write to replica.")
         return False
 
     async def set_hset(self, key: str, **kwargs):

@@ -1,9 +1,7 @@
 from typing import Dict, Any
 
-import aiohttp
 import uuid
 from yookassa import Configuration, Payment
-
 
 from src.config.config import settings
 from src.utils.logger import setup_logger
@@ -31,7 +29,7 @@ class PaymentService:
                     "type": "redirect",
                     "return_url": "https://yookassa.ru",
                 },
-                "metadata": {
+                "metadata": {   
                     "user_id": user_id,
                 },
                 "capture": True,

@@ -9957,3 +9957,6 @@ onclick="this.form.action=this.dataset.action"
 2025-03-11 00:47:48,146 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
 2025-03-11 00:47:48,146 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
 2025-03-11 00:47:48,192 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-11 20:21:03,816 - __main__ - INFO - Инициализация комманд
+2025-03-11 20:21:04,002 - __main__ - INFO - Запуск воркера
+2025-03-11 20:21:04,256 - src.scripts.queue.worker - ERROR - Error starting parsing worker: [Errno 111] Connect call failed ('172.22.0.3', 5672)

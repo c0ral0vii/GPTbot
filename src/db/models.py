@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import List
 
 from sqlalchemy import (
     func,
@@ -38,6 +39,7 @@ class User(Base):
     )
 
     use_referral_link: Mapped[int] = mapped_column(BigInteger, nullable=True)
+    personal_percent: Mapped[int] = mapped_column(Integer, default=13)
 
     premium_status: Mapped["PremiumUser"] = relationship(back_populates="user")
     user_config_model: Mapped["UserConfig"] = relationship(back_populates="user")
@@ -79,6 +81,28 @@ class GenerateImage(Base):
     prompt: Mapped[str] = mapped_column(nullable=True)
     hash: Mapped[str] = mapped_column(nullable=False)
     first_hash: Mapped[str] = mapped_column(nullable=False)
+
+
+class Dialog(Base):
+    __tablename__ = "dialogs"
+
+    id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+    title: Mapped[str] = mapped_column(nullable=False)
+
+    gpt_select: Mapped[...] = ...
+    messages: Mapped[List["Message"]] = relationship(back_populates="dialog", cascade="all, delete-orphan")
+
+
+class Message(Base):
+    __tablename__ = "messages"
+
+    dialog_id: Mapped[int] = mapped_column(ForeignKey("dialogs.id"), primary_key=True)
+    message_id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+
+    role: Mapped[str] = mapped_column(String(50), nullable=False)
+    message: Mapped[str] = mapped_column(String(5000), nullable=False)
+
+    dialog: Mapped["Dialog"] = relationship(back_populates="messages")
 
 
 class BonusLink(Base):
