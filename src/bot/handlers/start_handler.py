@@ -13,51 +13,51 @@ router = Router()
 logger = setup_logger(__name__)
 
 
+async def _check_refferall(message: types.Message):
+    if len(message.text) >= 7:
+        logger.debug(f"All text {message.text}")
+        referral_link = message.text.split(" ")[-1]
+
+        if referral_link != "/start":
+            user = await UserORM.create_user(message.from_user.id, int(referral_link))
+            logger.debug(user)
+
+            if not user.get("duplicate") and referral_link.isdigit():
+                owner = await UserORM.get_owner_referral(int(referral_link))
+
+                if owner:
+                    await model.publish_message(
+                        queue_name="referral",
+                        user_id=owner.get("user_id"),
+                        text="❗ У вас новый рефералл, вы получили +20 ⚡ энергии.",
+                    )
+                    await UserORM.add_energy(message.from_user.id, 20)
+        else:
+            await UserORM.create_user(message.from_user.id)
+
+    else:
+        await UserORM.create_user(message.from_user.id)
+
+
 @router.message(CommandStart())
 async def start_handler(message: types.Message, state: FSMContext):
     try:
         logger.debug(message.text)
-        key = f"{message.from_user.id}:profile"
         check_user = await UserORM.get_user(message.from_user.id)
         logger.debug(check_user)
 
         if not check_user:
-            if len(message.text) >= 7:
-                logger.debug(f"All text {message.text}")
-                referral_link = message.text.split(" ")[-1]
-
-                if referral_link != "/start":
-                    user = await UserORM.create_user(
-                        message.from_user.id, int(referral_link)
-                    )
-                    logger.debug(user)
-
-                    if not user.get("duplicate") and referral_link.isdigit():
-                        owner = await UserORM.get_owner_referral(int(referral_link))
-
-                        if owner:
-                            await model.publish_message(
-                                queue_name="referral",
-                                user_id=owner.get("user_id"),
-                                text="❗ У вас новый рефералл, вы получили +20 ⚡ энергии.",
-                            )
-                            await UserORM.add_energy(message.from_user.id, 20)
-                else:
-                    await UserORM.create_user(message.from_user.id)
-
-            else:
-                await UserORM.create_user(message.from_user.id)
+            await _check_refferall(message)
 
         await message.answer(
             "Выберите нейросеть:\n\n"
             "*🤖 Чат-ассистенты::*\n\n"
             "• /text — Работа с текстом. \n"
             "• /image — Работа с изображениями. \n"
-            "• /code — Работа с кодом. \n"
             "\n*⚙️ Управление:* \n\n"
             "• /profile — Баланс генераций \n"
             "• /invite — Пригласить друга (+20⚡ генераций) \n"
-            "• /premium — 🌟 Premium подписка (1000⚡ генераций) \n\n"
+            "• /premium — 🌟 Premium подписка (2500⚡ генераций) \n\n"
             "/start — Сменить нейросеть",
             parse_mode="Markdown",
             reply_markup=await main_menu_kb(),

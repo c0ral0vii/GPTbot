@@ -2574,3 +2574,83 @@ WHERE users.user_id = $1::VARCHAR]
 (Background on this error at: https://sqlalche.me/e/20/f405)
 2025-03-10 01:49:29,663 - src.scripts.queue.worker - ERROR - Error starting parsing worker: [Errno 111] Connect call failed ('172.22.0.5', 5672)
 2025-03-11 20:21:04,256 - src.scripts.queue.worker - ERROR - Error starting parsing worker: [Errno 111] Connect call failed ('172.22.0.3', 5672)
+2025-03-12 20:09:14,167 - src.db.orm.user_orm - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.Error) <class 'asyncpg.exceptions.DataError'>: invalid input for query argument $3: <src.db.models.User object at 0x7f6f9496... ('User' object cannot be interpreted as an integer)
+[SQL: INSERT INTO user_config (gpt_select, claude_select, user_id, created, updated) VALUES ($1::gptconfig, $2::claudeconfig, $3::BIGINT, now(), now()) RETURNING user_config.created, user_config.updated]
+[parameters: ('GPT_VERSION_4o_mini', 'CLAUDE_VERSION_SONNET', <src.db.models.User object at 0x7f6f94965dc0>)]
+(Background on this error at: https://sqlalche.me/e/20/dbapi)
+2025-03-12 21:58:19,814 - src.scripts.chat_gpt.chat_gpt - ERROR - Ошибка при отправке сообщения: 'str' object has no attribute 'get'
+2025-03-12 21:58:19,815 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-12 21:58:19,815 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-12 21:58:19,815 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-12 22:45:24,358 - src.scripts.chat_gpt.chat_gpt - ERROR - Ошибка при отправке сообщения: 'str' object has no attribute 'get'
+2025-03-12 22:45:24,877 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-12 22:45:24,877 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-12 22:45:24,877 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-12 22:51:48,731 - src.scripts.chat_gpt.chat_gpt - ERROR - Ошибка при отправке сообщения: 'str' object has no attribute 'id'
+2025-03-12 22:51:49,211 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'id'
+2025-03-12 22:51:49,211 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'id'
+2025-03-12 22:51:49,211 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'id'
+2025-03-12 22:52:25,466 - src.scripts.chat_gpt.chat_gpt - ERROR - Ошибка при отправке сообщения: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.NotNullViolationError'>: null value in column "message_id" of relation "messages" violates not-null constraint
+DETAIL:  Failing row contains (3, null, USER, dsafasd, 2025-03-12 22:52:25.439826, 2025-03-12 22:52:25.439826).
+[SQL: INSERT INTO messages (dialog_id, role, message, created, updated) VALUES ($1::BIGINT, $2::messagerole, $3::VARCHAR, now(), now()) RETURNING messages.created, messages.updated]
+[parameters: (3, 'USER', 'dsafasd')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-03-12 22:52:25,974 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.NotNullViolationError'>: null value in column "message_id" of relation "messages" violates not-null constraint
+DETAIL:  Failing row contains (3, null, USER, dsafasd, 2025-03-12 22:52:25.439826, 2025-03-12 22:52:25.439826).
+[SQL: INSERT INTO messages (dialog_id, role, message, created, updated) VALUES ($1::BIGINT, $2::messagerole, $3::VARCHAR, now(), now()) RETURNING messages.created, messages.updated]
+[parameters: (3, 'USER', 'dsafasd')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-03-12 22:52:25,974 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.NotNullViolationError'>: null value in column "message_id" of relation "messages" violates not-null constraint
+DETAIL:  Failing row contains (3, null, USER, dsafasd, 2025-03-12 22:52:25.439826, 2025-03-12 22:52:25.439826).
+[SQL: INSERT INTO messages (dialog_id, role, message, created, updated) VALUES ($1::BIGINT, $2::messagerole, $3::VARCHAR, now(), now()) RETURNING messages.created, messages.updated]
+[parameters: (3, 'USER', 'dsafasd')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-03-12 22:52:25,974 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.NotNullViolationError'>: null value in column "message_id" of relation "messages" violates not-null constraint
+DETAIL:  Failing row contains (3, null, USER, dsafasd, 2025-03-12 22:52:25.439826, 2025-03-12 22:52:25.439826).
+[SQL: INSERT INTO messages (dialog_id, role, message, created, updated) VALUES ($1::BIGINT, $2::messagerole, $3::VARCHAR, now(), now()) RETURNING messages.created, messages.updated]
+[parameters: (3, 'USER', 'dsafasd')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-03-12 22:55:00,278 - src.scripts.chat_gpt.chat_gpt - ERROR - Ошибка при отправке сообщения: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.NotNullViolationError'>: null value in column "message_id" of relation "messages" violates not-null constraint
+DETAIL:  Failing row contains (3, null, USER, hello, 2025-03-12 22:55:00.248992, 2025-03-12 22:55:00.248992).
+[SQL: INSERT INTO messages (dialog_id, role, message, created, updated) VALUES ($1::BIGINT, $2::messagerole, $3::VARCHAR, now(), now()) RETURNING messages.created, messages.updated]
+[parameters: (3, 'USER', 'hello')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-03-12 22:55:00,280 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.NotNullViolationError'>: null value in column "message_id" of relation "messages" violates not-null constraint
+DETAIL:  Failing row contains (3, null, USER, hello, 2025-03-12 22:55:00.248992, 2025-03-12 22:55:00.248992).
+[SQL: INSERT INTO messages (dialog_id, role, message, created, updated) VALUES ($1::BIGINT, $2::messagerole, $3::VARCHAR, now(), now()) RETURNING messages.created, messages.updated]
+[parameters: (3, 'USER', 'hello')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-03-12 22:55:00,280 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.NotNullViolationError'>: null value in column "message_id" of relation "messages" violates not-null constraint
+DETAIL:  Failing row contains (3, null, USER, hello, 2025-03-12 22:55:00.248992, 2025-03-12 22:55:00.248992).
+[SQL: INSERT INTO messages (dialog_id, role, message, created, updated) VALUES ($1::BIGINT, $2::messagerole, $3::VARCHAR, now(), now()) RETURNING messages.created, messages.updated]
+[parameters: (3, 'USER', 'hello')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-03-12 22:55:00,280 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.NotNullViolationError'>: null value in column "message_id" of relation "messages" violates not-null constraint
+DETAIL:  Failing row contains (3, null, USER, hello, 2025-03-12 22:55:00.248992, 2025-03-12 22:55:00.248992).
+[SQL: INSERT INTO messages (dialog_id, role, message, created, updated) VALUES ($1::BIGINT, $2::messagerole, $3::VARCHAR, now(), now()) RETURNING messages.created, messages.updated]
+[parameters: (3, 'USER', 'hello')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-03-12 22:56:56,887 - src.scripts.chat_gpt.chat_gpt - ERROR - Ошибка при отправке сообщения: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.NotNullViolationError'>: null value in column "message_id" of relation "messages" violates not-null constraint
+DETAIL:  Failing row contains (1, null, USER, привет, 2025-03-12 22:56:56.861078, 2025-03-12 22:56:56.861078).
+[SQL: INSERT INTO messages (dialog_id, role, message, created, updated) VALUES ($1::BIGINT, $2::messagerole, $3::VARCHAR, now(), now()) RETURNING messages.message_id, messages.created, messages.updated]
+[parameters: (1, 'USER', 'привет')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-03-12 22:56:56,889 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.NotNullViolationError'>: null value in column "message_id" of relation "messages" violates not-null constraint
+DETAIL:  Failing row contains (1, null, USER, привет, 2025-03-12 22:56:56.861078, 2025-03-12 22:56:56.861078).
+[SQL: INSERT INTO messages (dialog_id, role, message, created, updated) VALUES ($1::BIGINT, $2::messagerole, $3::VARCHAR, now(), now()) RETURNING messages.message_id, messages.created, messages.updated]
+[parameters: (1, 'USER', 'привет')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-03-12 22:56:56,889 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.NotNullViolationError'>: null value in column "message_id" of relation "messages" violates not-null constraint
+DETAIL:  Failing row contains (1, null, USER, привет, 2025-03-12 22:56:56.861078, 2025-03-12 22:56:56.861078).
+[SQL: INSERT INTO messages (dialog_id, role, message, created, updated) VALUES ($1::BIGINT, $2::messagerole, $3::VARCHAR, now(), now()) RETURNING messages.message_id, messages.created, messages.updated]
+[parameters: (1, 'USER', 'привет')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-03-12 22:56:56,889 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: (sqlalchemy.dialects.postgresql.asyncpg.IntegrityError) <class 'asyncpg.exceptions.NotNullViolationError'>: null value in column "message_id" of relation "messages" violates not-null constraint
+DETAIL:  Failing row contains (1, null, USER, привет, 2025-03-12 22:56:56.861078, 2025-03-12 22:56:56.861078).
+[SQL: INSERT INTO messages (dialog_id, role, message, created, updated) VALUES ($1::BIGINT, $2::messagerole, $3::VARCHAR, now(), now()) RETURNING messages.message_id, messages.created, messages.updated]
+[parameters: (1, 'USER', 'привет')]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-03-12 23:11:03,084 - src.scripts.chat_gpt.chat_gpt - ERROR - Ошибка при отправке сообщения: 'dialog_id'
+2025-03-12 23:11:03,085 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'dialog_id'
+2025-03-12 23:11:03,085 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'dialog_id'
+2025-03-12 23:11:03,085 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'dialog_id'

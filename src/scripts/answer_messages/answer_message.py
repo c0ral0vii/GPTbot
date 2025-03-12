@@ -41,7 +41,7 @@ class AnswerMessage:
                 message_id=data["answer_message"],
                 text=data["text"],
                 parse_mode="Markdown",
-                reply_markup=upgrade_message(),
+                reply_markup=await upgrade_message(),
             )
 
             energy_text = data.get("energy_text", None)
@@ -63,7 +63,7 @@ class AnswerMessage:
                     chat_id=data["user_id"],
                     message_id=data["answer_message"],
                     text=data["text"],
-                    reply_markup=upgrade_message(),
+                    reply_markup=await upgrade_message(),
                 )
 
             if isinstance(data["photo"], bytes):

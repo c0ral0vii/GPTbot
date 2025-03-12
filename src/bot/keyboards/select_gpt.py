@@ -1,16 +1,14 @@
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
+from src.db.models import Dialog
+
 
 def select_text_gpt() -> InlineKeyboardMarkup:
 
-    chat_gpt = InlineKeyboardButton(
-        text="🤖 Chat GPT 4o", callback_data="select_chatgpt4o"
-    )
+    chat_gpt = InlineKeyboardButton(text="🤖 Chat GPT", callback_data="select_chatgpt")
 
-    claude = InlineKeyboardButton(
-        text="🤖 Claude Sonnet 3.5", callback_data="select_claude35"
-    )
+    claude = InlineKeyboardButton(text="🤖 Claude", callback_data="select_claude")
 
     kb = InlineKeyboardMarkup(
         inline_keyboard=[
@@ -35,7 +33,37 @@ def select_image_model() -> InlineKeyboardMarkup:
     return kb
 
 
-def cancel_kb() -> InlineKeyboardMarkup:
+async def get_models_dialogs(dialogs: list[Dialog] = None):
+
+    if dialogs:
+        user_dialogs = []
+        for dialog in dialogs:
+            user_dialogs.append(
+                [
+                    InlineKeyboardButton(
+                        text=dialog.title, callback_data=f"dialog_{dialog.id}"
+                    ),
+                ]
+            )
+    else:
+        user_dialogs = [
+            [
+                InlineKeyboardButton(
+                    text="У вас пока нет диалогов!", callback_data="not_work"
+                )
+            ]
+        ]
+
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="➕ Новый диалог", callback_data="dialog_new")],
+            *user_dialogs,
+            [InlineKeyboardButton(text="❌ Отмена", callback_data="cancel")],
+        ]
+    )
+
+
+async def cancel_kb() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[
             [InlineKeyboardButton(text="❌ Отмена", callback_data="cancel")],
@@ -43,14 +71,9 @@ def cancel_kb() -> InlineKeyboardMarkup:
     )
 
 
-def upgrade_message() -> InlineKeyboardMarkup:
+async def upgrade_message() -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[
-            [
-                InlineKeyboardButton(
-                    text="Доработать", callback_data="upgrade_message"
-                ),
-            ],
             [InlineKeyboardButton(text="❌ Отмена", callback_data="cancel")],
         ]
     )

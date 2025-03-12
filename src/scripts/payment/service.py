@@ -29,7 +29,7 @@ class PaymentService:
                     "type": "redirect",
                     "return_url": "https://yookassa.ru",
                 },
-                "metadata": {   
+                "metadata": {
                     "user_id": user_id,
                 },
                 "capture": True,
@@ -39,20 +39,17 @@ class PaymentService:
                         "email": "metlinahelen@yandex.ru",
                         "phone": "79119118595",
                     },
-                "items": [
+                    "items": [
                         {
                             "description": "Премиум подписка",
                             "quantity": 1.000,
-                            "amount": {
-                                "value": "990.00",
-                                "currency": "RUB"
-                            },
+                            "amount": {"value": "990.00", "currency": "RUB"},
                             "vat_code": 4,
                             "payment_mode": "full_payment",
-                            "payment_subject": "service"
+                            "payment_subject": "service",
                         }
-                    ]
-                }
+                    ],
+                },
             },
             uuid.uuid4(),
         )

@@ -47,7 +47,7 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
         f"Выбраная вами модель - {select_model}\n"
         f"Стоимость модели ⚡️ {energy_cost}\n\n"
         "Отправьте ваше сообщение для обработки:",
-        reply_markup=cancel_kb(),
+        reply_markup=await cancel_kb(),
     )
 
     await state.set_state(ImageState.text)

@@ -46,7 +46,6 @@ async def on_startup():
         types.BotCommand(command="/start", description="Перезапуск бота (Restart bot)"),
         types.BotCommand(command="/text", description="Работа с текстовыми ИИ"),
         types.BotCommand(command="/image", description="Работа с ИИ для изображений"),
-        types.BotCommand(command="/code", description="Работа с ИИ для кода"),
         types.BotCommand(command="/profile", description="Баланс генераций"),
         types.BotCommand(command="/invite", description="Пригласить друга"),
         types.BotCommand(command="/premium", description="🌟 Premium подписка"),
@@ -76,5 +75,3 @@ async def run_workers():
 
 if __name__ == "__main__":
     asyncio.run(run())
-    # payment = PaymentService()
-    # asyncio.run(payment.generate_link(91234412))

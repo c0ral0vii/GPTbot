@@ -43,14 +43,47 @@ class Settings(BaseSettings):
     @property
     def TEXT_GPT(self):
         return {
-            "chatgpt4o": {"energy_cost": 2, "select_model": "ChatGPT"},
-            "claude35": {"energy_cost": 3, "select_model": "Claude Sonnet Haiku"},
-            "claude37": {"energy_cost": 4, "select_model": "Claude Sonnet Sonnet"},
+            "gpt-4o-mini": {
+                "energy_cost": 2,
+                "select_model": "ChatGPT 4o-mini",
+                "premium_free": False,
+            },
+            "gpt-4o": {
+                "energy_cost": 2,
+                "select_model": "ChatGPT 4o",
+                "premium_free": True,
+            },
+            "o1": {
+                "energy_cost": 2,
+                "select_model": "ChatGPT o1",
+                "premium_free": False,
+            },
+            "gpt-4.5-preview": {
+                "energy_cost": 2,
+                "select_model": "ChatGPT 4.5",
+                "premium_free": False,
+            },
+            "claude-3-5-haiku-latest": {
+                "energy_cost": 3,
+                "select_model": "Claude Haiku",
+                "premium_free": False,
+            },
+            "claude-3-5-sonnet-latest": {
+                "energy_cost": 4,
+                "select_model": "Claude Sonnet",
+                "premium_free": False,
+            },
         }
 
     @property
     def IMAGE_GPT(self):
-        return {"midjourney": {"energy_cost": 2.5, "select_model": "Midjourney"}}
+        return {
+            "midjourney": {
+                "energy_cost": 2.5,
+                "select_model": "Midjourney",
+                "premium_free": False,
+            }
+        }
 
     @property
     def bot_api(self) -> str:

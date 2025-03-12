@@ -6,6 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload, joinedload
 
 from src.db.models import User, GenerateImage, PremiumUser, BannedUser, BonusLink
+from src.db.orm.config_orm import ConfigORM
 from src.utils.logger import setup_logger
 
 from src.db.database import async_session
@@ -23,7 +24,11 @@ class UserORM:
         end_date = today + timedelta(days=30)
 
         async with async_session() as session:
-            stmt = select(User).where(User.user_id == user_id).options(selectinload(User.premium_status))
+            stmt = (
+                select(User)
+                .where(User.user_id == user_id)
+                .options(selectinload(User.premium_status))
+            )
             result = await session.execute(stmt)
             user = result.scalar_one_or_none()
 
@@ -57,6 +62,10 @@ class UserORM:
                     return {
                         "duplicate": True,
                     }
+                if use_referral_link:
+                    check_status = await UserORM.get_owner_referral(use_referral_link)
+                    if not check_status:
+                        use_referral_link = None
 
                 user = User(
                     user_id=user_id,
@@ -65,6 +74,9 @@ class UserORM:
 
                 session.add(user)
                 await session.commit()
+
+                await ConfigORM.create_config(user)
+
                 await session.refresh(user)
 
                 return {
@@ -77,7 +89,9 @@ class UserORM:
 
         except Exception as e:
             logger.error(e)
-            return
+            return {
+                "duplicate": True,
+            }
 
     @staticmethod
     async def get_owner_referral(referral_code: int) -> Dict[str, Any] | None:

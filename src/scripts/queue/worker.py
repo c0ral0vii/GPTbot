@@ -1,6 +1,6 @@
 from src.scripts.answer_messages.answer_message import AnswerMessage
 from src.scripts.antropic.claude_gpt import ClaudeGPT
-from src.scripts.chat_gpt.chat_gpt_o1 import ChatGPT
+from src.scripts.chat_gpt.chat_gpt import ChatGPT
 from src.scripts.midjourney.service import MidjourneyService
 from src.utils.logger import setup_logger
 from src.scripts.queue.rabbit_queue import RabbitQueue
@@ -26,8 +26,8 @@ class QueueWorker:
             await self.queue_service.connect()
 
             queues = [
-                "chatgpt4o",
-                "claude35",
+                "chatgpt",
+                "claude",
                 # Миджорни
                 "midjourney",
                 "upscale_midjourney",
@@ -40,12 +40,12 @@ class QueueWorker:
                 await self.queue_service.declare_queue(f"{queue_name}_errors")
 
             await self.queue_service.consume_messages(
-                "chatgpt4o",
+                "chatgpt",
                 self.chat_gpt.send_message,
             )
 
             await self.queue_service.consume_messages(
-                "claude35",
+                "claude",
                 self.claude.send_message,
             )
 

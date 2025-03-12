@@ -20,6 +20,8 @@ from sqlalchemy import (
 
 from sqlalchemy.orm import Mapped, DeclarativeBase, relationship, mapped_column
 
+from src.db.enums_class import MessageRole, GPTConfig, CLAUDEConfig
+
 
 class Base(DeclarativeBase):
     created: Mapped[DateTime] = mapped_column(DateTime, default=func.now())
@@ -41,14 +43,30 @@ class User(Base):
     use_referral_link: Mapped[int] = mapped_column(BigInteger, nullable=True)
     personal_percent: Mapped[int] = mapped_column(Integer, default=13)
 
-    premium_status: Mapped["PremiumUser"] = relationship(back_populates="user")
-    user_config_model: Mapped["UserConfig"] = relationship(back_populates="user")
+    premium_status: Mapped["PremiumUser"] = relationship(
+        back_populates="user", cascade="all, delete-orphan"
+    )
+    dialogs: Mapped[list["Dialog"]] = relationship(
+        back_populates="user", cascade="all, delete-orphan"
+    )
+    user_config_model: Mapped["UserConfig"] = relationship(
+        back_populates="user", cascade="all, delete-orphan"
+    )
 
 
 class UserConfig(Base):
     __tablename__ = "user_config"
 
-    user_id: Mapped["User"] = mapped_column(ForeignKey("users.id"), primary_key=True)
+    gpt_select: Mapped[GPTConfig] = mapped_column(
+        SQLEnum(GPTConfig), default=GPTConfig.GPT_VERSION_4o_mini
+    )
+    claude_select: Mapped[CLAUDEConfig] = mapped_column(
+        SQLEnum(CLAUDEConfig), default=CLAUDEConfig.CLAUDE_VERSION_SONNET
+    )
+
+    user_id: Mapped["User"] = mapped_column(
+        ForeignKey("users.user_id"), primary_key=True
+    )
     user: Mapped["User"] = relationship("User", back_populates="user_config_model")
 
 
@@ -60,6 +78,9 @@ class PremiumUser(Base):
     premium_active: Mapped[bool] = mapped_column(Boolean, default=False)
     premium_from_date: Mapped[Date] = mapped_column(Date, default=False)
     premium_to_date: Mapped[Date] = mapped_column(Date, default=False)
+
+    auto_renewal: Mapped[bool] = mapped_column(Boolean, default=False)
+    auth_renewal_id: Mapped[str] = mapped_column(nullable=True)
 
     user_id: Mapped["User"] = mapped_column(ForeignKey("users.id"))
     user: Mapped["User"] = relationship("User", back_populates="premium_status")
@@ -87,19 +108,27 @@ class Dialog(Base):
     __tablename__ = "dialogs"
 
     id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
-    title: Mapped[str] = mapped_column(nullable=False)
 
-    gpt_select: Mapped[...] = ...
-    messages: Mapped[List["Message"]] = relationship(back_populates="dialog", cascade="all, delete-orphan")
+    user_id: Mapped["User"] = mapped_column(ForeignKey("users.user_id"))
+    user: Mapped["User"] = relationship("User", back_populates="dialogs")
+
+    title: Mapped[str] = mapped_column(String(128), nullable=False)
+
+    gpt_select: Mapped[str] = mapped_column(nullable=False)
+    messages: Mapped[List["Message"]] = relationship(
+        back_populates="dialog", cascade="all, delete-orphan"
+    )
 
 
 class Message(Base):
     __tablename__ = "messages"
 
     dialog_id: Mapped[int] = mapped_column(ForeignKey("dialogs.id"), primary_key=True)
-    message_id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+    message_id: Mapped[int] = mapped_column(
+        BigInteger, primary_key=True, autoincrement=True
+    )
 
-    role: Mapped[str] = mapped_column(String(50), nullable=False)
+    role: Mapped[MessageRole] = mapped_column(SQLEnum(MessageRole), nullable=False)
     message: Mapped[str] = mapped_column(String(5000), nullable=False)
 
     dialog: Mapped["Dialog"] = relationship(back_populates="messages")
