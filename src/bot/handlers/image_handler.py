@@ -4,7 +4,9 @@ from aiogram.fsm.context import FSMContext
 
 from src.bot.keyboards.select_gpt import select_image_model, cancel_kb
 from src.bot.states.image_state import ImageState
+from src.db.orm.user_orm import PremiumUserORM
 from src.scripts.queue.rabbit_queue import RabbitQueue
+from src.utils.cached_user import _cached_user
 from src.utils.logger import setup_logger
 from src.utils.redis_cache.redis_cache import redis_manager
 from src.config.config import settings
@@ -21,7 +23,7 @@ logger = setup_logger(__name__)
 async def handle_image(message: types.Message, state: FSMContext):
     await state.set_state(ImageState.type)
     await message.answer(
-        "Эти ИИ могут помочь с генерацией реалистичных фотографий только по вашему тексту.\n\n"
+        "Эти ИИ могут помочь с генерацией реалистичных фотографий по вашему тексту.\n\n"
         "💡 Выберите вашу модель для работы:",
         reply_markup=select_image_model(),
     )
@@ -33,15 +35,27 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
 
     gpt_select = callback.data.replace("select_", "")
     await callback.message.delete()
+    priority = 0
 
     if settings.IMAGE_GPT.get(gpt_select):
         energy_cost = settings.IMAGE_GPT.get(gpt_select).get("energy_cost")
         select_model = settings.IMAGE_GPT.get(gpt_select).get("select_model")
-    else:
-        energy_cost = 1
-        select_model = gpt_select
 
-    await state.update_data(type_gpt=gpt_select, energy_cost=energy_cost)
+        check_premium = await PremiumUserORM.is_premium_active(callback.from_user.id)
+
+        if check_premium:
+            priority = 5
+
+        if check_premium and select_model.get("premium_free"):
+            energy_cost = 0
+
+    else:
+        await callback.message.delete()
+        await callback.message.answer(
+            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле")
+        return
+
+    await state.update_data(type_gpt=gpt_select, energy_cost=energy_cost, priority=priority)
 
     await callback.message.answer(
         f"Выбраная вами модель - {select_model}\n"
@@ -62,7 +76,7 @@ async def handle_text(message: types.Message, state: FSMContext):
     key = f"{message.from_user.id}:generate"
 
     if await redis_manager.get(key):
-        await message.answer("⏳ Подождите пока идет генерация.")
+        await message.answer("⚠️ Дождитесь завершения предыдущей генерации или оформите Premium, чтобы запускать несколько генераций одновременно. 👉 /premium")
         return
 
     answer_message = await message.answer("⏳ Подождите ваше сообщение в обработке...")
@@ -74,6 +88,7 @@ async def handle_text(message: types.Message, state: FSMContext):
         answer_message=answer_message.message_id,
         energy_cost=data["energy_cost"],
         key=key,
+        priority=data.get("priority", 0),
     )
 
     await redis_manager.set(key=key, value="generate")
@@ -101,7 +116,10 @@ async def refresh_image(callback_data: types.CallbackQuery, state: FSMContext):
     if settings.IMAGE_GPT.get(gpt_select):
         energy_cost = settings.IMAGE_GPT.get(gpt_select).get("energy_cost")
     else:
-        energy_cost = 1
+        await callback_data.message.delete()
+        await callback_data.message.answer(
+            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле")
+        return
 
     logger.debug(image_id)
     await model.publish_message(
@@ -132,14 +150,18 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
     answer_message = await callback_data.message.answer(
         "⏳ Подождите ваше сообщение в обработке..."
     )
-    state_data = await state.get_data()
+    data = await state.get_data()
 
-    gpt_select = state_data["type_gpt"]
+    gpt_select = data["type_gpt"]
 
     if settings.IMAGE_GPT.get(gpt_select):
         energy_cost = settings.IMAGE_GPT.get(gpt_select).get("energy_cost")
     else:
-        energy_cost = 1
+        await callback_data.message.delete()
+        await callback_data.message.answer(
+            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле")
+        return
+
 
     await model.publish_message(
         queue_name="variation_midjourney",
@@ -150,6 +172,8 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
         choice=int(image_id[-2]),
         image_id=int(image_id[-1]),
         key=key,
+
+        priority=data.get("priority", 0),
     )
 
     await redis_manager.set(key=key, value="generate")
@@ -170,14 +194,17 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
     answer_message = await callback_data.message.answer(
         "⏳ Подождите ваше сообщение в обработке..."
     )
-    state_data = await state.get_data()
+    data = await state.get_data()
 
-    gpt_select = state_data["type_gpt"]
+    gpt_select = data["type_gpt"]
 
     if settings.IMAGE_GPT.get(gpt_select):
         energy_cost = settings.IMAGE_GPT.get(gpt_select).get("energy_cost")
     else:
-        energy_cost = 1
+        await callback_data.message.delete()
+        await callback_data.message.answer(
+            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле")
+        return
 
     await model.publish_message(
         queue_name="upscale_midjourney",
@@ -188,6 +215,8 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
         choice=int(image_id[-2]),
         image_id=int(image_id[-1]),
         key=key,
+
+        priority=data.get("priority", 0),
     )
 
     await redis_manager.set(key=key, value="generate")
@@ -198,6 +227,6 @@ async def _check_generation(callback_data: types.CallbackQuery):
     key = f"{user_id}:generate"
 
     if await redis_manager.get(key):
-        await callback_data.message.answer("⏳ Подождите пока идет генерация.")
+        await callback_data.message.answer("⚠️ Дождитесь завершения предыдущей генерации или оформите Premium, чтобы запускать несколько генераций одновременно. 👉 /premium")
         return False
     return key

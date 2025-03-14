@@ -37,11 +37,14 @@ class User(Base):
     user_id: Mapped[int] = mapped_column(BigInteger, nullable=False, unique=True)
 
     energy: Mapped[Decimal] = mapped_column(
-        DECIMAL(15, 1), nullable=False, default=Decimal("10")
+        DECIMAL(15, 1), nullable=False, default=Decimal("100")
     )
 
     use_referral_link: Mapped[int] = mapped_column(BigInteger, nullable=True)
     personal_percent: Mapped[int] = mapped_column(Integer, default=13)
+    referral_bonus: Mapped[Decimal] = mapped_column(
+        DECIMAL(15, 1), nullable=False, default=Decimal("0")
+    )
 
     premium_status: Mapped["PremiumUser"] = relationship(
         back_populates="user", cascade="all, delete-orphan"
@@ -63,6 +66,7 @@ class UserConfig(Base):
     claude_select: Mapped[CLAUDEConfig] = mapped_column(
         SQLEnum(CLAUDEConfig), default=CLAUDEConfig.CLAUDE_VERSION_SONNET
     )
+    auto_renewal: Mapped[bool] = mapped_column(Boolean, default=False)
 
     user_id: Mapped["User"] = mapped_column(
         ForeignKey("users.user_id"), primary_key=True
@@ -79,7 +83,6 @@ class PremiumUser(Base):
     premium_from_date: Mapped[Date] = mapped_column(Date, default=False)
     premium_to_date: Mapped[Date] = mapped_column(Date, default=False)
 
-    auto_renewal: Mapped[bool] = mapped_column(Boolean, default=False)
     auth_renewal_id: Mapped[str] = mapped_column(nullable=True)
 
     user_id: Mapped["User"] = mapped_column(ForeignKey("users.id"))

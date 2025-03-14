@@ -8,6 +8,7 @@ from src.bot.states.text_state import TextState
 from src.config.config import settings
 from src.db.enums_class import GPTConfig, CLAUDEConfig
 from src.db.orm.config_orm import ConfigORM
+from src.db.orm.user_orm import PremiumUserORM
 from src.scripts.queue.rabbit_queue import model
 from src.utils.logger import setup_logger
 from src.utils.redis_cache.redis_cache import redis_manager
@@ -37,23 +38,35 @@ async def text_handler(message: types.Message, state: FSMContext):
 async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
     gpt_select = callback.data.replace("select_", "")
     await callback.message.delete()
+
     user_model = await _get_user_config_and_get_model(
         user_id=callback.from_user.id, select_model=gpt_select
     )
-    select_model = settings.TEXT_GPT.get(user_model.value)
+    config_model = settings.TEXT_GPT.get(user_model.value)
+    priority = 0
 
-    if select_model:
-        energy_cost = select_model.get("energy_cost")
-        select_model = select_model.get("select_model")
+    if config_model:
+        energy_cost = config_model.get("energy_cost")
+        select_model = config_model.get("select_model")
+        check_premium = await PremiumUserORM.is_premium_active(callback.from_user.id)
+
+        if check_premium:
+            priority = 5
+
+        if check_premium and config_model.get("premium_free"):
+            energy_cost = 0
+
     else:
-        energy_cost = 1
-        select_model = gpt_select
+        await callback.message.delete()
+        await callback.message.answer("Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле")
+        return
 
     await state.update_data(
         select_model=user_model.value,
         energy_cost=energy_cost,
         type_gpt=select_model,
         queue_select=gpt_select,
+        priority=priority,
     )
 
     dialogs = await _get_dialogs(
@@ -109,7 +122,7 @@ async def text_handler(message: types.Message, state: FSMContext, bot: Bot):
 
     if await redis_manager.get(key):
         await message.delete()
-        await message.answer("⏳ Подождите пока идет генерация.")
+        await message.answer("⚠️ Дождитесь завершения предыдущей генерации")
         return
 
     answer_message = await message.answer("⏳ Подождите ваше сообщение в обработке...")
@@ -123,7 +136,8 @@ async def text_handler(message: types.Message, state: FSMContext, bot: Bot):
         answer_message=answer_message.message_id,
         energy_cost=data["energy_cost"],
         key=key,
-        priority=0,
+
+        priority=data["priority"],
     )
 
     await redis_manager.set(key=key, value="generate")

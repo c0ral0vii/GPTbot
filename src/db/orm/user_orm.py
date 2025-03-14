@@ -3,10 +3,12 @@ from decimal import Decimal
 from typing import Optional, Dict, Any
 
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import selectinload, joinedload
+from sqlalchemy.orm import selectinload
 
 from src.db.models import User, GenerateImage, PremiumUser, BannedUser, BonusLink
 from src.db.orm.config_orm import ConfigORM
+from src.utils.cached_user import create_referral_user, check_user_create, _cached_user, update_energy_cache, \
+    change_premium_status
 from src.utils.logger import setup_logger
 
 from src.db.database import async_session
@@ -15,6 +17,44 @@ from sqlalchemy.exc import IntegrityError
 
 
 logger = setup_logger(__name__)
+
+class PremiumUserORM:
+    @staticmethod
+    async def is_premium_active(user_id: int, session: AsyncSession = None) -> bool:
+        """
+        Проверяет, активна ли премиум-подписка пользователя.
+        Возвращает:
+            - True, если подписка активна.
+            - False, если подписка истекла или отсутствует.
+        """
+        if not session:
+            session = async_session()
+
+        stmt = select(User).where(User.user_id == user_id).options(selectinload(User.premium_status))
+        result = await session.execute(stmt)
+        premium_user = result.scalar_one_or_none()
+
+        if not premium_user or not premium_user.premium_status:
+            if not session:
+                await session.close()
+
+            return False
+
+        if premium_user.premium_status.premium_to_date < datetime.now().date():
+            premium_user.premium_status.premium_active = False
+            await change_premium_status(user_id=user_id, premium=False,
+                                        premium_to_date=None)
+
+            await session.commit()
+            if not session:
+                await session.close()
+
+            return False
+
+        if not session:
+            await session.close()
+        await change_premium_status(user_id=user_id, premium=True, premium_to_date=premium_user.premium_status.premium_to_date)
+        return True
 
 
 class UserORM:
@@ -44,70 +84,72 @@ class UserORM:
             else:
                 session.add(premium_user)
 
+            if user.use_referral_link:
+                stmt = select(User).where(User.user_id == user.use_referral_link)
+                result = await session.execute(stmt)
+                ref_user = result.scalar_one_or_none()
+
+                ref_user.referral_bonus += Decimal(180)
+                session.add(ref_user)
+
             await session.commit()
             return premium_user
 
     @staticmethod
-    async def create_user(
-        user_id: int, use_referral_link: int = None
-    ) -> dict[str, Any]:
-
+    async def create_user(user_id: int, use_referral_link: int = None) -> dict[str, Any]:
         try:
             async with async_session() as session:
                 stmt = select(User).where(User.user_id == user_id)
                 result = await session.execute(stmt)
                 user = result.scalar_one_or_none()
 
-                if user is not None:
-                    return {
-                        "duplicate": True,
-                    }
-                if use_referral_link:
+                if user:
+                    return {"duplicate": True}
+
+                existing_referral = await check_user_create(user_id)
+                if not existing_referral and use_referral_link:
+                    await create_referral_user(user_id=use_referral_link)
+
                     check_status = await UserORM.get_owner_referral(use_referral_link)
                     if not check_status:
                         use_referral_link = None
 
-                user = User(
+                new_user = User(
                     user_id=user_id,
                     use_referral_link=use_referral_link,
                 )
 
-                session.add(user)
+                session.add(new_user)
                 await session.commit()
+                await session.refresh(new_user)
 
-                await ConfigORM.create_config(user)
+                await ConfigORM.create_config(new_user)
 
-                await session.refresh(user)
-
-                return {
-                    "duplicate": False,
-                }
+                return {"duplicate": False}
         except IntegrityError:
-            return {
-                "duplicate": True,
-            }
-
+            return {"duplicate": True}
         except Exception as e:
-            logger.error(e)
-            return {
-                "duplicate": True,
-            }
+            logger.error(f"Error creating user {user_id}: {e}")
+            return {"duplicate": True}
 
     @staticmethod
     async def get_owner_referral(referral_code: int) -> Dict[str, Any] | None:
         try:
+            user = await check_user_create(referral_code)
+            if user:
+                return user
+
             async with async_session() as session:
                 stmt = select(User).where(User.user_id == referral_code)
                 result = await session.execute(stmt)
                 owner = result.scalar_one_or_none()
 
-                return {
-                    "data": owner,
-                    "user_id": owner.user_id,
-                }
+                if owner:
+                    return {"user_id": owner.user_id}
 
+                return None
         except Exception as e:
-            logger.error(e)
+            logger.error(f"Error fetching owner referral {referral_code}: {e}")
             return None
 
     @staticmethod
@@ -120,6 +162,7 @@ class UserORM:
 
                 if user.energy >= count:
                     user.energy = user.energy - Decimal(count)
+                    await update_energy_cache(user_id=user.user_id, new_energy=float(user.energy))
                 else:
                     return {
                         "error": True,
@@ -146,6 +189,7 @@ class UserORM:
                 user = result.scalar_one_or_none()
 
                 user.energy = user.energy + Decimal(count)
+                await update_energy_cache(user_id=user.user_id, new_energy=float(user.energy))
 
                 session.add(user)
                 await session.commit()
@@ -191,18 +235,23 @@ class UserORM:
             raise
 
     @staticmethod
-    async def get_user(user_id: int) -> User | None:
+    async def get_user(user_id: int, get_premium_status: bool = False) -> User | None | dict[str, Any]:
         async with async_session() as session:
             try:
                 stmt = (
                     select(User)
                     .where(User.user_id == user_id)
-                    .options(selectinload(User.premium_status))
+                    .options(selectinload(User.premium_status), selectinload(User.user_config_model))
                 )
                 result = await session.execute(stmt)
                 user = result.scalar_one_or_none()
+
                 if not user:
                     return None
+
+                if get_premium_status:
+                    premium_status = await PremiumUserORM.is_premium_active(user_id, session)
+                    return {"user": user, "premium_status": premium_status}
 
                 return user
 

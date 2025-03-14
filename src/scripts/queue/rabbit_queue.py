@@ -101,7 +101,7 @@ class RabbitQueue:
             raise
 
     async def consume_messages(
-        self, queue_name: str, callback: Callable, prefetch_count: int = 10
+        self, queue_name: str, callback: Callable, prefetch_count: int = 100
     ) -> None:
         try:
             await self.channel.set_qos(prefetch_count=prefetch_count)
@@ -139,8 +139,8 @@ class RabbitQueue:
         """Retrieve the queue status for all declared queues."""
         try:
             queues = [
-                "chatgpt4o",
-                "claude35",
+                "chatgpt",
+                "claude",
                 "midjourney",
                 "upscale_midjourney",
                 "select_midjourney",

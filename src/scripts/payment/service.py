@@ -11,10 +11,11 @@ class PaymentService:
     def __init__(self):
         self.logger = setup_logger(__name__)
         self.API_KEY = settings.YOOMONEY_API
+        self.SHOP_ID = settings.SHOP_ID
 
         self.API_ENDPOINT = "https://api.yookassa.ru/v3/"
 
-        Configuration.configure("1013385", self.API_KEY)
+        Configuration.configure(self.SHOP_ID, self.API_KEY)
 
     async def generate_yookassa_link(self, user_id: int) -> Dict[str, Any]:
         """Генерация ссылки на покупку"""
@@ -34,6 +35,7 @@ class PaymentService:
                 },
                 "capture": True,
                 "description": "Покупка премиума на 1 месяц",
+                "save_payment_method": True,
                 "receipt": {
                     "customer": {
                         "email": "metlinahelen@yandex.ru",

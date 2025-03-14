@@ -2654,3 +2654,158 @@ DETAIL:  Failing row contains (1, null, USER, привет, 2025-03-12 22:56:56.
 2025-03-12 23:11:03,085 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'dialog_id'
 2025-03-12 23:11:03,085 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'dialog_id'
 2025-03-12 23:11:03,085 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'dialog_id'
+2025-03-13 01:42:09,000 - src.scripts.midjourney.service - ERROR - Unrecognized parameter(s): `-it`, `would`, `16:`, `9`
+2025-03-13 01:44:01,567 - src.scripts.midjourney.service - ERROR - Unrecognized parameter(s): `-it`, `would`, `16:`, `9`
+2025-03-13 02:06:11,193 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'energy'
+2025-03-14 01:09:01,795 - src.db.orm.user_orm - ERROR - ORM mapped entity or attribute "User.user_config_model" does not link from relationship "User.premium_status".
+2025-03-14 01:09:01,796 - src.bot.handlers.start_handler - ERROR - ORM mapped entity or attribute "User.user_config_model" does not link from relationship "User.premium_status".
+2025-03-14 01:10:28,038 - src.db.orm.user_orm - ERROR - ORM mapped entity or attribute "User.user_config_model" does not link from relationship "User.premium_status".
+2025-03-14 01:10:28,040 - src.bot.handlers.start_handler - ERROR - ORM mapped entity or attribute "User.user_config_model" does not link from relationship "User.premium_status".
+2025-03-14 01:12:07,067 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.
+2025-03-14 01:12:07,081 - src.bot.handlers.start_handler - ERROR - 'NoneType' object does not support item assignment
+2025-03-14 01:13:12,313 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.
+2025-03-14 01:13:12,327 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object does not support item assignment
+2025-03-14 01:18:48,830 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.
+2025-03-14 01:18:48,841 - src.bot.handlers.start_handler - ERROR - 'NoneType' object does not support item assignment
+2025-03-14 01:23:52,282 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.
+2025-03-14 01:23:52,294 - src.bot.handlers.start_handler - ERROR - 'NoneType' object does not support item assignment
+2025-03-14 01:25:26,247 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.
+2025-03-14 01:25:26,261 - src.bot.handlers.start_handler - ERROR - 'NoneType' object does not support item assignment
+2025-03-14 01:25:39,685 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.
+2025-03-14 01:25:39,697 - src.bot.handlers.start_handler - ERROR - 'NoneType' object does not support item assignment
+2025-03-14 01:26:38,387 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.
+2025-03-14 01:26:38,397 - src.bot.handlers.start_handler - ERROR - 'NoneType' object does not support item assignment
+2025-03-14 01:26:43,686 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.
+2025-03-14 01:26:43,698 - src.bot.handlers.start_handler - ERROR - 'NoneType' object does not support item assignment
+2025-03-14 02:50:45,264 - src.db.orm.user_orm - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: bigint = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT users.id, users.user_id, users.energy, users.use_referral_link, users.personal_percent, users.referral_bonus, users.created, users.updated 
+FROM users 
+WHERE users.user_id = $1::VARCHAR]
+[parameters: ('944360812:user',)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-14 02:50:45,267 - src.bot.handlers.start_handler - ERROR - (sqlalchemy.dialects.postgresql.asyncpg.ProgrammingError) <class 'asyncpg.exceptions.UndefinedFunctionError'>: operator does not exist: bigint = character varying
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+[SQL: SELECT users.id, users.user_id, users.energy, users.use_referral_link, users.personal_percent, users.referral_bonus, users.created, users.updated 
+FROM users 
+WHERE users.user_id = $1::VARCHAR]
+[parameters: ('944360812:user',)]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2025-03-14 03:08:20,151 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,154 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,157 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,160 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,162 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,164 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,166 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,168 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,170 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,172 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,173 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,177 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,179 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,181 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,183 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,185 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,187 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,190 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,193 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,194 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,196 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,198 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,200 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,201 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,203 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,205 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,209 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,211 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,212 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,214 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,216 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,218 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,220 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,221 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,224 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,228 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,229 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,231 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,233 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,235 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,237 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,239 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,243 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,245 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,246 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,249 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,251 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,253 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,254 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,258 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,260 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,262 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,266 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,273 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,278 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,283 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,289 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,294 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,298 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,303 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,310 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,314 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,319 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,326 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,331 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,337 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,342 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,346 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,352 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,357 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,362 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,367 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,373 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,378 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,383 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,389 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,395 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,400 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,408 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,412 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,417 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,425 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,431 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,438 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,442 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,448 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,455 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,460 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,465 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,473 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,497 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,504 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,509 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,514 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,519 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,525 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,530 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:08:20,537 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:48:43,049 - src.bot.handlers.start_handler - ERROR - 'NoneType' object is not subscriptable
+2025-03-14 03:50:04,735 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:50:04,737 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:50:04,739 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:50:04,740 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:50:04,742 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:50:04,743 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:50:04,745 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:50:04,746 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:50:04,748 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:50:04,749 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:50:04,751 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:50:04,752 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:50:04,753 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 03:50:04,754 - src.db.orm.user_orm - ERROR - sorry, too many clients already
+2025-03-14 04:07:52,752 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'get'
+2025-03-14 04:07:56,431 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'get'
+2025-03-14 04:12:03,748 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'get'
+2025-03-14 04:12:11,556 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'get'
+2025-03-14 04:13:56,273 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'get'

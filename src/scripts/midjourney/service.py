@@ -53,7 +53,7 @@ class MidjourneyService:
                 translate_message = await self.translator.translate(body["message"])
                 data = json.dumps(
                     {
-                        "prompt": f"{translate_message}",
+                        "prompt": f"{body["message"]}",
                     }
                 ).encode()
 

@@ -31,7 +31,9 @@ class ConfigORM:
 
     @staticmethod
     async def change_config(
-        change_setting: GPTConfig | CLAUDEConfig, user_id: int
+        user_id: int,
+        change_setting: GPTConfig | CLAUDEConfig = None,
+        auto_renewal: bool = None,
     ) -> Optional[UserConfig]:
         async with async_session() as session:
             stmt = select(UserConfig).where(UserConfig.user_id == user_id)
@@ -41,10 +43,17 @@ class ConfigORM:
             if user_config is None:
                 user_config = await ConfigORM.create_config(user_id)
 
-            if isinstance(change_setting, GPTConfig):
-                user_config.gpt_select = change_setting
-            if isinstance(change_setting, CLAUDEConfig):
-                user_config.claude_select = change_setting
+            if auto_renewal:
+                if user_config.auto_renewal is True:
+                    user_config.auto_renewal = False
+                else:
+                    user_config.auto_renewal = True
+
+            if change_setting:
+                if isinstance(change_setting, GPTConfig):
+                    user_config.gpt_select = change_setting
+                if isinstance(change_setting, CLAUDEConfig):
+                    user_config.claude_select = change_setting
 
             await session.commit()
 
@@ -62,6 +71,7 @@ class ConfigORM:
         user_config = result.scalar_one_or_none()
 
         if user_config is None:
+            await session.close()
             return None
         if not session:
             await session.close()

@@ -1,8 +1,8 @@
-"""add autoincrement
+"""finish
 
-Revision ID: 5522c816e5db
+Revision ID: bb3f8adee1c9
 Revises: 
-Create Date: 2025-03-13 02:25:44.965277
+Create Date: 2025-03-13 03:37:12.250042
 
 """
 
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = "5522c816e5db"
+revision: str = "bb3f8adee1c9"
 down_revision: Union[str, None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -61,6 +61,9 @@ def upgrade() -> None:
         sa.Column("energy", sa.DECIMAL(precision=15, scale=1), nullable=False),
         sa.Column("use_referral_link", sa.BigInteger(), nullable=True),
         sa.Column("personal_percent", sa.Integer(), nullable=False),
+        sa.Column(
+            "referral_bonus", sa.DECIMAL(precision=15, scale=1), nullable=False
+        ),
         sa.Column("created", sa.DateTime(), nullable=False),
         sa.Column("updated", sa.DateTime(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
@@ -86,7 +89,6 @@ def upgrade() -> None:
         sa.Column("premium_active", sa.Boolean(), nullable=False),
         sa.Column("premium_from_date", sa.Date(), nullable=False),
         sa.Column("premium_to_date", sa.Date(), nullable=False),
-        sa.Column("auto_renewal", sa.Boolean(), nullable=False),
         sa.Column("auth_renewal_id", sa.String(), nullable=True),
         sa.Column("user_id", sa.Integer(), nullable=False),
         sa.Column("created", sa.DateTime(), nullable=False),
@@ -119,6 +121,7 @@ def upgrade() -> None:
             ),
             nullable=False,
         ),
+        sa.Column("auto_renewal", sa.Boolean(), nullable=False),
         sa.Column("user_id", sa.BigInteger(), nullable=False),
         sa.Column("created", sa.DateTime(), nullable=False),
         sa.Column("updated", sa.DateTime(), nullable=False),

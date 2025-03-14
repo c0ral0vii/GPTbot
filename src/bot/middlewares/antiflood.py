@@ -31,5 +31,5 @@ class RateLimitMiddleware(BaseMiddleware):
 
         else:
             # Set the rate limit for the user
-            await self.redis_client.set_with_ttl(key=key, value="1", ttl=1)
+            await self.redis_client.set(key=key, value="flood", ttl=1)
             return await handler(event, data)

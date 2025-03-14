@@ -31,7 +31,7 @@ class Settings(BaseSettings):
     DALL_KEY: str = None
     # YOOMONEY_API
     YOOMONEY_API: str = None
-    PRODAMUS_API: str = None
+    SHOP_ID: str = None
 
     # admin token
     ADMIN_TOKEN: str = None
@@ -44,34 +44,35 @@ class Settings(BaseSettings):
     def TEXT_GPT(self):
         return {
             "gpt-4o-mini": {
-                "energy_cost": 2,
+                "energy_cost": 10,
                 "select_model": "ChatGPT 4o-mini",
-                "premium_free": False,
+                "premium_free": True,
             },
             "gpt-4o": {
-                "energy_cost": 2,
+                "energy_cost": 10,
                 "select_model": "ChatGPT 4o",
                 "premium_free": True,
             },
             "o1": {
-                "energy_cost": 2,
+                "energy_cost": 10,
                 "select_model": "ChatGPT o1",
-                "premium_free": False,
+                "premium_free": True,
             },
             "gpt-4.5-preview": {
-                "energy_cost": 2,
+                "energy_cost": 10,
                 "select_model": "ChatGPT 4.5",
-                "premium_free": False,
+                "premium_free": True,
+                "disable": True
             },
             "claude-3-5-haiku-latest": {
-                "energy_cost": 3,
-                "select_model": "Claude Haiku",
-                "premium_free": False,
+                "energy_cost": 10,
+                "select_model": "Claude 3.5 Haiku",
+                "premium_free": True,
             },
             "claude-3-5-sonnet-latest": {
-                "energy_cost": 4,
-                "select_model": "Claude Sonnet",
-                "premium_free": False,
+                "energy_cost": 10,
+                "select_model": "Claude 3.5 Sonnet",
+                "premium_free": True,
             },
         }
 
@@ -79,7 +80,7 @@ class Settings(BaseSettings):
     def IMAGE_GPT(self):
         return {
             "midjourney": {
-                "energy_cost": 2.5,
+                "energy_cost": 10,
                 "select_model": "Midjourney",
                 "premium_free": False,
             }
