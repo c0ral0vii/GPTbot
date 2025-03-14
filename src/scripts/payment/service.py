@@ -23,7 +23,7 @@ class PaymentService:
         payment = Payment.create(
             {
                 "amount": {
-                    "value": 990,
+                    "value": 1490,
                     "currency": "RUB",
                 },
                 "confirmation": {
@@ -45,7 +45,7 @@ class PaymentService:
                         {
                             "description": "Премиум подписка",
                             "quantity": 1.000,
-                            "amount": {"value": "990.00", "currency": "RUB"},
+                            "amount": {"value": "1490.00", "currency": "RUB"},
                             "vat_code": 4,
                             "payment_mode": "full_payment",
                             "payment_subject": "service",
