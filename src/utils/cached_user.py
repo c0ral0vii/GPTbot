@@ -13,10 +13,10 @@ async def _cached_user(key: str = None, user_id: int = None,  refresh: bool = Fa
     logger.debug(find_info)
     from src.db.orm.user_orm import UserORM
 
+
     if find_info is None or refresh:
 
         user = await UserORM.get_user(user_id=user_id, get_premium_status=True)
-        logger.debug(user)
 
         if not user:
             return None

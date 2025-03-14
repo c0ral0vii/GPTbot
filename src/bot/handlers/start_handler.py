@@ -53,11 +53,12 @@ async def start_handler(message: types.Message, state: FSMContext):
         user_id = message.from_user.id
         key = f"{user_id}:user"
 
-        check_user = await _cached_user(key, user_id)
+        await _check_referral(message)
+        check_user = await UserORM.get_user(user_id)
         logger.debug(check_user)
 
         if not check_user:
-            await _check_referral(message)
+            await _cached_user(key, user_id)
 
             await message.answer(
                 "Добро пожаловать в Woome AI 🧞‍\n\n️"
@@ -74,10 +75,12 @@ async def start_handler(message: types.Message, state: FSMContext):
                 reply_markup=await main_menu_kb(),
             )
         else:
+            user_info = await _cached_user(key, user_id)
+
             await message.answer(
                 "Добро пожаловать в Woome AI 🧞‍\n\n️"
-                f"Ваш баланс: {check_user.get('energy')} ⚡\n"
-                f"Premium подписка: {"✅" if check_user.get('check_premium') else "❌"} \n\n"
+                f"Ваш баланс: {user_info.get('energy')} ⚡\n"
+                f"Premium подписка: {"✅" if user_info.get('check_premium') else "❌"} \n\n"
                 "🛠 Попробуйте прямо сейчас:\n\n"
                 "• /text — Генерация текстов\n"
                 "• /image — Создание изображений\n\n"
