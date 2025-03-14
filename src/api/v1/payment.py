@@ -17,9 +17,11 @@ async def get_payment_data(data: PaymentSchema):
 
     if payment_info["event"] == "payment.succeeded":
         user_id = int(payment_info["object"]["metadata"]["user_id"])
+        payment_method = payment_info.get("payment_method", {}).get("id", None)
 
         data = {
             "user_id": user_id,
+            "payment_method": payment_method,
         }
 
         await premium_notification(data)

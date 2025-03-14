@@ -77,3 +77,18 @@ class ConfigORM:
             await session.close()
 
         return user_config
+
+    @staticmethod
+    async def get_all_auto_sub_users(
+            session: AsyncSession = None
+    ):
+        if not session:
+            session = async_session()
+
+        stmt = select(UserConfig).where(UserConfig.auto_renewal == True)
+        result = await session.execute(stmt)
+        users = result.scalars().all()
+        if not session:
+            await session.close()
+
+        return users

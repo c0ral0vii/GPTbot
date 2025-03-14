@@ -45,13 +45,13 @@ async def on_startup():
     commands = [
         types.BotCommand(command="/start", description="Перезапуск бота (Restart bot)"),
         types.BotCommand(command="/menu", description="Меню бота"),
-        types.BotCommand(command="/help", description="Поддержка"),
-        types.BotCommand(command="/subscription", description="Управление подпиской"),
+        types.BotCommand(command="/premium", description="🌟 Premium подписка"),
         types.BotCommand(command="/text", description="Работа с текстовыми ИИ"),
         types.BotCommand(command="/image", description="Работа с ИИ для изображений"),
         types.BotCommand(command="/profile", description="Баланс генераций"),
         types.BotCommand(command="/invite", description="Пригласить друга"),
-        types.BotCommand(command="/premium", description="🌟 Premium подписка"),
+        types.BotCommand(command="/help", description="Поддержка"),
+        types.BotCommand(command="/subscription", description="Управление подпиской"),
     ]
 
     await bot.set_my_commands(commands)

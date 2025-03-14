@@ -74,8 +74,11 @@ async def subscription_settings(callback: types.CallbackQuery):
         await update_premium(user_id=user_id, premium=check_premium)
 
     if check_premium:
-
         await callback.message.edit_text(f"Дата окончания: {user['premium_to_date']}\n"
-                             f"Автопродление: {'✅' if user['settings']['auto_renewal'] else '❌'}",)
+                             f"Автопродление: {'✅' if check_premium else '❌'}",
+                                         reply_markup=InlineKeyboardMarkup(inline_keyboard=[
+                [InlineKeyboardButton(text="Изменить автопродление", callback_data="sub_change_auto")],
+            ]
+        ))
     else:
         await callback.message.answer("❗У вас нет активной подписки для изменения пункта приобретите премиум\n\nДля покупки пропишите кнопку /premium")

@@ -75,6 +75,7 @@ async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
 
     await callback.message.answer(
         f"Выбраная вами модель - {select_model}\n"
+        f"(поменять модель в настройках профиля)\n"
         f"Стоимость модели ⚡️ {energy_cost}\n\n"
         "Выберите прошлый диалог из списка ниже или создайте новый:",
         reply_markup=await get_models_dialogs(dialogs),
@@ -104,6 +105,7 @@ async def select_dialog_handler(callback: types.CallbackQuery, state: FSMContext
 
     await callback.message.answer(
         f"Выбраная вами модель - {data["select_model"]}\n"
+        f"(поменять модель в настройках профиля)\n"
         f"Стоимость модели ⚡️ {data["energy_cost"]}\n\n"
         f"Выбранный диалог: {title}\n\n"
         "Напишите ваше сообщение ниже",

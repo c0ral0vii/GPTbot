@@ -59,7 +59,8 @@ class PremiumUserORM:
 
 class UserORM:
     @staticmethod
-    async def create_premium_user(user_id: int) -> Optional[PremiumUser]:
+    async def create_premium_user(user_id: int,
+                                  payment_method_id: str) -> Optional[PremiumUser]:
         today = datetime.now().date()
         end_date = today + timedelta(days=30)
 
@@ -69,6 +70,7 @@ class UserORM:
                 .where(User.user_id == user_id)
                 .options(selectinload(User.premium_status))
             )
+
             result = await session.execute(stmt)
             user = result.scalar_one_or_none()
 
@@ -76,6 +78,7 @@ class UserORM:
                 premium_active=True,
                 premium_from_date=today,
                 premium_to_date=end_date,
+                auth_renewal_id=payment_method_id,
                 user_id=user.id,
             )
 
@@ -89,10 +92,13 @@ class UserORM:
                 result = await session.execute(stmt)
                 ref_user = result.scalar_one_or_none()
 
-                ref_user.referral_bonus = ref_user.referral_bonus + Decimal(180)
-                session.add(ref_user)
+                if ref_user:
+                    ref_user.referral_bonus = ref_user.referral_bonus + Decimal(180)
+                    session.add(ref_user)
 
             await session.commit()
+            await change_premium_status(user_id=user_id, premium=True, premium_to_date=end_date)
+
             return premium_user
 
     @staticmethod
