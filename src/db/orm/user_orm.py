@@ -89,7 +89,7 @@ class UserORM:
                 result = await session.execute(stmt)
                 ref_user = result.scalar_one_or_none()
 
-                ref_user.referral_bonus += Decimal(180)
+                ref_user.referral_bonus = ref_user.referral_bonus + Decimal(180)
                 session.add(ref_user)
 
             await session.commit()
