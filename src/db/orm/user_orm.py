@@ -98,6 +98,8 @@ class UserORM:
 
             await session.commit()
             await _cached_user(user_id=user_id, refresh=True)
+            await _cached_user(user_id=user.use_referral_link, refresh=True)
+
             await change_premium_status(user_id=user_id, premium=True, premium_to_date=end_date)
 
             return premium_user
