@@ -35,7 +35,6 @@ class PaymentService:
                 },
                 "capture": True,
                 "description": "Покупка премиума на 1 месяц",
-                "save_payment_method": True,
                 "receipt": {
                     "customer": {
                         "email": "metlinahelen@yandex.ru",
