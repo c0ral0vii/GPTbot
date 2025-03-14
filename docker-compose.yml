@@ -61,7 +61,6 @@ services:
       - .env
     depends_on:
       - db
-      - redis
       - rabbitmq
     volumes:
       - ~/.redis/:/root/.redis/
