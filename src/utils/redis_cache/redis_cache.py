@@ -16,7 +16,7 @@ class RedisCache:
             password=settings.REDIS_PASS,
             db=0,
             ssl=True,
-            ssl_ca_certs="./.redis/root.crt"
+            ssl_ca_certs="/root/.redis/root.crt"
         )
 
     async def connect(self):
@@ -28,7 +28,7 @@ class RedisCache:
                 password=settings.REDIS_PASS,
                 db=0,
                 ssl=True,
-                ssl_ca_certs="/.redis/root.crt"
+                ssl_ca_certs="/root/.redis/root.crt"
             )
 
 
