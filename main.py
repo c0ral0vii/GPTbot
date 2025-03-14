@@ -68,6 +68,7 @@ async def run():
     logger.info("Запуск бота")
 
     await dp.start_polling(bot)
+    logger.info("Запуск бота")
 
 
 async def run_workers():
