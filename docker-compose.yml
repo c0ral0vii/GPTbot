@@ -65,6 +65,7 @@ services:
       - redis
       - rabbitmq
     volumes:
+      - ~/.redis/:/.redis/
       - .:/app
     networks:
       - bot_network
