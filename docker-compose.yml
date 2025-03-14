@@ -34,25 +34,24 @@ services:
       - bot_network
       - admin_network
 
-  redis:
-    build:
-      context: redis
-      dockerfile: redis.dockerfile
-    container_name: redis_cache
-    restart: on-failure
-    volumes:
-       - redis_data:/data
-       - ~/.redis/:/.redis/
-    ports:
-      - "6379:6379"
-    healthcheck:
-      test: [ "CMD", "redis-cli", "-a", "root", "ping" ]
-      interval: 60s
-      timeout: 5s
-      retries: 3
-    networks:
-      - bot_network
-      - admin_network
+#  redis:
+#    build:
+#      context: redis
+#      dockerfile: redis.dockerfile
+#    container_name: redis_cache
+#    restart: on-failure
+#    volumes:
+#       - redis_data:/data
+#    ports:
+#      - "6379:6379"
+#    healthcheck:
+#      test: [ "CMD", "redis-cli", "-a", "root", "ping" ]
+#      interval: 60s
+#      timeout: 5s
+#      retries: 3
+#    networks:
+#      - bot_network
+#      - admin_network
 
   bot:
     build:
@@ -79,6 +78,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
+      - ~/.redis/:/root/.redis/
       - .:/app
     networks:
       - admin_network

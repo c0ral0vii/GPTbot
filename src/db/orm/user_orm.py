@@ -191,7 +191,6 @@ class UserORM:
                 user.energy = user.energy + Decimal(count)
                 await update_energy_cache(user_id=user.user_id, new_energy=float(user.energy))
 
-                session.add(user)
                 await session.commit()
 
                 return {
