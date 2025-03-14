@@ -46,7 +46,7 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
         if check_premium:
             priority = 5
 
-        if check_premium and select_model.get("premium_free"):
+        if check_premium and settings.IMAGE_GPT.get(gpt_select).get("premium_free"):
             energy_cost = 0
 
     else:
