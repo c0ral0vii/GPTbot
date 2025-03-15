@@ -62,7 +62,6 @@ services:
     depends_on:
       - db
       - rabbitmq
-      - redis
     volumes:
       - ~/.redis/:/root/.redis/
       - .:/app
