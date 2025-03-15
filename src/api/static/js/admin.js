@@ -81,7 +81,6 @@ class AdminPanel {
         this.charts = new DashboardCharts();
 
         await this.loadDashboardData();
-        await this.refresh_queues_info();
         // setInterval(() => this.refreshData(), 30000);
     }
 
@@ -241,7 +240,7 @@ class AdminPanel {
             row.innerHTML = `
                 <td>${item.id}</td>
                 <td>${item.user_id}</td>
-                <td>${item.status ? '✅' : '❌'}</td>
+                <td>${item.status}</td>
                 <td>${item.energy}</td>
                 <td>${item.created}</td>
                 <td>${item.updated}</td>
