@@ -45,11 +45,12 @@ async def _check_referral(message: types.Message):
         await UserORM.add_energy(message.from_user.id, 20)
 
 
-
 @router.message(CommandStart())
 async def start_handler(message: types.Message, state: FSMContext):
     try:
         logger.debug(message.text)
+        await state.clear()
+
         user_id = message.from_user.id
         key = f"{user_id}:user"
 
@@ -93,7 +94,6 @@ async def start_handler(message: types.Message, state: FSMContext):
                 reply_markup=await main_menu_kb(),
             )
 
-        await state.clear()
     except Exception as e:
         logger.error(e)
         await message.answer("Произошла ошибка, попробуйте еще раз")
@@ -102,17 +102,24 @@ async def start_handler(message: types.Message, state: FSMContext):
 @router.message(Command("invite"))
 async def invite_handler(message: types.Message):
     try:
-        await message.answer("Приглашай друзей и зарабатывай!\n"
-                             "🔹 Как это работает? Пригласи друга и получи:\n\n"
-                             "1) мгновенно +20 ⚡энергии на баланс за каждого!\n"
-                             "2) 180 ₽ с каждой подписки по вашей ссылке 💰\n\n"
-                             "🔥 Чем больше друзей – тем больше бесплатных генераций и заработок!",
-                             parse_mode="Markdown",
-                             reply_markup=InlineKeyboardMarkup(
-                                 inline_keyboard=[
-                                     [InlineKeyboardButton(text="Получить ссылку для заработка", callback_data="get_refferall_link")]
-                                 ]
-                             ),)
+        await message.answer(
+            "Приглашай друзей и зарабатывай!\n"
+            "🔹 Как это работает? Пригласи друга и получи:\n\n"
+            "1) мгновенно +20 ⚡энергии на баланс за каждого!\n"
+            "2) 180 ₽ с каждой подписки по вашей ссылке 💰\n\n"
+            "🔥 Чем больше друзей – тем больше бесплатных генераций и заработок!",
+            parse_mode="Markdown",
+            reply_markup=InlineKeyboardMarkup(
+                inline_keyboard=[
+                    [
+                        InlineKeyboardButton(
+                            text="Получить ссылку для заработка",
+                            callback_data="get_refferall_link",
+                        )
+                    ]
+                ]
+            ),
+        )
     except Exception as e:
         logger.error(e)
         await message.answer("Попробуйте прописать команду /start")
@@ -128,20 +135,23 @@ async def get_ref_link(callback: types.CallbackQuery):
 
 @router.message(Command("help"))
 async def help_command(message: types.Message):
-    await message.answer("🔹 Остались вопросы? Свяжитесь с поддержкой:\n"
-                         "👉 @WoomeSupport")
+    await message.answer(
+        "🔹 Остались вопросы? Свяжитесь с поддержкой:\n" "👉 @WoomeSupport"
+    )
 
 
 @router.message(Command("menu"))
 async def menu_command(message: types.Message):
-    await message.answer("📜 Меню Woome AI\n\n"
-                         "🌟 С Premium подпиской ChatGPT и Claude становятся безлимитны!\n"
-                         "⚡+2500 энергии всего за 1490 ₽ 👉 /premium\n\n"
-                         "Зови друзей – получай +20⚡ энергии мгновенно и зарабатывай на их подписках!\n"
-                         " 👉 /invite — Пригласить друга\n\n"
-                         "⚙️ Доступные команды:\n\n"
-                         "• /text — Создавай тексты с ИИ\n"
-                         "• /image — Генерируй изображения\n"
-                         "• /profile — Проверить баланс энергии\n"
-                         "• /premium — 🌟 Оформить подписку и снять ограничения\n\n"
-                         "💬 Нужна поддержка? Введите /help")
+    await message.answer(
+        "📜 Меню Woome AI\n\n"
+        "🌟 С Premium подпиской ChatGPT и Claude становятся безлимитны!\n"
+        "⚡+2500 энергии всего за 1490 ₽ 👉 /premium\n\n"
+        "Зови друзей – получай +20⚡ энергии мгновенно и зарабатывай на их подписках!\n"
+        " 👉 /invite — Пригласить друга\n\n"
+        "⚙️ Доступные команды:\n\n"
+        "• /text — Создавай тексты с ИИ\n"
+        "• /image — Генерируй изображения\n"
+        "• /profile — Проверить баланс энергии\n"
+        "• /premium — 🌟 Оформить подписку и снять ограничения\n\n"
+        "💬 Нужна поддержка? Введите /help"
+    )

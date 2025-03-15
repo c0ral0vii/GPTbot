@@ -1,3 +1,5 @@
+import re
+
 from aiogram import Router, types, F
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
@@ -17,6 +19,7 @@ model = RabbitQueue()
 router = Router()
 logger = setup_logger(__name__)
 
+EXCLUDE_PATTERN = re.compile(r"^(/.*|💡 Chat GPT/Claude)$", re.IGNORECASE)
 
 @router.message(Command("image"))
 @router.message(F.text == "🌄 MidJourney")
@@ -52,10 +55,13 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
     else:
         await callback.message.delete()
         await callback.message.answer(
-            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле")
+            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле"
+        )
         return
 
-    await state.update_data(type_gpt=gpt_select, energy_cost=energy_cost, priority=priority)
+    await state.update_data(
+        type_gpt=gpt_select, energy_cost=energy_cost, priority=priority
+    )
 
     await callback.message.answer(
         f"Выбраная вами модель - {select_model}\n"
@@ -67,7 +73,7 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
     await state.set_state(ImageState.text)
 
 
-@router.message(F.text, StateFilter(ImageState.text))
+@router.message(F.regex(EXCLUDE_PATTERN), StateFilter(ImageState.text))
 async def handle_text(message: types.Message, state: FSMContext):
     """Генерация фотографий от миджорни"""
 
@@ -76,7 +82,9 @@ async def handle_text(message: types.Message, state: FSMContext):
     key = f"{message.from_user.id}:generate"
 
     if await redis_manager.get(key):
-        await message.answer("⚠️ Дождитесь завершения предыдущей генерации или оформите Premium, чтобы запускать несколько генераций одновременно. 👉 /premium")
+        await message.answer(
+            "⚠️ Дождитесь завершения предыдущей генерации или оформите Premium, чтобы запускать несколько генераций одновременно. 👉 /premium"
+        )
         return
 
     answer_message = await message.answer("⏳ Подождите ваше сообщение в обработке...")
@@ -118,7 +126,8 @@ async def refresh_image(callback_data: types.CallbackQuery, state: FSMContext):
     else:
         await callback_data.message.delete()
         await callback_data.message.answer(
-            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле")
+            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле"
+        )
         return
 
     logger.debug(image_id)
@@ -159,9 +168,9 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
     else:
         await callback_data.message.delete()
         await callback_data.message.answer(
-            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле")
+            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле"
+        )
         return
-
 
     await model.publish_message(
         queue_name="variation_midjourney",
@@ -172,7 +181,6 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
         choice=int(image_id[-2]),
         image_id=int(image_id[-1]),
         key=key,
-
         priority=data.get("priority", 0),
     )
 
@@ -203,7 +211,8 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
     else:
         await callback_data.message.delete()
         await callback_data.message.answer(
-            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле")
+            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле"
+        )
         return
 
     await model.publish_message(
@@ -215,18 +224,19 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
         choice=int(image_id[-2]),
         image_id=int(image_id[-1]),
         key=key,
-
         priority=data.get("priority", 0),
     )
 
     await redis_manager.set(key=key, value="generate")
 
 
-async def _check_generation(callback_data: types.CallbackQuery):
+async def _check_generation(callback_data: types.CallbackQuery, priority: int = 0) -> bool:
     user_id = callback_data.from_user.id
     key = f"{user_id}:generate"
 
     if await redis_manager.get(key):
-        await callback_data.message.answer("⚠️ Дождитесь завершения предыдущей генерации или оформите Premium, чтобы запускать несколько генераций одновременно. 👉 /premium")
+        await callback_data.message.answer(
+            "⚠️ Дождитесь завершения предыдущей генерации или оформите Premium, чтобы запускать несколько генераций одновременно. 👉 /premium"
+        )
         return False
     return key

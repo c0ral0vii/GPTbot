@@ -2809,3 +2809,6 @@ WHERE users.user_id = $1::VARCHAR]
 2025-03-14 04:12:03,748 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'get'
 2025-03-14 04:12:11,556 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'get'
 2025-03-14 04:13:56,273 - src.bot.handlers.profile_handler - ERROR - 'NoneType' object has no attribute 'get'
+2025-03-15 10:16:17,520 - src.scripts.midjourney.service - ERROR - Prompts starting with `/` are not accepted. Describe what you would like to create.
+2025-03-15 10:16:22,218 - src.scripts.midjourney.service - ERROR - Prompts starting with `/` are not accepted. Describe what you would like to create.
+2025-03-15 10:43:21,991 - src.scripts.midjourney.service - ERROR - Prompts starting with `/` are not accepted. Describe what you would like to create.

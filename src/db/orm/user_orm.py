@@ -7,8 +7,13 @@ from sqlalchemy.orm import selectinload
 
 from src.db.models import User, GenerateImage, PremiumUser, BannedUser, BonusLink
 from src.db.orm.config_orm import ConfigORM
-from src.utils.cached_user import create_referral_user, check_user_create, _cached_user, update_energy_cache, \
-    change_premium_status
+from src.utils.cached_user import (
+    create_referral_user,
+    check_user_create,
+    _cached_user,
+    update_energy_cache,
+    change_premium_status,
+)
 from src.utils.logger import setup_logger
 
 from src.db.database import async_session
@@ -17,6 +22,7 @@ from sqlalchemy.exc import IntegrityError
 
 
 logger = setup_logger(__name__)
+
 
 class PremiumUserORM:
     @staticmethod
@@ -30,7 +36,11 @@ class PremiumUserORM:
         if not session:
             session = async_session()
 
-        stmt = select(User).where(User.user_id == user_id).options(selectinload(User.premium_status))
+        stmt = (
+            select(User)
+            .where(User.user_id == user_id)
+            .options(selectinload(User.premium_status))
+        )
         result = await session.execute(stmt)
         premium_user = result.scalar_one_or_none()
 
@@ -42,8 +52,9 @@ class PremiumUserORM:
 
         if premium_user.premium_status.premium_to_date < datetime.now().date():
             premium_user.premium_status.premium_active = False
-            await change_premium_status(user_id=user_id, premium=False,
-                                        premium_to_date=None)
+            await change_premium_status(
+                user_id=user_id, premium=False, premium_to_date=None
+            )
 
             await session.commit()
             if not session:
@@ -53,14 +64,19 @@ class PremiumUserORM:
 
         if not session:
             await session.close()
-        await change_premium_status(user_id=user_id, premium=True, premium_to_date=premium_user.premium_status.premium_to_date)
+        await change_premium_status(
+            user_id=user_id,
+            premium=True,
+            premium_to_date=premium_user.premium_status.premium_to_date,
+        )
         return True
 
 
 class UserORM:
     @staticmethod
-    async def create_premium_user(user_id: int,
-                                  payment_method_id: str) -> Optional[PremiumUser]:
+    async def create_premium_user(
+        user_id: int, payment_method_id: str
+    ) -> Optional[PremiumUser]:
         today = datetime.now().date()
         end_date = today + timedelta(days=30)
 
@@ -100,12 +116,16 @@ class UserORM:
             await _cached_user(user_id=user_id, refresh=True)
             await _cached_user(user_id=user.use_referral_link, refresh=True)
 
-            await change_premium_status(user_id=user_id, premium=True, premium_to_date=end_date)
+            await change_premium_status(
+                user_id=user_id, premium=True, premium_to_date=end_date
+            )
 
             return premium_user
 
     @staticmethod
-    async def create_user(user_id: int, use_referral_link: int = None) -> dict[str, Any]:
+    async def create_user(
+        user_id: int, use_referral_link: int = None
+    ) -> dict[str, Any]:
         try:
             async with async_session() as session:
                 stmt = select(User).where(User.user_id == user_id)
@@ -171,7 +191,9 @@ class UserORM:
 
                 if user.energy >= count:
                     user.energy = user.energy - Decimal(count)
-                    await update_energy_cache(user_id=user.user_id, new_energy=float(user.energy))
+                    await update_energy_cache(
+                        user_id=user.user_id, new_energy=float(user.energy)
+                    )
                 else:
                     return {
                         "error": True,
@@ -198,7 +220,9 @@ class UserORM:
                 user = result.scalar_one_or_none()
 
                 user.energy = user.energy + Decimal(count)
-                await update_energy_cache(user_id=user.user_id, new_energy=float(user.energy))
+                await update_energy_cache(
+                    user_id=user.user_id, new_energy=float(user.energy)
+                )
 
                 await session.commit()
 
@@ -243,13 +267,18 @@ class UserORM:
             raise
 
     @staticmethod
-    async def get_user(user_id: int, get_premium_status: bool = False) -> User | None | dict[str, Any]:
+    async def get_user(
+        user_id: int, get_premium_status: bool = False
+    ) -> User | None | dict[str, Any]:
         async with async_session() as session:
             try:
                 stmt = (
                     select(User)
                     .where(User.user_id == user_id)
-                    .options(selectinload(User.premium_status), selectinload(User.user_config_model))
+                    .options(
+                        selectinload(User.premium_status),
+                        selectinload(User.user_config_model),
+                    )
                 )
                 result = await session.execute(stmt)
                 user = result.scalar_one_or_none()
@@ -258,7 +287,9 @@ class UserORM:
                     return None
 
                 if get_premium_status:
-                    premium_status = await PremiumUserORM.is_premium_active(user_id, session)
+                    premium_status = await PremiumUserORM.is_premium_active(
+                        user_id, session
+                    )
                     return {"user": user, "premium_status": premium_status}
 
                 return user

@@ -11,7 +11,7 @@ engine = create_async_engine(
     pool_size=50,
     max_overflow=100,
     pool_timeout=30,
-    pool_recycle=3600
+    pool_recycle=3600,
 )
 
 async_session = async_sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)

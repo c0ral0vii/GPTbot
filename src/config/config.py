@@ -47,32 +47,44 @@ class Settings(BaseSettings):
                 "energy_cost": 10,
                 "select_model": "ChatGPT 4o-mini",
                 "premium_free": True,
+                "file_use": True,
+                "voice": True,
             },
             "gpt-4o": {
                 "energy_cost": 10,
                 "select_model": "ChatGPT 4o",
                 "premium_free": True,
+                "file_use": True,
+                "voice": True,
             },
             "o1": {
                 "energy_cost": 10,
                 "select_model": "ChatGPT o1",
                 "premium_free": True,
+                "file_use": True,
+                "voice": True,
             },
             "gpt-4.5-preview": {
                 "energy_cost": 10,
                 "select_model": "ChatGPT 4.5",
                 "premium_free": True,
-                "disable": True
+                "file_use": True,
+                "voice": True,
+                "disable": True,
             },
             "claude-3-5-haiku-latest": {
                 "energy_cost": 10,
                 "select_model": "Claude 3.5 Haiku",
                 "premium_free": True,
+                "file_use": True,
+                "voice": False,
             },
             "claude-3-5-sonnet-latest": {
                 "energy_cost": 10,
                 "select_model": "Claude 3.5 Sonnet",
                 "premium_free": True,
+                "file_use": True,
+                "voice": False,
             },
         }
 

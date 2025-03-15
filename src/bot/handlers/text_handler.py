@@ -1,13 +1,10 @@
 from aiogram import Router, types, F, Bot
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.bot.keyboards.select_gpt import select_text_gpt, cancel_kb, get_models_dialogs
 from src.bot.states.text_state import TextState
 from src.config.config import settings
-from src.db.enums_class import GPTConfig, CLAUDEConfig
-from src.db.orm.config_orm import ConfigORM
 from src.db.orm.user_orm import PremiumUserORM
 from src.scripts.queue.rabbit_queue import model
 from src.utils.logger import setup_logger
@@ -58,7 +55,9 @@ async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
 
     else:
         await callback.message.delete()
-        await callback.message.answer("Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле")
+        await callback.message.answer(
+            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле"
+        )
         return
 
     await state.update_data(
@@ -138,7 +137,6 @@ async def text_handler(message: types.Message, state: FSMContext, bot: Bot):
         answer_message=answer_message.message_id,
         energy_cost=data["energy_cost"],
         key=key,
-
         priority=data["priority"],
     )
 

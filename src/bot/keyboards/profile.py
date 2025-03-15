@@ -14,15 +14,27 @@ async def profile_settings_keyboard(user_id: int) -> InlineKeyboardMarkup:
 
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text=f"Chat GPT: {settings.TEXT_GPT.get(settings_data.gpt_select.value).get('select_model')}", callback_data=f"change_chatgpt")],
-            [InlineKeyboardButton(text=f"Claude: {settings.TEXT_GPT.get(settings_data.claude_select.value).get('select_model')}", callback_data=f"change_claude")],
+            [
+                InlineKeyboardButton(
+                    text=f"Chat GPT: {settings.TEXT_GPT.get(settings_data.gpt_select.value).get('select_model')}",
+                    callback_data=f"change_chatgpt",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    text=f"Claude: {settings.TEXT_GPT.get(settings_data.claude_select.value).get('select_model')}",
+                    callback_data=f"change_claude",
+                )
+            ],
         ],
     )
 
     return keyboard
 
 
-async def change_settings(user_id: int, model_type: Literal["claude", "gpt"]) -> InlineKeyboardMarkup:
+async def change_settings(
+    user_id: int, model_type: Literal["claude", "gpt"]
+) -> InlineKeyboardMarkup:
     buttons = []
 
     # Получаем настройки пользователя
@@ -55,10 +67,14 @@ async def change_settings(user_id: int, model_type: Literal["claude", "gpt"]) ->
         if selected_model == model:
             button_text = f"---> {button_text} <---"
 
-        buttons.append([InlineKeyboardButton(
-            text=button_text,
-            callback_data=f"setting_{model_type}_{model.value}"
-        )])
+        buttons.append(
+            [
+                InlineKeyboardButton(
+                    text=button_text,
+                    callback_data=f"setting_{model_type}_{model.value}",
+                )
+            ]
+        )
 
     kb = InlineKeyboardMarkup(inline_keyboard=buttons)
     return kb

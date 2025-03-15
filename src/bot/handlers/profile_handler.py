@@ -42,9 +42,13 @@ async def profile_handler(message: types.Message, state: FSMContext):
                 parse_mode="Markdown",
                 reply_markup=InlineKeyboardMarkup(
                     inline_keyboard=[
-                        [InlineKeyboardButton(text="⚙️Настройки", callback_data="settings"),]
+                        [
+                            InlineKeyboardButton(
+                                text="⚙️Настройки", callback_data="settings"
+                            ),
+                        ]
                     ]
-                )
+                ),
             )
         else:
             await message.answer(
@@ -64,9 +68,13 @@ async def profile_handler(message: types.Message, state: FSMContext):
                 parse_mode="Markdown",
                 reply_markup=InlineKeyboardMarkup(
                     inline_keyboard=[
-                        [InlineKeyboardButton(text="⚙️Настройки", callback_data="settings"), ]
+                        [
+                            InlineKeyboardButton(
+                                text="⚙️Настройки", callback_data="settings"
+                            ),
+                        ]
                     ]
-                )
+                ),
             )
     except Exception as e:
         logger.error(e)
@@ -77,23 +85,29 @@ async def profile_handler(message: types.Message, state: FSMContext):
 async def settings_callback(callback: types.CallbackQuery):
     """Настройки"""
 
-    await callback.message.answer("`Модель: Выбранная версия`\n\nИзменение настроек:",
-                                  parse_mode="Markdown",
-                                  reply_markup=await profile_settings_keyboard(callback.from_user.id))
+    await callback.message.answer(
+        "`Модель: Выбранная версия`\n\nИзменение настроек:",
+        parse_mode="Markdown",
+        reply_markup=await profile_settings_keyboard(callback.from_user.id),
+    )
 
 
-@router.callback_query(F.data.startswith('change_'))
+@router.callback_query(F.data.startswith("change_"))
 async def process_change_button(callback: types.CallbackQuery):
     user_id = callback.from_user.id
     choice = callback.data
 
     if choice == "change_chatgpt":
         # Логика для изменения настроек Chat GPT
-        await callback.message.edit_reply_markup(reply_markup=await change_settings(callback.from_user.id, "gpt"))
+        await callback.message.edit_reply_markup(
+            reply_markup=await change_settings(callback.from_user.id, "gpt")
+        )
 
     elif choice == "change_claude":
         # Логика для изменения настроек Claude
-        await callback.message.edit_reply_markup(reply_markup=await change_settings(callback.from_user.id, "claude"))
+        await callback.message.edit_reply_markup(
+            reply_markup=await change_settings(callback.from_user.id, "claude")
+        )
 
 
 @router.callback_query(F.data.startswith("setting_"))

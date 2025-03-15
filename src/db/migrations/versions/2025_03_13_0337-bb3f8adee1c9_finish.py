@@ -33,9 +33,7 @@ def upgrade() -> None:
     op.create_table(
         "bonus_links",
         sa.Column("id", sa.Integer(), nullable=False),
-        sa.Column(
-            "energy_bonus", sa.DECIMAL(precision=15, scale=1), nullable=False
-        ),
+        sa.Column("energy_bonus", sa.DECIMAL(precision=15, scale=1), nullable=False),
         sa.Column("link", sa.String(), nullable=True),
         sa.Column("active", sa.Boolean(), nullable=False),
         sa.Column("active_count", sa.Integer(), nullable=False),
@@ -61,9 +59,7 @@ def upgrade() -> None:
         sa.Column("energy", sa.DECIMAL(precision=15, scale=1), nullable=False),
         sa.Column("use_referral_link", sa.BigInteger(), nullable=True),
         sa.Column("personal_percent", sa.Integer(), nullable=False),
-        sa.Column(
-            "referral_bonus", sa.DECIMAL(precision=15, scale=1), nullable=False
-        ),
+        sa.Column("referral_bonus", sa.DECIMAL(precision=15, scale=1), nullable=False),
         sa.Column("created", sa.DateTime(), nullable=False),
         sa.Column("updated", sa.DateTime(), nullable=False),
         sa.PrimaryKeyConstraint("id"),
@@ -134,9 +130,7 @@ def upgrade() -> None:
     op.create_table(
         "messages",
         sa.Column("dialog_id", sa.BigInteger(), nullable=False),
-        sa.Column(
-            "message_id", sa.BigInteger(), autoincrement=True, nullable=False
-        ),
+        sa.Column("message_id", sa.BigInteger(), autoincrement=True, nullable=False),
         sa.Column(
             "role",
             sa.Enum("USER", "ASSISTANT", name="messagerole"),

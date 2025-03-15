@@ -8,6 +8,7 @@ from src.utils.premium_script import premium_notification
 router = APIRouter()
 logger = setup_logger(__name__)
 
+
 @router.post("/yookassa/success")
 async def get_payment_data(data: PaymentSchema):
     """Юкасса платежка, тут вебхук как только оплачено пользователю присвается на месяц премиум"""

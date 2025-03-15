@@ -34,6 +34,7 @@ dp.include_routers(
     start_handler.router,
     premium_handler.router,
     profile_handler.router,
+
     image_handler.router,
     text_handler.router,
 )

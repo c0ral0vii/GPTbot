@@ -1,36 +1,52 @@
 from redis.asyncio import Redis
 from src.config.config import settings
 from src.utils.logger import setup_logger
+from src.config.config import settings
 import json
 
 logger = setup_logger(__name__)
+
 
 class RedisCache:
     def __init__(self):
         self.redis = None
 
     def get_redis_manager(self):
+        if settings.DEBUG:
+            return Redis(
+                host=settings.REDIS_HOST,
+                port=settings.REDIS_PORT,
+                password=settings.REDIS_PASS,
+                db=0,
+            )
         return Redis(
             host=settings.REDIS_HOST,
             port=settings.REDIS_PORT,
             password=settings.REDIS_PASS,
             db=0,
             ssl=True,
-            ssl_ca_certs="/root/.redis/root.crt"
+            ssl_ca_certs="/root/.redis/root.crt",
         )
 
     async def connect(self):
         """Создает подключение к Redis."""
         if not self.redis:
+            if settings.DEBUG:
+                self.redis = Redis(
+                    host=settings.REDIS_HOST,
+                    port=settings.REDIS_PORT,
+                    password=settings.REDIS_PASS,
+                    db=0,
+                )
+                return
             self.redis = Redis(
                 host=settings.REDIS_HOST,
                 port=settings.REDIS_PORT,
                 password=settings.REDIS_PASS,
                 db=0,
                 ssl=True,
-                ssl_ca_certs="/root/.redis/root.crt"
+                ssl_ca_certs="/root/.redis/root.crt",
             )
-
 
     async def close(self):
         """Закрывает соединение с Redis."""
@@ -48,9 +64,15 @@ class RedisCache:
         try:
             await self.connect()
             data = json.dumps(value)
-            return await self.redis.set(name=key, value=data, ex=ttl) if self.redis else False
+            return (
+                await self.redis.set(name=key, value=data, ex=ttl)
+                if self.redis
+                else False
+            )
         except Exception as e:
-            logger.error(f"Redis в режиме только для чтения! Не удалось записать данные.. {e}")
+            logger.error(
+                f"Redis в режиме только для чтения! Не удалось записать данные.. {e}"
+            )
             return False
 
     async def set_hset(self, key: str, **kwargs):

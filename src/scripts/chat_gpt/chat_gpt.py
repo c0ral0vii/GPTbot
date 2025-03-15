@@ -28,6 +28,12 @@ class ChatGPT:
             30,
         ]
 
+    async def get_gpt_assistant(self, assistant_id: str):
+        assistant = await self.client.beta.assistants.retrieve(
+            assistant_id=assistant_id,
+        )
+
+
     async def send_message(self, data: Dict[str, Any]):
         """Отправка сообщения и возврат текстового ответа."""
         try:
@@ -59,7 +65,7 @@ class ChatGPT:
             response = await self.client.chat.completions.create(
                 model=data["version"],
                 messages=import_messages,
-                max_tokens=1024,
+                max_tokens=3000,
             )
 
             text_only = response.choices[0].message.content

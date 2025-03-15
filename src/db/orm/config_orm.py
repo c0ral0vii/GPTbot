@@ -79,9 +79,7 @@ class ConfigORM:
         return user_config
 
     @staticmethod
-    async def get_all_auto_sub_users(
-            session: AsyncSession = None
-    ):
+    async def get_all_auto_sub_users(session: AsyncSession = None):
         if not session:
             session = async_session()
 

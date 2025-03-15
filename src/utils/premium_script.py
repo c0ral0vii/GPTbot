@@ -11,6 +11,8 @@ async def premium_notification(data) -> None:
     data["text"] = PREMIUM_TEXT
 
     await UserORM.add_energy(user_id=data["user_id"], count=PREMIUM_ENERGY_ADD)
-    await UserORM.create_premium_user(user_id=data["user_id"], payment_method_id=data.get("payment_method"))
+    await UserORM.create_premium_user(
+        user_id=data["user_id"], payment_method_id=data.get("payment_method")
+    )
 
     await answer_model.send_notification(data)

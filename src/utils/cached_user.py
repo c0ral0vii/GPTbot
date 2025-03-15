@@ -5,14 +5,16 @@ from src.utils.logger import setup_logger
 
 logger = setup_logger(__name__)
 
-async def _cached_user(key: str = None, user_id: int = None,  refresh: bool = False) -> dict[str, Any] | None:
+
+async def _cached_user(
+    key: str = None, user_id: int = None, refresh: bool = False
+) -> dict[str, Any] | None:
     """Кешировавние пользовавтеля"""
     key = f"{user_id}:user"
 
     find_info = await redis_manager.get(key=key)
     logger.debug(find_info)
     from src.db.orm.user_orm import UserORM
-
 
     if find_info is None or refresh:
 
@@ -61,6 +63,7 @@ async def check_user_create(user_id: int) -> dict | None:
         return None
     return find_info
 
+
 async def create_referral_user(user_id: int) -> None:
     """Создание пользователя в реферальной системе redis"""
 
@@ -79,7 +82,7 @@ async def update_user_count(user_id: int) -> None:
 
     user["counts"] = counts
 
-    await redis_manager.set(key=key, value=user,ttl=604800)
+    await redis_manager.set(key=key, value=user, ttl=604800)
 
 
 async def update_energy_cache(user_id: int, new_energy: float) -> None:
@@ -91,7 +94,7 @@ async def update_energy_cache(user_id: int, new_energy: float) -> None:
 
     user["energy"] = float(new_energy)
 
-    await redis_manager.set(key=key, value=user,ttl=604800)
+    await redis_manager.set(key=key, value=user, ttl=604800)
 
 
 async def update_premium(user_id: int, premium: bool) -> None:
@@ -106,10 +109,12 @@ async def update_premium(user_id: int, premium: bool) -> None:
         await _cached_user(key=key, user_id=user_id, refresh=True)
         return
 
-    await redis_manager.set(key=key, value=user,ttl=604800)
+    await redis_manager.set(key=key, value=user, ttl=604800)
 
 
-async def change_settings_cache(user_id: int, gpt_type: Literal['claude', 'gpt'], new_value: str) -> None:
+async def change_settings_cache(
+    user_id: int, gpt_type: Literal["claude", "gpt"], new_value: str
+) -> None:
     key = f"{user_id}:user"
     user = await redis_manager.get(key=key)
 
