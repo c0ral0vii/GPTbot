@@ -13,7 +13,10 @@ class ChangeUserSchema(BaseModel):
     premium_active: Optional[bool] = False
     use_referral_link: Optional[str] = None
     user_id: int
+    personal_percent: int
+    referral_bonus: int
 
+    auto_renewal: Optional[bool] = False
     premium_dates: Optional[Dict[str, str]] = None
 
 

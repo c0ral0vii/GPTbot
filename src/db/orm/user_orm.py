@@ -473,7 +473,7 @@ class AnalyticsORM:
                     "use_referral_link": user.use_referral_link,
 
                     "personal_percent": user.personal_percent,
-                    "referral_bonus": user.referral_bonus,
+                    "referral_bonus": float(user.referral_bonus),
                     "auto_renewal": user.user_config_model.auto_renewal,
 
                     "status": (
