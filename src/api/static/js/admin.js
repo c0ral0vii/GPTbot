@@ -148,6 +148,9 @@ class AdminPanel {
             "use_referral_link": document.getElementById('use_referral_link').value,
             "premium_active": document.getElementById('premium_active').checked,
             "banned_user": document.getElementById('banned_user').checked,
+            "personal_percent": document.getElementById('personal_percent').value,
+            "referral_bonus": document.getElementById('referral_bonus').value,
+            "auto_renewal": document.getElementById('auto_renewal').checked,
         };
 
         // Добавляем premium_dates, если премиум включен
@@ -186,6 +189,12 @@ class AdminPanel {
         document.getElementById('user_id').value = data.user_id;
         document.getElementById('energy').value = data.energy;
         document.getElementById('use_referral_link').value = data.use_referral_link;
+
+        document.getElementById('personal_percent').value = data.personal_percent;
+        document.getElementById('referral_bonus').value = data.referral_bonus;
+
+        const auto_renewal = document.getElementById('auto_renewal');
+        auto_renewal.checked = data.auto_renewal;
 
         const premiumCheckbox = document.getElementById('premium_active');
         const premiumDatesContainer = document.getElementById('premium_dates');
@@ -232,7 +241,7 @@ class AdminPanel {
             row.innerHTML = `
                 <td>${item.id}</td>
                 <td>${item.user_id}</td>
-                <td>${item.status}</td>
+                <td>${item.status ? '✅' : '❌'}</td>
                 <td>${item.energy}</td>
                 <td>${item.created}</td>
                 <td>${item.updated}</td>

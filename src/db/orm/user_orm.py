@@ -446,7 +446,8 @@ class AnalyticsORM:
         async with async_session() as session:
             result = []
 
-            stmt_users = select(User).options(selectinload(User.premium_status))
+            stmt_users = select(User).options(selectinload(User.premium_status), selectinload(User.user_config_model))
+
             if search != "":
                 stmt_users = stmt_users.where(
                     or_(
@@ -470,11 +471,17 @@ class AnalyticsORM:
                     "user_id": user.user_id,
                     "energy": float(user.energy) if user.energy else None,
                     "use_referral_link": user.use_referral_link,
+
+                    "personal_percent": user.personal_percent,
+                    "referral_bonus": user.referral_bonus,
+                    "auto_renewal": user.user_config_model.auto_renewal,
+
                     "status": (
                         user.premium_status.premium_active
                         if user.premium_status
                         else False
                     ),
+
                     "premium_dates": (
                         {
                             "premium_active": (
@@ -505,7 +512,7 @@ class AnalyticsORM:
             stmt = (
                 select(User)
                 .where(User.id == user_id)
-                .options(selectinload(User.premium_status))
+                .options(selectinload(User.premium_status), selectinload(User.user_config_model))
             )
             result = await session.execute(stmt)
             user = result.scalars().first()
@@ -541,6 +548,11 @@ class AnalyticsORM:
                 "user_id": user.user_id,
                 "energy": float(user.energy),
                 "use_referral_link": user.use_referral_link,
+
+                "personal_percent": user.personal_percent,
+                "referral_bonus": user.referral_bonus,
+                "auto_renewal": user.user_config_model.auto_renewal,
+
                 "premium_active": premium_active,
                 "premium_dates": (
                     {"from": premium_from, "to": premium_to} if premium_active else None

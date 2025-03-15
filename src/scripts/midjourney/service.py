@@ -83,7 +83,7 @@ class MidjourneyService:
 
             if response["status"] == "error":
                 logger.error(response)
-                retry_after = response.get("retry_after", 5.0)
+                retry_after = response.get("retry_after", 7.0)
                 logger.warning(f"Rate limited, retrying after {retry_after} seconds.")
 
                 await asyncio.sleep(retry_after)

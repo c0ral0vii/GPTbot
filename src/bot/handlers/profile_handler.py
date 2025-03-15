@@ -94,7 +94,6 @@ async def settings_callback(callback: types.CallbackQuery):
 
 @router.callback_query(F.data.startswith("change_"))
 async def process_change_button(callback: types.CallbackQuery):
-    user_id = callback.from_user.id
     choice = callback.data
 
     if choice == "change_chatgpt":
