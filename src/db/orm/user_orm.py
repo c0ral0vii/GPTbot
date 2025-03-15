@@ -388,7 +388,7 @@ class AnalyticsORM:
                 "total_users_count": total_users_count,
                 "active_users_today_count": active_users_today_count,
                 "premium_users_count": premium_users_count,
-                "revenue": 990 * premium_users_count,
+                "revenue": 1440 * premium_users_count,
             }
             return data
 
@@ -596,6 +596,9 @@ class AnalyticsORM:
                 user_id=user.id, session=session, ban=data.get("banned_user", False)
             )
             user.energy = Decimal(data["energy"])
+            user.personal_percent = int(data["personal_percent"])
+            user.referral_bonus = Decimal(data["referral_bonus"])
+
             if data.get("use_referral_link") == "":
                 user.use_referral_link = None
             else:
@@ -625,8 +628,15 @@ class AnalyticsORM:
                             premium_to_date=premium_to,
                         )
                         session.add(new_premium)
+
+                await change_premium_status(
+                    user_id=user_id, premium=True, premium_to_date=premium_to
+                )
             else:
                 # Если премиум выключен, удаляем статус, если он был
+                await change_premium_status(
+                    user_id=user_id, premium=False, premium_to_date=None
+                )
                 if user.premium_status:
                     await session.delete(user.premium_status)
 

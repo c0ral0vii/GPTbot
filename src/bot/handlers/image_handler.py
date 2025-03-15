@@ -278,6 +278,13 @@ async def add_generate(data: types.CallbackQuery | types.Message, priority: int)
     key_prefix = f"{user_id}:generate:image"
 
     status = await redis_manager.get(key=key_prefix)
+    if priority == 5 and status["max_generate"] == 1:
+        status["max_generate"] = 2
+        await redis_manager.set(key=key_prefix, value=status, ttl=3600)
+
+    if priority == 0 and status["max_generate"] == 2:
+        status["max_generate"] = 1
+        await redis_manager.set(key=key_prefix, value=status, ttl=3600)
 
     if status:
         if status["max_generate"] == status["active_generate"]:
