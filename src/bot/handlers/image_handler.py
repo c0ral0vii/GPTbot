@@ -73,7 +73,7 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
     await state.set_state(ImageState.text)
 
 
-@router.message(F.regex(EXCLUDE_PATTERN), StateFilter(ImageState.text))
+@router.message(F.text, StateFilter(ImageState.text))
 async def handle_text(message: types.Message, state: FSMContext):
     """Генерация фотографий от миджорни"""
 
