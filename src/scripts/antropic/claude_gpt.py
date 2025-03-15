@@ -56,7 +56,7 @@ class ClaudeGPT:
                 import_messages.append(message_data)
 
             message = await self.client.messages.create(
-                max_tokens=3000,
+                max_tokens=2500,
                 messages=import_messages,
                 model=data["version"],
             )
@@ -71,7 +71,7 @@ class ClaudeGPT:
                 message=text_only,
             )
 
-            data["text"] = text_only
+            data["text"] = text_only[:4000]
 
             await self.message_client.answer_message(data)
 

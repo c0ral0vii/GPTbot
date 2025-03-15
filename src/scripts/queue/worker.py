@@ -26,6 +26,7 @@ class QueueWorker:
             await self.queue_service.connect()
 
             queues = [
+                "gpt_assistant",
                 "chatgpt",
                 "claude",
                 # Миджорни
@@ -38,6 +39,11 @@ class QueueWorker:
             for queue_name in queues:
                 await self.queue_service.declare_queue(queue_name)
                 await self.queue_service.declare_queue(f"{queue_name}_errors")
+
+            await self.queue_service.consume_messages(
+                "gpt_assistant",
+                self.chat_gpt.send_message_assistant
+            )
 
             await self.queue_service.consume_messages(
                 "chatgpt",

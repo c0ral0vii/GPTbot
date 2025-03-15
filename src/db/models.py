@@ -35,6 +35,7 @@ class User(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     user_id: Mapped[int] = mapped_column(BigInteger, nullable=False, unique=True)
+    username: Mapped[str] = mapped_column(nullable=True)
 
     energy: Mapped[Decimal] = mapped_column(
         DECIMAL(15, 1), nullable=False, default=Decimal("100")
@@ -148,3 +149,19 @@ class BonusLink(Base):
     link: Mapped[str] = mapped_column(nullable=True)
     active: Mapped[bool] = mapped_column(default=True)
     active_count: Mapped[int] = mapped_column(default=0)
+
+
+class GPTAssistant(Base):
+    __tablename__ = "gpt_assistants"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+
+    title: Mapped[str] = mapped_column(nullable=True)
+    assistant_id: Mapped[str] = mapped_column(unique=True)
+    premium_free: Mapped[bool] = mapped_column(default=False)
+    comment: Mapped[str] = mapped_column(nullable=True)
+
+    energy_cost: Mapped[Decimal] = mapped_column(
+        DECIMAL(15, 1), nullable=False
+    )
+    disable: Mapped[bool] = mapped_column(default=False)

@@ -4,15 +4,26 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from src.db.models import Dialog
 
 
-def select_text_gpt() -> InlineKeyboardMarkup:
+async def select_gpt_assistant():
+    """Список ГПТ ассистентов"""
+
+
+    kb = InlineKeyboardMarkup(
+        inline_keyboard=[
+
+        ]
+    )
+async def select_text_gpt() -> InlineKeyboardMarkup:
 
     chat_gpt = InlineKeyboardButton(text="🤖 Chat GPT", callback_data="select_chatgpt")
 
     claude = InlineKeyboardButton(text="🤖 Claude", callback_data="select_claude")
+    gpt_assistant = InlineKeyboardButton(text="🤖 GPT Assistants", callback_data="select_gpt_assistant")
 
     kb = InlineKeyboardMarkup(
         inline_keyboard=[
             [chat_gpt],
+            [gpt_assistant],
             [claude],
         ],
     )

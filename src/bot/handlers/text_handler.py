@@ -26,7 +26,7 @@ async def text_handler(message: types.Message, state: FSMContext):
     await message.answer(
         "Эти ИИ позволят вам придумать новые идеи, помочь вам в решении вопроса или написать статью, а может даже и написать код для приложения!\n\n"
         "💡 Выберите вашу модель для работы:",
-        reply_markup=select_text_gpt(),
+        reply_markup=await select_text_gpt(),
     )
     await state.set_state(TextState.type)
 
@@ -35,6 +35,14 @@ async def text_handler(message: types.Message, state: FSMContext):
 async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
     gpt_select = callback.data.replace("select_", "")
     await callback.message.delete()
+
+    if gpt_select == "gpt_assistant":
+        await state.update_data(
+            queue_select=gpt_select,
+        )
+
+        await callback.message.answer("Выберите одного из наших ассистентов:",
+                                      reply_markup=await select_text_gpt())
 
     user_model = await _get_user_config_and_get_model(
         user_id=callback.from_user.id, select_model=gpt_select
