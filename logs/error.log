@@ -2812,3 +2812,197 @@ WHERE users.user_id = $1::VARCHAR]
 2025-03-15 10:16:17,520 - src.scripts.midjourney.service - ERROR - Prompts starting with `/` are not accepted. Describe what you would like to create.
 2025-03-15 10:16:22,218 - src.scripts.midjourney.service - ERROR - Prompts starting with `/` are not accepted. Describe what you would like to create.
 2025-03-15 10:43:21,991 - src.scripts.midjourney.service - ERROR - Prompts starting with `/` are not accepted. Describe what you would like to create.
+2025-03-15 13:16:40,919 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'NoneType'. Convert to a bytes, string, int or float first.
+2025-03-15 13:21:33,681 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'dict'. Convert to a bytes, string, int or float first.
+2025-03-15 13:21:37,141 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'dict'. Convert to a bytes, string, int or float first.
+2025-03-15 13:21:38,375 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'dict'. Convert to a bytes, string, int or float first.
+2025-03-15 13:21:56,160 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'dict'. Convert to a bytes, string, int or float first.
+2025-03-15 13:21:59,607 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'dict'. Convert to a bytes, string, int or float first.
+2025-03-15 13:22:02,782 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'dict'. Convert to a bytes, string, int or float first.
+2025-03-15 13:28:19,131 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'dict'. Convert to a bytes, string, int or float first.
+2025-03-15 13:28:20,372 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'dict'. Convert to a bytes, string, int or float first.
+2025-03-15 13:28:22,068 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'dict'. Convert to a bytes, string, int or float first.
+2025-03-15 13:28:47,455 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'dict'. Convert to a bytes, string, int or float first.
+2025-03-15 13:28:47,699 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'dict'. Convert to a bytes, string, int or float first.
+2025-03-15 13:28:48,895 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'dict'. Convert to a bytes, string, int or float first.
+2025-03-15 13:29:26,692 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'dict'. Convert to a bytes, string, int or float first.
+2025-03-15 13:30:51,612 - src.utils.redis_cache.redis_cache - ERROR - Redis в режиме только для чтения! Не удалось записать данные.. Invalid input of type: 'dict'. Convert to a bytes, string, int or float first.
+2025-03-15 13:31:00,856 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-15 13:31:00,856 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-15 13:31:00,856 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-15 13:31:01,025 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:01,025 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:01,025 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:01,025 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:01,025 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:01,025 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:01,025 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:06,597 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-15 13:31:06,597 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-15 13:31:06,597 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-15 13:31:06,669 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:06,669 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:06,669 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:06,669 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:06,669 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:06,669 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:06,669 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:14,165 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-15 13:31:14,165 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-15 13:31:14,165 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'str' object has no attribute 'get'
+2025-03-15 13:31:14,219 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:14,219 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:14,219 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:14,219 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:14,219 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:14,219 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:31:14,219 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:45:07,244 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object is not subscriptable
+2025-03-15 13:45:07,244 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object is not subscriptable
+2025-03-15 13:45:07,244 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object is not subscriptable
+2025-03-15 13:45:09,492 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:45:09,492 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:45:09,492 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:45:09,492 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:45:09,492 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:45:09,492 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:45:09,492 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:45:09,503 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object is not subscriptable
+2025-03-15 13:45:09,503 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object is not subscriptable
+2025-03-15 13:45:09,503 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object is not subscriptable
+2025-03-15 13:45:09,563 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:45:09,563 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:45:09,563 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:45:09,563 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:45:09,563 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:45:09,563 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:45:09,563 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: there is no text in the message to edit
+2025-03-15 13:53:46,556 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-15 13:58:27,472 - src.scripts.midjourney.service - ERROR - Error while resizing image: Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,474 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,476 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,477 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,478 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,480 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,482 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,483 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,485 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,486 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,488 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,490 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,491 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,492 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,493 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,494 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,494 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,496 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,497 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,499 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,500 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,501 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,502 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,504 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,506 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,508 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,510 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,514 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,515 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,517 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,518 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,519 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,520 - src.scripts.midjourney.service - ERROR - Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,522 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,522 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 13:58:27,522 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Cannot connect to host cdn.discordapp.com:443 ssl:default [Temporary failure in name resolution]
+2025-03-15 14:00:10,559 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-15 14:00:10,560 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-15 14:00:11,226 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-15 14:00:11,384 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-15 14:02:08,430 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-15 14:02:09,538 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-15 14:05:35,787 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-15 14:05:35,799 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-15 14:07:57,941 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 2.009, "global": false}
+2025-03-15 14:08:28,825 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.451, "global": false}
+2025-03-15 14:09:33,707 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 3.528, "global": false}
+2025-03-15 14:12:34,030 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 1.558, "global": false}
+2025-03-15 14:15:55,787 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 1.28, "global": false}
+2025-03-15 14:19:24,047 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.947, "global": false}
+2025-03-15 14:29:30,892 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:29:40,892 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:32:19,896 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:34:28,897 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:34:44,896 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:34:50,897 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:37:24,898 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:39:32,901 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:39:55,901 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:40:03,901 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:42:28,904 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:44:37,896 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:45:13,897 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:45:14,896 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:46:31,897 - src.bot.handlers.profile_handler - ERROR - HTTP Client says - Request timeout error
+2025-03-15 14:47:34,900 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:49:42,900 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:50:19,899 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:50:21,901 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 14:52:47,902 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 15:36:39,990 - src.scripts.midjourney.service - ERROR - an error occurred while send imagine job
+2025-03-15 15:41:58,907 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 15:41:58,920 - src.scripts.midjourney.service - ERROR - 
+2025-03-15 15:41:58,921 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 
+2025-03-15 15:41:58,921 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 
+2025-03-15 15:41:58,921 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 
+2025-03-15 15:42:01,906 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 15:42:01,915 - src.scripts.midjourney.service - ERROR - 
+2025-03-15 15:42:01,916 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 
+2025-03-15 15:42:01,916 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 
+2025-03-15 15:42:01,916 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 
+2025-03-15 15:42:18,907 - src.scripts.midjourney.service - ERROR - Error while resizing image: 
+2025-03-15 15:42:18,920 - src.scripts.midjourney.service - ERROR - 
+2025-03-15 15:42:18,921 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 
+2025-03-15 15:42:18,921 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 
+2025-03-15 15:42:18,921 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 
+2025-03-15 15:56:36,605 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.72, "global": false}
+2025-03-15 16:12:02,106 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.469, "global": false}
+2025-03-15 16:42:05,523 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.895, "global": false}
+2025-03-15 16:49:17,563 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.383, "global": false}
+2025-03-15 16:52:59,934 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:01,057 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:02,210 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:03,363 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:04,449 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:05,529 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:06,726 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:08,389 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:09,536 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:10,642 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:12,355 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:13,877 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:14,970 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:16,045 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:17,129 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:18,321 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:19,586 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:20,748 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:21,852 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:23,017 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:24,111 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:25,928 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:27,206 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:28,837 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:29,923 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:31,005 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:32,076 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:33,204 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:34,325 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:35,499 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:36,583 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:37,667 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:38,744 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 16:53:39,817 - src.scripts.midjourney.service - ERROR - Call checkResponse failed, err: resp.StatusCode: 429, body: {"message": "The resource is being rate limited.", "retry_after": 4.112, "global": false}
+2025-03-15 17:03:33,044 - src.scripts.chat_gpt.chat_gpt - ERROR - Ошибка при отправке сообщения: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-15 17:03:33,045 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-15 17:03:33,045 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-15 17:03:33,045 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}

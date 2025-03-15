@@ -75,47 +75,58 @@ class MidjourneyService:
                 logger.error(e)
                 raise
 
-    async def _check_status(self, body: Dict[str, Any], session: aiohttp.ClientSession):
+    async def _check_status(self, body: Dict[str, Any], session: aiohttp.ClientSession, retries: int = 0):
         try:
             check_url = self.BASE_URL + "/midjourney/v2/status?hash=" + body["hash"]
             result = await session.get(check_url, headers=self.HEADER)
-            if result.status == 200:
-                response = await result.json()
-                if response["status"] == "error":
-                    logger.error(response["status_reason"])
-                    return
+            response = await result.json()
 
-                if response["status"] == "done":
-                    body["original_link"] = response["result"]["url"]
-                    if response["result"]["size"] >= 5500000:
-                        body["photo"] = await self._resize_image(
-                            response["result"]["url"]
-                        )
+            if response["status"] == "error":
+                logger.error(response)
+                retry_after = response.get("retry_after", 5.0)
+                logger.warning(f"Rate limited, retrying after {retry_after} seconds.")
 
-                    else:
-                        body["photo"] = response["result"]["url"]
+                await asyncio.sleep(retry_after)
+                await self._check_status(body=body, session=session)
+                return
 
-                    if not body.get("image_id"):
-                        image = await ImageORM.create_image(
-                            prompt=body["message"],
-                            hash=body["hash"],
-                            first_hash=body["hash"],
-                            image_name=body["original_link"],
-                        )
-                        body["image_id"] = image.id
-                    else:
-                        await ImageORM.change_image_hash(
-                            image_id=body["image_id"],
-                            hash=body["hash"],
-                        )
+            if response["status"] == "done":
+                body["original_link"] = response["result"]["url"]
+                if response["result"]["size"] >= 5500000:
+                    body["photo"] = await self._resize_image(
+                        response["result"]["url"]
+                    )
 
-                    await self.message_handler.answer_photo(data=body)
                 else:
-                    await asyncio.sleep(1)
-                    await self._check_status(body=body, session=session)
+                    body["photo"] = response["result"]["url"]
+
+                if not body.get("image_id"):
+                    image = await ImageORM.create_image(
+                        prompt=body["message"],
+                        hash=body["hash"],
+                        first_hash=body["hash"],
+                        image_name=body["original_link"],
+                    )
+                    body["image_id"] = image.id
+                else:
+                    await ImageORM.change_image_hash(
+                        image_id=body["image_id"],
+                        hash=body["hash"],
+                    )
+
+                await self.message_handler.answer_photo(data=body)
+            else:
+                await asyncio.sleep(3)
+                await self._check_status(body=body, session=session)
 
         except Exception as e:
-            logger.error(e)
+            # if retries != 5:
+            #     retries += 1
+            #     await asyncio.sleep(retries)
+            #     await self._check_status(body=body, session=session, retries=retries)
+            #     logger.warning(f"Rate limited, retrying after {retries} seconds.")
+            # else:
+            logger.warning(f"Rate limited, retrying after {retries} seconds. {e}")
             raise
 
     async def refresh_generate(self, body: Dict[str, Any]):

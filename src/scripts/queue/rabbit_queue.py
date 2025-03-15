@@ -112,7 +112,17 @@ class RabbitQueue:
                     try:
                         body = json.loads(message.body.decode())
                         await callback(body)
-                        await redis_manager.delete(f"{body.get("user_id")}:generate")
+
+                        key = body.get("key", f"{body.get('user_id')}:generate")
+
+                        if key:
+                            data = await redis_manager.get(key)
+                            if isinstance(data, str):
+                                await redis_manager.delete(key)
+
+                            if isinstance(data, dict):
+                                data["active_generate"] -= 1 if data["active_generate"] != 0 else 0
+                                await redis_manager.set(key, data, ttl=3600)
 
                     except Exception as e:
                         self.logger.error(f"Error processing message: {e}")
@@ -127,7 +137,15 @@ class RabbitQueue:
                             user_id=body["user_id"],
                         )
 
-                        await redis_manager.delete(f"{body.get("user_id")}:generate")
+                        key = body.get("key", f"{body.get('user_id')}:generate")
+
+                        if key:
+                            data = await redis_manager.get(key)
+                            if isinstance(data, str):
+                                await redis_manager.delete(key)
+                            else:
+                                data["active_generate"] -= 1 if data["active_generate"] != 0 else 0
+                                await redis_manager.set(key, data, ttl=3600)
 
             await queue.consume(process_message)
 

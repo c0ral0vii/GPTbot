@@ -1,8 +1,10 @@
 import re
+from typing import Any, Optional
 
 from aiogram import Router, types, F
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
+from dotenv.variables import Literal
 
 from src.bot.keyboards.select_gpt import select_image_model, cancel_kb
 from src.bot.states.image_state import ImageState
@@ -19,7 +21,7 @@ model = RabbitQueue()
 router = Router()
 logger = setup_logger(__name__)
 
-EXCLUDE_PATTERN = re.compile(r"^(/.*|💡 Chat GPT/Claude)$", re.IGNORECASE)
+EXCLUDE_PATTERN = re.compile(r"^/.*|💡 Chat GPT/Claude", re.IGNORECASE)
 
 @router.message(Command("image"))
 @router.message(F.text == "🌄 MidJourney")
@@ -73,18 +75,15 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
     await state.set_state(ImageState.text)
 
 
-@router.message(F.text, StateFilter(ImageState.text))
+@router.message(StateFilter(ImageState.text), F.text.regexp(r"^(?!/.*|💡 Chat GPT/Claude$).+"))
 async def handle_text(message: types.Message, state: FSMContext):
     """Генерация фотографий от миджорни"""
 
     data = await state.get_data()
     text = message.text
-    key = f"{message.from_user.id}:generate"
+    key = await check_generation(message, data.get("priority", 0))
 
-    if await redis_manager.get(key):
-        await message.answer(
-            "⚠️ Дождитесь завершения предыдущей генерации или оформите Premium, чтобы запускать несколько генераций одновременно. 👉 /premium"
-        )
+    if key is False:
         return
 
     answer_message = await message.answer("⏳ Подождите ваше сообщение в обработке...")
@@ -99,7 +98,7 @@ async def handle_text(message: types.Message, state: FSMContext):
         priority=data.get("priority", 0),
     )
 
-    await redis_manager.set(key=key, value="generate")
+    await add_generate(message, data.get("priority", 0))
 
 
 @router.callback_query(F.data.startswith("refresh_"))
@@ -108,8 +107,9 @@ async def refresh_image(callback_data: types.CallbackQuery, state: FSMContext):
 
     image_id = callback_data.data.split("_")[-1]
     user_id = callback_data.from_user.id
+    data = await state.get_data()
 
-    key = await _check_generation(callback_data)
+    key = await check_generation(callback_data, data.get("priority", 0))
 
     if key is False:
         return
@@ -117,9 +117,8 @@ async def refresh_image(callback_data: types.CallbackQuery, state: FSMContext):
     answer_message = await callback_data.message.answer(
         "⏳ Подождите ваше сообщение в обработке..."
     )
-    state_data = await state.get_data()
 
-    gpt_select = state_data["type_gpt"]
+    gpt_select = data["type_gpt"]
 
     if settings.IMAGE_GPT.get(gpt_select):
         energy_cost = settings.IMAGE_GPT.get(gpt_select).get("energy_cost")
@@ -131,6 +130,7 @@ async def refresh_image(callback_data: types.CallbackQuery, state: FSMContext):
         return
 
     logger.debug(image_id)
+
     await model.publish_message(
         queue_name="refresh_midjourney",
         message="",
@@ -139,9 +139,11 @@ async def refresh_image(callback_data: types.CallbackQuery, state: FSMContext):
         energy_cost=energy_cost,
         image_id=int(image_id),
         key=key,
+
+        priority=data.get("priority", 0),
     )
 
-    await redis_manager.set(key=key, value="generate")
+    await add_generate(callback_data, data.get("priority", 0))
 
 
 @router.callback_query(F.data.startswith("variation_"))
@@ -150,8 +152,9 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
 
     image_id = callback_data.data.split("_")
     user_id = callback_data.from_user.id
+    data = await state.get_data()
 
-    key = await _check_generation(callback_data)
+    key = await check_generation(callback_data, data.get("priority", 0))
 
     if key is False:
         return
@@ -159,7 +162,6 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
     answer_message = await callback_data.message.answer(
         "⏳ Подождите ваше сообщение в обработке..."
     )
-    data = await state.get_data()
 
     gpt_select = data["type_gpt"]
 
@@ -184,7 +186,7 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
         priority=data.get("priority", 0),
     )
 
-    await redis_manager.set(key=key, value="generate")
+    await add_generate(callback_data, data.get("priority", 0))
 
 
 @router.callback_query(F.data.startswith("upscale_"))
@@ -193,8 +195,9 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
 
     image_id = callback_data.data.split("_")
     user_id = callback_data.from_user.id
+    data = await state.get_data()
 
-    key = await _check_generation(callback_data)
+    key = await check_generation(callback_data, data.get("priority", 0))
 
     if key is False:
         return
@@ -202,7 +205,6 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
     answer_message = await callback_data.message.answer(
         "⏳ Подождите ваше сообщение в обработке..."
     )
-    data = await state.get_data()
 
     gpt_select = data["type_gpt"]
 
@@ -227,16 +229,63 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
         priority=data.get("priority", 0),
     )
 
-    await redis_manager.set(key=key, value="generate")
+    await add_generate(callback_data, data.get("priority", 0))
 
 
-async def _check_generation(callback_data: types.CallbackQuery, priority: int = 0) -> bool:
-    user_id = callback_data.from_user.id
-    key = f"{user_id}:generate"
+async def check_generation(data: types.CallbackQuery | types.Message, priority: int) -> Optional[str]:
+    user_id = data.from_user.id
+    key_prefix = f"{user_id}:generate:image"
+    logger.debug(user_id)
 
-    if await redis_manager.get(key):
-        await callback_data.message.answer(
-            "⚠️ Дождитесь завершения предыдущей генерации или оформите Premium, чтобы запускать несколько генераций одновременно. 👉 /premium"
-        )
-        return False
-    return key
+    status = await redis_manager.get(key=key_prefix)
+    if isinstance(status, dict):
+        if status["max_generate"] == status["active_generate"]:
+            await user_wait(data, status["max_generate"])
+            return False
+
+    if status is None:
+        user_data = {
+            "max_generate": 2 if priority == 5 else 1,
+            "active_generate": 0,
+        }
+
+        await redis_manager.set(key=key_prefix, value=user_data, ttl=3600)
+        return key_prefix
+    else:
+        return key_prefix
+
+
+PREMIUM_TEXT = "⚠️ Дождитесь завершения ваших генераций"
+NOT_PREMIUM_TEXT = "⚠️ Дождитесь завершения предыдущей генерации или оформите Premium, чтобы запускать несколько генераций одновременно. 👉 /premium"
+
+async def user_wait(data, counts: int = 2) -> None:
+    if isinstance(data, types.CallbackQuery):
+        if counts == 1:
+            await data.message.answer(NOT_PREMIUM_TEXT)
+        else:
+            await data.message.answer(PREMIUM_TEXT)
+    if isinstance(data, types.Message):
+        if counts == 1:
+            await data.answer(NOT_PREMIUM_TEXT)
+        else:
+            await data.answer(PREMIUM_TEXT)
+
+
+async def add_generate(data: types.CallbackQuery | types.Message, priority: int):
+    """Добавление генерации в кэш"""
+
+    user_id = data.from_user.id
+    key_prefix = f"{user_id}:generate:image"
+
+    status = await redis_manager.get(key=key_prefix)
+
+    if status:
+        if status["max_generate"] == status["active_generate"]:
+            await user_wait(data, status["max_generate"])
+            return False
+        else:
+            status["active_generate"] += 1
+            await redis_manager.set(key=key_prefix, value=status, ttl=3600)
+            return True
+    else:
+        await check_generation(data, priority)
