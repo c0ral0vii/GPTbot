@@ -12,6 +12,11 @@ from src.scripts.queue.rabbit_queue import model
 router = Router()
 logger = setup_logger(__name__)
 
+async def _check_bonus_link(message: types.Message):
+    """Проверка бонусная ли ссылка в сообщении"""
+
+    ...
+
 
 async def _check_referral(message: types.Message):
     if len(message.text) < 7:

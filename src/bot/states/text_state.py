@@ -5,3 +5,9 @@ class TextState(StatesGroup):
     type = State()
     dialog = State()
     text = State()
+
+class GPTState(StatesGroup):
+    assist = State()
+    type = State()
+    dialog = State()
+    text = State()

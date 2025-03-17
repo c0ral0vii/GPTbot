@@ -159,6 +159,8 @@ class GPTAssistant(Base):
     title: Mapped[str] = mapped_column(nullable=True)
     assistant_id: Mapped[str] = mapped_column(unique=True)
     premium_free: Mapped[bool] = mapped_column(default=False)
+    only_for_premium: Mapped[bool] = mapped_column(default=True, nullable=True)
+
     comment: Mapped[str] = mapped_column(nullable=True)
 
     energy_cost: Mapped[Decimal] = mapped_column(

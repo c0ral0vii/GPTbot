@@ -81,13 +81,17 @@ class MidjourneyService:
             result = await session.get(check_url, headers=self.HEADER)
             response = await result.json()
 
+            if retries == 10:
+                logger.warning(f"Rate limited, retrying after {retries} seconds.")
+                raise
+
             if response["status"] == "error":
                 logger.error(response)
                 retry_after = response.get("retry_after", 7.0)
                 logger.warning(f"Rate limited, retrying after {retry_after} seconds.")
 
                 await asyncio.sleep(retry_after)
-                await self._check_status(body=body, session=session)
+                await self._check_status(body=body, session=session, retries=retries + 1)
                 return
 
             if response["status"] == "done":
@@ -116,7 +120,7 @@ class MidjourneyService:
 
                 await self.message_handler.answer_photo(data=body)
             else:
-                await asyncio.sleep(3)
+                await asyncio.sleep(5)
                 await self._check_status(body=body, session=session)
 
         except Exception as e:

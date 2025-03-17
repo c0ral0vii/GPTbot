@@ -57,6 +57,7 @@ class ChatGPT:
                 dialog_id=data["dialog_id"],
                 message=data.get("message"),
             )
+
             messages = await self.dialog_service.get_messages(data["dialog_id"])
             import_messages = []
             for message in messages:
@@ -70,18 +71,20 @@ class ChatGPT:
             thread = await self._create_thread_with_messages(import_messages)
             run = await self.client.beta.threads.runs.create(
                 thread_id=thread.id,
-                assistant_id=data["assistant_id"],
+                assistant_id=data["version"],
                 max_completion_tokens=2500,
-                max_prompt_tokens=2500,
             )
+
             while run.status != "completed":
                 run = await self.client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
                 await asyncio.sleep(2.5)
             else:
                 message_response = await self.client.beta.threads.messages.list(thread_id=thread.id)
                 text_answer = message_response.data[0].content[0].text.value[:4096]
-                print(text_answer)
 
+            data["text"] = text_answer[:4000]
+
+            await self.message_client.answer_message(data)
         except Exception:
             raise
 

@@ -15,7 +15,9 @@ from src.bot.handlers import (
     text_handler,
     profile_handler,
     premium_handler,
+    assist_handler
 )
+
 from src.bot.middlewares.antiflood import RateLimitMiddleware
 from src.bot.filters.chat_type import ChatTypeFilter
 from src.bot.middlewares.banned import BlockMiddleware
@@ -37,6 +39,7 @@ dp.include_routers(
 
     image_handler.router,
     text_handler.router,
+    assist_handler.router,
 )
 
 

@@ -103,8 +103,30 @@ class AdminPanel {
         document.getElementById('premium_active').addEventListener('change', function () {
             document.getElementById('premium_dates').style.display = this.checked ? 'block' : 'none';
         });
+
+        document.getElementById('addAssistantButton').addEventListener('click', () => {
+            this.openAddAssistantModal();
+        });
+
+        // Обработчик для кнопки "Сохранить" в модальном окне добавления
+        document.getElementById('saveAssistantButton').addEventListener('click', () => {
+            this.addAssistant();
+        });
+
+        // Обработчик для кнопки "Сохранить изменения" в модальном окне редактирования
+        document.getElementById('saveEditAssistantButton').addEventListener('click', () => {
+            const assistantId = document.getElementById('editAssistantId').value;
+            this.saveAssistantChanges(assistantId);
+        });
+        document.getElementById('addAssistantModal').addEventListener('hidden.bs.modal', () => {
+            this.clearAssistantModal(); // Очищаем поля
+        });
     }
 
+    async openAddAssistantModal() {
+        const modal = new bootstrap.Modal(document.getElementById('addAssistantModal'));
+        modal.show();
+    }
 
     showError(message) {
         const alertDiv = document.createElement('div');
@@ -122,13 +144,15 @@ class AdminPanel {
         try {
             this.showLoader();
 
-            const [overviewData, userData] = await Promise.all([
+            const [overviewData, userData, assistData] = await Promise.all([
                 fetchAPI('/stats/overview'),
-                fetchAPI('/users')
+                fetchAPI('/users'),
+                fetchAPI('/assistants')
             ]);
 
             this.updateOverviewStats(overviewData);
-            this.updateUserTable(userData)
+            this.updateUserTable(userData);
+            this.updateAssisTable(assistData);
 
             this.updateLastUpdateTime();
 
@@ -181,6 +205,47 @@ class AdminPanel {
         await this.loadDashboardData();
     }
 
+    clearAssistantModal() {
+        document.getElementById('assistantName').value = '';
+        document.getElementById('assistantId').value = '';
+        document.getElementById('assistantEnergyCost').value = '';
+        document.getElementById('assistantComment').value = '';
+        document.getElementById('assistantPremiumFree').checked = false;
+        document.getElementById('assistantEnabled').checked = false;
+    }
+    async addAssistant() {
+        const newAssistant = {
+            title: document.getElementById('assistantName').value,
+            assistant_id: document.getElementById('assistantId').value,
+            energy_cost: parseFloat(document.getElementById('assistantEnergyCost').value),
+            comment: document.getElementById('assistantComment').value,
+            premium_free: document.getElementById('assistantPremiumFree').checked,
+            disable: document.getElementById('assistantEnabled').checked,
+        };
+
+        try {
+            const response = await this.fetchAPI('/assistants/create', {
+                method: 'POST',
+                body: JSON.stringify(newAssistant),
+            });
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addAssistantModal'));
+            modal.hide();
+
+            if (response.success) {
+                await this.showToast('✅ Ассистент успешно добавлен!');
+            } else {
+                await this.showError('❌ Ошибка при добавлении ассистента!');
+            }
+            await this.loadDashboardData();
+
+        } catch (error) {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addAssistantModal'));
+            modal.hide();
+            console.error('Error adding assistant:', error);
+            await this.showError('❌ Ошибка при добавлении ассистента!');
+        }
+    }
+
     async getMoreInfo(user_id) {
         const data = await this.fetchAPI(`/users/${user_id}/info`);
         console.log(data);
@@ -222,14 +287,74 @@ class AdminPanel {
         await this.loadDashboardData();
     }
 
+    async getAssistantInfo(assistant_id) {
+        const data = await this.fetchAPI(`/assistants/${assistant_id}/info`);
 
+        // Заполняем поля модального окна
+        document.getElementById('editAssistantName').value = data.title;
+        document.getElementById('editAssistantId').value = data.assistant_id;
+        document.getElementById('editAssistantEnergyCost').value = data.energy_cost;
+        document.getElementById('editAssistantComment').value = data.comment;
+        document.getElementById('editAssistantPremiumFree').checked = data.premium_free;
+        document.getElementById('editAssistantEnabled').checked = data.disable;
 
-    // async bannedUser(user_id) {
-    //     await this.fetchAPI(`/users/${user_id}/banned`)
-    //
-    //     await this.showToast("Пользователь заблокирован")
-    //     await this.loadDashboardData()
-    // }
+        // Открываем модальное окно
+        const modal = new bootstrap.Modal(document.getElementById('editAssistantModal'));
+        modal.show();
+
+        // Назначаем обработчик для кнопки "Сохранить изменения"
+        document.getElementById('saveEditAssistantButton').onclick = () => {
+            this.saveAssistantChanges(assistant_id);
+        };
+    }
+
+    async saveAssistantChanges(assistant_id) {
+        const updatedData = {
+            title: document.getElementById('editAssistantName').value,
+            assistant_id: document.getElementById('editAssistantId').value,
+            energy_cost: parseFloat(document.getElementById('editAssistantEnergyCost').value),
+            comment: document.getElementById('editAssistantComment').value,
+            premium_free: document.getElementById('editAssistantPremiumFree').checked,
+            disable: document.getElementById('editAssistantEnabled').checked,
+        };
+
+        const response = await this.fetchAPI(`/assistants/${assistant_id}/change`, {
+            method: 'PUT',
+            body: JSON.stringify(updatedData),
+        });
+
+        await this.showToast('✅ Изменения успешно сохранены!');
+        await this.loadDashboardData();
+        bootstrap.Modal.getInstance(document.getElementById('editAssistantModal')).hide();
+    }
+
+    updateAssisTable(data) {
+        const tbody = document.querySelector('#assistantsTable tbody');
+        tbody.innerHTML = '';
+
+        data.items.forEach(item => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item.id}</td>
+                <td>${item.title}</td>
+                <td>${item.energy_cost}</td>
+                <td>${item.status}</td>
+                <td>${item.free_for_premium}</td>
+                   
+                <td>
+                    <div class="btn-group">
+                        <button class="btn btn-sm btn-outline-primary"
+                            onclick="adminPanel.getAssistantInfo(${item.id})">
+                            Изменить
+                        </button>
+                        
+                    </div>
+                </td>
+                
+            `;
+            tbody.appendChild(row);
+        });
+    }
 
     updateUserTable(data) {
         const tbody = document.querySelector('#groupsTable tbody');
@@ -240,7 +365,7 @@ class AdminPanel {
             row.innerHTML = `
                 <td>${item.id}</td>
                 <td>${item.user_id}</td>
-                <td>${item.status}</td>
+                <td>${item.status }</td>
                 <td>${item.energy}</td>
                 <td>${item.created}</td>
                 <td>${item.updated}</td>

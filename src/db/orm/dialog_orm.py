@@ -18,6 +18,8 @@ class DialogORM:
         stmt = select(Dialog).where(Dialog.id == dialog_id)
         result = await session.execute(stmt)
         dialog = result.scalar_one_or_none()
+        if not session:
+            await session.close()
 
         return dialog
 

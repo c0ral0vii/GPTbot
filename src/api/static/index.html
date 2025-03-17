@@ -221,7 +221,155 @@
                 </button>
             </div>
         </div>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">Бонусные ссылки</h5>
+                            <div class="d-flex gap-2">
+                                <input type="text" class="form-control form-control-sm" id="bonusSearch" placeholder="Поиск пользователя...">
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="bonusTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Ссылка</th>
+                                        <th>Осталось активаций</th>
+                                        <th>Энергии за активацию</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <button type="button" class="btn btn-success" id="addAssistantButton" data-bs-toggle="modal" data-bs-target="#addAssistantModal">
+                    <i class="fas fa-plus me-2"></i>
+                    Добавить ассистента
+                </button>
+            </div>
+        </div>
+
+        <div class="modal fade" id="addAssistantModal" tabindex="-1" aria-labelledby="addAssistantModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addAssistantModalLabel">Добавить ассистента</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="assistantName" class="form-label">Название</label>
+                            <input type="text" class="form-control" id="assistantName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="assistantId" class="form-label">Assistant ID</label>
+                            <input type="text" class="form-control" id="assistantId">
+                        </div>
+                        <div class="mb-3">
+                            <label for="assistantEnergyCost" class="form-label">Стоимость энергии</label>
+                            <input type="text" class="form-control" id="assistantEnergyCost">
+                        </div>
+                        <div class="mb-3">
+                            <label for="assistantComment" class="form-label">Комментарий</label>
+                            <input type="text" class="form-control" id="assistantComment">
+                        </div>
+                        <div class="mb-3">
+                            <input type="checkbox" class="form-check-input" id="assistantPremiumFree">
+                            <label for="assistantPremiumFree" class="form-label">Бесплатно для премиум</label>
+                        </div>
+                        <div class="mb-3">
+                            <input type="checkbox" class="form-check-input" id="assistantEnabled">
+                            <label for="assistantEnabled" class="form-label">Выключен</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary" id="saveAssistantButton">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editAssistantModal" tabindex="-1" aria-labelledby="editAssistantModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editAssistantModalLabel">Редактировать ассистента</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="editAssistantName" class="form-label">Название</label>
+                            <input type="text" class="form-control" id="editAssistantName">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAssistantId" class="form-label">Assistant ID</label>
+                            <input type="text" class="form-control" id="editAssistantId">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAssistantEnergyCost" class="form-label">Стоимость энергии</label>
+                            <input type="text" class="form-control" id="editAssistantEnergyCost">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editAssistantComment" class="form-label">Комментарий</label>
+                            <input type="text" class="form-control" id="editAssistantComment">
+                        </div>
+                        <div class="mb-3">
+                            <input type="checkbox" class="form-check-input" id="editAssistantPremiumFree">
+                            <label for="editAssistantPremiumFree" class="form-label">Бесплатно для премиум</label>
+                        </div>
+                        <div class="mb-3">
+                            <input type="checkbox" class="form-check-input" id="editAssistantEnabled">
+                            <label for="editAssistantEnabled" class="form-label">Выключен</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary" id="saveEditAssistantButton">Сохранить изменения</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title">Ассистенты бота</h5>
+                            <div class="d-flex gap-2">
+                                <input type="text" class="form-control form-control-sm" id="assistantsSearch" placeholder="Поиск пользователя...">
+                            </div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover" id="assistantsTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Название</th>
+                                        <th>Стоимость использования</th>
+                                        <th>Статус</th>
+                                        <th>Бесплатно для премиума</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

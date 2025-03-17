@@ -20,8 +20,7 @@ model = RabbitQueue()
 
 router = Router()
 logger = setup_logger(__name__)
-
-EXCLUDE_PATTERN = re.compile(r"^/.*|💡 Chat GPT/Claude", re.IGNORECASE)
+EXCLUDE_PATTERN = re.compile(r"^/.*|💡 Chat GPT/Claude| 🧑‍🔬 Ассистенты", re.IGNORECASE)
 
 @router.message(Command("image"))
 @router.message(F.text == "🌄 MidJourney")

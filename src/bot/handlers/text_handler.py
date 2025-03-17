@@ -36,14 +36,6 @@ async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
     gpt_select = callback.data.replace("select_", "")
     await callback.message.delete()
 
-    if gpt_select == "gpt_assistant":
-        await state.update_data(
-            queue_select=gpt_select,
-        )
-
-        await callback.message.answer("Выберите одного из наших ассистентов:",
-                                      reply_markup=await select_text_gpt())
-
     user_model = await _get_user_config_and_get_model(
         user_id=callback.from_user.id, select_model=gpt_select
     )
@@ -144,8 +136,9 @@ async def text_handler(message: types.Message, state: FSMContext, bot: Bot):
         user_id=message.from_user.id,
         answer_message=answer_message.message_id,
         energy_cost=data["energy_cost"],
+
         key=key,
         priority=data["priority"],
     )
 
-    await redis_manager.set(key=key, value="generate")
+    await redis_manager.set(key=key, value="generate", ttl=120)

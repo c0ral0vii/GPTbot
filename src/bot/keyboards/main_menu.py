@@ -9,6 +9,9 @@ async def main_menu_kb():
                 KeyboardButton(text="💡 Chat GPT/Claude"),
                 KeyboardButton(text="🌄 MidJourney"),
             ],
+            [
+                KeyboardButton(text="🧑‍🔬 Ассистенты")
+            ]
         ],
         resize_keyboard=True,
     )
