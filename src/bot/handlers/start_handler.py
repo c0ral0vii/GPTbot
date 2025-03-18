@@ -24,10 +24,15 @@ async def _check_bonus_link(message: types.Message, bonus_link: str):
     if not check_activate:
         bonus_link = await BonusLinksOrm.use_bonus_link(link=bonus_link)
         if bonus_link:
-            await message.answer(f"❗Вы активировали бонусную ссылку на ⚡{float(bonus_link.energy_bonus)}")
-            await UserORM.add_energy(message.from_user.id, float(bonus_link.energy_bonus))
+            await message.answer(
+                f"❗Вы активировали бонусную ссылку на ⚡{float(bonus_link.energy_bonus)}"
+            )
+            await UserORM.add_energy(
+                message.from_user.id, float(bonus_link.energy_bonus)
+            )
 
             await redis_manager.set(key, value={"use": True})
+
 
 async def _check_referral(message: types.Message):
     if len(message.text) < 7:

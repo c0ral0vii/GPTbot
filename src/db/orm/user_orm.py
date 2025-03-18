@@ -674,31 +674,6 @@ class AnalyticsORM:
         await session.commit()
         return True
 
-    @staticmethod
-    async def add_or_change_promo(data: Dict[str, Any]):
-        async with async_session() as session:
-            stmt = select(BonusLink).where(data.get("link"))
-            result = await session.execute(stmt)
-            bonus_link = result.scalars().one_or_none()
-            if data.get("active_count", 0) <= 0:
-                data["active"] = False
-
-            if bonus_link:
-                bonus_link.active = data.get("active", False)
-                bonus_link.active_count = data.get("active_count", 0)
-                bonus_link.energy_bonus = Decimal(data.get("energy_bonus", 0))
-                await session.commit()
-                return {"success": True}
-
-            new_bonus_link = BonusLink(
-                energy_bonus=Decimal(data.get("energy_bonus", 0)),
-                link=data.get("link"),
-                active=data.get("active", False),
-                active_count=data.get("active_count", 0),
-            )
-            session.add(new_bonus_link)
-            await session.commit()
-            return {"success": True}
 
 
 class BannedUserORM:

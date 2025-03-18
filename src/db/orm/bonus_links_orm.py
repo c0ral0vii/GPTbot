@@ -60,10 +60,17 @@ class BonusLinksOrm:
     @staticmethod
     @with_session
     async def get_bonus_link(
-        link: str,
+        link_id: int = None,
+        link: str = None,
         session: AsyncSession = None,
     ) -> Optional[BonusLink]:
-        stmt = select(BonusLink).where(BonusLink.link == link)
+        if link:
+            stmt = select(BonusLink).where(BonusLink.link == link)
+        elif link_id:
+            stmt = select(BonusLink).where(BonusLink.id == id)
+        else:
+            return None
+        
         result = await session.execute(stmt)
         bonus_link = result.scalar_one_or_none()
 
@@ -75,9 +82,9 @@ class BonusLinksOrm:
     @staticmethod
     @with_session
     async def use_bonus_link(
-            link: str,
-            operation: Literal["remove", "add"] = "remove",
-            session: AsyncSession = None,
+        link: str,
+        operation: Literal["remove", "add"] = "remove",
+        session: AsyncSession = None,
     ) -> Optional[BonusLink]:
         stmt = select(BonusLink).where(BonusLink.link == link)
         result = await session.execute(stmt)
@@ -101,4 +108,3 @@ class BonusLinksOrm:
 
         await session.commit()
         return bonus_link
-

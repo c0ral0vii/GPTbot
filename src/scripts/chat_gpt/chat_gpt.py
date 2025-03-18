@@ -97,7 +97,7 @@ class ChatGPT:
                     "role": message.role.value,
                     "content": message.message,
                 }
-            
+
                 import_messages.append(message_data)
 
             thread = await self._create_thread_with_messages(import_messages)
@@ -120,7 +120,10 @@ class ChatGPT:
                 text_only = message_response.data[0].content[0].text.value[:4096]
 
             chunk_size = 4000
-            chunks = [text_only[i:i + chunk_size] for i in range(0, len(text_only), chunk_size)]
+            chunks = [
+                text_only[i : i + chunk_size]
+                for i in range(0, len(text_only), chunk_size)
+            ]
 
             data["text"] = chunks
             data["disable_delete"] = True
@@ -132,7 +135,6 @@ class ChatGPT:
         except Exception as e:
             self.logger.debug(e)
             raise
-
 
     async def send_message(self, data: Dict[str, Any]):
         """Отправка сообщения и возврат текстового ответа."""
@@ -188,7 +190,10 @@ class ChatGPT:
             )
 
             chunk_size = 4000
-            chunks = [text_only[i:i + chunk_size] for i in range(0, len(text_only), chunk_size)]
+            chunks = [
+                text_only[i : i + chunk_size]
+                for i in range(0, len(text_only), chunk_size)
+            ]
 
             data["text"] = chunks
             data["disable_delete"] = True

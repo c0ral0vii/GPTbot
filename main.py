@@ -51,7 +51,9 @@ async def on_startup():
         types.BotCommand(command="/premium", description="🌟 Premium подписка"),
         types.BotCommand(command="/text", description="Работа с текстовыми ИИ"),
         types.BotCommand(command="/image", description="Работа с ИИ для изображений"),
-        types.BotCommand(command="/assistants", description="Работа с нашими Ассистентами"),
+        types.BotCommand(
+            command="/assistants", description="Работа с нашими Ассистентами"
+        ),
         types.BotCommand(command="/profile", description="Баланс генераций"),
         types.BotCommand(command="/invite", description="Пригласить друга"),
         types.BotCommand(command="/help", description="Поддержка"),
