@@ -163,7 +163,5 @@ class GPTAssistant(Base):
 
     comment: Mapped[str] = mapped_column(nullable=True)
 
-    energy_cost: Mapped[Decimal] = mapped_column(
-        DECIMAL(15, 1), nullable=False
-    )
+    energy_cost: Mapped[Decimal] = mapped_column(DECIMAL(15, 1), nullable=False)
     disable: Mapped[bool] = mapped_column(default=False)

@@ -50,6 +50,16 @@ class PremiumUserORM:
 
             return False
 
+        if premium_user.premium_status.premium_active == False:
+            await change_premium_status(
+                user_id=user_id, premium=False, premium_to_date=None
+            )
+
+            if not session:
+                await session.close()
+
+            return False
+
         if premium_user.premium_status.premium_to_date < datetime.now().date():
             premium_user.premium_status.premium_active = False
             await change_premium_status(
@@ -124,7 +134,7 @@ class UserORM:
 
     @staticmethod
     async def create_user(
-        user_id: int, use_referral_link: int = None
+        user_id: int, username: str = None, use_referral_link: int = None
     ) -> dict[str, Any]:
         try:
             async with async_session() as session:
@@ -145,6 +155,7 @@ class UserORM:
 
                 new_user = User(
                     user_id=user_id,
+                    username=username,
                     use_referral_link=use_referral_link,
                 )
 
@@ -212,7 +223,7 @@ class UserORM:
             return {"text": "Ошибка, попробуйте еще раз"}
 
     @staticmethod
-    async def add_energy(user_id: int, count: int | str) -> Dict[str, Any]:
+    async def add_energy(user_id: int, count: int | str | float) -> Dict[str, Any]:
         try:
             async with async_session() as session:
                 stmt = select(User).where(User.user_id == user_id)
@@ -446,7 +457,9 @@ class AnalyticsORM:
         async with async_session() as session:
             result = []
 
-            stmt_users = select(User).options(selectinload(User.premium_status), selectinload(User.user_config_model))
+            stmt_users = select(User).options(
+                selectinload(User.premium_status), selectinload(User.user_config_model)
+            )
 
             if search != "":
                 stmt_users = stmt_users.where(
@@ -471,17 +484,14 @@ class AnalyticsORM:
                     "user_id": user.user_id,
                     "energy": float(user.energy) if user.energy else None,
                     "use_referral_link": user.use_referral_link,
-
                     "personal_percent": user.personal_percent,
                     "referral_bonus": float(user.referral_bonus),
                     "auto_renewal": user.user_config_model.auto_renewal,
-
                     "status": (
                         user.premium_status.premium_active
                         if user.premium_status
                         else False
                     ),
-
                     "premium_dates": (
                         {
                             "premium_active": (
@@ -512,7 +522,10 @@ class AnalyticsORM:
             stmt = (
                 select(User)
                 .where(User.id == user_id)
-                .options(selectinload(User.premium_status), selectinload(User.user_config_model))
+                .options(
+                    selectinload(User.premium_status),
+                    selectinload(User.user_config_model),
+                )
             )
             result = await session.execute(stmt)
             user = result.scalars().first()
@@ -548,11 +561,9 @@ class AnalyticsORM:
                 "user_id": user.user_id,
                 "energy": float(user.energy),
                 "use_referral_link": user.use_referral_link,
-
                 "personal_percent": user.personal_percent,
                 "referral_bonus": float(user.referral_bonus),
                 "auto_renewal": user.user_config_model.auto_renewal,
-
                 "premium_active": premium_active,
                 "premium_dates": (
                     {"from": premium_from, "to": premium_to} if premium_active else None

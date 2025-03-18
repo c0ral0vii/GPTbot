@@ -122,13 +122,15 @@ async def get_assistants_api():
         data = []
 
         for assist in all_assistants:
-            data.append({
-                "id": assist.id,
-                "title": assist.title,
-                "energy_cost": float(assist.energy_cost),
-                "free_for_premium": assist.premium_free,
-                "status": assist.disable,
-            })
+            data.append(
+                {
+                    "id": assist.id,
+                    "title": assist.title,
+                    "energy_cost": float(assist.energy_cost),
+                    "free_for_premium": assist.premium_free,
+                    "status": assist.disable,
+                }
+            )
 
         return JSONResponse(content={"items": data})
     except Exception as e:
@@ -165,6 +167,7 @@ async def update_assistant(assist_id: int):
     except Exception as e:
 
         return JSONResponse(content={"status": False, "error": str(e)}, status_code=500)
+
 
 @router.put("/assistants/{assist_id}/change")
 async def update_assistant(assist_id: int, data: GPTAssistSchema, request: Request):

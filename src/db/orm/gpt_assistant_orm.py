@@ -11,17 +11,19 @@ from src.db.models import GPTAssistant
 class GPTAssistantOrm:
     @staticmethod
     async def get_select_assistants(
-            assist_id: int,
-            session: AsyncSession = None,
+        assist_id: int,
+        session: AsyncSession = None,
     ) -> GPTAssistant:
         """Получить выбраного ассистента"""
 
         if not session:
             session = async_session()
 
-        stmt = select(GPTAssistant).where(and_(
-            GPTAssistant.id == assist_id,
-        ))
+        stmt = select(GPTAssistant).where(
+            and_(
+                GPTAssistant.id == assist_id,
+            )
+        )
         result = await session.execute(stmt)
         assists = result.scalars().first()
 
@@ -32,7 +34,7 @@ class GPTAssistantOrm:
 
     @staticmethod
     async def get_all_assistants(
-            session: AsyncSession = None,
+        session: AsyncSession = None,
     ) -> List[GPTAssistant]:
         if session is None:
             session = async_session()
@@ -48,8 +50,8 @@ class GPTAssistantOrm:
 
     @staticmethod
     async def create_new_assistant(
-            data: Dict[str, Any],
-            session: AsyncSession = None,
+        data: Dict[str, Any],
+        session: AsyncSession = None,
     ) -> None:
         try:
             if session is None:
@@ -75,8 +77,8 @@ class GPTAssistantOrm:
 
     @staticmethod
     async def update_assistant(
-            data: Dict[str, Any],
-            session: AsyncSession = None,
+        data: Dict[str, Any],
+        session: AsyncSession = None,
     ) -> None:
         if session is None:
             session = async_session()
@@ -98,8 +100,8 @@ class GPTAssistantOrm:
 
     @staticmethod
     async def delete_assistant(
-            data: Dict[str, Any],
-            session: AsyncSession = None,
+        data: Dict[str, Any],
+        session: AsyncSession = None,
     ) -> None:
         if session is None:
             session = async_session()

@@ -13,14 +13,13 @@ from src.scripts.queue.rabbit_queue import RabbitQueue
 from src.utils.cached_user import _cached_user
 from src.utils.logger import setup_logger
 from src.utils.redis_cache.redis_cache import redis_manager
-from src.config.config import settings
-
+from src.config.config import settings, EXCLUDE_PATTERN
 
 model = RabbitQueue()
 
 router = Router()
 logger = setup_logger(__name__)
-EXCLUDE_PATTERN = re.compile(r"^/.*|💡 Chat GPT/Claude| 🧑‍🔬 Ассистенты", re.IGNORECASE)
+
 
 @router.message(Command("image"))
 @router.message(F.text == "🌄 MidJourney")
@@ -74,7 +73,7 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
     await state.set_state(ImageState.text)
 
 
-@router.message(StateFilter(ImageState.text), F.text.regexp(r"^(?!/.*|💡 Chat GPT/Claude$).+"))
+@router.message(StateFilter(ImageState.text), F.text.regexp(EXCLUDE_PATTERN))
 async def handle_text(message: types.Message, state: FSMContext):
     """Генерация фотографий от миджорни"""
 
@@ -138,7 +137,6 @@ async def refresh_image(callback_data: types.CallbackQuery, state: FSMContext):
         energy_cost=energy_cost,
         image_id=int(image_id),
         key=key,
-
         priority=data.get("priority", 0),
     )
 
@@ -231,7 +229,9 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
     await add_generate(callback_data, data.get("priority", 0))
 
 
-async def check_generation(data: types.CallbackQuery | types.Message, priority: int) -> Optional[str]:
+async def check_generation(
+    data: types.CallbackQuery | types.Message, priority: int
+) -> Optional[str]:
     user_id = data.from_user.id
     key_prefix = f"{user_id}:generate:image"
     logger.debug(user_id)
@@ -256,6 +256,7 @@ async def check_generation(data: types.CallbackQuery | types.Message, priority: 
 
 PREMIUM_TEXT = "⚠️ Дождитесь завершения ваших генераций"
 NOT_PREMIUM_TEXT = "⚠️ Дождитесь завершения предыдущей генерации или оформите Premium, чтобы запускать несколько генераций одновременно. 👉 /premium"
+
 
 async def user_wait(data, counts: int = 2) -> None:
     if isinstance(data, types.CallbackQuery):

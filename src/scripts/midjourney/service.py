@@ -75,7 +75,9 @@ class MidjourneyService:
                 logger.error(e)
                 raise
 
-    async def _check_status(self, body: Dict[str, Any], session: aiohttp.ClientSession, retries: int = 0):
+    async def _check_status(
+        self, body: Dict[str, Any], session: aiohttp.ClientSession, retries: int = 0
+    ):
         try:
             check_url = self.BASE_URL + "/midjourney/v2/status?hash=" + body["hash"]
             result = await session.get(check_url, headers=self.HEADER)
@@ -91,15 +93,15 @@ class MidjourneyService:
                 logger.warning(f"Rate limited, retrying after {retry_after} seconds.")
 
                 await asyncio.sleep(retry_after)
-                await self._check_status(body=body, session=session, retries=retries + 1)
+                await self._check_status(
+                    body=body, session=session, retries=retries + 1
+                )
                 return
 
             if response["status"] == "done":
                 body["original_link"] = response["result"]["url"]
                 if response["result"]["size"] >= 5500000:
-                    body["photo"] = await self._resize_image(
-                        response["result"]["url"]
-                    )
+                    body["photo"] = await self._resize_image(response["result"]["url"])
 
                 else:
                     body["photo"] = response["result"]["url"]

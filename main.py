@@ -15,7 +15,7 @@ from src.bot.handlers import (
     text_handler,
     profile_handler,
     premium_handler,
-    assist_handler
+    assist_handler,
 )
 
 from src.bot.middlewares.antiflood import RateLimitMiddleware
@@ -36,7 +36,6 @@ dp.include_routers(
     start_handler.router,
     premium_handler.router,
     profile_handler.router,
-
     image_handler.router,
     text_handler.router,
     assist_handler.router,

@@ -1,7 +1,13 @@
-from typing import Dict, Any
+import io
+import os
+import traceback
+from typing import Dict, Any, Coroutine
+
+import aiohttp
 from openai import AsyncOpenAI
 import asyncio
 
+from openai.types import FileObject
 from openai.types.beta.threads import Run
 
 from src.config.config import settings
@@ -42,6 +48,20 @@ class ChatGPT:
             self.logger.error(e)
             raise
 
+    async def _file_generate(self, path_to_file: str) -> str:
+        """Создание файла для OpenAI из удалённой ссылки"""
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(path_to_file) as response:
+                    if response.status != 200:
+                        self.logger.error(f"Ошибка загрузки: {response.status}")
+                        return ""
+
+                    file_content = await response.text()
+                    return file_content
+        except Exception as e:
+            self.logger.error(e)
+
     async def send_message_assistant(self, data):
         try:
             status = await self.energy_service.upload_energy(data, "remove")
@@ -50,13 +70,25 @@ class ChatGPT:
                 await self.message_client.answer_message(data)
                 return
 
+            self.logger.debug(data)
             data["energy_text"] = status
 
-            await self.dialog_service.add_message(
-                role=MessageRole.USER,
-                dialog_id=data["dialog_id"],
-                message=data.get("message"),
-            )
+            message = data.get("message")
+            if message:
+                await self.dialog_service.add_message(
+                    role=MessageRole.USER,
+                    dialog_id=data["dialog_id"],
+                    message=data.get("message"),
+                )
+
+            file = data.get("file")
+            if file:
+                content_file = await self._file_generate(path_to_file=file["url"])
+                await self.dialog_service.add_message(
+                    role=MessageRole.USER,
+                    dialog_id=data["dialog_id"],
+                    message=content_file,
+                )
 
             messages = await self.dialog_service.get_messages(data["dialog_id"])
             import_messages = []
@@ -65,7 +97,7 @@ class ChatGPT:
                     "role": message.role.value,
                     "content": message.message,
                 }
-
+            
                 import_messages.append(message_data)
 
             thread = await self._create_thread_with_messages(import_messages)
@@ -76,17 +108,23 @@ class ChatGPT:
             )
 
             while run.status != "completed":
-                run = await self.client.beta.threads.runs.retrieve(thread_id=thread.id, run_id=run.id)
+                run = await self.client.beta.threads.runs.retrieve(
+                    thread_id=thread.id, run_id=run.id
+                )
                 await asyncio.sleep(2.5)
             else:
-                message_response = await self.client.beta.threads.messages.list(thread_id=thread.id)
+                message_response = await self.client.beta.threads.messages.list(
+                    thread_id=thread.id
+                )
                 text_answer = message_response.data[0].content[0].text.value[:4096]
 
             data["text"] = text_answer[:4000]
 
             await self.message_client.answer_message(data)
-        except Exception:
+        except Exception as e:
+            self.logger.debug(e)
             raise
+
 
     async def send_message(self, data: Dict[str, Any]):
         """Отправка сообщения и возврат текстового ответа."""
@@ -100,11 +138,23 @@ class ChatGPT:
 
             data["energy_text"] = status
 
-            await self.dialog_service.add_message(
-                role=MessageRole.USER,
-                dialog_id=data["dialog_id"],
-                message=data.get("message"),
-            )
+            message = data.get("message")
+            if message:
+                await self.dialog_service.add_message(
+                    role=MessageRole.USER,
+                    dialog_id=data["dialog_id"],
+                    message=data.get("message"),
+                )
+
+            file = data.get("file")
+            if file:
+                content_file = await self._file_generate(path_to_file=file["url"])
+                await self.dialog_service.add_message(
+                    role=MessageRole.USER,
+                    dialog_id=data["dialog_id"],
+                    message=content_file,
+                )
+
             messages = await self.dialog_service.get_messages(data["dialog_id"])
 
             import_messages = []

@@ -27,9 +27,7 @@ def upgrade() -> None:
     )
     op.add_column(
         "gpt_assistants",
-        sa.Column(
-            "energy_cost", sa.DECIMAL(precision=15, scale=1), nullable=False
-        ),
+        sa.Column("energy_cost", sa.DECIMAL(precision=15, scale=1), nullable=False),
     )
     # ### end Alembic commands ###
 

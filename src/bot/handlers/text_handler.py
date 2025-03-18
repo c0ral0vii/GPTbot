@@ -4,7 +4,7 @@ from aiogram.fsm.context import FSMContext
 
 from src.bot.keyboards.select_gpt import select_text_gpt, cancel_kb, get_models_dialogs
 from src.bot.states.text_state import TextState
-from src.config.config import settings
+from src.config.config import settings, EXCLUDE_PATTERN
 from src.db.orm.user_orm import PremiumUserORM
 from src.scripts.queue.rabbit_queue import model
 from src.utils.logger import setup_logger
@@ -72,10 +72,12 @@ async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
         user_id=callback.from_user.id, select_model=user_model.value
     )
 
+    data = await state.get_data()
+
     await callback.message.answer(
         f"Выбраная вами модель - {select_model}\n"
         f"(поменять модель в настройках профиля)\n"
-        f"Стоимость модели ⚡️ {energy_cost}\n\n"
+        f"{f"Стоимость модели ⚡{data["energy_cost"]}" if data["energy_cost"] != 0 else ""}\n\n"
         "Выберите прошлый диалог из списка ниже или создайте новый:",
         reply_markup=await get_models_dialogs(dialogs),
     )
@@ -105,7 +107,7 @@ async def select_dialog_handler(callback: types.CallbackQuery, state: FSMContext
     await callback.message.answer(
         f"Выбраная вами модель - {data["select_model"]}\n"
         f"(поменять модель в настройках профиля)\n"
-        f"Стоимость модели ⚡️ {data["energy_cost"]}\n\n"
+        f"{f"Стоимость модели ⚡{data["energy_cost"]}" if data["energy_cost"] != 0 else ""}\n\n"
         f"Выбранный диалог: {title}\n\n"
         "Напишите ваше сообщение ниже",
         reply_markup=await cancel_kb(),
@@ -114,8 +116,8 @@ async def select_dialog_handler(callback: types.CallbackQuery, state: FSMContext
     await state.set_state(TextState.text)
 
 
-@router.message(F.text, StateFilter(TextState.text))
-async def text_handler(message: types.Message, state: FSMContext, bot: Bot):
+@router.message(F.text.regexp(EXCLUDE_PATTERN), StateFilter(TextState.text))
+async def text_handler(message: types.Message, state: FSMContext):
     data = await state.get_data()
 
     text = message.text
@@ -136,9 +138,46 @@ async def text_handler(message: types.Message, state: FSMContext, bot: Bot):
         user_id=message.from_user.id,
         answer_message=answer_message.message_id,
         energy_cost=data["energy_cost"],
-
         key=key,
         priority=data["priority"],
     )
 
+    await redis_manager.set(key=key, value="generate", ttl=120)
+
+
+@router.message(F.document, StateFilter(TextState.text))
+async def file_handler(message: types.Message, state: FSMContext, bot: Bot):
+    """Обработчик документов"""
+    data = await state.get_data()
+
+    file_id = message.document.file_id
+    file_name = message.document.file_name
+    file = await bot.get_file(file_id)
+
+    allowed_extensions = {".txt", ".csv", ".html"}
+    if not any(file_name.endswith(ext) for ext in allowed_extensions):
+        await message.answer("⚠️ Поддерживаются только файлы .txt, .csv, .html!")
+        return
+
+    key = f"{message.from_user.id}:generate"
+
+    if await redis_manager.get(key):
+        await message.delete()
+        await message.answer("⚠️ Дождитесь завершения предыдущей генерации")
+        return
+
+    file_url = f"https://api.telegram.org/file/bot{settings.BOT_API}/{file.file_path}"
+    answer_message = await message.answer(f"📂 Файл `{file_name}` обрабатывается...")
+
+    await model.publish_message(
+        queue_name=data.get("queue_select"),
+        dialog_id=int(data.get("dialog_id")),
+        version=data.get("select_model"),
+        file={"url": file_url, "name": file_name, "type": "document"},
+        user_id=message.from_user.id,
+        answer_message=answer_message.message_id,
+        energy_cost=data["energy_cost"],
+        key=key,
+        priority=data["priority"],
+    )
     await redis_manager.set(key=key, value="generate", ttl=120)

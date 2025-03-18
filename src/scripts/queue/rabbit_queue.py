@@ -113,7 +113,9 @@ class RabbitQueue:
                         body = json.loads(message.body.decode())
                         await callback(body)
 
-                        await self._key_delete_or_remove(body.get("key", f"{body.get('user_id')}:generate"))
+                        await self._key_delete_or_remove(
+                            body.get("key", f"{body.get('user_id')}:generate")
+                        )
 
                     except Exception as e:
                         self.logger.error(f"Error processing message: {e}")
@@ -128,7 +130,9 @@ class RabbitQueue:
                             user_id=body["user_id"],
                         )
 
-                        await self._key_delete_or_remove(body.get("key", f"{body.get('user_id')}:generate"))
+                        await self._key_delete_or_remove(
+                            body.get("key", f"{body.get('user_id')}:generate")
+                        )
 
             await queue.consume(process_message)
 

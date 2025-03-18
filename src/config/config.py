@@ -1,4 +1,9 @@
+import pathlib
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+ROOT_PATH = pathlib.Path(__file__).parent.parent.parent.parent
+EXCLUDE_PATTERN = r"^(?!/.*|💡 Chat GPT/Claude$|🧑‍🔬 Ассистенты).+"
 
 
 class Settings(BaseSettings):
@@ -37,6 +42,7 @@ class Settings(BaseSettings):
     ADMIN_TOKEN: str = None
     ADMIN_USER: str = "root"
     ADMIN_PASS: str = "root"
+
     # debug
     DEBUG: bool = False
 

@@ -1,4 +1,3 @@
-import datetime
 from src.scripts.answer_messages.answer_message import AnswerMessage
 from src.db.orm.user_orm import UserORM
 

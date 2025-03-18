@@ -73,7 +73,7 @@ async def subscription_settings(message: types.Message):
 async def subscription_settings(callback: types.CallbackQuery):
     user_id = callback.from_user.id
 
-    await ConfigORM.change_config(
+    user_config = await ConfigORM.change_config(
         auto_renewal=True,
         user_id=user_id,
     )
@@ -87,7 +87,7 @@ async def subscription_settings(callback: types.CallbackQuery):
     if check_premium:
         await callback.message.edit_text(
             f"Дата окончания: {user['premium_to_date']}\n"
-            f"Автопродление: {'✅' if check_premium else '❌'}",
+            f"Автопродление: {'✅' if user_config.auto_renewal else '❌'}",
             reply_markup=InlineKeyboardMarkup(
                 inline_keyboard=[
                     [

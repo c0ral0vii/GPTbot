@@ -4,7 +4,6 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder
 from src.db.models import Dialog
 
 
-
 async def select_text_gpt() -> InlineKeyboardMarkup:
 
     chat_gpt = InlineKeyboardButton(text="🤖 Chat GPT", callback_data="select_chatgpt")
