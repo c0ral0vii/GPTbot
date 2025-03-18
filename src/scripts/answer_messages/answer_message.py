@@ -36,13 +36,15 @@ class AnswerMessage:
             if not data.get("text"):
                 data["text"] = "⚠ Произошла ошибка при генерации"
 
-            await self.bot.edit_message_text(
+            # if data.get("delete"):
+            #     await self.bot.delete_message(chat_id=data["chat_id"], message_id=data["message_id"])
+
+            await self.bot.send_message(
                 chat_id=data["user_id"],
-                message_id=data["answer_message"],
                 text=data["text"],
                 parse_mode="Markdown",
-                reply_markup=await upgrade_message(),
             )
+            # reply_markup=await upgrade_message(),
 
             energy_text = data.get("energy_text", None)
 

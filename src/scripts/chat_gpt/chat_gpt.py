@@ -104,7 +104,8 @@ class ChatGPT:
             run = await self.client.beta.threads.runs.create(
                 thread_id=thread.id,
                 assistant_id=data["version"],
-                max_completion_tokens=2500,
+                max_prompt_tokens=25000,
+                max_completion_tokens=8000,
             )
 
             while run.status != "completed":
@@ -116,11 +117,17 @@ class ChatGPT:
                 message_response = await self.client.beta.threads.messages.list(
                     thread_id=thread.id
                 )
-                text_answer = message_response.data[0].content[0].text.value[:4096]
+                text_only = message_response.data[0].content[0].text.value[:4096]
 
-            data["text"] = text_answer[:4000]
+            chunk_size = 4000
+            chunks = [text_only[i:i + chunk_size] for i in range(0, len(text_only), chunk_size)]
 
-            await self.message_client.answer_message(data)
+            data["text"] = chunks
+
+            for chunk in chunks:
+                data["text"] = chunk
+                await self.message_client.answer_message(data)
+
         except Exception as e:
             self.logger.debug(e)
             raise
@@ -169,7 +176,7 @@ class ChatGPT:
             response = await self.client.chat.completions.create(
                 model=data["version"],
                 messages=import_messages,
-                max_tokens=2500,
+                max_tokens=4096,
             )
 
             text_only = response.choices[0].message.content
@@ -179,9 +186,13 @@ class ChatGPT:
                 message=text_only,
             )
 
-            data["text"] = text_only[:4000]
+            chunk_size = 4000
+            chunks = [text_only[i:i + chunk_size] for i in range(0, len(text_only), chunk_size)]
 
-            await self.message_client.answer_message(data)
+            data["text"] = chunks
+            for chunk in chunks:
+                data["text"] = chunk
+                await self.message_client.answer_message(data)
 
         except Exception as e:
             self.logger.error(f"Ошибка при отправке сообщения: {str(e)}")
