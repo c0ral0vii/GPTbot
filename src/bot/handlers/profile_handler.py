@@ -37,7 +37,6 @@ async def profile_handler(message: types.Message, state: FSMContext):
                 f"🔹 Оформи Premium и получи:\n"
                 "✅ Безлимитный доступ к ChatGPT и Claude\n"
                 "⚡ +2500 энергии\n\n"
-                "💰 Лучшее предложение – всего за 1490 ₽\n"
                 "👉 /premium — Оформить подписку",
                 parse_mode="Markdown",
                 reply_markup=InlineKeyboardMarkup(
