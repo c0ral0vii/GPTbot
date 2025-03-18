@@ -9,6 +9,9 @@ class EnergyService:
         """Работа с энергией"""
 
         try:
+            if data["energy_cost"] == 0:
+                text = None
+                return text
             if action == "remove":
                 text = await UserORM.remove_energy(data["user_id"], data["energy_cost"])
             else:
