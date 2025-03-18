@@ -3164,3 +3164,22 @@ WHERE users.user_id = $1::VARCHAR]
 2025-03-18 10:51:26,719 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'chat_id'
 2025-03-18 10:51:26,719 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'chat_id'
 2025-03-18 10:51:26,719 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'chat_id'
+2025-03-18 11:19:47,344 - src.scripts.queue.worker - ERROR - Error starting parsing worker: [Errno 111] Connect call failed ('172.22.0.5', 5672)
+2025-03-18 11:20:34,852 - src.scripts.chat_gpt.chat_gpt - ERROR - Ошибка при отправке сообщения: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-18 11:20:34,853 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-18 11:20:34,853 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-18 11:20:34,853 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-18 11:21:09,109 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'chat_id'
+2025-03-18 11:21:09,109 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'chat_id'
+2025-03-18 11:21:09,109 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'chat_id'
+2025-03-18 11:21:09,109 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'chat_id'
+2025-03-18 11:21:09,109 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'chat_id'
+2025-03-18 11:21:09,109 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'chat_id'
+2025-03-18 11:21:09,109 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'chat_id'
+2025-03-18 11:22:09,469 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'message_id'
+2025-03-18 11:22:09,469 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'message_id'
+2025-03-18 11:22:09,469 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'message_id'
+2025-03-18 11:22:09,469 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'message_id'
+2025-03-18 11:22:09,469 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'message_id'
+2025-03-18 11:22:09,469 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'message_id'
+2025-03-18 11:22:09,469 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: 'message_id'

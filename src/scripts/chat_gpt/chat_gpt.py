@@ -123,10 +123,11 @@ class ChatGPT:
             chunks = [text_only[i:i + chunk_size] for i in range(0, len(text_only), chunk_size)]
 
             data["text"] = chunks
-
+            data["disable_delete"] = True
             for chunk in chunks:
                 data["text"] = chunk
                 await self.message_client.answer_message(data)
+                data["disable_delete"] = False
 
         except Exception as e:
             self.logger.debug(e)
@@ -190,9 +191,12 @@ class ChatGPT:
             chunks = [text_only[i:i + chunk_size] for i in range(0, len(text_only), chunk_size)]
 
             data["text"] = chunks
+            data["disable_delete"] = True
+
             for chunk in chunks:
                 data["text"] = chunk
                 await self.message_client.answer_message(data)
+                data["disable_delete"] = False
 
         except Exception as e:
             self.logger.error(f"Ошибка при отправке сообщения: {str(e)}")
