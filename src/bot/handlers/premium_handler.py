@@ -12,34 +12,52 @@ router = Router()
 logger = setup_logger(__name__)
 PRIVACY_POLICY = "https://gradov.online/ofertaneurokesh"
 
+async def send_premium_offer(target: types.Message | types.CallbackQuery, payment_link: str):
+    """Отправляет сообщение с предложением о Premium подписке."""
+    text = (
+        "🌟 Оформи Premium и получи максимум возможностей!\n\n"
+        "✅ Безлимитный ChatGPT и Claude – работай без ограничений\n"
+        "⚡ +2500 энергии – больше запросов, больше возможностей\n"
+        "🚀 Приоритетная скорость – никаких задержек, всё моментально\n"
+        "🔒 Эксклюзивные функции и инструменты – только для PRO\n"
+        "🤖 Полный доступ ко всем ассистентам – генерация контента, тренды, аналитика\n\n"
+        "💰 Стоимость подписки: <s>3000</s> <b>1490 ₽</b> / месяц"
+    )
+    reply_markup = InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="💳 ОПЛАТИТЬ И СНЯТЬ ОГРАНИЧЕНИЯ", url=payment_link)],
+        ]
+    )
 
-@router.message(Command("premium"))
-async def premium_handle(message: types.Message):
-    check_premium = await PremiumUserORM.is_premium_active(message.from_user.id)
+    if hasattr(target, 'message'): 
+        await target.message.answer(text, parse_mode="HTML", reply_markup=reply_markup)
+    else:  
+        await target.answer(text, parse_mode="HTML", reply_markup=reply_markup)
+        
+        
+@router.message(Command("PRO", "pro"))
+async def premium_text(message: types.Message):
+    """Обработка команды /PRO."""
+    await premium_handle(message)
+
+@router.callback_query(F.data=="/PRO")
+async def premium_callback(callback: types.CallbackQuery):
+    """Обработка callback-запроса для Premium."""
+    await premium_handle(callback)
+
+async def premium_handle(target: types.Message | types.CallbackQuery):
+    """Общая логика для обработки Premium."""
+    check_premium = await PremiumUserORM.is_premium_active(target.from_user.id)
 
     if check_premium:
-        await message.answer(
-            "У вас уже есть активная подписка, чтобы узнать больше информации и управлять ей перейдите в /profile"
-        )
+        text = "У вас уже есть активная подписка, чтобы узнать больше информации и управлять ей перейдите в /profile"
+        if hasattr(target, 'message'):
+            await target.message.answer(text)
+        else:  
+            await target.answer(text)
     else:
-        payment_link = await generate_payment(message.from_user.id)
-
-        await message.answer(
-            "🌟 Оформи Premium и получи максимум возможностей!\n\n"
-            f"🔹 Что даёт подписка?\n"
-            "✅ ChatGPT и Claude становятся безлимитными\n"
-            "⚡ +2 500 энергии для других ИИ\n"
-            "🚀 Приоритетная скорость обработки запросов\n"
-            "🔒 Доступ к эксклюзивным функциям в будущем\n"
-            "🤖 Доступ ко всем ассистентам\n\n"
-            "Стоимость подписки: <s>3000</s> <b>1490 ₽</b> за 1 месяц",
-            parse_mode="HTML",
-            reply_markup=InlineKeyboardMarkup(
-                inline_keyboard=[
-                    [InlineKeyboardButton(text="Оплатить", url=payment_link)],
-                ]
-            ),
-        )
+        payment_link = await generate_payment(target.from_user.id)
+        await send_premium_offer(target, payment_link)
 
 
 @router.message(Command("subscription"))

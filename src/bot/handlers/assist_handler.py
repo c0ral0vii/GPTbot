@@ -44,9 +44,25 @@ async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
     check_premium = data["premium"]
     if not check_premium:
         await callback.message.answer(
-            "Для общения с ассистентами вам необходимо приобрести подписку /premium"
+            "👨‍💻 Ассистенты недоступны.\n\n"
+            "🚨 Для работы с ассистентами нужен PRO-доступ!\n\n"
+            "🔓 Оформи PRO и получи:\n"
+            "✅ Безлимитный доступ ко всем ассистентам\n"
+            "⚡ +2500 энергии – работай больше, зарабатывай быстрее\n"
+            "🚀 Приоритетную скорость обработки запросов\n"
+            "🔐 Эксклюзивные инструменты и функции\n",
+            reply_markup=types.InlineKeyboardMarkup(
+                    inline_keyboard=[
+                        [
+                            types.InlineKeyboardButton(
+                                text="💳 РАЗБЛОКИРОВАТЬ PRO", callback_data="/PRO"
+                            ),
+                        ],
+                    ]
+                ),
         )
         return
+    
     assist = await GPTAssistantOrm.get_select_assistants(int(gpt_select))
 
     if not assist or not assist.assistant_id or assist.disable:

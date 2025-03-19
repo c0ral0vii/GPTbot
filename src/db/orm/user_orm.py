@@ -559,6 +559,7 @@ class AnalyticsORM:
 
             return {
                 "user_id": user.user_id,
+                "username": user.username,
                 "energy": float(user.energy),
                 "use_referral_link": user.use_referral_link,
                 "personal_percent": user.personal_percent,

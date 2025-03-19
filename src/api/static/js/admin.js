@@ -26,12 +26,6 @@ async function loadOverviewStats() {
         console.error('Error loading stats:', error);
     }
 }
-//
-// document.addEventListener('DOMContentLoaded', () => {
-//     loadOverviewStats();
-//
-//     setInterval(loadOverviewStats, 30000);
-// })
 
 
 class AdminDashboard {
@@ -251,6 +245,7 @@ class AdminPanel {
         console.log(data);
 
         document.getElementById('user_id').value = data.user_id;
+        document.getElementById('username').value = data.username;
         document.getElementById('energy').value = data.energy;
         document.getElementById('use_referral_link').value = data.use_referral_link;
 
