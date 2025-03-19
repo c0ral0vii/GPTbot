@@ -85,7 +85,7 @@ async def subscription_settings(message: types.Message):
             ),
         )
     else:
-        await message.answer("Для начала оформи подписку -> /premium")
+        await message.answer("Для начала оформи подписку -> /pro")
 
 
 @router.callback_query(F.data == "sub_change_auto")
