@@ -1,5 +1,6 @@
+import html
 from aiogram.filters import Command
-from aiogram import Router, F, html, types
+from aiogram import Router, F, types
 from aiogram.fsm.context import FSMContext
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
