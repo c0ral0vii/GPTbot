@@ -29,19 +29,19 @@ async def profile_handler(message: types.Message, state: FSMContext):
 
         if not user_info.get("check_premium"):
             await message.answer(
-                f"👤Профиль: {message.from_user.username}:\n\n"
+                f"👤Профиль: {message.from_user.username}\n\n"
                 f"⚡ Энергия: {user_info.get("energy", 0)}\n"
                 f"👥 Приглашённые друзья: {user_info.get("counts", 0)}\n"
                 f"💰 Заработано с подписок: {user_info.get("referral_bonus", 0)}₽\n"
                 f"❌ PRO-доступ: НЕТ!\n\n"
                 f"🔒 Ассистенты заблокированы. Без PRO они не работают.\n\n"
-                "<u>Что даёт PRO:</u>\n\n"
+                "__Что даёт PRO:__\n\n"
                 "✅ Безлимитный ChatGPT и Claude – никаких лимитов, полный доступ\n"
                 "⚡ +2500 энергии – больше возможностей, быстрее результаты\n"
                 "🚀 Приоритетная скорость – никаких задержек, всё моментально\n"
                 "🤖 Доступ ко ВСЕМ ассистентам – генерация контента, тренды, аналитика, заработок\n\n"
                 "💥 Сейчас у тебя нет доступа. Каждый день без PRO – это потерянные деньги.\n\n",
-                parse_mode="HTML",
+                parse_mode="MarkdownV2",
                 reply_markup=InlineKeyboardMarkup(
                     inline_keyboard=[
                         [
@@ -59,7 +59,7 @@ async def profile_handler(message: types.Message, state: FSMContext):
             )
         else:
             await message.answer(
-                f"👤Профиль: {message.from_user.username}:\n\n"
+                f"👤Профиль: {message.from_user.username}\n\n"
                 f"⚡ Энергия: {user_info.get("energy", 0)}\n"
                 f"👥 Приглашённые друзья: {user_info.get("counts", 0)}\n"
                 f"💰 Заработано с подписок: {user_info.get("referral_bonus", 0)}₽\n"
