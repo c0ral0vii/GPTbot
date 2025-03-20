@@ -36,7 +36,9 @@ class AnswerMessage:
             if not data.get("text"):
                 data["text"] = "⚠ Произошла ошибка при генерации"
 
-            if data.get("disable_delete", False) is True:
+            disable_delete = data.get("disable_delete", False)
+
+            if disable_delete is True:
                 delete = await self.bot.delete_message(
                     chat_id=data["user_id"], message_id=data["answer_message"]
                 )

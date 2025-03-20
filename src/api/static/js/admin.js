@@ -359,7 +359,7 @@ class AdminPanel {
                 <td>${item.id}</td>
                 <td>${item.user_id}</td>
                 <td>${item.username}</td>
-                <td>${item.status }</td>
+                <td>${item.status}</td>
                 <td>${item.energy}</td>
                 <td>${item.created}</td>
                 <td>${item.updated}</td>

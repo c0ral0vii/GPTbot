@@ -179,7 +179,7 @@ class ChatGPT:
             response = await self.client.chat.completions.create(
                 model=data["version"],
                 messages=import_messages,
-                max_tokens=4096,
+                max_completion_tokens=4096,
             )
 
             text_only = response.choices[0].message.content

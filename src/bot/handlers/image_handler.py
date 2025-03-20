@@ -66,6 +66,8 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
     await callback.message.answer(
         f"Выбраная вами модель - {select_model}\n"
         f"Стоимость модели ⚡️ {energy_cost}\n\n"
+        "У нас встроен автоперевод текста для более лучшего распознования текста Midjourney\n"
+        "Просим записывать текст в формате: Промпт --тег --тег и так далее!\n\n"
         "Отправьте ваше сообщение для обработки:",
         reply_markup=await cancel_kb(),
     )

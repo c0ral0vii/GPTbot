@@ -1,8 +1,6 @@
 from typing import Dict, Any
 
 from anthropic import AsyncAnthropic
-import asyncio
-import os
 
 from src.config.config import settings
 from src.db.enums_class import MessageRole
@@ -65,15 +63,26 @@ class ClaudeGPT:
             text_only = " ".join(
                 [block.text for block in message.content if block.type == "text"]
             )
+
             await self.dialog_service.add_message(
                 role=MessageRole.ASSISTANT,
                 dialog_id=data["dialog_id"],
                 message=text_only,
             )
 
-            data["text"] = text_only[:4000]
+            chunk_size = 4000
+            chunks = [
+                text_only[i: i + chunk_size]
+                for i in range(0, len(text_only), chunk_size)
+            ]
 
-            await self.message_client.answer_message(data)
+            data["text"] = chunks
+            data["disable_delete"] = True
+
+            for chunk in chunks:
+                data["text"] = chunk
+                await self.message_client.answer_message(data)
+                data["disable_delete"] = False
 
         except Exception as e:
             await UserORM.add_energy(data["user_id"], data["energy_cost"])

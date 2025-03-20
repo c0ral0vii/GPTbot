@@ -20,14 +20,45 @@ logger = setup_logger(__name__)
 class TranslateService:
     def __init__(self):
         self.language = "en"
+        self.translator = Translator()
 
-    async def translate(self, text: str) -> str:
-        translator = Translator()
+    async def _check_to_prompt(self, text: str) -> list[str]:
+        """Убираем лишние --"""
 
         try:
-            translation = await translator.translate(text, dest=self.language)
+            split_text = text.split("--")
+            return split_text
+        except Exception as e:
+            logger.error(e)
+            return []
 
-            return translation.text
+    async def _collect_text(self, list_text: list[str]) -> str:
+        """Собираем текст"""
+
+        try:
+            collect_text = " --".join(list_text)
+            logger.debug(list_text)
+            return collect_text
+        except Exception as e:
+            logger.error(e)
+            return ""
+
+    async def translate(self, text: str) -> str:
+        """Переводим текст"""
+        try:
+            text_translate = await self._check_to_prompt(text)
+            if not text_translate:
+                return text
+
+            logger.debug(text_translate)
+
+            translation = await self.translator.translate(text_translate[0], dest=self.language)
+            text_translate[0] = translation.text
+
+            collect_text = await self._collect_text(text_translate)
+            logger.debug(translation.text)
+
+            return collect_text
         except Exception as e:
             logger.error(e)
             return text
@@ -51,6 +82,9 @@ class MidjourneyService:
         async with aiohttp.ClientSession() as session:
             try:
                 translate_message = await self.translator.translate(body["message"])
+                logger.debug(translate_message)
+                body["message"] = translate_message
+
                 data = json.dumps(
                     {
                         "prompt": f"{body["message"]}",
@@ -83,13 +117,13 @@ class MidjourneyService:
             result = await session.get(check_url, headers=self.HEADER)
             response = await result.json()
 
-            if retries == 10:
+            if retries == 5:
                 logger.warning(f"Rate limited, retrying after {retries} seconds.")
-                raise
+                return
 
             if response["status"] == "error":
                 logger.error(response)
-                retry_after = response.get("retry_after", 7.0)
+                retry_after = response.get("retry_after", 10.0)
                 logger.warning(f"Rate limited, retrying after {retry_after} seconds.")
 
                 await asyncio.sleep(retry_after)
@@ -126,12 +160,6 @@ class MidjourneyService:
                 await self._check_status(body=body, session=session)
 
         except Exception as e:
-            # if retries != 5:
-            #     retries += 1
-            #     await asyncio.sleep(retries)
-            #     await self._check_status(body=body, session=session, retries=retries)
-            #     logger.warning(f"Rate limited, retrying after {retries} seconds.")
-            # else:
             logger.warning(f"Rate limited, retrying after {retries} seconds. {e}")
             raise
 
