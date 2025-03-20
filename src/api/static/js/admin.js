@@ -195,8 +195,6 @@ class AdminPanel {
         } else {
             await this.showError("❌ Ошибка при сохранении изменений!");
         }
-
-        await this.loadDashboardData();
     }
 
     clearAssistantModal() {
@@ -360,6 +358,7 @@ class AdminPanel {
             row.innerHTML = `
                 <td>${item.id}</td>
                 <td>${item.user_id}</td>
+                <td>${item.username}</td>
                 <td>${item.status }</td>
                 <td>${item.energy}</td>
                 <td>${item.created}</td>

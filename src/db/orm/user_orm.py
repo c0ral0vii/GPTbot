@@ -482,6 +482,7 @@ class AnalyticsORM:
                     "table": "users",
                     "id": user.id,
                     "user_id": user.user_id,
+                    "username": user.username,
                     "energy": float(user.energy) if user.energy else None,
                     "use_referral_link": user.use_referral_link,
                     "personal_percent": user.personal_percent,
