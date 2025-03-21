@@ -226,6 +226,64 @@
                 </button>
             </div>
         </div>
+
+        <div class="modal fade" id="addReferralModal" tabindex="-1" aria-labelledby="addReferralModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addReferralModalLabel">Добавить бонусную ссылку</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="bonusLink" class="form-label">Ссылка</label>
+                            <input type="text" class="form-control" id="bonusLink">
+                        </div>
+                        <div class="mb-3">
+                            <label for="bonusEnergy" class="form-label">Энергия за активацию</label>
+                            <input type="number" class="form-control" id="bonusEnergy">
+                        </div>
+                        <div class="mb-3">
+                            <label for="bonusActivations" class="form-label">Количество активаций</label>
+                            <input type="number" class="form-control" id="bonusActivations">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary" id="saveBonusLinkButton">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="editBonusModal" tabindex="-1" aria-labelledby="editBonusModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editBonusModalLabel">Изменить бонусную ссылку</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="editBonusLink" class="form-label">Ссылка</label>
+                            <input type="text" class="form-control" id="editBonusLink">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editBonusEnergy" class="form-label">Энергия за активацию</label>
+                            <input type="number" class="form-control" id="editBonusEnergy">
+                        </div>
+                        <div class="mb-3">
+                            <label for="editBonusActivations" class="form-label">Количество активаций</label>
+                            <input type="number" class="form-control" id="editBonusActivations">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary" id="saveEditBonusButton">Сохранить изменения</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row mt-4">
             <div class="col-md-12">
                 <div class="card">

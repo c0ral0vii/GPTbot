@@ -124,9 +124,17 @@ async def update_assistant(assist_id: int, data: GPTAssistSchema):
 async def get_all_bonuses():
     try:
         all_bonus_links = await BonusLinksOrm.get_all_bonuses()
-        
+        output_items = []
+        for bonuses in all_bonus_links:
+            output_items.append({
+                "id": bonuses.id,
+                "link": f"{bonuses.link}",
+                "count_activate": bonuses.active_count,
+                "energy": float(bonuses.energy_bonus)
+            })
+
         return JSONResponse(
-            content={"items": all_bonus_links},
+            content={"items": output_items},
             status_code=200
         )
     except  Exception as e:
@@ -142,31 +150,27 @@ async def get_info_bonuse(id: int):
         )
         
         return JSONResponse(
-            content={},
+            content={
+                "link": f"{bonus_link.link}",
+                "count_activate": bonus_link.active_count,
+                "energy": float(bonus_link.energy_bonus),
+            },
             status_code=200
         )
-    except:
-        raise HTTPException(status_code=500)
-    
-
-@router.delete("/bonuses/{id}/delete")
-async def delete_bonuse(id: int):
-    try:
-
-        return JSONResponse(
-            content={},
-            status_code=200
-        )
-    except:
-        raise HTTPException(status_code=500)
+    except Exception as e:
+        raise HTTPException(status_code=500,
+                            detail=str(e))
     
 
 @router.put("/bonuses/{id}/change")
-async def change_bonuse(id: int):
+async def change_bonuse(data: BonusLinkSchema):
     try:
+        change_bonuses = await BonusLinksOrm.update_bonus_link(
+            data=data.model_dump(),
+        )
 
         return JSONResponse(
-            content={},
+            content={"success": True},
             status_code=200
         )
     except:
@@ -174,13 +178,13 @@ async def change_bonuse(id: int):
     
 
 @router.post("/bonuses/create")
-async def change_bonuse(bonus_link_data: BonusLinkSchema):
+async def create_bonuse(bonus_link_data: BonusLinkSchema):
     try:
         new_bonus_link = await BonusLinksOrm.create_bonus_links(
             bonus_link_data.model_dump()
         )
         return JSONResponse(
-            content={"status": True},
+            content={"success": True},
             status_code=201
         )
     except:

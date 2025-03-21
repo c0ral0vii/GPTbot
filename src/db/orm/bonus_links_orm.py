@@ -67,10 +67,8 @@ class BonusLinksOrm:
         if link:
             stmt = select(BonusLink).where(BonusLink.link == link)
         elif link_id:
-            stmt = select(BonusLink).where(BonusLink.id == id)
-        else:
-            return None
-        
+            stmt = select(BonusLink).where(BonusLink.id == link_id)
+
         result = await session.execute(stmt)
         bonus_link = result.scalar_one_or_none()
 

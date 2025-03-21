@@ -115,6 +115,10 @@ class AdminPanel {
         document.getElementById('addAssistantModal').addEventListener('hidden.bs.modal', () => {
             this.clearAssistantModal(); // Очищаем поля
         });
+
+        document.getElementById('saveBonusLinkButton').addEventListener('click', () => {
+            this.addBonusLink();
+        });
     }
 
     async openAddAssistantModal() {
@@ -138,15 +142,17 @@ class AdminPanel {
         try {
             this.showLoader();
 
-            const [overviewData, userData, assistData] = await Promise.all([
+            const [overviewData, userData, assistData, bonuses] = await Promise.all([
                 fetchAPI('/stats/overview'),
                 fetchAPI('/users'),
-                fetchAPI('/assistants')
+                fetchAPI('/assistants'),
+                fetchAPI('/bonuses'),
             ]);
 
             this.updateOverviewStats(overviewData);
             this.updateUserTable(userData);
             this.updateAssisTable(assistData);
+            this.updateBonusTable(bonuses);
 
             this.updateLastUpdateTime();
 
@@ -319,6 +325,98 @@ class AdminPanel {
         await this.showToast('✅ Изменения успешно сохранены!');
         await this.loadDashboardData();
         bootstrap.Modal.getInstance(document.getElementById('editAssistantModal')).hide();
+    }
+
+    async addBonusLink() {
+        const newBonusLink = {
+            link: document.getElementById('bonusLink').value,
+            energy_bonus: parseFloat(document.getElementById('bonusEnergy').value),
+            active_count: parseInt(document.getElementById('bonusActivations').value),
+        };
+
+        try {
+            const response = await this.fetchAPI('/bonuses/create', {
+                method: 'POST',
+                body: JSON.stringify(newBonusLink),
+            });
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addReferralModal'));
+            modal.hide();
+
+            if (response.success) {
+                await this.showToast('✅ Бонусная ссылка успешно добавлена!');
+            } else {
+                await this.showError('❌ Ошибка при добавлении бонусной ссылки!');
+            }
+            await this.loadDashboardData();
+
+        } catch (error) {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('addReferralModal'));
+            modal.hide();
+            console.error('Error adding bonus link:', error);
+            await this.showError('❌ Ошибка при добавлении бонусной ссылки!');
+        }
+    }
+
+    async getBonusInfo(item_id) {
+        const data = await this.fetchAPI(`/bonuses/${item_id}/info`);
+
+        document.getElementById('editBonusLink').value = data.link;
+        document.getElementById('editBonusEnergy').value = data.energy;
+        document.getElementById('editBonusActivations').value = data.count_activate;
+        document.getElementById('editBonusLink').dataset.id = item_id;
+
+        // Открываем модальное окно
+        const modal = new bootstrap.Modal(document.getElementById('editBonusModal'));
+        modal.show();
+
+        document.getElementById('saveEditBonusButton').addEventListener('click', () => {
+            this.saveBonusChanges(item_id);
+        });
+    }
+
+    async saveBonusChanges(bonusId) {
+        const updatedData = {
+            id: bonusId,
+            link: document.getElementById('editBonusLink').value,
+            energy_bonus: parseFloat(document.getElementById('editBonusEnergy').value),
+            active_count: parseInt(document.getElementById('editBonusActivations').value),
+        };
+
+        const response = await this.fetchAPI(`/bonuses/${bonusId}/change`, {
+            method: 'PUT',
+            body: JSON.stringify(updatedData),
+        });
+
+        await this.showToast('✅ Изменения успешно сохранены!');
+        await this.loadDashboardData();
+        bootstrap.Modal.getInstance(document.getElementById('editBonusModal')).hide();
+    }
+
+    updateBonusTable(data) {
+        const tbody = document.querySelector('#bonusTable tbody');
+        tbody.innerHTML = '';
+
+        data.items.forEach((item) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+            <td>${item.id}</td>
+            <td>${item.link}</td>
+            <td>${item.count_activate}</td>
+            <td>${item.energy}</td>
+            <td>
+                <div class="btn-group">
+                    <button class="btn btn-sm btn-outline-primary"
+                        onclick="adminPanel.getBonusInfo(${item.id})">
+                        Изменить
+                    </button>
+                </div>
+            </td>
+                        
+            `;
+            tbody.appendChild(row);
+
+        })
     }
 
     updateAssisTable(data) {
