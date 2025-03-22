@@ -38,6 +38,9 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
 
     gpt_select = callback.data.replace("select_", "")
     await callback.message.delete()
+    await callback.message.answer("Приносим свои извинения, в данный момент midjourney не работает по причине технических неполадок!\n Мы пытаемся становиться лучше для вас!\n\nСо всем уважением команда Woome AI!")
+    return
+
     priority = 0
 
     if settings.IMAGE_GPT.get(gpt_select):

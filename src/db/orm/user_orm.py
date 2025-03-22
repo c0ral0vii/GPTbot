@@ -5,6 +5,7 @@ from typing import Optional, Dict, Any
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
+from src.db.custom_decorators import with_session
 from src.db.models import User, GenerateImage, PremiumUser, BannedUser, BonusLink
 from src.db.orm.config_orm import ConfigORM
 from src.utils.cached_user import (
@@ -26,6 +27,7 @@ logger = setup_logger(__name__)
 
 class PremiumUserORM:
     @staticmethod
+    @with_session
     async def is_premium_active(user_id: int, session: AsyncSession = None) -> bool:
         """
         Проверяет, активна ли премиум-подписка пользователя.
@@ -33,8 +35,6 @@ class PremiumUserORM:
             - True, если подписка активна.
             - False, если подписка истекла или отсутствует.
         """
-        if not session:
-            session = async_session()
 
         stmt = (
             select(User)
@@ -45,18 +45,12 @@ class PremiumUserORM:
         premium_user = result.scalar_one_or_none()
 
         if not premium_user or not premium_user.premium_status:
-            if not session:
-                await session.close()
-
             return False
 
         if premium_user.premium_status.premium_active == False:
             await change_premium_status(
                 user_id=user_id, premium=False, premium_to_date=None
             )
-
-            if not session:
-                await session.close()
 
             return False
 
@@ -67,13 +61,9 @@ class PremiumUserORM:
             )
 
             await session.commit()
-            if not session:
-                await session.close()
 
             return False
 
-        if not session:
-            await session.close()
         await change_premium_status(
             user_id=user_id,
             premium=True,

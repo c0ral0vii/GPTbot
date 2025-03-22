@@ -3,6 +3,7 @@ from typing import Optional
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from src.db.custom_decorators import with_session
 from src.db.database import async_session
 from src.db.models import User, UserConfig
 from src.db.enums_class import GPTConfig, CLAUDEConfig
@@ -60,33 +61,23 @@ class ConfigORM:
             return user_config
 
     @staticmethod
+    @with_session
     async def get_config(
         user_id: int, session: AsyncSession = None
     ) -> Optional[UserConfig]:
-        if not session:
-            session = async_session()
-
         stmt = select(UserConfig).where(UserConfig.user_id == user_id)
         result = await session.execute(stmt)
         user_config = result.scalar_one_or_none()
 
         if user_config is None:
-            await session.close()
             return None
-        if not session:
-            await session.close()
-
         return user_config
 
     @staticmethod
+    @with_session
     async def get_all_auto_sub_users(session: AsyncSession = None):
-        if not session:
-            session = async_session()
-
         stmt = select(UserConfig).where(UserConfig.auto_renewal == True)
         result = await session.execute(stmt)
         users = result.scalars().all()
-        if not session:
-            await session.close()
 
         return users

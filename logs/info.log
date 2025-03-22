@@ -26397,3 +26397,4 @@ WHERE users.user_id = $1::VARCHAR]
 2025-03-20 21:08:10,259 - src.scripts.queue.rabbit_queue - INFO - Published message to queue claude
 2025-03-20 21:08:10,259 - src.scripts.queue.rabbit_queue - INFO - Published message to queue claude
 2025-03-20 21:08:10,259 - src.scripts.queue.rabbit_queue - INFO - Published message to queue claude
+2025-03-21 00:44:30,477 - __main__ - INFO - Запуск бота

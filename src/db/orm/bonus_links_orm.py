@@ -14,17 +14,14 @@ class BonusLinksOrm:
         data: Dict[str, Any],
         session: AsyncSession = None,
     ):
-        try:
-            new_bonus_link = BonusLink(
-                energy_bonus=Decimal(data["energy_bonus"]),
-                link=data["link"],
-                active=data.get("active", True),
-                active_count=data.get("active_count", 0),
-            )
-            session.add(new_bonus_link)
-            await session.commit()
-        except Exception as e:
-            await session.close()
+        new_bonus_link = BonusLink(
+            energy_bonus=Decimal(data["energy_bonus"]),
+            link=data["link"],
+            active=data.get("active", True),
+            active_count=data.get("active_count", 0),
+        )
+        session.add(new_bonus_link)
+        await session.commit()
 
     @staticmethod
     @with_session
@@ -68,6 +65,8 @@ class BonusLinksOrm:
             stmt = select(BonusLink).where(BonusLink.link == link)
         elif link_id:
             stmt = select(BonusLink).where(BonusLink.id == link_id)
+        if not link_id and not link:
+            return None
 
         result = await session.execute(stmt)
         bonus_link = result.scalar_one_or_none()
