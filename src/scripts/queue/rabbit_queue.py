@@ -21,9 +21,10 @@ class RabbitQueue:
             self.connection = await aio_pika.connect_robust(settings.get_rabbit_link)
             self.channel = await self.connection.channel()
             await self.init_queue()
+
         except Exception as e:
             self.logger.error(f"Ошибка подключения к RabbitMQ: {e}")
-            await asyncio.sleep(5)  # Подождать перед повторной попыткой
+            await asyncio.sleep(5)
             await self.connect()
 
     async def stop(self):
@@ -115,14 +116,12 @@ class RabbitQueue:
                     try:
                         body = json.loads(message.body.decode())
                         await callback(body)
-                        await message.ack()
 
                         await self._key_delete_or_remove(
                             body.get("key", f"{body.get('user_id')}:generate")
                         )
 
                     except Exception as e:
-                        await message.nack(requeue=False)
                         self.logger.error(f"Error processing message: {e}")
                         body["text"] = "Ошибка при отправке запроса"
 
