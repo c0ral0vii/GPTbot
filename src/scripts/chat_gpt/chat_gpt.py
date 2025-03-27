@@ -124,7 +124,7 @@ class ChatGPT:
 
         except Exception as e:
             self.logger.debug(e)
-            data["text"] = f"Произошла ошибка, обратитесь в поддержку с данной ошибкой: \n\n{str(e)}"
+            data["text"] = f"Произошла ошибка, обратитесь в поддержку с данной ошибкой"
             await self.message_client.answer_message(data)
             raise
 
