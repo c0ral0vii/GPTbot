@@ -69,27 +69,41 @@ class TranslateService:
 class MidjourneyService:
     def __init__(self):
         self.API_KEY = settings.MJ_KEY
-        self.BASE_URL = "https://api.userapi.ai"
+        self.BASE_URL = "https://api.goapi.ai"
         self.message_handler = AnswerMessage()
         self.translator = TranslateService()
 
         self.HEADER = {
             "Content-Type": "application/json",
-            "api-key": self.API_KEY,
+            "x-api-key": self.API_KEY,
         }
 
     async def generate_photo(self, body: Dict[str, Any]):
-        generate_url = self.BASE_URL + "/midjourney/v2/imagine"
+        generate_url = self.BASE_URL + "/api/v1/task"
 
         async with aiohttp.ClientSession() as session:
             try:
                 translate_message = await self.translator.translate(body["message"])
                 logger.debug(translate_message)
                 body["message"] = translate_message
-
+                mode = body.get("speed_mode", "relax")
                 data = json.dumps(
                     {
-                        "prompt": f"{body["message"]}",
+                        "model": "midjourney",
+                        "task_type": "imagine",
+                        "input": {
+                          "prompt": f"{body["message"]}",
+                          "process_mode": mode,
+                          "skip_prompt_check": False,
+                          "bot_id": 0
+                       },
+                        "config": {
+                            "service_mode": "",
+                            "webhook_config": {
+                                "endpoint": "",
+                                "secret": ""
+                            }
+                        }
                     }
                 ).encode()
 
@@ -99,10 +113,11 @@ class MidjourneyService:
 
                 if result.status == 200:
                     response = await result.json()
-                    body["hash"] = response["hash"]
-                    logger.debug(body)
+                    if response.get("code") == 200:
+                        body["hash"] = response["data"]["task_id"]
+                        logger.debug(body)
 
-                    await self._check_status(body=body, session=session)
+                        await self._check_status(body=body, session=session)
 
                 else:
                     await self.message_handler.answer_message(data=body)
@@ -112,69 +127,93 @@ class MidjourneyService:
                 raise
 
     async def _check_status(
-        self, body: Dict[str, Any], session: aiohttp.ClientSession, retries: int = 0
-    ):
-        try:
-            check_url = self.BASE_URL + "/midjourney/v2/status?hash=" + body["hash"]
-            result = await session.get(check_url, headers=self.HEADER)
-            response = await result.json()
-            status = response.get("status")
+            self,
+            body: Dict[str, Any],
+            session: aiohttp.ClientSession,
+            max_retries: int = 20,
+            initial_delay: float = 2.0,
+            backoff_factor: float = 1.5
+    ) -> None:
+        """
+        Проверяет статус задачи с экспоненциальной задержкой между попытками
 
-            if not status:
-                return
+        Args:
+            body: Словарь с данными запроса
+            session: aiohttp сессия
+            max_retries: Максимальное количество попыток
+            initial_delay: Начальная задержка между попытками (в секундах)
+            backoff_factor: Множитель для экспоненциальной задержки
+        """
+        retry_count = 0
+        current_delay = initial_delay
 
-            if retries >= 10:
-                logger.warning(f"Rate close, retrying after {retries} seconds.")
-                return
+        while retry_count < max_retries:
+            try:
+                check_url = f"{self.BASE_URL}/api/v1/task/{body['hash']}"
+                result = await session.get(check_url, headers=self.HEADER)
+                response = await result.json()
+                status = response.get("data", {}).get("status")
 
-            if status == "error":
-                logger.error(response)
-                retry_after = response.get("retry_after", 10.0)
-                logger.warning(f"Rate limited, retrying after {retry_after} seconds.")
+                if not status:
+                    logger.warning(f"No status received, retrying... (attempt {retry_count + 1})")
+                    retry_count += 1
+                    await asyncio.sleep(current_delay)
+                    current_delay *= backoff_factor
+                    continue
 
-                await asyncio.sleep(retry_after)
-                await self._check_status(
-                    body=body, session=session, retries=retries + 1
-                )
-                return
+                if status == "completed":
+                    body["original_link"] = response["data"]["output"]["image_url"]
+                    body["photo"] = await self._resize_image(body["original_link"])
 
-            if status == "done":
-                body["original_link"] = response["result"]["url"]
-                if response["result"]["size"] >= 5500000:
-                    body["photo"] = await self._resize_image(response["result"]["url"])
+                    if not body.get("image_id"):
+                        image = await ImageORM.create_image(
+                            prompt=body["message"],
+                            hash=body["hash"],
+                            first_hash=body["hash"],
+                            image_name=body["original_link"],
+                        )
+                        body["image_id"] = image.id
+                    else:
+                        await ImageORM.change_image_hash(
+                            image_id=body["image_id"],
+                            hash=body["hash"],
+                        )
 
-                else:
-                    body["photo"] = response["result"]["url"]
+                    await self.message_handler.answer_photo(data=body)
+                    return
 
-                if not body.get("image_id"):
-                    image = await ImageORM.create_image(
-                        prompt=body["message"],
-                        hash=body["hash"],
-                        first_hash=body["hash"],
-                        image_name=body["original_link"],
-                    )
-                    body["image_id"] = image.id
-                else:
-                    await ImageORM.change_image_hash(
-                        image_id=body["image_id"],
-                        hash=body["hash"],
-                    )
+                elif status == "failed":
+                    logger.error(f"Task failed: {response}")
+                    if retry_count >= 4:
+                        logger.warning("Max retries reached for failed status")
+                        return
 
-                await self.message_handler.answer_photo(data=body)
-            else:
-                await asyncio.sleep(10)
-                await self._check_status(
-                    body=body, session=session, retries=retries + 1
-                )
+                    retry_after = response.get("retry_after", current_delay)
+                    logger.warning(f"Retrying after {retry_after} seconds...")
+                    await asyncio.sleep(retry_after)
+                    retry_count += 1
+                    current_delay *= backoff_factor
+                    continue
 
-        except Exception as e:
-            logger.warning(f"Rate limited, retrying after {retries} seconds. {e}")
-            raise
+                else:  # pending or other statuses
+                    logger.debug(f"Task status: {status}, waiting...")
+                    await asyncio.sleep(current_delay)
+                    retry_count += 1
+                    current_delay *= backoff_factor
+
+            except aiohttp.ClientError as e:
+                logger.warning(f"Network error: {e}, retrying... (attempt {retry_count + 1})")
+                retry_count += 1
+                await asyncio.sleep(current_delay)
+                current_delay *= backoff_factor
+            except Exception as e:
+                logger.error(f"Unexpected error: {e}")
+                raise
 
     async def refresh_generate(self, body: Dict[str, Any]):
         """Повторная генерация"""
 
-        reroll_url = self.BASE_URL + "/midjourney/v2/reroll"
+        reroll_url = self.BASE_URL + "/api/v1/task"
         image_data = await ImageORM.get_image(id=body["image_id"])
         body["message"] = image_data.prompt
 
@@ -182,9 +221,21 @@ class MidjourneyService:
             try:
                 data = json.dumps(
                     {
-                        "hash": image_data.first_hash,
-                        "prompt": image_data.prompt,
-                    }
+                        "model": "midjourney",
+                        "task_type": "reroll",
+                        "input": {
+                            "origin_task_id": f"{image_data.first_hash}",
+                            "prompt": image_data.prompt,
+                            "skip_prompt_check": False,
+                        },
+                        "config": {
+                            "service_mode": "",
+                            "webhook_config": {
+                                "endpoint": "",
+                                "secret": ""
+                            }
+                        }
+                    },
                 ).encode()
 
                 result = await session.post(
@@ -197,11 +248,11 @@ class MidjourneyService:
 
                 if result.status == 200:
                     response = await result.json()
-                    logger.debug(response)
-                    body["hash"] = response["hash"]
-                    logger.debug(body)
+                    if response.get("code") == 200:
+                        body["hash"] = response["data"]["task_id"]
+                        logger.debug(body)
 
-                    await self._check_status(body=body, session=session)
+                        await self._check_status(body=body, session=session)
                 else:
                     logger.debug(body)
                     await self.message_handler.answer_message(data=body)
@@ -213,9 +264,7 @@ class MidjourneyService:
     async def upscale_photo(self, body: Dict[str, Any]):
         """Выбрать одно фото"""
 
-        # Можно сделать получение настроек пользователя
-
-        upscale_url = self.BASE_URL + "/midjourney/v2/upscale"
+        upscale_url = self.BASE_URL + "/api/v1/task"
         image_data = await ImageORM.get_image(id=body["image_id"])
         body["message"] = image_data.prompt
 
@@ -223,9 +272,19 @@ class MidjourneyService:
             try:
                 data = json.dumps(
                     {
-                        "hash": image_data.hash,
-                        "choice": int(body["choice"]),
-                        "prompt": image_data.prompt,
+                        "model": "midjourney",
+                        "task_type": "upscale",
+                        "input": {
+                            "origin_task_id": image_data.hash,
+                            "index": f"{body["choice"]}"
+                        },
+                        "config": {
+                            "service_mode": "",
+                            "webhook_config": {
+                                "endpoint": "",
+                                "secret": ""
+                            }
+                        }
                     }
                 ).encode()
 
@@ -239,25 +298,25 @@ class MidjourneyService:
 
                 if result.status == 200:
                     response = await result.json()
-                    logger.debug(response)
-                    body["hash"] = response["hash"]
-                    logger.debug(body)
-                    body["keyboard"] = InlineKeyboardMarkup(
-                        inline_keyboard=[
-                            [
-                                InlineKeyboardButton(
-                                    text="🔄",
-                                    callback_data=f"refresh_{body["image_id"]}",
-                                )
-                            ],
-                            [
-                                InlineKeyboardButton(
-                                    text="❌ Отмена", callback_data="cancel"
-                                )
-                            ],
-                        ]
-                    )
-                    await self._check_status(body=body, session=session)
+                    if response.get("code") == 200:
+                        body["hash"] = response["data"]["task_id"]
+
+                        body["keyboard"] = InlineKeyboardMarkup(
+                            inline_keyboard=[
+                                [
+                                    InlineKeyboardButton(
+                                        text="🔄",
+                                        callback_data=f"refresh_{body["image_id"]}",
+                                    )
+                                ],
+                                [
+                                    InlineKeyboardButton(
+                                        text="❌ Отмена", callback_data="cancel"
+                                    )
+                                ],
+                            ]
+                        )
+                        await self._check_status(body=body, session=session)
                 else:
                     logger.debug(body)
                     await self.message_handler.answer_message(data=body)
@@ -269,7 +328,7 @@ class MidjourneyService:
     async def vary_photo(self, body: Dict[str, Any]):
         """Создать вариации одной фотографии"""
 
-        upscale_url = self.BASE_URL + "/midjourney/v2/variation"
+        upscale_url = self.BASE_URL + "/api/v1/task"
         image_data = await ImageORM.get_image(id=body["image_id"])
         body["message"] = image_data.prompt
 
@@ -277,9 +336,21 @@ class MidjourneyService:
             try:
                 data = json.dumps(
                     {
-                        "hash": image_data.hash,
-                        "choice": int(body["choice"]),
-                        "prompt": image_data.prompt,
+                        "model": "midjourney",
+                        "task_type": "variation",
+                        "input": {
+                            "origin_task_id": image_data.hash,
+                            "index": f"{body["choice"]}",
+                            "prompt": image_data.prompt,
+                            "skip_prompt_check": False
+                        },
+                        "config": {
+                            "service_mode": "",
+                            "webhook_config": {
+                                "endpoint": "",
+                                "secret": ""
+                            }
+                        }
                     }
                 ).encode()
 
@@ -293,13 +364,11 @@ class MidjourneyService:
 
                 if result.status == 200:
                     response = await result.json()
-                    logger.debug(response)
-                    body["hash"] = response["hash"]
-                    logger.debug(body)
+                    if response.get("code") == 200:
+                        body["hash"] = response["data"]["task_id"]
 
-                    await self._check_status(body=body, session=session)
+                        await self._check_status(body=body, session=session)
                 else:
-                    logger.debug(body)
                     await self.message_handler.answer_message(data=body)
 
             except Exception as e:
