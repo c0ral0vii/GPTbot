@@ -1,5 +1,5 @@
 import types
-from typing import Dict, Any
+from typing import Dict, Any, Literal
 
 from aiogram import Bot
 from aiogram.types import FSInputFile, InputMediaPhoto, URLInputFile
@@ -31,24 +31,36 @@ class AnswerMessage:
             self.logger.error(e)
             return
 
-    async def answer_message(self, data: Dict[str, Any]) -> None:
+    async def _send_message(self, user_id: int, message: str, parse_mode: Literal["HTML", "Markdown", "MarkdownV2"] = "Markdown"):
+        """Отправка сообщения"""
+
+        try:
+            await self.bot.send_message(chat_id=user_id,
+                                        text=message,
+                                        parse_mode=parse_mode,)
+        except Exception as e:
+            await self.bot.send_message(chat_id=user_id,
+                                        text=message,
+                                        parse_mode=None )
+
+    async def answer_message(self, data: Dict[str, Any], chunk_size: int = 4000) -> None:
         try:
             if not data.get("text"):
                 data["text"] = "⚠ Произошла ошибка при генерации"
 
             disable_delete = data.get("disable_delete", False)
 
-            if disable_delete is True:
-                delete = await self.bot.delete_message(
-                    chat_id=data["user_id"], message_id=data["answer_message"]
-                )
 
-            await self.bot.send_message(
-                chat_id=data["user_id"],
-                text=data["text"],
-                parse_mode="Markdown",
-            )
-            # reply_markup=await upgrade_message(),
+            if len(data["text"]) >= chunk_size:
+                chunks = [
+                    data["text"][i: i + chunk_size]
+                    for i in range(0, len(data["text"]), chunk_size)
+                ]
+                for chunk in chunks:
+                    await self._send_message(data["user_id"], chunk)
+
+            else:
+                await self._send_message(data["user_id"], data["text"])
 
             energy_text = data.get("energy_text", None)
 
@@ -56,6 +68,10 @@ class AnswerMessage:
                 await self.bot.send_message(
                     chat_id=data["user_id"], text=data["energy_text"]
                 )
+
+            await self.bot.delete_message(
+                chat_id=data["user_id"], message_id=data["answer_message"]
+            )
 
         except Exception as e:
             self.logger.error(f"Failed to answer message: {e}")

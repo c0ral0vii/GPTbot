@@ -119,27 +119,18 @@ class ChatGPT:
                 )
                 text_only = message_response.data[0].content[0].text.value[:4096]
 
-            chunk_size = 4000
-            chunks = [
-                text_only[i : i + chunk_size]
-                for i in range(0, len(text_only), chunk_size)
-            ]
-
-            data["text"] = chunks
-            data["disable_delete"] = True
-            for chunk in chunks:
-                data["text"] = chunk
-                await self.message_client.answer_message(data)
-                data["disable_delete"] = False
+            data["text"] = text_only
+            await self.message_client.answer_message(data)
 
         except Exception as e:
             self.logger.debug(e)
+            data["text"] = f"Произошла ошибка, обратитесь в поддержку с данной ошибкой: \n\n{str(e)}"
+            await self.message_client.answer_message(data)
             raise
 
     async def send_message(self, data: Dict[str, Any]):
         """Отправка сообщения и возврат текстового ответа."""
         try:
-
             status = await self.energy_service.upload_energy(data, "remove")
             if isinstance(status, dict):
                 data["energy_text"] = None
@@ -189,21 +180,11 @@ class ChatGPT:
                 message=text_only,
             )
 
-            chunk_size = 4000
-            chunks = [
-                text_only[i : i + chunk_size]
-                for i in range(0, len(text_only), chunk_size)
-            ]
-
-            data["text"] = chunks
-            data["disable_delete"] = True
-
-            for chunk in chunks:
-                data["text"] = chunk
-                await self.message_client.answer_message(data)
-                data["disable_delete"] = False
+            data["text"] = text_only
+            await self.message_client.answer_message(data)
 
         except Exception as e:
             self.logger.error(f"Ошибка при отправке сообщения: {str(e)}")
-            # await self.message_client.answer_message(data)
+            data["text"] = f"Произошла ошибка, обратитесь в поддержку с данной ошибкой: \n\n{str(e)}"
+            await self.message_client.answer_message(data)
             raise

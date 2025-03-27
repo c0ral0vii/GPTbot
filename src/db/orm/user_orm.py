@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta, date
 from decimal import Decimal
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
@@ -18,7 +18,7 @@ from src.utils.cached_user import (
 from src.utils.logger import setup_logger
 
 from src.db.database import async_session
-from sqlalchemy import select, func, or_, cast, String
+from sqlalchemy import select, func, or_, cast, String, exists
 from sqlalchemy.exc import IntegrityError
 
 
@@ -73,6 +73,38 @@ class PremiumUserORM:
 
 
 class UserORM:
+    @staticmethod
+    @with_session
+    async def get_users_ids(
+        premium_only: bool = False,
+        not_premium_only: bool = False,
+        session: AsyncSession = None,
+    ) -> List[int]:
+        """
+        Получение списка user_id:
+        - всех пользователей (если оба флага False или оба True)
+        - только премиум (premium_only=True, not_premium_only=False)
+        - только не-премиум (premium_only=False, not_premium_only=True)
+        Исключаются забаненные.
+        """
+
+        stmt = (
+            select(User.user_id)
+            .outerjoin(PremiumUser)
+            .where(~exists().where(BannedUser.user_id == User.user_id))
+        )
+
+        if premium_only and not not_premium_only:
+            stmt = stmt.where(PremiumUser.premium_active.is_(True))
+        elif not_premium_only and not premium_only:
+            stmt = stmt.where(
+                (PremiumUser.id.is_(None)) | (PremiumUser.premium_active.is_(False))
+            )
+        result = await session.execute(stmt)
+        users = result.fetchall()
+
+        return [user[0] for user in users]
+
     @staticmethod
     async def create_premium_user(
         user_id: int, payment_method_id: str
@@ -289,7 +321,7 @@ class UserORM:
 
                 if get_premium_status:
                     premium_status = await PremiumUserORM.is_premium_active(
-                        user_id, session
+                        user_id
                     )
                     return {"user": user, "premium_status": premium_status}
 
@@ -665,7 +697,6 @@ class AnalyticsORM:
 
         await session.commit()
         return True
-
 
 
 class BannedUserORM:

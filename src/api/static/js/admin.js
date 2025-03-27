@@ -88,10 +88,10 @@ class AdminPanel {
             this.refreshData();
         });
 
-        // document.getElementById('premium_active').addEventListener('change', function () {
-        //     const premiumDatesContainer = document.getElementById('premium_dates');
-        //     premiumDatesContainer.style.display = this.checked ? 'block' : 'none';
-        // });
+        document.getElementById('premium_active').addEventListener('change', function () {
+            const premiumDatesContainer = document.getElementById('premium_dates');
+            premiumDatesContainer.style.display = this.checked ? 'block' : 'none';
+        });
 
 
         document.getElementById('premium_active').addEventListener('change', function () {
@@ -118,6 +118,10 @@ class AdminPanel {
 
         document.getElementById('saveBonusLinkButton').addEventListener('click', () => {
             this.addBonusLink();
+        });
+
+        document.getElementById('startSpam').addEventListener('click', () => {
+            this.create_spam();
         });
     }
 
@@ -201,6 +205,65 @@ class AdminPanel {
         } else {
             await this.showError("❌ Ошибка при сохранении изменений!");
         }
+    }
+
+    async create_spam() {
+        try {
+            const fileInput = document.getElementById('spamImg');
+            const imageFile = fileInput?.files?.[0];
+
+            const spamText = document.getElementById('spamText').value.trim();
+            if (!spamText) {
+                alert('Пожалуйста, введите текст рассылки.');
+                return;
+            }
+
+            const formData = new FormData();
+            if (imageFile) {
+                formData.append('image', imageFile);
+            }
+            formData.append('spamText', spamText);
+            formData.append('forPremium', document.getElementById('forPremium').checked);
+            formData.append('forRegular', document.getElementById('forRegular').checked);
+
+            const response = await fetch('/api/v1/spam/create', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error('Не удалось запустить рассылку');
+            }
+
+            alert("✅ Рассылка успешно запущена!");
+            bootstrap.Modal.getInstance(document.getElementById('createSpam')).hide();
+
+            // Очистка формы
+            fileInput.value = '';
+            document.getElementById('spamText').value = '';
+            const previewImg = document.getElementById('previewImg');
+            if (previewImg) previewImg.classList.add('d-none');
+
+        } catch (error) {
+            console.error('Ошибка:', error);
+            alert(`❌ ${error.message}`);
+        }
+
+    const spamImgInput = document.getElementById('spamImg');
+    if (spamImgInput) {
+        spamImgInput.addEventListener('change', function(e) {
+            const preview = document.getElementById('previewImg');
+            if (this.files && this.files[0] && preview) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.classList.remove('d-none');
+                }
+                reader.readAsDataURL(this.files[0]);
+            }
+        });
+    }
+
     }
 
     clearAssistantModal() {

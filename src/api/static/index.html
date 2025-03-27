@@ -219,11 +219,60 @@
         </div>
 
         <div class="row mt-4">
-            <div class="col-md-12 text-center">
+            <div class="col-md-6 text-start">
                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addReferralModal">
                     <i class="fas fa-plus me-2"></i>
                     Добавить бонусную ссылку
                 </button>
+            </div>
+
+            <div class="col-md-6 text-end">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createSpam">
+                    <i class="fas fa-plus me-2"></i>
+                    Сделать рассылку
+                </button>
+            </div>
+        </div>
+
+        <div class="modal fade" id="createSpam" tabindex="-1" aria-labelledby="crateSpamLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="crateSpamLabel">Создать рассылку</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="spamImg" class="form-label">Загрузить изображение</label>
+                            <input type="file" class="form-control" id="spamImg" accept="image/*">
+                            <img id="previewImg" src="#" alt="Превью" class="img-fluid mt-3 d-none" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="spamText" class="form-label">Текст</label>
+                            <input type="text" class="form-control" id="spamText">
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="forPremium" checked>
+                            <label class="form-check-label" for="forPremium">
+                                Для премиумов
+                            </label>
+                        </div>
+
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="checkbox" id="forRegular" checked>
+                            <label class="form-check-label" for="forRegular">
+                                Для обычных пользователей
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                        <button type="button" class="btn btn-primary" id="startSpam">Запустить рассылку</button>
+                    </div>
+                </div>
             </div>
         </div>
 

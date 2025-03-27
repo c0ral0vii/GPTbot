@@ -1,12 +1,17 @@
-from fastapi import APIRouter
+import uuid
+from typing import Optional
+
+from fastapi import APIRouter, File, UploadFile
+from fastapi.params import Form
 from fastapi.responses import JSONResponse
 from fastapi import HTTPException
 
-from src.api.models import GPTAssistSchema, BonusLinkSchema, ChangeUserSchema
+from src.api.models import GPTAssistSchema, BonusLinkSchema, ChangeUserSchema, SpamData
 from src.db.orm.gpt_assistant_orm import GPTAssistantOrm
-from src.db.orm.user_orm import AnalyticsORM
 from src.db.orm.bonus_links_orm import BonusLinksOrm
-from src.db.orm.user_orm import AnalyticsORM
+from src.db.orm.user_orm import AnalyticsORM, logger
+from src.config.config import ROOT_PATH
+from src.scripts.spammer.service import TelegramBroadcaster
 
 router = APIRouter()
 
@@ -50,8 +55,8 @@ async def get_user_data():
             ],  # non-prime, prime
         }
     )
-    
-    
+
+
 @router.get("/assistants")
 async def get_assistants_api():
     """Получение ассистентов на фронтенд"""
@@ -126,41 +131,36 @@ async def get_all_bonuses():
         all_bonus_links = await BonusLinksOrm.get_all_bonuses()
         output_items = []
         for bonuses in all_bonus_links:
-            output_items.append({
-                "id": bonuses.id,
-                "link": f"{bonuses.link}",
-                "count_activate": bonuses.active_count,
-                "energy": float(bonuses.energy_bonus)
-            })
+            output_items.append(
+                {
+                    "id": bonuses.id,
+                    "link": f"{bonuses.link}",
+                    "count_activate": bonuses.active_count,
+                    "energy": float(bonuses.energy_bonus),
+                }
+            )
 
-        return JSONResponse(
-            content={"items": output_items},
-            status_code=200
-        )
-    except  Exception as e:
-        raise HTTPException(status_code=500, 
-                            detail=e)
-    
+        return JSONResponse(content={"items": output_items}, status_code=200)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=e)
+
 
 @router.get("/bonuses/{id}/info")
 async def get_info_bonuse(id: int):
     try:
-        bonus_link = await BonusLinksOrm.get_bonus_link(
-            link_id=id
-        )
-        
+        bonus_link = await BonusLinksOrm.get_bonus_link(link_id=id)
+
         return JSONResponse(
             content={
                 "link": f"{bonus_link.link}",
                 "count_activate": bonus_link.active_count,
                 "energy": float(bonus_link.energy_bonus),
             },
-            status_code=200
+            status_code=200,
         )
     except Exception as e:
-        raise HTTPException(status_code=500,
-                            detail=str(e))
-    
+        raise HTTPException(status_code=500, detail=str(e))
+
 
 @router.put("/bonuses/{id}/change")
 async def change_bonuse(data: BonusLinkSchema):
@@ -169,13 +169,10 @@ async def change_bonuse(data: BonusLinkSchema):
             data=data.model_dump(),
         )
 
-        return JSONResponse(
-            content={"success": True},
-            status_code=200
-        )
+        return JSONResponse(content={"success": True}, status_code=200)
     except:
         raise HTTPException(status_code=500)
-    
+
 
 @router.post("/bonuses/create")
 async def create_bonuse(bonus_link_data: BonusLinkSchema):
@@ -183,13 +180,10 @@ async def create_bonuse(bonus_link_data: BonusLinkSchema):
         new_bonus_link = await BonusLinksOrm.create_bonus_links(
             bonus_link_data.model_dump()
         )
-        return JSONResponse(
-            content={"success": True},
-            status_code=201
-        )
+        return JSONResponse(content={"success": True}, status_code=201)
     except:
         raise HTTPException(status_code=500)
-    
+
 
 @router.get("/users")
 async def get_all_users(
@@ -229,3 +223,40 @@ async def change_user_data(user_id: int, user_data: ChangeUserSchema):
             content={"status": False, "error": str(e), "user_id": user_id},
             status_code=500,
         )
+
+
+@router.post("/spam/create")
+async def crete_spam(
+        image: Optional[UploadFile] = File(None),
+        spamText: str = Form(...),
+        forPremium: bool = Form(False),
+        forRegular: bool = Form(False),
+):
+    """Создать рассылку"""
+
+    try:
+        image_data = None
+        if image:
+            file_ext = image.filename.split(".")[-1]
+            filename = f"{uuid.uuid4()}.{file_ext}"
+            image_data = f"./tmp/spam_image/{filename}"
+            with open(image_data, "wb") as buffer:
+                buffer.write(await image.read())
+            logger.debug(image_data)
+
+        data = SpamData(
+            spamText=spamText,
+            forPremium=forPremium,
+            forRegular=forRegular
+        ).model_dump()
+
+        await TelegramBroadcaster().broadcast(
+            text=data["spamText"],
+            photo_path=image_data,
+            premium_only=data["forPremium"],
+            not_premium_only=data["forRegular"],
+        )
+
+        return JSONResponse(content={"success": True}, status_code=201)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

@@ -26398,3 +26398,888 @@ WHERE users.user_id = $1::VARCHAR]
 2025-03-20 21:08:10,259 - src.scripts.queue.rabbit_queue - INFO - Published message to queue claude
 2025-03-20 21:08:10,259 - src.scripts.queue.rabbit_queue - INFO - Published message to queue claude
 2025-03-21 00:44:30,477 - __main__ - INFO - Запуск бота
+2025-03-27 00:22:52,149 - __main__ - INFO - Инициализация комманд
+2025-03-27 00:22:52,218 - __main__ - INFO - Запуск воркера
+2025-03-27 00:22:52,644 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:22:52,644 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:22:52,644 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:22:52,663 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:22:52,663 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:22:52,663 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:22:52,683 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:22:52,683 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:22:52,683 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:22:52,704 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:22:52,704 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:22:52,704 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:22:52,723 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:22:52,723 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:22:52,723 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:22:52,744 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:22:52,744 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:22:52,744 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:22:52,762 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:22:52,762 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:22:52,762 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:22:52,779 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:22:52,779 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:22:52,779 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:22:52,982 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 00:22:52,982 - __main__ - INFO - Запуск бота
+2025-03-27 00:23:11,530 - __main__ - INFO - Запуск бота
+2025-03-27 00:23:49,634 - __main__ - INFO - Инициализация комманд
+2025-03-27 00:23:49,681 - __main__ - INFO - Запуск воркера
+2025-03-27 00:23:49,945 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:23:49,945 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:23:49,945 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:23:49,947 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:23:49,947 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:23:49,947 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:23:49,951 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:23:49,951 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:23:49,951 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:23:49,954 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:23:49,954 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:23:49,954 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:23:49,956 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:23:49,956 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:23:49,956 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:23:49,958 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:23:49,958 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:23:49,958 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:23:49,960 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:23:49,960 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:23:49,960 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:23:49,962 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:23:49,962 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:23:49,962 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:23:49,987 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 00:23:49,987 - __main__ - INFO - Запуск бота
+2025-03-27 00:24:02,924 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:24:02,924 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:24:02,924 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:24:02,927 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:24:02,927 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:24:02,927 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:24:02,930 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:24:02,930 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:24:02,930 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:24:02,933 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:24:02,933 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:24:02,933 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:24:02,935 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:24:02,935 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:24:02,935 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:24:02,938 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:24:02,938 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:24:02,938 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:24:02,941 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:24:02,941 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:24:02,941 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:24:02,944 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:24:02,944 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:24:02,944 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:24:02,949 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:24:02,949 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:24:02,949 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:24:02,985 - src.scripts.chat_gpt.chat_gpt - ERROR - Ошибка при отправке сообщения: type object 'Message' has no attribute 'created_at'
+2025-03-27 00:24:03,389 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: type object 'Message' has no attribute 'created_at'
+2025-03-27 00:24:03,389 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: type object 'Message' has no attribute 'created_at'
+2025-03-27 00:24:03,389 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: type object 'Message' has no attribute 'created_at'
+2025-03-27 00:24:03,697 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-27 00:24:03,697 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-27 00:24:03,697 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-27 00:24:03,697 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-27 00:24:03,697 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-27 00:24:03,697 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-27 00:24:03,697 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-27 00:24:03,714 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:24:03,714 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:24:03,714 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:24:03,717 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:24:03,717 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:24:03,717 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:24:03,720 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:24:03,720 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:24:03,720 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:24:03,724 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:24:03,724 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:24:03,724 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:24:03,726 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:24:03,726 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:24:03,726 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:24:03,730 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:24:03,730 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:24:03,730 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:24:03,733 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:24:03,733 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:24:03,733 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:24:03,736 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:24:03,736 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:24:03,736 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:24:03,739 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt_errors
+2025-03-27 00:24:03,739 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt_errors
+2025-03-27 00:24:03,739 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt_errors
+2025-03-27 00:24:19,166 - __main__ - INFO - Запуск бота
+2025-03-27 00:25:19,366 - __main__ - INFO - Инициализация комманд
+2025-03-27 00:25:19,423 - __main__ - INFO - Запуск воркера
+2025-03-27 00:25:19,697 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:25:19,697 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:25:19,697 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:25:19,699 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:25:19,699 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:25:19,699 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:25:19,702 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:25:19,702 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:25:19,702 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:25:19,705 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:25:19,705 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:25:19,705 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:25:19,707 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:25:19,707 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:25:19,707 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:25:19,710 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:25:19,710 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:25:19,710 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:25:19,713 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:25:19,713 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:25:19,713 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:25:19,715 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:25:19,715 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:25:19,715 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:25:19,735 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 00:25:19,736 - __main__ - INFO - Запуск бота
+2025-03-27 00:25:31,121 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:25:31,121 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:25:31,121 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:25:31,124 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:25:31,124 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:25:31,124 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:25:31,127 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:25:31,127 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:25:31,127 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:25:31,131 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:25:31,131 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:25:31,131 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:25:31,134 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:25:31,134 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:25:31,134 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:25:31,136 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:25:31,136 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:25:31,136 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:25:31,139 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:25:31,139 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:25:31,139 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:25:31,142 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:25:31,142 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:25:31,142 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:25:31,148 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:25:31,148 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:25:31,148 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:25:40,853 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:25:40,853 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:25:40,853 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:25:40,856 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:25:40,856 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:25:40,856 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:25:40,859 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:25:40,859 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:25:40,859 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:25:40,863 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:25:40,863 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:25:40,863 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:25:40,866 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:25:40,866 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:25:40,866 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:25:40,869 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:25:40,869 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:25:40,869 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:25:40,872 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:25:40,872 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:25:40,872 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:25:40,876 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:25:40,876 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:25:40,876 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:25:40,881 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:25:40,881 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:25:40,881 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:25:52,290 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:25:52,290 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:25:52,290 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:25:52,293 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:25:52,293 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:25:52,293 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:25:52,296 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:25:52,296 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:25:52,296 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:25:52,300 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:25:52,300 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:25:52,300 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:25:52,303 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:25:52,303 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:25:52,303 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:25:52,306 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:25:52,306 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:25:52,306 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:25:52,309 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:25:52,309 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:25:52,309 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:25:52,312 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:25:52,312 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:25:52,312 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:25:52,317 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:25:52,317 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:25:52,317 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:26:13,042 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:26:13,042 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:26:13,042 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:26:13,046 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:26:13,046 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:26:13,046 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:26:13,049 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:26:13,049 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:26:13,049 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:26:13,052 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:26:13,052 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:26:13,052 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:26:13,055 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:26:13,055 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:26:13,055 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:26:13,058 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:26:13,058 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:26:13,058 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:26:13,061 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:26:13,061 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:26:13,061 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:26:13,064 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:26:13,064 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:26:13,064 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:26:13,069 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:26:13,069 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:26:13,069 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:26:24,592 - __main__ - INFO - Запуск бота
+2025-03-27 00:26:32,732 - __main__ - INFO - Инициализация комманд
+2025-03-27 00:26:32,793 - __main__ - INFO - Запуск воркера
+2025-03-27 00:26:33,062 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:26:33,062 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:26:33,062 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:26:33,081 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:26:33,081 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:26:33,081 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:26:33,084 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:26:33,084 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:26:33,084 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:26:33,090 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:26:33,090 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:26:33,090 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:26:33,093 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:26:33,093 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:26:33,093 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:26:33,096 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:26:33,096 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:26:33,096 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:26:33,099 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:26:33,099 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:26:33,099 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:26:33,101 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:26:33,101 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:26:33,101 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:26:33,127 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 00:26:33,128 - __main__ - INFO - Запуск бота
+2025-03-27 00:26:41,050 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:26:41,050 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:26:41,050 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:26:41,056 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:26:41,056 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:26:41,056 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:26:41,061 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:26:41,061 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:26:41,061 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:26:41,065 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:26:41,065 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:26:41,065 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:26:41,070 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:26:41,070 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:26:41,070 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:26:41,074 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:26:41,074 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:26:41,074 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:26:41,081 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:26:41,081 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:26:41,081 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:26:41,085 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:26:41,085 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:26:41,085 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:26:41,090 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:26:41,090 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:26:41,090 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:27:32,492 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:27:32,492 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:27:32,492 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:27:32,495 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:27:32,495 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:27:32,495 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:27:32,497 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:27:32,497 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:27:32,497 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:27:32,500 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:27:32,500 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:27:32,500 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:27:32,503 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:27:32,503 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:27:32,503 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:27:32,505 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:27:32,505 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:27:32,505 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:27:32,508 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:27:32,508 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:27:32,508 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:27:32,511 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:27:32,511 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:27:32,511 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:27:32,516 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:27:32,516 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:27:32,516 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:28:12,896 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:28:12,896 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:28:12,896 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:28:12,899 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:28:12,899 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:28:12,899 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:28:12,902 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:28:12,902 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:28:12,902 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:28:12,904 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:28:12,904 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:28:12,904 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:28:12,906 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:28:12,906 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:28:12,906 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:28:12,909 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:28:12,909 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:28:12,909 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:28:12,911 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:28:12,911 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:28:12,911 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:28:12,914 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:28:12,914 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:28:12,914 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:28:12,918 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:28:12,918 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:28:12,918 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:28:40,711 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:28:40,711 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:28:40,711 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:28:40,714 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:28:40,714 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:28:40,714 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:28:40,720 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:28:40,720 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:28:40,720 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:28:40,723 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:28:40,723 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:28:40,723 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:28:40,726 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:28:40,726 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:28:40,726 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:28:40,729 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:28:40,729 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:28:40,729 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:28:40,735 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:28:40,735 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:28:40,735 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:28:40,740 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:28:40,740 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:28:40,740 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:28:40,747 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:28:40,747 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:28:40,747 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:29:12,007 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:29:12,007 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:29:12,007 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:29:12,010 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:29:12,010 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:29:12,010 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:29:12,012 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:29:12,012 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:29:12,012 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:29:12,016 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:29:12,016 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:29:12,016 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:29:12,018 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:29:12,018 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:29:12,018 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:29:12,021 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:29:12,021 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:29:12,021 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:29:12,024 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:29:12,024 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:29:12,024 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:29:12,027 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:29:12,027 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:29:12,027 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:29:12,031 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:29:12,031 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:29:12,031 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:30:24,153 - __main__ - INFO - Запуск бота
+2025-03-27 00:32:01,197 - __main__ - INFO - Инициализация комманд
+2025-03-27 00:32:01,260 - __main__ - INFO - Запуск воркера
+2025-03-27 00:32:01,526 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:32:01,526 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:32:01,526 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:32:01,528 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:32:01,528 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:32:01,528 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:32:01,530 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:32:01,530 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:32:01,530 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:32:01,532 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:32:01,532 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:32:01,532 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:32:01,534 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:32:01,534 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:32:01,534 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:32:01,536 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:32:01,536 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:32:01,536 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:32:01,537 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:32:01,537 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:32:01,537 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:32:01,540 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:32:01,540 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:32:01,540 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:32:01,562 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 00:32:01,562 - __main__ - INFO - Запуск бота
+2025-03-27 00:32:07,580 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:32:07,580 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:32:07,580 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:32:07,583 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:32:07,583 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:32:07,583 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:32:07,586 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:32:07,586 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:32:07,586 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:32:07,589 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:32:07,589 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:32:07,589 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:32:07,591 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:32:07,591 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:32:07,591 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:32:07,594 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:32:07,594 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:32:07,594 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:32:07,596 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:32:07,596 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:32:07,596 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:32:07,599 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:32:07,599 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:32:07,599 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:32:07,603 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:32:07,603 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:32:07,603 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:32:41,932 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:32:41,932 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:32:41,932 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:32:41,935 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:32:41,935 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:32:41,935 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:32:41,938 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:32:41,938 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:32:41,938 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:32:41,941 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:32:41,941 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:32:41,941 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:32:41,943 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:32:41,943 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:32:41,943 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:32:41,945 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:32:41,945 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:32:41,945 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:32:41,948 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:32:41,948 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:32:41,948 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:32:41,950 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:32:41,950 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:32:41,950 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:32:41,954 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:32:41,954 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:32:41,954 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:32:56,443 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:32:56,443 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:32:56,443 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 00:32:56,445 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:32:56,445 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:32:56,445 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 00:32:56,447 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:32:56,447 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:32:56,447 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 00:32:56,450 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:32:56,450 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:32:56,450 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 00:32:56,452 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:32:56,452 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:32:56,452 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 00:32:56,454 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:32:56,454 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:32:56,454 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 00:32:56,457 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:32:56,457 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:32:56,457 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 00:32:56,459 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:32:56,459 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:32:56,459 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 00:32:56,463 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:32:56,463 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:32:56,463 - src.scripts.queue.rabbit_queue - INFO - Published message to queue chatgpt
+2025-03-27 00:33:42,832 - __main__ - INFO - Запуск бота
+2025-03-27 01:24:29,859 - __main__ - INFO - Инициализация комманд
+2025-03-27 01:24:29,924 - __main__ - INFO - Запуск воркера
+2025-03-27 01:24:30,368 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:24:30,368 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:24:30,368 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:24:30,372 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:24:30,372 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:24:30,372 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:24:30,375 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:24:30,375 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:24:30,375 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:24:30,378 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:24:30,378 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:24:30,378 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:24:30,380 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:24:30,380 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:24:30,380 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:24:30,383 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:24:30,383 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:24:30,383 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:24:30,387 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:24:30,387 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:24:30,387 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:24:30,390 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:24:30,390 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:24:30,390 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:24:30,441 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 01:24:30,442 - __main__ - INFO - Запуск бота
+2025-03-27 01:25:02,572 - __main__ - INFO - Запуск бота
+2025-03-27 01:25:11,037 - __main__ - INFO - Инициализация комманд
+2025-03-27 01:25:11,110 - __main__ - INFO - Запуск воркера
+2025-03-27 01:25:11,374 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:25:11,374 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:25:11,374 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:25:11,377 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:25:11,377 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:25:11,377 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:25:11,380 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:25:11,380 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:25:11,380 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:25:11,382 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:25:11,382 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:25:11,382 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:25:11,384 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:25:11,384 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:25:11,384 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:25:11,387 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:25:11,387 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:25:11,387 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:25:11,390 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:25:11,390 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:25:11,390 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:25:11,393 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:25:11,393 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:25:11,393 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:25:11,417 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 01:25:11,417 - __main__ - INFO - Запуск бота
+2025-03-27 01:26:29,835 - __main__ - INFO - Запуск бота
+2025-03-27 01:26:41,336 - __main__ - INFO - Инициализация комманд
+2025-03-27 01:26:41,399 - __main__ - INFO - Запуск воркера
+2025-03-27 01:26:41,870 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:26:41,870 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:26:41,870 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:26:41,872 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:26:41,872 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:26:41,872 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:26:41,875 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:26:41,875 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:26:41,875 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:26:41,878 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:26:41,878 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:26:41,878 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:26:41,880 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:26:41,880 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:26:41,880 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:26:41,883 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:26:41,883 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:26:41,883 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:26:41,885 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:26:41,885 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:26:41,885 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:26:41,888 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:26:41,888 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:26:41,888 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:26:41,916 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 01:26:41,916 - __main__ - INFO - Запуск бота
+2025-03-27 01:28:38,779 - __main__ - INFO - Запуск бота
+2025-03-27 01:28:56,440 - __main__ - INFO - Инициализация комманд
+2025-03-27 01:28:56,567 - __main__ - INFO - Запуск воркера
+2025-03-27 01:28:56,829 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:28:56,829 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:28:56,829 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:28:56,832 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:28:56,832 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:28:56,832 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:28:56,834 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:28:56,834 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:28:56,834 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:28:56,837 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:28:56,837 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:28:56,837 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:28:56,838 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:28:56,838 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:28:56,838 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:28:56,840 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:28:56,840 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:28:56,840 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:28:56,842 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:28:56,842 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:28:56,842 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:28:56,844 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:28:56,844 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:28:56,844 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:28:56,873 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 01:28:56,873 - __main__ - INFO - Запуск бота
+2025-03-27 01:31:45,814 - __main__ - INFO - Запуск бота
+2025-03-27 01:31:57,122 - __main__ - INFO - Инициализация комманд
+2025-03-27 01:31:57,191 - __main__ - INFO - Запуск воркера
+2025-03-27 01:31:57,560 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:31:57,560 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:31:57,560 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:31:57,562 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:31:57,562 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:31:57,562 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:31:57,566 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:31:57,566 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:31:57,566 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:31:57,569 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:31:57,569 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:31:57,569 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:31:57,573 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:31:57,573 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:31:57,573 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:31:57,576 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:31:57,576 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:31:57,576 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:31:57,579 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:31:57,579 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:31:57,579 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:31:57,582 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:31:57,582 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:31:57,582 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:31:57,623 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 01:31:57,624 - __main__ - INFO - Запуск бота
+2025-03-27 01:35:24,739 - __main__ - INFO - Запуск бота
+2025-03-27 01:35:39,975 - __main__ - INFO - Инициализация комманд
+2025-03-27 01:35:40,034 - __main__ - INFO - Запуск воркера
+2025-03-27 01:35:40,414 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:35:40,414 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:35:40,414 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:35:40,416 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:35:40,416 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:35:40,416 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:35:40,419 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:35:40,419 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:35:40,419 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:35:40,422 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:35:40,422 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:35:40,422 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:35:40,425 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:35:40,425 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:35:40,425 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:35:40,428 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:35:40,428 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:35:40,428 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:35:40,432 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:35:40,432 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:35:40,432 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:35:40,434 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:35:40,434 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:35:40,434 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:35:40,480 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 01:35:40,480 - __main__ - INFO - Запуск бота
+2025-03-27 01:38:40,540 - __main__ - INFO - Запуск бота
+2025-03-27 01:38:53,113 - __main__ - INFO - Инициализация комманд
+2025-03-27 01:38:53,170 - __main__ - INFO - Запуск воркера
+2025-03-27 01:38:53,453 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:38:53,453 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:38:53,453 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:38:53,455 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:38:53,455 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:38:53,455 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:38:53,458 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:38:53,458 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:38:53,458 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:38:53,461 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:38:53,461 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:38:53,461 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:38:53,464 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:38:53,464 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:38:53,464 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:38:53,467 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:38:53,467 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:38:53,467 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:38:53,468 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:38:53,468 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:38:53,468 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:38:53,470 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:38:53,470 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:38:53,470 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:38:53,496 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 01:38:53,497 - __main__ - INFO - Запуск бота
+2025-03-27 01:40:01,283 - __main__ - INFO - Запуск бота
+2025-03-27 01:40:16,127 - __main__ - INFO - Инициализация комманд
+2025-03-27 01:40:16,207 - __main__ - INFO - Запуск воркера
+2025-03-27 01:40:16,596 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:40:16,596 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:40:16,596 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:40:16,598 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:40:16,598 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:40:16,598 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:40:16,601 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:40:16,601 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:40:16,601 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:40:16,604 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:40:16,604 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:40:16,604 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:40:16,608 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:40:16,608 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:40:16,608 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:40:16,612 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:40:16,612 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:40:16,612 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:40:16,615 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:40:16,615 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:40:16,615 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:40:16,618 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:40:16,618 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:40:16,618 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:40:16,659 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 01:40:16,660 - __main__ - INFO - Запуск бота
+2025-03-27 01:42:12,140 - __main__ - INFO - Запуск бота
+2025-03-27 01:42:23,113 - __main__ - INFO - Инициализация комманд
+2025-03-27 01:42:23,170 - __main__ - INFO - Запуск воркера
+2025-03-27 01:42:23,440 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:42:23,440 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:42:23,440 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:42:23,443 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:42:23,443 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:42:23,443 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:42:23,445 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:42:23,445 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:42:23,445 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:42:23,448 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:42:23,448 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:42:23,448 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:42:23,451 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:42:23,451 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:42:23,451 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:42:23,453 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:42:23,453 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:42:23,453 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:42:23,456 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:42:23,456 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:42:23,456 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:42:23,458 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:42:23,458 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:42:23,458 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:42:23,481 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 01:42:23,481 - __main__ - INFO - Запуск бота
+2025-03-27 01:43:33,395 - __main__ - INFO - Запуск бота
+2025-03-27 01:43:44,059 - __main__ - INFO - Инициализация комманд
+2025-03-27 01:43:44,114 - __main__ - INFO - Запуск воркера
+2025-03-27 01:43:44,405 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:43:44,405 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:43:44,405 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:43:44,408 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:43:44,408 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:43:44,408 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:43:44,412 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:43:44,412 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:43:44,412 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:43:44,415 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:43:44,415 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:43:44,415 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:43:44,418 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:43:44,418 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:43:44,418 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:43:44,421 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:43:44,421 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:43:44,421 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:43:44,423 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:43:44,423 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:43:44,423 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:43:44,427 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:43:44,427 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:43:44,427 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:43:44,471 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 01:43:44,471 - __main__ - INFO - Запуск бота
+2025-03-27 01:44:13,682 - __main__ - INFO - Запуск бота
+2025-03-27 01:44:24,753 - __main__ - INFO - Инициализация комманд
+2025-03-27 01:44:24,818 - __main__ - INFO - Запуск воркера
+2025-03-27 01:44:25,496 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:44:25,496 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:44:25,496 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:44:25,500 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:44:25,500 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:44:25,500 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:44:25,503 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:44:25,503 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:44:25,503 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:44:25,505 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:44:25,505 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:44:25,505 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:44:25,508 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:44:25,508 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:44:25,508 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:44:25,510 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:44:25,510 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:44:25,510 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:44:25,513 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:44:25,513 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:44:25,513 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:44:25,515 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:44:25,515 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:44:25,515 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:44:25,553 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 01:44:25,553 - __main__ - INFO - Запуск бота
+2025-03-27 01:44:35,323 - src.scripts.spammer.service - ERROR - Can't instantiate abstract class InputFile without an implementation for abstract method 'read'
+2025-03-27 01:44:35,325 - src.scripts.spammer.service - ERROR - Can't instantiate abstract class InputFile without an implementation for abstract method 'read'
+2025-03-27 01:44:35,325 - src.scripts.spammer.service - ERROR - Can't instantiate abstract class InputFile without an implementation for abstract method 'read'
+2025-03-27 01:46:07,713 - __main__ - INFO - Запуск бота
+2025-03-27 01:46:20,820 - __main__ - INFO - Инициализация комманд
+2025-03-27 01:46:20,892 - __main__ - INFO - Запуск воркера
+2025-03-27 01:46:21,339 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:46:21,339 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:46:21,339 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-27 01:46:21,342 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:46:21,342 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:46:21,342 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-27 01:46:21,346 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:46:21,346 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:46:21,346 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-27 01:46:21,349 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:46:21,349 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:46:21,349 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-27 01:46:21,353 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:46:21,353 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:46:21,353 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-27 01:46:21,356 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:46:21,356 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:46:21,356 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-27 01:46:21,358 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:46:21,358 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:46:21,358 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-27 01:46:21,361 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:46:21,361 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:46:21,361 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-27 01:46:21,394 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-27 01:46:21,394 - __main__ - INFO - Запуск бота
+2025-03-27 01:47:30,813 - __main__ - INFO - Запуск бота

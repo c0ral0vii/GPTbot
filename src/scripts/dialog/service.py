@@ -10,7 +10,7 @@ class DialogService:
         await DialogORM.add_message_to_dialog(
             dialog_id,
             role,
-            message[:5000],
+            message[:25000],
         )
 
     async def get_messages(self, dialog_id) -> list[Message]:

@@ -52,7 +52,9 @@ class TranslateService:
 
             logger.debug(text_translate)
 
-            translation = await self.translator.translate(text_translate[0], dest=self.language)
+            translation = await self.translator.translate(
+                text_translate[0], dest=self.language
+            )
             text_translate[0] = translation.text
 
             collect_text = await self._collect_text(text_translate)
@@ -161,7 +163,9 @@ class MidjourneyService:
                 await self.message_handler.answer_photo(data=body)
             else:
                 await asyncio.sleep(10)
-                await self._check_status(body=body, session=session, retries=retries + 1)
+                await self._check_status(
+                    body=body, session=session, retries=retries + 1
+                )
 
         except Exception as e:
             logger.warning(f"Rate limited, retrying after {retries} seconds. {e}")

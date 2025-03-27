@@ -11,7 +11,9 @@ from src.db.custom_decorators import with_session
 class DialogORM:
     @staticmethod
     @with_session
-    async def get_dialog(dialog_id: int, session: AsyncSession = None) -> Optional[Dialog]:
+    async def get_dialog(
+        dialog_id: int, session: AsyncSession = None
+    ) -> Optional[Dialog]:
         """Получить диалог по ID"""
         stmt = select(Dialog).where(Dialog.id == dialog_id)
         result = await session.execute(stmt)
@@ -53,15 +55,29 @@ class DialogORM:
     @staticmethod
     @with_session
     async def get_dialog_messages(
-        dialog: Dialog | int, session: AsyncSession = None
+            dialog: Dialog | int,
+            session: AsyncSession = None,
+            limit: int = 31
     ) -> List[Message]:
-        """Получить все сообщения в диалоге"""
+        """Получить последние сообщения в диалоге (по умолчанию 31)"""
+
         if isinstance(dialog, int):
-            stmt = select(Dialog).where(Dialog.id == dialog).options(selectinload(Dialog.messages))
+            stmt = select(Dialog).where(Dialog.id == dialog)
             result = await session.execute(stmt)
             dialog = result.scalar_one_or_none()
+            if not dialog:
+                return []
 
-        return dialog.messages if dialog else []
+        stmt = (
+            select(Message)
+            .where(Message.dialog_id == dialog.id)
+            .order_by(Message.message_id.asc())
+            .limit(limit)
+        )
+
+        result = await session.execute(stmt)
+        messages = list(result.scalars().all())
+        return messages
 
     @staticmethod
     @with_session
@@ -73,7 +89,11 @@ class DialogORM:
     ) -> bool:
         """Добавить сообщение в диалог"""
         if isinstance(dialog, (str, int)):
-            stmt = select(Dialog).where(Dialog.id == int(dialog)).options(selectinload(Dialog.messages))
+            stmt = (
+                select(Dialog)
+                .where(Dialog.id == int(dialog))
+                .options(selectinload(Dialog.messages))
+            )
             result = await session.execute(stmt)
             dialog = result.scalar_one_or_none()
 

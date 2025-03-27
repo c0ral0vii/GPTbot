@@ -85,6 +85,7 @@ class PremiumUser(Base):
     premium_to_date: Mapped[Date] = mapped_column(Date, default=False)
 
     auth_renewal_id: Mapped[str] = mapped_column(nullable=True)
+    last_pay_count: Mapped[int] = mapped_column(nullable=True, default=1500)
 
     user_id: Mapped["User"] = mapped_column(ForeignKey("users.id"))
     user: Mapped["User"] = relationship("User", back_populates="premium_status")
@@ -133,7 +134,7 @@ class Message(Base):
     )
 
     role: Mapped[MessageRole] = mapped_column(SQLEnum(MessageRole), nullable=False)
-    message: Mapped[str] = mapped_column(String(5000), nullable=False)
+    message: Mapped[str] = mapped_column(String(25000), nullable=False)
 
     dialog: Mapped["Dialog"] = relationship(back_populates="messages")
 
@@ -149,6 +150,16 @@ class BonusLink(Base):
     link: Mapped[str] = mapped_column(nullable=True)
     active: Mapped[bool] = mapped_column(default=True)
     active_count: Mapped[int] = mapped_column(default=0)
+
+
+class PaymentPromocode(Base):
+    __tablename__ = "payment_promocodes"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    discount: Mapped[int] = mapped_column()
+
+    enable: Mapped[bool] = mapped_column(default=True)
+    count_active: Mapped[int] = mapped_column(default=0)
 
 
 class GPTAssistant(Base):

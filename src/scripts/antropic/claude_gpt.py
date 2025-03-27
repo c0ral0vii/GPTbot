@@ -1,5 +1,6 @@
 from typing import Dict, Any
 
+import aiohttp
 from anthropic import AsyncAnthropic
 
 from src.config.config import settings
@@ -25,6 +26,20 @@ class ClaudeGPT:
             30,
         ]
 
+    async def _file_generate(self, path_to_file: str) -> str:
+        """Создание файла для OpenAI из удалённой ссылки"""
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(path_to_file) as response:
+                    if response.status != 200:
+                        self.logger.error(f"Ошибка загрузки: {response.status}")
+                        return ""
+
+                    file_content = await response.text()
+                    return file_content
+        except Exception as e:
+            self.logger.error(e)
+
     async def send_message(self, data: Dict[str, Any]):
         """Отправка сообщения"""
 
@@ -37,11 +52,23 @@ class ClaudeGPT:
 
             data["energy_text"] = status
 
-            await self.dialog_service.add_message(
-                role=MessageRole.USER,
-                dialog_id=data["dialog_id"],
-                message=data.get("message"),
-            )
+            message = data.get("message")
+            if message:
+                await self.dialog_service.add_message(
+                    role=MessageRole.USER,
+                    dialog_id=data["dialog_id"],
+                    message=data.get("message"),
+                )
+
+            file = data.get("file")
+            if file:
+                content_file = await self._file_generate(path_to_file=file["url"])
+                await self.dialog_service.add_message(
+                    role=MessageRole.USER,
+                    dialog_id=data["dialog_id"],
+                    message=content_file,
+                )
+
             messages = await self.dialog_service.get_messages(data["dialog_id"])
 
             import_messages = []
@@ -70,22 +97,14 @@ class ClaudeGPT:
                 message=text_only,
             )
 
-            chunk_size = 4000
-            chunks = [
-                text_only[i: i + chunk_size]
-                for i in range(0, len(text_only), chunk_size)
-            ]
 
-            data["text"] = chunks
-            data["disable_delete"] = True
 
-            for chunk in chunks:
-                data["text"] = chunk
-                await self.message_client.answer_message(data)
-                data["disable_delete"] = False
+            data["text"] = text_only
+            await self.message_client.answer_message(data)
 
         except Exception as e:
             await UserORM.add_energy(data["user_id"], data["energy_cost"])
             self.logger.error(f"Failed to send message: {e}")
-            # await self.message_client.answer_message(data)
+            data["text"] = f"Произошла ошибка, обратитесь в поддержку с данной ошибкой: \n\n{str(e)}"
+            await self.message_client.answer_message(data)
             raise

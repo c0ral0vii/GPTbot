@@ -12,7 +12,10 @@ router = Router()
 logger = setup_logger(__name__)
 PRIVACY_POLICY = "https://gradov.online/ofertaneurokesh"
 
-async def send_premium_offer(target: types.Message | types.CallbackQuery, payment_link: str):
+
+async def send_premium_offer(
+    target: types.Message | types.CallbackQuery, payment_link: str
+):
     """Отправляет сообщение с предложением о Premium подписке."""
     text = (
         "🌟 Оформи Premium и получи максимум возможностей!\n\n"
@@ -25,25 +28,31 @@ async def send_premium_offer(target: types.Message | types.CallbackQuery, paymen
     )
     reply_markup = InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="💳 ОПЛАТИТЬ И СНЯТЬ ОГРАНИЧЕНИЯ", url=payment_link)],
+            [
+                InlineKeyboardButton(
+                    text="💳 ОПЛАТИТЬ И СНЯТЬ ОГРАНИЧЕНИЯ", url=payment_link
+                )
+            ],
         ]
     )
 
-    if hasattr(target, 'message'): 
+    if hasattr(target, "message"):
         await target.message.answer(text, parse_mode="HTML", reply_markup=reply_markup)
-    else:  
+    else:
         await target.answer(text, parse_mode="HTML", reply_markup=reply_markup)
-        
-        
+
+
 @router.message(Command("PRO", "pro"))
 async def premium_text(message: types.Message):
     """Обработка команды /PRO."""
     await premium_handle(message)
 
-@router.callback_query(F.data=="/PRO")
+
+@router.callback_query(F.data == "/PRO")
 async def premium_callback(callback: types.CallbackQuery):
     """Обработка callback-запроса для Premium."""
     await premium_handle(callback)
+
 
 async def premium_handle(target: types.Message | types.CallbackQuery):
     """Общая логика для обработки Premium."""
@@ -51,9 +60,9 @@ async def premium_handle(target: types.Message | types.CallbackQuery):
 
     if check_premium:
         text = "У вас уже есть активная подписка, чтобы узнать больше информации и управлять ей перейдите в /profile"
-        if hasattr(target, 'message'):
+        if hasattr(target, "message"):
             await target.message.answer(text)
-        else:  
+        else:
             await target.answer(text)
     else:
         payment_link = await generate_payment(target.from_user.id)

@@ -52,17 +52,17 @@ async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
             "🚀 Приоритетную скорость обработки запросов\n"
             "🔐 Эксклюзивные инструменты и функции\n",
             reply_markup=types.InlineKeyboardMarkup(
-                    inline_keyboard=[
-                        [
-                            types.InlineKeyboardButton(
-                                text="💳 РАЗБЛОКИРОВАТЬ PRO", callback_data="/PRO"
-                            ),
-                        ],
-                    ]
-                ),
+                inline_keyboard=[
+                    [
+                        types.InlineKeyboardButton(
+                            text="💳 РАЗБЛОКИРОВАТЬ PRO", callback_data="/PRO"
+                        ),
+                    ],
+                ]
+            ),
         )
         return
-    
+
     assist = await GPTAssistantOrm.get_select_assistants(int(gpt_select))
 
     if not assist or not assist.assistant_id or assist.disable:

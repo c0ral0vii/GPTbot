@@ -24,3 +24,9 @@ class PaymentSchema(BaseModel):
     type: str
     event: str
     object: Dict[str, Any]
+
+
+class SpamData(BaseModel):
+    spamText: str
+    forPremium: bool = False
+    forRegular: bool = False

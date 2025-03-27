@@ -3217,3 +3217,17 @@ WHERE users.user_id = $1::VARCHAR]
 2025-03-20 21:04:59,657 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 529 - {'type': 'error', 'error': {'type': 'overloaded_error', 'message': 'Overloaded'}}
 2025-03-20 21:04:59,657 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 529 - {'type': 'error', 'error': {'type': 'overloaded_error', 'message': 'Overloaded'}}
 2025-03-20 21:04:59,657 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 529 - {'type': 'error', 'error': {'type': 'overloaded_error', 'message': 'Overloaded'}}
+2025-03-27 00:24:02,985 - src.scripts.chat_gpt.chat_gpt - ERROR - Ошибка при отправке сообщения: type object 'Message' has no attribute 'created_at'
+2025-03-27 00:24:03,389 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: type object 'Message' has no attribute 'created_at'
+2025-03-27 00:24:03,389 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: type object 'Message' has no attribute 'created_at'
+2025-03-27 00:24:03,389 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: type object 'Message' has no attribute 'created_at'
+2025-03-27 00:24:03,697 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-27 00:24:03,697 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-27 00:24:03,697 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-27 00:24:03,697 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-27 00:24:03,697 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-27 00:24:03,697 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-27 00:24:03,697 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-27 01:44:35,323 - src.scripts.spammer.service - ERROR - Can't instantiate abstract class InputFile without an implementation for abstract method 'read'
+2025-03-27 01:44:35,325 - src.scripts.spammer.service - ERROR - Can't instantiate abstract class InputFile without an implementation for abstract method 'read'
+2025-03-27 01:44:35,325 - src.scripts.spammer.service - ERROR - Can't instantiate abstract class InputFile without an implementation for abstract method 'read'
