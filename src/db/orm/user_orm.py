@@ -634,10 +634,10 @@ class AnalyticsORM:
             user.personal_percent = int(data["personal_percent"])
             user.referral_bonus = Decimal(data["referral_bonus"])
 
-            if data.get("use_referral_link") == "":
+            if data.get("use_referral_link") == "" or not data.get("use_referral_link").isdigit():
                 user.use_referral_link = None
             else:
-                user.use_referral_link = data.get("use_referral_link", None)
+                user.use_referral_link = int(data.get("use_referral_link"))
 
             # Обрабатываем премиум-статус
             if data.get("premium_active"):
