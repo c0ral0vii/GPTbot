@@ -11,7 +11,7 @@ class ChangeUserSchema(BaseModel):
     banned_user: Optional[bool] = False
     energy: int
     premium_active: Optional[bool] = False
-    use_referral_link: Optional[str] = None
+    use_referral_link: Optional[int] = None
     user_id: int
     personal_percent: int
     referral_bonus: int
