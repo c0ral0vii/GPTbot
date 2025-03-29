@@ -213,9 +213,9 @@ async def get_user_info(user_id: int):
 
 
 @router.put("/users/{user_id}/change")
-async def change_user_data(user_id: int, user_data: ChangeUserSchema):
+async def change_user_data(user_id: int | str, user_data: ChangeUserSchema):
     try:
-        response = await AnalyticsORM.change_user(user_id, user_data.model_dump())
+        response = await AnalyticsORM.change_user(int(user_id), user_data.model_dump())
 
         return JSONResponse(content={"success": True}, status_code=200)
     except Exception as e:
