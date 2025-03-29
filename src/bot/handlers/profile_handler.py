@@ -28,9 +28,13 @@ async def profile_handler(message: types.Message, state: FSMContext):
             await UserORM.create_user(user_id)
             user_info = await _cached_user(key, user_id)
 
+        username = html.escape(message.from_user.username)
+        if not username:
+            username = "Похоже у вас отсутсвует юзерней либо он скрыт =("
+
         if not user_info.get("check_premium"):
             await message.answer(
-                f"👤Профиль: {html.escape(message.from_user.username)}\n\n"
+                f"👤Профиль: {username}\n\n"
                 f"⚡ Энергия: {user_info.get("energy", 0)}\n"
                 f"👥 Приглашённые друзья: {user_info.get("counts", 0)}\n"
                 f"💰 Заработано с подписок: {user_info.get("referral_bonus", 0)}₽\n"
@@ -60,7 +64,7 @@ async def profile_handler(message: types.Message, state: FSMContext):
             )
         else:
             await message.answer(
-                f"👤Профиль: {html.escape(message.from_user.username)}\n\n"
+                f"👤Профиль: {username}\n\n"
                 f"⚡ Энергия: {user_info.get("energy", 0)}\n"
                 f"👥 Приглашённые друзья: {user_info.get("counts", 0)}\n"
                 f"💰 Заработано с подписок: {user_info.get("referral_bonus", 0)}₽\n"
