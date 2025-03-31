@@ -98,7 +98,6 @@ class Settings(BaseSettings):
     def IMAGE_GPT(self):
         return {
             "midjourney": {
-                "energy_cost": 10,
                 "select_model": "Midjourney",
                 "premium_free": False,
                 "speeds": {

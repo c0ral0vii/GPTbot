@@ -1,8 +1,9 @@
 from aiogram import Router, types, F, Bot
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
+from more_itertools import chunked
 
-from src.bot.keyboards.select_gpt import select_text_gpt, cancel_kb, get_models_dialogs
+from src.bot.keyboards.select_gpt import paginate_models_dialogs, select_text_gpt, cancel_kb, get_models_dialogs
 from src.bot.states.text_state import TextState
 from src.config.config import settings, EXCLUDE_PATTERN
 from src.db.orm.user_orm import PremiumUserORM
@@ -74,17 +75,92 @@ async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
 
     data = await state.get_data()
 
-    await callback.message.answer(
-        f"Выбраная вами модель - {select_model}\n"
-        f"(поменять модель в настройках профиля)\n"
-        f"{f"Стоимость модели ⚡{data["energy_cost"]}" if data["energy_cost"] != 0 else ""}\n\n"
-        "Выберите прошлый диалог из списка ниже или создайте новый:",
-        reply_markup=await get_models_dialogs(dialogs),
-    )
+    if len(dialogs) <= 5:
+        await callback.message.answer(
+            f"Выбраная вами модель - {select_model}\n"
+            f"(поменять модель в настройках профиля)\n"
+            f"{f"Стоимость модели ⚡{data["energy_cost"]}" if data["energy_cost"] != 0 else ""}\n\n"
+            "Выберите прошлый диалог из списка ниже или создайте новый:",
+            reply_markup=await get_models_dialogs(dialogs),
+        )
+    else:
+        per_page = 5
+        chunks = list(chunked(dialogs, per_page))
+        logger.debug(chunks)
+        await state.update_data(
+            page=1,
+            max_pages=len(chunks),
+        )
+        
+        await callback.message.answer(
+            f"Выбраная вами модель - {select_model}\n"
+            f"(поменять модель в настройках профиля)\n"
+            f"{f"Стоимость модели ⚡{data["energy_cost"]}" if data["energy_cost"] != 0 else ""}\n\n"
+            "Выберите прошлый диалог из списка ниже или создайте новый:",
+            reply_markup=await paginate_models_dialogs(callback="dialog_", page=1, data=chunks[0], max_pages=len(chunks)),
+        )
 
     await state.set_state(TextState.dialog)
 
 
+@router.callback_query(F.data.startswith("page_"))
+async def pages_handler(callback: types.CallbackQuery, state: FSMContext):
+    """Страницы пагинации и их перелистывание"""
+    user_id = callback.from_user.id
+    action = callback.data.replace("page_", "")
+    data = await state.get_data()
+    select_model = data.get("select_model")
+    if not select_model:
+        await callback.message.answer("Изначально выберите версию ИИ в которой хотите посмотреть чаты")
+        return
+    
+    dialogs = await _get_dialogs(
+            user_id=user_id, select_model=select_model
+        )
+    chunks = list(chunked(dialogs, 5))
+    select_page = data.get("page", 1)
+    max_page = data.get("max_pages", 1)
+    
+    if action == "next":
+        # Следующая страница
+        if select_page == max_page:
+            await callback.message.answer("Больше нет страниц спереди")   
+            return
+            
+        select_page += 1
+        
+        await callback.message.edit_reply_markup(
+            reply_markup=await paginate_models_dialogs(
+                callback="dialog_",
+                page=select_page,
+                max_pages=max_page,
+                data=chunks[select_page-1]
+            )
+        )
+        await state.update_data(
+            page=select_page
+        ) 
+        
+    if action == "previous":
+        # Предыдущая страница
+        if select_page == 1:
+            return
+        
+        select_page -= 1
+        
+        await callback.message.edit_reply_markup(
+            reply_markup=await paginate_models_dialogs(
+                callback="dialog_",
+                page=select_page,
+                max_pages=max_page,
+                data=chunks[select_page-1]
+            )
+        )
+        await state.update_data(
+            page=select_page
+        ) 
+        
+        
 @router.callback_query(F.data.startswith("dialog_"), StateFilter(TextState.dialog))
 async def select_dialog_handler(callback: types.CallbackQuery, state: FSMContext):
     dialog_select = callback.data.replace("dialog_", "")

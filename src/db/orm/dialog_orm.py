@@ -48,6 +48,7 @@ class DialogORM:
             select(Dialog)
             .where(and_(Dialog.user_id == user_id, Dialog.gpt_select == select_model))
             .options(selectinload(Dialog.messages))
+            .order_by(Dialog.id.desc())
         )
         result = await session.execute(stmt)
         return result.scalars().all() or []

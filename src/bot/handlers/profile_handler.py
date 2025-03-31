@@ -152,6 +152,7 @@ async def change_model_settings(callback: types.CallbackQuery):
         else:
             await callback.answer("Неверный тип модели")
             return
+        
     except ValueError:
         await callback.answer("Неверное значение модели")
         return

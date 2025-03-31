@@ -8,6 +8,7 @@ from dotenv.variables import Literal
 
 from src.bot.keyboards.select_gpt import select_image_model, cancel_kb
 from src.bot.states.image_state import ImageState
+from src.db.orm.config_orm import ConfigORM
 from src.db.orm.user_orm import PremiumUserORM
 from src.scripts.queue.rabbit_queue import RabbitQueue
 from src.utils.cached_user import _cached_user
@@ -37,19 +38,20 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
     """Выбор модели"""
 
     gpt_select = callback.data.replace("select_", "")
-    # await callback.message.delete()
-    # await callback.message.answer(
-    #     "Приносим свои извинения, в данный момент midjourney не работает по причине технических неполадок!\n Мы пытаемся становиться лучше для вас!\n\nСо всем уважением команда Woome AI!"
-    # )
-    # return
 
     priority = 0
-
+    mode = "relax"
+    
     if settings.IMAGE_GPT.get(gpt_select):
-        energy_cost = settings.IMAGE_GPT.get(gpt_select).get("energy_cost")
-        select_model = settings.IMAGE_GPT.get(gpt_select).get("select_model")
-
+        user_config = await ConfigORM.get_config(int(callback.from_user.id))
         check_premium = await PremiumUserORM.is_premium_active(callback.from_user.id)
+        
+        if gpt_select == "midjourney":
+            energy_cost = settings.IMAGE_GPT.get(gpt_select, {}).get("speeds", {}).get(user_config.midjourney_speed.value, "relax")["energy_cost"]
+            mode = settings.IMAGE_GPT.get(gpt_select, {}).get("speeds", {}).get(user_config.midjourney_speed.value, "relax")["select_speed_name"]
+            
+            select_model = settings.IMAGE_GPT.get(gpt_select).get("select_model")
+
 
         if check_premium:
             priority = 5
@@ -65,14 +67,17 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
         return
 
     await state.update_data(
-        type_gpt=gpt_select, energy_cost=energy_cost, priority=priority
+        type_gpt=gpt_select, energy_cost=energy_cost, priority=priority, speed_mode=user_config.midjourney_speed.value,
     )
 
     await callback.message.answer(
         f"Выбраная вами модель - {select_model}\n"
-        f"Стоимость модели ⚡️ {energy_cost}\n\n"
+        f"Стоимость модели ⚡️ {energy_cost}\n"
+        f"Выбранная скорость - {mode}\n\n"
+        
         "У нас встроен автоперевод текста для более лучшего распознования текста Midjourney\n"
         "Просим записывать текст в формате: Промпт --тег --тег и так далее!\n\n"
+        
         "Отправьте ваше сообщение для обработки:",
         reply_markup=await cancel_kb(),
     )
@@ -99,6 +104,8 @@ async def handle_text(message: types.Message, state: FSMContext):
         user_id=message.from_user.id,
         answer_message=answer_message.message_id,
         energy_cost=data["energy_cost"],
+        speed_mode=data.get("speed_mode"),
+        
         key=key,
         priority=data.get("priority", 0),
     )

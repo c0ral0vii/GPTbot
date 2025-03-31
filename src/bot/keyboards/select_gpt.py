@@ -1,3 +1,4 @@
+from typing import Literal
 from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
@@ -32,6 +33,48 @@ def select_image_model() -> InlineKeyboardMarkup:
 
     return kb
 
+
+async def paginate_models_dialogs(callback: Literal["dialog_"], page: int = 1, max_pages: int = 1, data: list[Dialog] = None, per_page: int = 5):
+    """Пагинация для диалогов"""
+    
+    user_dialogs = []
+    
+    for dialog in data:
+        user_dialogs.append(
+                [
+                    InlineKeyboardButton(
+                        text=dialog.title, callback_data=f"dialog_{dialog.id}"
+                    ),
+                ]
+            )
+        
+    pagination_buttons = []
+    if max_pages > 1:
+        if page > 1:
+            pagination_buttons.append(
+                InlineKeyboardButton(text="⬅️ Предыдущая", callback_data=f"page_previous")
+            )
+        
+        pagination_buttons.append(
+            InlineKeyboardButton(text=f"🔢 {page}/{max_pages}", callback_data="current_page")
+        )
+        
+        if page < max_pages:
+            pagination_buttons.append(
+                InlineKeyboardButton(text="Следующая ➡️", callback_data=f"page_next")
+            )
+    
+    keyboard = [
+        [InlineKeyboardButton(text="➕ Новый диалог", callback_data="dialog_new")],
+        *user_dialogs,
+    ]
+    
+    if pagination_buttons:
+        keyboard.append(pagination_buttons)
+    
+    keyboard.append([InlineKeyboardButton(text="❌ Отмена", callback_data="cancel")])
+    
+    return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
 async def get_models_dialogs(dialogs: list[Dialog] = None):
 
