@@ -31,9 +31,7 @@ class TelegramBroadcaster:
         )
 
         data = {"get_users_ids": user_ids, "send_message": 0}
-        spam_key = await redis_manager.set(
-            "spam_key", value=data
-        )
+        spam_key = await redis_manager.set("spam_key", value=data)
 
         for user_id in user_ids:
             try:

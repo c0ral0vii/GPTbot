@@ -3234,3 +3234,6 @@ WHERE users.user_id = $1::VARCHAR]
 2025-03-29 21:14:13,727 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.4', 5672)
 2025-03-29 21:14:13,727 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.4', 5672)
 2025-03-29 21:14:13,727 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.4', 5672)
+2025-03-31 00:03:41,523 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.4', 5672)
+2025-03-31 00:03:41,523 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.4', 5672)
+2025-03-31 00:03:41,523 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.4', 5672)

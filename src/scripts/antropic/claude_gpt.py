@@ -97,14 +97,14 @@ class ClaudeGPT:
                 message=text_only,
             )
 
-
-
             data["text"] = text_only
             await self.message_client.answer_message(data)
 
         except Exception as e:
             await UserORM.add_energy(data["user_id"], data["energy_cost"])
             self.logger.error(f"Failed to send message: {e}")
-            data["text"] = f"Произошла ошибка, обратитесь в поддержку с данной ошибкой: \n\n{str(e)}"
+            data["text"] = (
+                f"Произошла ошибка, обратитесь в поддержку с данной ошибкой: \n\n{str(e)}"
+            )
             await self.message_client.answer_message(data)
             raise

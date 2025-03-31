@@ -27840,3 +27840,36 @@ WHERE users.user_id = $1::VARCHAR]
 2025-03-29 21:14:18,919 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
 2025-03-29 21:14:19,195 - src.scripts.queue.worker - INFO - queue worker started successfully
 2025-03-29 21:14:19,195 - __main__ - INFO - Запуск бота
+2025-03-30 00:20:17,499 - __main__ - INFO - Запуск бота
+2025-03-31 00:03:41,167 - __main__ - INFO - Инициализация комманд
+2025-03-31 00:03:41,226 - __main__ - INFO - Запуск воркера
+2025-03-31 00:03:41,523 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.4', 5672)
+2025-03-31 00:03:41,523 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.4', 5672)
+2025-03-31 00:03:41,523 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.4', 5672)
+2025-03-31 00:03:46,610 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-31 00:03:46,610 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-31 00:03:46,610 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-03-31 00:03:46,704 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-31 00:03:46,704 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-31 00:03:46,704 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt4o initialized
+2025-03-31 00:03:46,733 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-31 00:03:46,733 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-31 00:03:46,733 - src.scripts.queue.rabbit_queue - INFO - Queue claude35 initialized
+2025-03-31 00:03:46,761 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-31 00:03:46,761 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-31 00:03:46,761 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-03-31 00:03:46,790 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-31 00:03:46,790 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-31 00:03:46,790 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-03-31 00:03:46,815 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-31 00:03:46,815 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-31 00:03:46,815 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-03-31 00:03:46,837 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-31 00:03:46,837 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-31 00:03:46,837 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-03-31 00:03:46,863 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-31 00:03:46,863 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-31 00:03:46,863 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-03-31 00:03:47,070 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-03-31 00:03:47,070 - __main__ - INFO - Запуск бота
+2025-03-31 00:14:39,036 - __main__ - INFO - Запуск бота

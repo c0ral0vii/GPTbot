@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from src.db.custom_decorators import with_session
 from src.db.database import async_session
 from src.db.models import User, UserConfig
-from src.db.enums_class import GPTConfig, CLAUDEConfig
+from src.db.enums_class import GPTConfig, CLAUDEConfig, MidjourneySpeedConfig
 
 
 class ConfigORM:
@@ -33,7 +33,7 @@ class ConfigORM:
     @staticmethod
     async def change_config(
         user_id: int,
-        change_setting: GPTConfig | CLAUDEConfig = None,
+        change_setting: GPTConfig | CLAUDEConfig | MidjourneySpeedConfig = None,
         auto_renewal: bool = None,
     ) -> Optional[UserConfig]:
         async with async_session() as session:
@@ -55,6 +55,8 @@ class ConfigORM:
                     user_config.gpt_select = change_setting
                 if isinstance(change_setting, CLAUDEConfig):
                     user_config.claude_select = change_setting
+                if isinstance(change_setting, MidjourneySpeedConfig):
+                    user_config.midjourney_speed = change_setting
 
             await session.commit()
 

@@ -13,8 +13,12 @@ class CLAUDEConfig(Enum):
     CLAUDE_VERSION_HAIKU = "claude-3-5-haiku-latest"
 
 
-# class ImageGPTConfig(Enum):
-#     ...
+class MidjourneySpeedConfig(Enum):
+    """Скоросит миджорни"""
+
+    RELAX = "relax"
+    FAST = "fast"
+    TURBO = "turbo"
 
 
 class MessageRole(Enum):

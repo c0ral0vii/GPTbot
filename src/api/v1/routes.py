@@ -227,10 +227,10 @@ async def change_user_data(user_id: int | str, user_data: ChangeUserSchema):
 
 @router.post("/spam/create")
 async def crete_spam(
-        image: Optional[UploadFile] = File(None),
-        spamText: str = Form(...),
-        forPremium: bool = Form(False),
-        forRegular: bool = Form(False),
+    image: Optional[UploadFile] = File(None),
+    spamText: str = Form(...),
+    forPremium: bool = Form(False),
+    forRegular: bool = Form(False),
 ):
     """Создать рассылку"""
 
@@ -245,9 +245,7 @@ async def crete_spam(
             logger.debug(image_data)
 
         data = SpamData(
-            spamText=spamText,
-            forPremium=forPremium,
-            forRegular=forRegular
+            spamText=spamText, forPremium=forPremium, forRegular=forRegular
         ).model_dump()
 
         await TelegramBroadcaster().broadcast(

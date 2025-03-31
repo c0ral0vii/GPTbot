@@ -101,7 +101,12 @@ class Settings(BaseSettings):
                 "energy_cost": 10,
                 "select_model": "Midjourney",
                 "premium_free": False,
-            }
+                "speeds": {
+                    "relax": {"select_speed_name": "relax", "energy_cost": 15},
+                    "fast": {"select_speed_name": "fast", "energy_cost": 30},
+                    "turbo": {"select_speed_name": "🚀turbo", "energy_cost": 50},
+                },
+            },
         }
 
     @property

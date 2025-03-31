@@ -55,9 +55,7 @@ class DialogORM:
     @staticmethod
     @with_session
     async def get_dialog_messages(
-            dialog: Dialog | int,
-            session: AsyncSession = None,
-            limit: int = 31
+        dialog: Dialog | int, session: AsyncSession = None, limit: int = 31
     ) -> List[Message]:
         """Получить последние сообщения в диалоге (по умолчанию 31)"""
 

@@ -20,7 +20,12 @@ from sqlalchemy import (
 
 from sqlalchemy.orm import Mapped, DeclarativeBase, relationship, mapped_column
 
-from src.db.enums_class import MessageRole, GPTConfig, CLAUDEConfig
+from src.db.enums_class import (
+    MessageRole,
+    GPTConfig,
+    CLAUDEConfig,
+    MidjourneySpeedConfig,
+)
 
 
 class Base(DeclarativeBase):
@@ -67,6 +72,10 @@ class UserConfig(Base):
     claude_select: Mapped[CLAUDEConfig] = mapped_column(
         SQLEnum(CLAUDEConfig), default=CLAUDEConfig.CLAUDE_VERSION_SONNET
     )
+    midjourney_speed: Mapped[MidjourneySpeedConfig] = mapped_column(
+        SQLEnum(MidjourneySpeedConfig), default=MidjourneySpeedConfig.RELAX
+    )
+
     auto_renewal: Mapped[bool] = mapped_column(Boolean, default=False)
 
     user_id: Mapped["User"] = mapped_column(

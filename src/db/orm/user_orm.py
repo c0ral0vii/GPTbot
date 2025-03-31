@@ -320,9 +320,7 @@ class UserORM:
                     return None
 
                 if get_premium_status:
-                    premium_status = await PremiumUserORM.is_premium_active(
-                        user_id
-                    )
+                    premium_status = await PremiumUserORM.is_premium_active(user_id)
                     return {"user": user, "premium_status": premium_status}
 
                 return user
@@ -634,7 +632,10 @@ class AnalyticsORM:
             user.personal_percent = int(data["personal_percent"])
             user.referral_bonus = Decimal(data["referral_bonus"])
 
-            if data.get("use_referral_link") == "" or not data.get("use_referral_link").isdigit():
+            if (
+                data.get("use_referral_link") == ""
+                or not data.get("use_referral_link").isdigit()
+            ):
                 user.use_referral_link = None
             else:
                 user.use_referral_link = int(data.get("use_referral_link"))

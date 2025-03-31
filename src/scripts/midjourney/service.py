@@ -92,18 +92,15 @@ class MidjourneyService:
                         "model": "midjourney",
                         "task_type": "imagine",
                         "input": {
-                          "prompt": f"{body["message"]}",
-                          "process_mode": mode,
-                          "skip_prompt_check": False,
-                          "bot_id": 0
-                       },
+                            "prompt": f"{body["message"]}",
+                            "process_mode": mode,
+                            "skip_prompt_check": False,
+                            "bot_id": 0,
+                        },
                         "config": {
                             "service_mode": "",
-                            "webhook_config": {
-                                "endpoint": "",
-                                "secret": ""
-                            }
-                        }
+                            "webhook_config": {"endpoint": "", "secret": ""},
+                        },
                     }
                 ).encode()
 
@@ -127,12 +124,12 @@ class MidjourneyService:
                 raise
 
     async def _check_status(
-            self,
-            body: Dict[str, Any],
-            session: aiohttp.ClientSession,
-            max_retries: int = 20,
-            initial_delay: float = 2.0,
-            backoff_factor: float = 1.5
+        self,
+        body: Dict[str, Any],
+        session: aiohttp.ClientSession,
+        max_retries: int = 20,
+        initial_delay: float = 2.0,
+        backoff_factor: float = 1.5,
     ) -> None:
         """
         Проверяет статус задачи с экспоненциальной задержкой между попытками
@@ -155,7 +152,9 @@ class MidjourneyService:
                 status = response.get("data", {}).get("status")
 
                 if not status:
-                    logger.warning(f"No status received, retrying... (attempt {retry_count + 1})")
+                    logger.warning(
+                        f"No status received, retrying... (attempt {retry_count + 1})"
+                    )
                     retry_count += 1
                     await asyncio.sleep(current_delay)
                     current_delay *= backoff_factor
@@ -202,7 +201,9 @@ class MidjourneyService:
                     current_delay *= backoff_factor
 
             except aiohttp.ClientError as e:
-                logger.warning(f"Network error: {e}, retrying... (attempt {retry_count + 1})")
+                logger.warning(
+                    f"Network error: {e}, retrying... (attempt {retry_count + 1})"
+                )
                 retry_count += 1
                 await asyncio.sleep(current_delay)
                 current_delay *= backoff_factor
@@ -230,11 +231,8 @@ class MidjourneyService:
                         },
                         "config": {
                             "service_mode": "",
-                            "webhook_config": {
-                                "endpoint": "",
-                                "secret": ""
-                            }
-                        }
+                            "webhook_config": {"endpoint": "", "secret": ""},
+                        },
                     },
                 ).encode()
 
@@ -276,15 +274,12 @@ class MidjourneyService:
                         "task_type": "upscale",
                         "input": {
                             "origin_task_id": image_data.hash,
-                            "index": f"{body["choice"]}"
+                            "index": f"{body["choice"]}",
                         },
                         "config": {
                             "service_mode": "",
-                            "webhook_config": {
-                                "endpoint": "",
-                                "secret": ""
-                            }
-                        }
+                            "webhook_config": {"endpoint": "", "secret": ""},
+                        },
                     }
                 ).encode()
 
@@ -342,15 +337,12 @@ class MidjourneyService:
                             "origin_task_id": image_data.hash,
                             "index": f"{body["choice"]}",
                             "prompt": image_data.prompt,
-                            "skip_prompt_check": False
+                            "skip_prompt_check": False,
                         },
                         "config": {
                             "service_mode": "",
-                            "webhook_config": {
-                                "endpoint": "",
-                                "secret": ""
-                            }
-                        }
+                            "webhook_config": {"endpoint": "", "secret": ""},
+                        },
                     }
                 ).encode()
 

@@ -31,29 +31,35 @@ class AnswerMessage:
             self.logger.error(e)
             return
 
-    async def _send_message(self, user_id: int, message: str, parse_mode: Literal["HTML", "Markdown", "MarkdownV2"] = "Markdown"):
+    async def _send_message(
+        self,
+        user_id: int,
+        message: str,
+        parse_mode: Literal["HTML", "Markdown", "MarkdownV2"] = "Markdown",
+    ):
         """Отправка сообщения"""
 
         try:
-            await self.bot.send_message(chat_id=user_id,
-                                        text=message,
-                                        parse_mode=parse_mode,)
+            await self.bot.send_message(
+                chat_id=user_id,
+                text=message,
+                parse_mode=parse_mode,
+            )
         except Exception as e:
-            await self.bot.send_message(chat_id=user_id,
-                                        text=message,
-                                        parse_mode=None )
+            await self.bot.send_message(chat_id=user_id, text=message, parse_mode=None)
 
-    async def answer_message(self, data: Dict[str, Any], chunk_size: int = 4000) -> None:
+    async def answer_message(
+        self, data: Dict[str, Any], chunk_size: int = 4000
+    ) -> None:
         try:
             if not data.get("text"):
                 data["text"] = "⚠ Произошла ошибка при генерации"
 
             disable_delete = data.get("disable_delete", False)
 
-
             if len(data["text"]) >= chunk_size:
                 chunks = [
-                    data["text"][i: i + chunk_size]
+                    data["text"][i : i + chunk_size]
                     for i in range(0, len(data["text"]), chunk_size)
                 ]
                 for chunk in chunks:

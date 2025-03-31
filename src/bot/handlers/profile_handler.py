@@ -4,8 +4,8 @@ from aiogram import Router, F, types
 from aiogram.fsm.context import FSMContext
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-from src.bot.keyboards.profile import profile_settings_keyboard, change_settings
-from src.db.enums_class import GPTConfig, CLAUDEConfig
+from src.bot.keyboards.profile import profile_settings_keyboard, change_settings_text_ai, change_settings_image_ai
+from src.db.enums_class import GPTConfig, CLAUDEConfig, MidjourneySpeedConfig
 from src.db.orm.config_orm import ConfigORM
 from src.db.orm.user_orm import UserORM, PremiumUserORM
 from src.utils.cached_user import _cached_user, change_settings_cache
@@ -28,9 +28,11 @@ async def profile_handler(message: types.Message, state: FSMContext):
             await UserORM.create_user(user_id)
             user_info = await _cached_user(key, user_id)
 
-        username = html.escape(message.from_user.username)
+        username = message.from_user.username
         if not username:
-            username = "Похоже у вас отсутсвует юзерней либо он скрыт =("
+            username = "Ваш юзернейм скрыт либо не установлен"
+        else:
+            username = html.escape(message.from_user.username)
 
         if not user_info.get("check_premium"):
             await message.answer(
@@ -111,13 +113,19 @@ async def process_change_button(callback: types.CallbackQuery):
     if choice == "change_chatgpt":
         # Логика для изменения настроек Chat GPT
         await callback.message.edit_reply_markup(
-            reply_markup=await change_settings(callback.from_user.id, "gpt")
+            reply_markup=await change_settings_text_ai(callback.from_user.id, "gpt")
         )
 
     elif choice == "change_claude":
         # Логика для изменения настроек Claude
         await callback.message.edit_reply_markup(
-            reply_markup=await change_settings(callback.from_user.id, "claude")
+            reply_markup=await change_settings_text_ai(callback.from_user.id, "claude")
+        )
+
+    elif choice == "change_midjourney":
+        # Логика для изменения настроек Midjourney
+        await callback.message.edit_reply_markup(
+            reply_markup=await change_settings_image_ai(callback.from_user.id, "midjourney")
         )
 
 
@@ -137,6 +145,10 @@ async def change_model_settings(callback: types.CallbackQuery):
             change_setting = CLAUDEConfig(model_value)
             await change_settings_cache(user_id, "claude", model_value)
 
+        elif model_type == "midjourney":
+            change_setting = MidjourneySpeedConfig(model_value)
+            await change_settings_cache(user_id, "midjourney", model_value)
+            
         else:
             await callback.answer("Неверный тип модели")
             return
