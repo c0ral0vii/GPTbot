@@ -1,8 +1,9 @@
 from aiogram import Router, F, types, Bot
 from aiogram.filters import StateFilter, Command
 from aiogram.fsm.context import FSMContext
+from more_itertools import chunked
 
-from src.bot.keyboards.select_gpt import get_models_dialogs, cancel_kb
+from src.bot.keyboards.select_gpt import get_models_dialogs, cancel_kb, paginate_models_dialogs
 from src.bot.states.text_state import GPTState
 from src.config.config import EXCLUDE_PATTERN, settings
 from src.db.orm.gpt_assistant_orm import GPTAssistantOrm
@@ -80,9 +81,9 @@ async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
         energy_cost = 0
 
     await state.update_data(
-        select_model=assist.title,
+        assist_title=assist.title,
+        select_model=assist.assistant_id,
         energy_cost=float(energy_cost),
-        type_gpt=assist.assistant_id,
         queue_select="gpt_assistant",
         priority=priority,
         comment=assist.comment if assist.comment else "-",
@@ -92,13 +93,28 @@ async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
         user_id=callback.from_user.id, select_model=assist.assistant_id
     )
     data = await state.get_data()
-    await callback.message.answer(
-        f"Выбраный вами ассистент - {assist.title}\n"
-        f"{f"Стоимость модели ⚡{data["energy_cost"]}" if data["energy_cost"] != 0 else ""}\n\n"
-        "Выберите прошлый диалог из списка ниже или создайте новый:",
-        reply_markup=await get_models_dialogs(dialogs),
-    )
-
+    if len(dialogs) <= 5:
+        await callback.message.answer(
+            f"Выбраный вами ассистент - {data["assist_title"]}\n"
+            f"{f"Стоимость модели ⚡{data["energy_cost"]}" if data["energy_cost"] != 0 else ""}\n\n"
+            "Выберите прошлый диалог из списка ниже или создайте новый:",
+            reply_markup=await get_models_dialogs(dialogs),
+        )
+    else:
+        per_page = 5
+        chunks = list(chunked(dialogs, per_page))
+        await state.update_data(
+            page=1,
+            max_pages=len(chunks),
+        )
+        
+        await callback.message.answer(
+            f"Выбраный вами ассистент - {data["assist_title"]}\n"
+            f"{f"Стоимость модели ⚡{data["energy_cost"]}" if data["energy_cost"] != 0 else ""}\n\n"
+            "Выберите прошлый диалог из списка ниже или создайте новый:",
+            reply_markup=await paginate_models_dialogs(callback="dialog_", page=1, data=chunks[0], max_pages=len(chunks)),
+        )
+        
     await state.set_state(GPTState.dialog)
 
 
@@ -111,7 +127,7 @@ async def select_dialog(callback: types.CallbackQuery, state: FSMContext):
 
     if dialog_id == "new":
         dialog = await _create_new_dialog(
-            user_id=callback.from_user.id, select_model=data["type_gpt"]
+            user_id=callback.from_user.id, select_model=data["select_model"]
         )
 
         title = dialog.title
@@ -123,7 +139,7 @@ async def select_dialog(callback: types.CallbackQuery, state: FSMContext):
         await state.update_data(dialog_id=dialog_id)
 
     await callback.message.answer(
-        f"Выбраный вами ассистент - {data["select_model"]}\n"
+        f"Выбраный вами ассистент - {data["assist_title"]}\n"
         f"{f"Стоимость модели ⚡{data["energy_cost"]}" if data["energy_cost"] != 0 else ""}\n\n"
         f"Выбранный диалог: {title}\n\n"
         f"Коментарии по использованию: {data["comment"]}\n\n"
@@ -151,7 +167,7 @@ async def text_handler(message: types.Message, state: FSMContext):
     await model.publish_message(
         queue_name=data.get("queue_select"),
         dialog_id=int(data.get("dialog_id")),
-        version=data.get("type_gpt"),
+        version=data.get("select_model"),
         message=text,
         user_id=message.from_user.id,
         answer_message=answer_message.message_id,

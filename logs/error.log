@@ -3237,3 +3237,14 @@ WHERE users.user_id = $1::VARCHAR]
 2025-03-31 00:03:41,523 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.4', 5672)
 2025-03-31 00:03:41,523 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.4', 5672)
 2025-03-31 00:03:41,523 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.4', 5672)
+2025-03-31 08:13:09,460 - src.scripts.chat_gpt.chat_gpt - ERROR - Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-31 08:13:09,965 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-31 08:13:09,965 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-31 08:13:09,965 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-03-31 08:13:10,410 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-31 08:13:10,410 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-31 08:13:10,410 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-31 08:13:10,410 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-31 08:13:10,410 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-31 08:13:10,410 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-31 08:13:10,410 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
