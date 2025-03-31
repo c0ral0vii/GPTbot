@@ -3248,3 +3248,5 @@ WHERE users.user_id = $1::VARCHAR]
 2025-03-31 08:13:10,410 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
 2025-03-31 08:13:10,410 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
 2025-03-31 08:13:10,410 - src.scripts.answer_messages.answer_message - ERROR - Failed to answer message: Telegram server says - Bad Request: message to delete not found
+2025-03-31 08:38:35,685 - src.db.orm.user_orm - ERROR - '>=' not supported between instances of 'decimal.Decimal' and 'NoneType'
+2025-03-31 08:38:36,650 - src.db.orm.user_orm - ERROR - '>=' not supported between instances of 'decimal.Decimal' and 'NoneType'

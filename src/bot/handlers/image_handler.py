@@ -67,7 +67,7 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
         return
 
     await state.update_data(
-        type_gpt=gpt_select, energy_cost=energy_cost, priority=priority, speed_mode=user_config.midjourney_speed.value,
+        type_gpt=gpt_select, energy_cost=float(energy_cost), priority=priority, speed_mode=user_config.midjourney_speed.value,
     )
 
     await callback.message.answer(
@@ -130,25 +130,14 @@ async def refresh_image(callback_data: types.CallbackQuery, state: FSMContext):
         "⏳ Подождите ваше сообщение в обработке..."
     )
 
-    gpt_select = data["type_gpt"]
-
-    if settings.IMAGE_GPT.get(gpt_select):
-        energy_cost = settings.IMAGE_GPT.get(gpt_select).get("energy_cost")
-    else:
-        await callback_data.message.delete()
-        await callback_data.message.answer(
-            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле"
-        )
-        return
-
-    logger.debug(image_id)
 
     await model.publish_message(
         queue_name="refresh_midjourney",
         message="",
         user_id=user_id,
         answer_message=answer_message.message_id,
-        energy_cost=energy_cost,
+        energy_cost=data["energy_cost"],
+        speed_mode=data.get("speed_mode"),
         image_id=int(image_id),
         key=key,
         priority=data.get("priority", 0),
@@ -174,23 +163,14 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
         "⏳ Подождите ваше сообщение в обработке..."
     )
 
-    gpt_select = data["type_gpt"]
-
-    if settings.IMAGE_GPT.get(gpt_select):
-        energy_cost = settings.IMAGE_GPT.get(gpt_select).get("energy_cost")
-    else:
-        await callback_data.message.delete()
-        await callback_data.message.answer(
-            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле"
-        )
-        return
 
     await model.publish_message(
         queue_name="variation_midjourney",
         message="",
         user_id=user_id,
         answer_message=answer_message.message_id,
-        energy_cost=energy_cost,
+        energy_cost=data["energy_cost"],
+        speed_mode=data.get("speed_mode"),
         choice=int(image_id[-2]),
         image_id=int(image_id[-1]),
         key=key,
@@ -217,23 +197,13 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
         "⏳ Подождите ваше сообщение в обработке..."
     )
 
-    gpt_select = data["type_gpt"]
-
-    if settings.IMAGE_GPT.get(gpt_select):
-        energy_cost = settings.IMAGE_GPT.get(gpt_select).get("energy_cost")
-    else:
-        await callback_data.message.delete()
-        await callback_data.message.answer(
-            "Произошла ошибка при обнаружении модели!\n\nВозможно эта модель временно отключена!\nВы можете изменить ее в профиле"
-        )
-        return
-
     await model.publish_message(
         queue_name="upscale_midjourney",
         message="",
         user_id=user_id,
         answer_message=answer_message.message_id,
-        energy_cost=energy_cost,
+        energy_cost=data["energy_cost"],
+        speed_mode=data.get("speed_mode"),
         choice=int(image_id[-2]),
         image_id=int(image_id[-1]),
         key=key,
