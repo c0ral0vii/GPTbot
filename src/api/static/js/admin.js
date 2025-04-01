@@ -464,7 +464,7 @@ class AdminPanel {
             const row = document.createElement('tr');
             row.innerHTML = `
             <td>${item.id}</td>
-            <td>${item.link}</td>
+            <td>https://t.me/woome_bot?start=${item.link}</td>
             <td>${item.count_activate}</td>
             <td>${item.energy}</td>
             <td>
