@@ -34,7 +34,9 @@ async def _cached_user(
             "settings": {
                 "gpt_select": user["user"].user_config_model.gpt_select.value,
                 "claude_select": user["user"].user_config_model.claude_select.value,
-                "midjourney_speed": user["user"].user_config_model.midjourney_speed.value,
+                "midjourney_speed": user[
+                    "user"
+                ].user_config_model.midjourney_speed.value,
                 "auto_renewal": user["user"].user_config_model.auto_renewal,
             },
         }
@@ -128,7 +130,7 @@ async def change_settings_cache(
         user["settings"]["gpt_select"] = new_value
     if gpt_type == "midjourney":
         user["settings"]["midjourney_speed"] = new_value
-        
+
     await redis_manager.set(key=key, value=user, ttl=604800)
 
 

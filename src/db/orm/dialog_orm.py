@@ -107,3 +107,30 @@ class DialogORM:
         await session.commit()
 
         return True
+
+    @staticmethod
+    @with_session
+    async def update_dialog(dialog_id: int, title: str, session: AsyncSession = None):
+        """Обновить название диалога"""
+        stmt = select(Dialog).where(Dialog.id == dialog_id)
+        result = await session.execute(stmt)
+        dialog = result.scalar_one_or_none()
+        if dialog:
+            dialog.title = title
+            await session.commit()
+            await session.refresh(dialog)
+        return dialog
+
+    @staticmethod
+    @with_session
+    async def delete_dialog(dialog_id: int, session: AsyncSession = None):
+        """Удалить диалог"""
+        
+        stmt = select(Dialog).where(Dialog.id == dialog_id)
+        result = await session.execute(stmt)
+        dialog = result.scalar_one_or_none()
+        if dialog:
+            await session.delete(dialog)
+            await session.commit()
+            return True
+        return False

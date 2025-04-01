@@ -55,8 +55,6 @@ class AnswerMessage:
             if not data.get("text"):
                 data["text"] = "⚠ Произошла ошибка при генерации"
 
-            disable_delete = data.get("disable_delete", False)
-
             if len(data["text"]) >= chunk_size:
                 chunks = [
                     data["text"][i : i + chunk_size]
@@ -74,10 +72,13 @@ class AnswerMessage:
                 await self.bot.send_message(
                     chat_id=data["user_id"], text=data["energy_text"]
                 )
-
-            await self.bot.delete_message(
-                chat_id=data["user_id"], message_id=data["answer_message"]
-            )
+            disable_delete = data.get("disable_delete")
+            answer_message = data.get("answer_message")
+            if answer_message and not disable_delete:
+                await self.bot.delete_message(
+                    chat_id=data["user_id"], message_id=answer_message
+                )
+                data["answer_message"] = None
 
         except Exception as e:
             self.logger.error(f"Failed to answer message: {e}")

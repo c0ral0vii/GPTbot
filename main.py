@@ -10,6 +10,7 @@ from src.config.config import settings
 from src.utils.logger import setup_logger
 from src.bot.handlers import (
     cancel_handler,
+    dialogs_config_handler,
     start_handler,
     image_handler,
     text_handler,
@@ -39,6 +40,7 @@ dp.include_routers(
     image_handler.router,
     text_handler.router,
     assist_handler.router,
+    dialogs_config_handler.router,
 )
 
 

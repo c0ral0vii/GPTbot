@@ -1,7 +1,7 @@
 import asyncio
 import json
 from datetime import datetime, timezone
-from typing import Dict, Any, Callable
+from typing import Dict, Any, Callable, Optional
 
 import aio_pika
 
@@ -15,12 +15,17 @@ class RabbitQueue:
     def __init__(self):
         self.logger = setup_logger(__name__)
         self.message_client = AnswerMessage()
+        self.connection: Optional[aio_pika.RobustConnection] = None
+        self.channel: Optional[aio_pika.Channel] = None
 
     async def connect(self):
         try:
-            self.connection = await aio_pika.connect_robust(settings.get_rabbit_link)
-            self.channel = await self.connection.channel()
-            await self.init_queue()
+            if not self.connection:
+                self.connection = await aio_pika.connect_robust(
+                    settings.get_rabbit_link
+                )
+                self.channel = await self.connection.channel()
+                await self.init_queue()
 
         except Exception as e:
             self.logger.error(f"Ошибка подключения к RabbitMQ: {e}")

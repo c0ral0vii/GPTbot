@@ -4,7 +4,11 @@ from aiogram import Router, F, types
 from aiogram.fsm.context import FSMContext
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-from src.bot.keyboards.profile import profile_settings_keyboard, change_settings_text_ai, change_settings_image_ai
+from src.bot.keyboards.profile import (
+    profile_settings_keyboard,
+    change_settings_text_ai,
+    change_settings_image_ai,
+)
 from src.db.enums_class import GPTConfig, CLAUDEConfig, MidjourneySpeedConfig
 from src.db.orm.config_orm import ConfigORM
 from src.db.orm.user_orm import UserORM, PremiumUserORM
@@ -125,7 +129,9 @@ async def process_change_button(callback: types.CallbackQuery):
     elif choice == "change_midjourney":
         # Логика для изменения настроек Midjourney
         await callback.message.edit_reply_markup(
-            reply_markup=await change_settings_image_ai(callback.from_user.id, "midjourney")
+            reply_markup=await change_settings_image_ai(
+                callback.from_user.id, "midjourney"
+            )
         )
 
 
@@ -148,11 +154,11 @@ async def change_model_settings(callback: types.CallbackQuery):
         elif model_type == "midjourney":
             change_setting = MidjourneySpeedConfig(model_value)
             await change_settings_cache(user_id, "midjourney", model_value)
-            
+
         else:
             await callback.answer("Неверный тип модели")
             return
-        
+
     except ValueError:
         await callback.answer("Неверное значение модели")
         return

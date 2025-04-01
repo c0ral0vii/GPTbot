@@ -114,7 +114,9 @@ class GenerateImage(Base):
 
     image_name: Mapped[str] = mapped_column(nullable=True)
     prompt: Mapped[str] = mapped_column(nullable=True)
+
     hash: Mapped[str] = mapped_column(nullable=False)
+
     first_hash: Mapped[str] = mapped_column(nullable=False)
 
 

@@ -62,6 +62,32 @@ class ChatGPT:
         except Exception as e:
             self.logger.error(e)
 
+    async def transcribe_audio(self, path_to_file: str) -> str:
+        """Отправка голосового файла в Whisper и получение текста"""
+
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(path_to_file) as response:
+                    if response.status != 200:
+                        self.logger.error(
+                            f"Ошибка загрузки файла для транскрипции: {response.status}"
+                        )
+                        return "Оповести пользователя о том, что произошла ошибка при транскрибации, предложи ему отправить снова его голосовое сообщение"
+
+                    audio_bytes = await response.read()
+
+                    audio_file = io.BytesIO(audio_bytes)
+                    audio_file.name = "voice.ogg"
+
+                    transcription = await self.client.audio.transcriptions.create(
+                        model="whisper-1",
+                        file=audio_file,
+                    )
+                    return transcription.text
+        except Exception as e:
+            self.logger.error(f"Ошибка транскрипции: {e}")
+            return "Оповести пользователя о том, что произошла ошибка при транскрибации, предложи ему отправить снова его голосовое сообщение"
+
     async def send_message_assistant(self, data):
         try:
             status = await self.energy_service.upload_energy(data, "remove")
@@ -74,6 +100,8 @@ class ChatGPT:
             data["energy_text"] = status
 
             message = data.get("message")
+            file = data.get("file")
+
             if message:
                 await self.dialog_service.add_message(
                     role=MessageRole.USER,
@@ -81,13 +109,16 @@ class ChatGPT:
                     message=data.get("message"),
                 )
 
-            file = data.get("file")
             if file:
-                content_file = await self._file_generate(path_to_file=file["url"])
+                if file["type"] == "voice":
+                    content = await self.transcribe_audio(path_to_file=file["url"])
+                if file["type"] == "document":
+                    content = await self._file_generate(path_to_file=file["url"])
+
                 await self.dialog_service.add_message(
                     role=MessageRole.USER,
                     dialog_id=data["dialog_id"],
-                    message=content_file,
+                    message=content,
                 )
 
             messages = await self.dialog_service.get_messages(data["dialog_id"])
@@ -149,11 +180,15 @@ class ChatGPT:
 
             file = data.get("file")
             if file:
-                content_file = await self._file_generate(path_to_file=file["url"])
+                if file["type"] == "voice":
+                    content = await self.transcribe_audio(path_to_file=file["url"])
+                if file["type"] == "document":
+                    content = await self._file_generate(path_to_file=file["url"])
+
                 await self.dialog_service.add_message(
                     role=MessageRole.USER,
                     dialog_id=data["dialog_id"],
-                    message=content_file,
+                    message=content,
                 )
 
             messages = await self.dialog_service.get_messages(data["dialog_id"])

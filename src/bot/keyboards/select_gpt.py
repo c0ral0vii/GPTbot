@@ -34,47 +34,65 @@ def select_image_model() -> InlineKeyboardMarkup:
     return kb
 
 
-async def paginate_models_dialogs(callback: Literal["dialog_"], page: int = 1, max_pages: int = 1, data: list[Dialog] = None, per_page: int = 5):
+async def paginate_models_dialogs(
+    callback: Literal["dialog_", "config_dialog_"],
+    page: int = 1,
+    max_pages: int = 1,
+    data: list[Dialog] = None,
+    per_page: int = 5,
+    change_button: bool = True,
+):
     """Пагинация для диалогов"""
-    
+
     user_dialogs = []
-    
     for dialog in data:
+        callback_data = f"{callback}{dialog.id}"
         user_dialogs.append(
-                [
-                    InlineKeyboardButton(
-                        text=dialog.title, callback_data=f"dialog_{dialog.id}"
-                    ),
-                ]
-            )
-        
+            [
+                InlineKeyboardButton(
+                    text=dialog.title, callback_data=callback_data
+                ),
+            ]
+        )
+
     pagination_buttons = []
     if max_pages > 1:
         if page > 1:
             pagination_buttons.append(
-                InlineKeyboardButton(text="⬅️ Предыдущая", callback_data=f"page_previous")
+                InlineKeyboardButton(
+                    text="⬅️ Предыдущая", callback_data=f"page_previous"
+                )
             )
-        
+
         pagination_buttons.append(
-            InlineKeyboardButton(text=f"🔢 {page}/{max_pages}", callback_data="current_page")
+            InlineKeyboardButton(
+                text=f"🔢 {page}/{max_pages}", callback_data="current_page"
+            )
         )
-        
+
         if page < max_pages:
             pagination_buttons.append(
                 InlineKeyboardButton(text="Следующая ➡️", callback_data=f"page_next")
             )
-    
-    keyboard = [
-        [InlineKeyboardButton(text="➕ Новый диалог", callback_data="dialog_new")],
-        *user_dialogs,
-    ]
-    
+
+    if change_button:
+        keyboard = [
+            [InlineKeyboardButton(text="➕ Новый диалог", callback_data="dialog_new")],
+            *user_dialogs,
+        ]
+    else:
+        keyboard = [
+            *user_dialogs,
+        ]
+
     if pagination_buttons:
         keyboard.append(pagination_buttons)
-    
-    keyboard.append([InlineKeyboardButton(text="❌ Отмена", callback_data="cancel")])
-    
+
+    if change_button:
+        keyboard.append([InlineKeyboardButton(text="🖋 Изменить диалоги", callback_data="configs_dialog")])
+
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
+
 
 async def get_models_dialogs(dialogs: list[Dialog] = None):
 
@@ -101,7 +119,14 @@ async def get_models_dialogs(dialogs: list[Dialog] = None):
         inline_keyboard=[
             [InlineKeyboardButton(text="➕ Новый диалог", callback_data="dialog_new")],
             *user_dialogs,
-            [InlineKeyboardButton(text="❌ Отмена", callback_data="cancel")],
+            [InlineKeyboardButton(text="🖋 Изменить диалоги", callback_data="configs_dialog")],
+        ]
+    )
+
+async def change_dialog_kb(dialog_id: int) -> InlineKeyboardMarkup:
+    return InlineKeyboardMarkup(
+        inline_keyboard=[
+            [InlineKeyboardButton(text="🖋 Изменить диалог", callback_data=f"config_dialog_{dialog_id}")],
         ]
     )
 

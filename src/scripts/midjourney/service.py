@@ -185,6 +185,7 @@ class MidjourneyService:
                     logger.error(f"Task failed: {response}")
                     if retry_count >= 4:
                         logger.warning("Max retries reached for failed status")
+                        await self.message_handler.answer_message(data=body)
                         return
 
                     retry_after = response.get("retry_after", current_delay)
@@ -209,6 +210,7 @@ class MidjourneyService:
                 current_delay *= backoff_factor
             except Exception as e:
                 logger.error(f"Unexpected error: {e}")
+                await self.message_handler.answer_message(data=body)
                 raise
 
     async def refresh_generate(self, body: Dict[str, Any]):

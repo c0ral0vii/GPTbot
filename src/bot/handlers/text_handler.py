@@ -3,7 +3,12 @@ from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
 from more_itertools import chunked
 
-from src.bot.keyboards.select_gpt import paginate_models_dialogs, select_text_gpt, cancel_kb, get_models_dialogs
+from src.bot.keyboards.select_gpt import (
+    change_dialog_kb,
+    paginate_models_dialogs,
+    select_text_gpt,
+    get_models_dialogs,
+)
 from src.bot.states.text_state import TextState
 from src.config.config import settings, EXCLUDE_PATTERN
 from src.db.orm.user_orm import PremiumUserORM
@@ -90,14 +95,17 @@ async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
         await state.update_data(
             page=1,
             max_pages=len(chunks),
+            callback_text="dialog_",
         )
-        
+
         await callback.message.answer(
             f"Выбраная вами модель - {select_model}\n"
             f"(поменять модель в настройках профиля)\n"
             f"{f"Стоимость модели ⚡{data["energy_cost"]}" if data["energy_cost"] != 0 else ""}\n\n"
             "Выберите прошлый диалог из списка ниже или создайте новый:",
-            reply_markup=await paginate_models_dialogs(callback="dialog_", page=1, data=chunks[0], max_pages=len(chunks)),
+            reply_markup=await paginate_models_dialogs(
+                callback="dialog_", page=1, data=chunks[0], max_pages=len(chunks)
+            ),
         )
 
     await state.set_state(TextState.dialog)
@@ -110,57 +118,56 @@ async def pages_handler(callback: types.CallbackQuery, state: FSMContext):
     action = callback.data.replace("page_", "")
     data = await state.get_data()
     select_model = data.get("select_model")
-    if not select_model:
-        await callback.message.answer("Изначально выберите версию ИИ в которой хотите посмотреть чаты")
-        return
     
-    dialogs = await _get_dialogs(
-            user_id=user_id, select_model=select_model
+    if not select_model:
+        await callback.message.answer(
+            "Изначально выберите версию ИИ в которой хотите посмотреть чаты"
         )
+        return
+
+    dialogs = await _get_dialogs(user_id=user_id, select_model=select_model)
     chunks = list(chunked(dialogs, 5))
     select_page = data.get("page", 1)
     max_page = data.get("max_pages", 1)
-    
+
     if action == "next":
         # Следующая страница
         if select_page == max_page:
-            await callback.message.answer("Больше нет страниц спереди")   
+            await callback.message.answer("Больше нет страниц спереди")
             return
-            
+
         select_page += 1
-        
+
         await callback.message.edit_reply_markup(
             reply_markup=await paginate_models_dialogs(
-                callback="dialog_",
+                callback=data.get("callback_text"),
                 page=select_page,
                 max_pages=max_page,
-                data=chunks[select_page-1]
+                data=chunks[select_page - 1],
+                change_button=data.get("change_button", True),
             )
         )
-        await state.update_data(
-            page=select_page
-        ) 
-        
+        await state.update_data(page=select_page)
+
     if action == "previous":
         # Предыдущая страница
         if select_page == 1:
             return
-        
+
         select_page -= 1
-        
+
         await callback.message.edit_reply_markup(
             reply_markup=await paginate_models_dialogs(
-                callback="dialog_",
+                callback=data.get("callback_text"),
                 page=select_page,
                 max_pages=max_page,
-                data=chunks[select_page-1]
+                data=chunks[select_page - 1],
+                change_button=data.get("change_button", True),
             )
         )
-        await state.update_data(
-            page=select_page
-        ) 
-        
-        
+        await state.update_data(page=select_page)
+
+
 @router.callback_query(F.data.startswith("dialog_"), StateFilter(TextState.dialog))
 async def select_dialog_handler(callback: types.CallbackQuery, state: FSMContext):
     dialog_select = callback.data.replace("dialog_", "")
@@ -186,7 +193,7 @@ async def select_dialog_handler(callback: types.CallbackQuery, state: FSMContext
         f"{f"Стоимость модели ⚡{data["energy_cost"]}" if data["energy_cost"] != 0 else ""}\n\n"
         f"Выбранный диалог: {title}\n\n"
         "Напишите ваше сообщение ниже",
-        reply_markup=await cancel_kb(),
+        reply_markup=await change_dialog_kb(dialog_id=dialog.id),
     )
 
     await state.set_state(TextState.text)
@@ -249,6 +256,7 @@ async def file_handler(message: types.Message, state: FSMContext, bot: Bot):
         queue_name=data.get("queue_select"),
         dialog_id=int(data.get("dialog_id")),
         version=data.get("select_model"),
+        message=message.caption,
         file={"url": file_url, "name": file_name, "type": "document"},
         user_id=message.from_user.id,
         answer_message=answer_message.message_id,
@@ -256,4 +264,35 @@ async def file_handler(message: types.Message, state: FSMContext, bot: Bot):
         key=key,
         priority=data["priority"],
     )
+    await redis_manager.set(key=key, value="generate", ttl=120)
+
+
+@router.message(F.voice, StateFilter(TextState.text))
+async def voice_handler(message: types.Message, state: FSMContext, bot: Bot):
+    data = await state.get_data()
+
+    voice = message.voice
+    file = await bot.get_file(voice.file_id)
+
+    key = f"{message.from_user.id}:generate"
+    if await redis_manager.get(key):
+        await message.delete()
+        await message.answer("⚠️ Дождитесь завершения предыдущей генерации")
+        return
+
+    file_url = f"https://api.telegram.org/file/bot{settings.BOT_API}/{file.file_path}"
+    answer_message = await message.answer("🎙 Обработка голосового сообщения...")
+
+    await model.publish_message(
+        queue_name=data.get("queue_select"),
+        dialog_id=int(data.get("dialog_id")),
+        version=data.get("select_model"),
+        file={"url": file_url, "type": "voice"},
+        user_id=message.from_user.id,
+        answer_message=answer_message.message_id,
+        energy_cost=data["energy_cost"],
+        key=key,
+        priority=data["priority"],
+    )
+
     await redis_manager.set(key=key, value="generate", ttl=120)

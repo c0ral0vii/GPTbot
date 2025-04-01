@@ -16,6 +16,11 @@ from src.utils.logger import setup_logger
 from src.utils.redis_cache.redis_cache import redis_manager
 from src.config.config import settings, EXCLUDE_PATTERN
 
+
+PREMIUM_TEXT = "⚠️ Дождитесь завершения ваших генераций"
+NOT_PREMIUM_TEXT = "⚠️ Дождитесь завершения предыдущей генерации или оформите Premium, чтобы запускать несколько генераций одновременно. 👉 /premium"
+
+
 model = RabbitQueue()
 
 router = Router()
@@ -41,17 +46,24 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
 
     priority = 0
     mode = "relax"
-    
+
     if settings.IMAGE_GPT.get(gpt_select):
         user_config = await ConfigORM.get_config(int(callback.from_user.id))
         check_premium = await PremiumUserORM.is_premium_active(callback.from_user.id)
-        
-        if gpt_select == "midjourney":
-            energy_cost = settings.IMAGE_GPT.get(gpt_select, {}).get("speeds", {}).get(user_config.midjourney_speed.value, "relax")["energy_cost"]
-            mode = settings.IMAGE_GPT.get(gpt_select, {}).get("speeds", {}).get(user_config.midjourney_speed.value, "relax")["select_speed_name"]
-            
-            select_model = settings.IMAGE_GPT.get(gpt_select).get("select_model")
 
+        if gpt_select == "midjourney":
+            energy_cost = (
+                settings.IMAGE_GPT.get(gpt_select, {})
+                .get("speeds", {})
+                .get(user_config.midjourney_speed.value, "relax")["energy_cost"]
+            )
+            mode = (
+                settings.IMAGE_GPT.get(gpt_select, {})
+                .get("speeds", {})
+                .get(user_config.midjourney_speed.value, "relax")["select_speed_name"]
+            )
+
+            select_model = settings.IMAGE_GPT.get(gpt_select).get("select_model")
 
         if check_premium:
             priority = 5
@@ -67,18 +79,18 @@ async def select_image(callback: types.CallbackQuery, state: FSMContext):
         return
 
     await state.update_data(
-        type_gpt=gpt_select, energy_cost=float(energy_cost), priority=priority, speed_mode=user_config.midjourney_speed.value,
+        type_gpt=gpt_select,
+        energy_cost=float(energy_cost),
+        priority=priority,
+        speed_mode=user_config.midjourney_speed.value,
     )
 
     await callback.message.answer(
         f"Выбраная вами модель - {select_model}\n"
         f"Стоимость модели ⚡️ {energy_cost}\n"
         f"Выбранная скорость - {mode}\n\n"
-        
         "У нас встроен автоперевод текста для более лучшего распознования текста Midjourney\n"
-        "Просим записывать текст в формате: Промпт --тег --тег и так далее!\n\n"
-        
-        "Отправьте ваше сообщение для обработки:",
+        "Отправьте ваш промпт для обработки:",
         reply_markup=await cancel_kb(),
     )
 
@@ -105,7 +117,6 @@ async def handle_text(message: types.Message, state: FSMContext):
         answer_message=answer_message.message_id,
         energy_cost=data["energy_cost"],
         speed_mode=data.get("speed_mode"),
-        
         key=key,
         priority=data.get("priority", 0),
     )
@@ -129,7 +140,6 @@ async def refresh_image(callback_data: types.CallbackQuery, state: FSMContext):
     answer_message = await callback_data.message.answer(
         "⏳ Подождите ваше сообщение в обработке..."
     )
-
 
     await model.publish_message(
         queue_name="refresh_midjourney",
@@ -162,7 +172,6 @@ async def upscale_image(callback_data: types.CallbackQuery, state: FSMContext):
     answer_message = await callback_data.message.answer(
         "⏳ Подождите ваше сообщение в обработке..."
     )
-
 
     await model.publish_message(
         queue_name="variation_midjourney",
@@ -236,10 +245,6 @@ async def check_generation(
         return key_prefix
     else:
         return key_prefix
-
-
-PREMIUM_TEXT = "⚠️ Дождитесь завершения ваших генераций"
-NOT_PREMIUM_TEXT = "⚠️ Дождитесь завершения предыдущей генерации или оформите Premium, чтобы запускать несколько генераций одновременно. 👉 /premium"
 
 
 async def user_wait(data, counts: int = 2) -> None:

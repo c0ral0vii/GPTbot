@@ -3,7 +3,12 @@ from aiogram.filters import StateFilter, Command
 from aiogram.fsm.context import FSMContext
 from more_itertools import chunked
 
-from src.bot.keyboards.select_gpt import get_models_dialogs, cancel_kb, paginate_models_dialogs
+from src.bot.keyboards.select_gpt import (
+    change_dialog_kb,
+    get_models_dialogs,
+    cancel_kb,
+    paginate_models_dialogs,
+)
 from src.bot.states.text_state import GPTState
 from src.config.config import EXCLUDE_PATTERN, settings
 from src.db.orm.gpt_assistant_orm import GPTAssistantOrm
@@ -107,14 +112,16 @@ async def select_gpt(callback: types.CallbackQuery, state: FSMContext):
             page=1,
             max_pages=len(chunks),
         )
-        
+
         await callback.message.answer(
             f"Выбраный вами ассистент - {data["assist_title"]}\n"
             f"{f"Стоимость модели ⚡{data["energy_cost"]}" if data["energy_cost"] != 0 else ""}\n\n"
             "Выберите прошлый диалог из списка ниже или создайте новый:",
-            reply_markup=await paginate_models_dialogs(callback="dialog_", page=1, data=chunks[0], max_pages=len(chunks)),
+            reply_markup=await paginate_models_dialogs(
+                callback="dialog_", page=1, data=chunks[0], max_pages=len(chunks)
+            ),
         )
-        
+
     await state.set_state(GPTState.dialog)
 
 
@@ -144,7 +151,7 @@ async def select_dialog(callback: types.CallbackQuery, state: FSMContext):
         f"Выбранный диалог: {title}\n\n"
         f"Коментарии по использованию: {data["comment"]}\n\n"
         "Напишите ваше сообщение ниже",
-        reply_markup=await cancel_kb(),
+        reply_markup=await change_dialog_kb(dialog_id=dialog.id),
     )
 
     await state.set_state(GPTState.text)
@@ -199,6 +206,7 @@ async def file_handler(message: types.Message, state: FSMContext, bot: Bot):
         queue_name=data.get("queue_select"),
         dialog_id=int(data.get("dialog_id")),
         version=data.get("type_gpt"),
+        message=message.caption,
         file={"url": file_url, "name": file_name, "type": "document"},
         user_id=message.from_user.id,
         answer_message=answer_message.message_id,
@@ -206,3 +214,34 @@ async def file_handler(message: types.Message, state: FSMContext, bot: Bot):
         key=f"{message.from_user.id}:generate",
         priority=data["priority"],
     )
+
+
+@router.message(F.voice, StateFilter(GPTState.text))
+async def voice_handler(message: types.Message, state: FSMContext, bot: Bot):
+    data = await state.get_data()
+
+    voice = message.voice
+    file = await bot.get_file(voice.file_id)
+
+    key = f"{message.from_user.id}:generate"
+    if await redis_manager.get(key):
+        await message.delete()
+        await message.answer("⚠️ Дождитесь завершения предыдущей генерации")
+        return
+
+    file_url = f"https://api.telegram.org/file/bot{settings.BOT_API}/{file.file_path}"
+    answer_message = await message.answer("🎙 Обработка голосового сообщения...")
+
+    await model.publish_message(
+        queue_name=data.get("queue_select"),
+        dialog_id=int(data.get("dialog_id")),
+        version=data.get("select_model"),
+        file={"url": file_url, "type": "voice"},
+        user_id=message.from_user.id,
+        answer_message=answer_message.message_id,
+        energy_cost=data["energy_cost"],
+        key=key,
+        priority=data["priority"],
+    )
+
+    await redis_manager.set(key=key, value="generate", ttl=120)
