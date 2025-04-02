@@ -68,15 +68,18 @@ async def change_title_handler(callback: types.CallbackQuery, state: FSMContext)
     
     dialog_id = callback.data.split("_")[-1]
     await state.update_data(dialog_id=int(dialog_id))
-    await callback.message.answer("Введите новое название для диалога:")
+    await callback.message.answer("Введите новое название для диалога(до 128 символов):")
     await state.set_state(DialogState.change_title)
     
 
 @router.message(StateFilter(DialogState.change_title))
 async def change_title(message: types.Message, state: FSMContext):
     """Изменение названия диалога"""
+    if len(message.text) > 128:
+        await message.answer("Название диалога не может быть больше 128 символов")
+        return
     
-    new_title = message.text
+    new_title = message.text[:127]
     data = await state.get_data()
     dialog_id = data.get("dialog_id")
 
