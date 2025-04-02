@@ -33,8 +33,13 @@ class RabbitQueue:
             await self.connect()
 
     async def stop(self):
-        if self.connection:
-            await self.connection.close()
+        try:
+            if self.channel:
+                await self.channel.close()
+            if self.connection:
+                await self.connection.close()
+        except Exception as e:
+            self.logger.error(f"Error closing connections: {e}")
 
     async def init_queue(self):
         try:
@@ -204,6 +209,13 @@ class RabbitQueue:
         except Exception as e:
             self.logger.error(f"Error getting message count for {queue}: {e}")
             return 0
+
+    async def __aenter__(self):
+        await self.connect()
+        return self
+
+    async def __aexit__(self, exc_type, exc_val, exc_tb):
+        await self.stop()
 
 
 model = RabbitQueue()
