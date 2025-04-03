@@ -24,6 +24,10 @@ async def dialog_configs_handler(callback: types.CallbackQuery, state: FSMContex
         return
     
     dialogs = await DialogORM.get_dialogs(user_id=user_id, select_model=select_model)
+    if not dialogs or len(dialogs) == 0:
+        await callback.message.answer("Диалогов нет")
+        return
+    
     chunks = list(chunked(dialogs, 5))
     select_page = data.get("page", 1)
     
