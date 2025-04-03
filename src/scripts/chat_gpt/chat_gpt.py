@@ -102,7 +102,7 @@ class ChatGPT:
             message = data.get("message")
             file = data.get("file")
 
-            if message:
+            if message and len(message) >= 1:
                 await self.dialog_service.add_message(
                     role=MessageRole.USER,
                     dialog_id=data["dialog_id"],
@@ -148,7 +148,7 @@ class ChatGPT:
                 message_response = await self.client.beta.threads.messages.list(
                     thread_id=thread.id
                 )
-                text_only = message_response.data[0].content[0].text.value[:4096]
+                text_only = message_response.data[0].content[0].text.value
 
             data["text"] = text_only
             await self.message_client.answer_message(data)
@@ -171,7 +171,7 @@ class ChatGPT:
             data["energy_text"] = status
 
             message = data.get("message")
-            if message:
+            if message and len(message) >= 1:
                 await self.dialog_service.add_message(
                     role=MessageRole.USER,
                     dialog_id=data["dialog_id"],

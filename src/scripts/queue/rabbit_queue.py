@@ -46,9 +46,8 @@ class RabbitQueue:
             self.logger.info("Initializing queue")
 
             queues = [
-                "chatgpt4o",
-                "claude35",
-                # Миджорни
+                "chatgpt",
+                "claude",
                 "midjourney",
                 "upscale_midjourney",
                 "select_midjourney",

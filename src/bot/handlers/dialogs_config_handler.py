@@ -83,11 +83,9 @@ async def change_title(message: types.Message, state: FSMContext):
     data = await state.get_data()
     dialog_id = data.get("dialog_id")
 
-    dialog = await DialogORM.get_dialog(dialog_id=int(dialog_id))
-    if dialog:
+    if dialog_id:
         await message.delete()
         
-        dialog.title = new_title
         await message.answer(f"Название диалога изменено на: {new_title}")
         await DialogORM.update_dialog(dialog_id=int(dialog_id), title=new_title)
     else:

@@ -119,6 +119,7 @@ class DialogORM:
             dialog.title = title
             await session.commit()
             await session.refresh(dialog)
+            
         return dialog
 
     @staticmethod

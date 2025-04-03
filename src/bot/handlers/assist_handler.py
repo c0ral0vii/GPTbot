@@ -171,7 +171,7 @@ async def text_handler(message: types.Message, state: FSMContext):
 
     answer_message = await message.answer("⏳ Подождите ваше сообщение в обработке...")
 
-    await model.publish_message(
+    await _publish_message(
         queue_name=data.get("queue_select"),
         dialog_id=int(data.get("dialog_id")),
         version=data.get("select_model"),
@@ -202,10 +202,10 @@ async def file_handler(message: types.Message, state: FSMContext, bot: Bot):
     file_url = f"https://api.telegram.org/file/bot{settings.BOT_API}/{file.file_path}"
     answer_message = await message.answer(f"📂 Файл `{file_name}` обрабатывается...")
 
-    await model.publish_message(
+    await _publish_message(
         queue_name=data.get("queue_select"),
         dialog_id=int(data.get("dialog_id")),
-        version=data.get("type_gpt"),
+        version=data.get("select_model"),
         message=message.caption,
         file={"url": file_url, "name": file_name, "type": "document"},
         user_id=message.from_user.id,
@@ -232,7 +232,7 @@ async def voice_handler(message: types.Message, state: FSMContext, bot: Bot):
     file_url = f"https://api.telegram.org/file/bot{settings.BOT_API}/{file.file_path}"
     answer_message = await message.answer("🎙 Обработка голосового сообщения...")
 
-    await model.publish_message(
+    await _publish_message(
         queue_name=data.get("queue_select"),
         dialog_id=int(data.get("dialog_id")),
         version=data.get("select_model"),
@@ -245,3 +245,8 @@ async def voice_handler(message: types.Message, state: FSMContext, bot: Bot):
     )
 
     await redis_manager.set(key=key, value="generate", ttl=120)
+
+
+
+async def _publish_message(**kwargs):
+    await model.publish_message(**kwargs)
