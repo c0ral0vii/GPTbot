@@ -57,11 +57,28 @@ class ChatGPT:
                         self.logger.error(f"Ошибка загрузки: {response.status}")
                         return ""
 
-                    file_content = await response.text()
-                    return file_content
+                    raw_data = await response.read()
+                
+                    # Попробуем определить кодировку
+                    try:
+                        # Сначала пробуем UTF-8
+                        return raw_data.decode('utf-8')
+                    except UnicodeDecodeError:
+                        # Если UTF-8 не подошёл, пробуем другие распространённые кодировки
+                        for encoding in ['windows-1251', 'cp1251', 'iso-8859-1', 'koi8-r']:
+                            try:
+                                return raw_data.decode(encoding)
+                            except UnicodeDecodeError:
+                                continue
+                        
+                        # Если ни одна кодировка не подошла, возвращаем как есть с заменой ошибок
+                        self.logger.warning("Не удалось определить кодировку, используется замена ошибок")
+                        return raw_data.decode('utf-8', errors='replace')
+                    
         except Exception as e:
             self.logger.error(e)
-
+            return ""
+            
     async def transcribe_audio(self, path_to_file: str) -> str:
         """Отправка голосового файла в Whisper и получение текста"""
 
