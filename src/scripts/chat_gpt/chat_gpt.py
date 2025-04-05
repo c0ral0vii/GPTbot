@@ -1,23 +1,15 @@
 import io
-import os
-import traceback
-from typing import Dict, Any, Coroutine
+from typing import Dict, Any
 
 import aiohttp
 from openai import AsyncOpenAI
 import asyncio
 
-from openai.types import FileObject
-from openai.types.beta.threads import Run
-
 from src.config.config import settings
-from src.db.models import Message
-from src.db.orm.dialog_orm import DialogORM
-from src.db.orm.user_orm import UserORM
 from src.scripts.answer_messages.answer_message import AnswerMessage
 from src.scripts.dialog.service import DialogService
 from src.scripts.energy_remover.service import EnergyService
-from src.db.enums_class import MessageRole, GPTConfig
+from src.db.enums_class import MessageRole
 
 from src.utils.logger import setup_logger
 
@@ -58,27 +50,30 @@ class ChatGPT:
                         return ""
 
                     raw_data = await response.read()
-                
-                    # Попробуем определить кодировку
+
                     try:
-                        # Сначала пробуем UTF-8
-                        return raw_data.decode('utf-8')
+                        return raw_data.decode("utf-8")
                     except UnicodeDecodeError:
-                        # Если UTF-8 не подошёл, пробуем другие распространённые кодировки
-                        for encoding in ['windows-1251', 'cp1251', 'iso-8859-1', 'koi8-r']:
+                        for encoding in [
+                            "windows-1251",
+                            "cp1251",
+                            "iso-8859-1",
+                            "koi8-r",
+                        ]:
                             try:
                                 return raw_data.decode(encoding)
                             except UnicodeDecodeError:
                                 continue
-                        
-                        # Если ни одна кодировка не подошла, возвращаем как есть с заменой ошибок
-                        self.logger.warning("Не удалось определить кодировку, используется замена ошибок")
-                        return raw_data.decode('utf-8', errors='replace')
-                    
+
+                        self.logger.warning(
+                            "Не удалось определить кодировку, используется замена ошибок"
+                        )
+                        return raw_data.decode("utf-8", errors="replace")
+
         except Exception as e:
             self.logger.error(e)
             return ""
-            
+
     async def transcribe_audio(self, path_to_file: str) -> str:
         """Отправка голосового файла в Whisper и получение текста"""
 
