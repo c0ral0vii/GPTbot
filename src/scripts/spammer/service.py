@@ -6,7 +6,6 @@ from aiogram.types import FSInputFile
 from src.utils.logger import setup_logger
 from src.config.config import settings
 from src.db.orm.user_orm import UserORM
-from src.utils.redis_cache.redis_cache import redis_manager
 
 
 class TelegramBroadcaster:
@@ -23,7 +22,6 @@ class TelegramBroadcaster:
         not_premium_only: bool = False,
     ):
         """Рассылка"""
-        spam_key = await redis_manager.get(f"spam_key:{text}")
 
         user_ids = await self._get_user_ids(
             premium_only=premium_only,
@@ -31,7 +29,6 @@ class TelegramBroadcaster:
         )
 
         data = {"get_users_ids": user_ids, "send_message": 0}
-        spam_key = await redis_manager.set("spam_key", value=data)
 
         for user_id in user_ids:
             try:
@@ -42,7 +39,6 @@ class TelegramBroadcaster:
                 else:
                     success = await self.send_message(message=text, user_id=user_id)
                 data["send_message"] += 1
-                self.logger.debug(data)
             except Exception as e:
                 self.logger.error(e)
                 continue
@@ -50,7 +46,7 @@ class TelegramBroadcaster:
     async def send_message(self, message: str, user_id: int) -> dict[str, Any]:
         """Отправка сообщений пользователю"""
         try:
-            await self._bot.send_message(chat_id=user_id, text=message)
+            await self._bot.send_message(chat_id=user_id, text=message, reply_markup=None, parse_mode="HTML")
             return {"send": True, "user_id": user_id}
         except Exception as e:
             self.logger.error(e)
@@ -60,7 +56,7 @@ class TelegramBroadcaster:
         """Отправка сообщения пользователю с фотографией"""
         try:
             photo = FSInputFile(photo)
-            await self._bot.send_photo(chat_id=user_id, photo=photo, caption=message)
+            await self._bot.send_photo(chat_id=user_id, photo=photo, caption=message, reply_markup=None, parse_mode="HTML")
             return {"send": True, "user_id": user_id}
         except Exception as e:
             self.logger.error(e)
