@@ -129,6 +129,7 @@ class DialogORM:
         # Возвращаем полные данные о диалоге
         return {
             "title": dialog.title,
+            "gpt_select": dialog.gpt_select.value,
             "created_at": dialog.created.isoformat(),
             "messages": messages_list
         }
