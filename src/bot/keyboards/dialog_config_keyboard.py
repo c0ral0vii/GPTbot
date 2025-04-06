@@ -13,7 +13,7 @@ async def dialog_config_keyboard(dialog_id: int, dialog_uuid: str) -> InlineKeyb
             [
                 InlineKeyboardButton(
                     text="💬 Получить полный диалог",
-                    url=f"https://woome.ai/dialogs/chat/{dialog_uuid}",
+                    url=f"https://woome.io/dialogs/chat/{dialog_uuid}",
                 )
             ],
             [
