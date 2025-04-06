@@ -129,7 +129,7 @@ class DialogORM:
         # Возвращаем полные данные о диалоге
         return {
             "title": dialog.title,
-            "gpt_select": dialog.gpt_select,
+            "gpt_select": dialog.gpt_select if "asst_" not in dialog.gpt_select  else "ASSISTANT",
             "created_at": dialog.created.isoformat(),
             "messages": messages_list
         }

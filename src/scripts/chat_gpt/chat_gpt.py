@@ -161,7 +161,12 @@ class ChatGPT:
                     thread_id=thread.id
                 )
                 text_only = message_response.data[0].content[0].text.value
-
+                await self.dialog_service.add_message(
+                    role=MessageRole.ASSISTANT,
+                    dialog_id=data["dialog_id"],
+                    message=text_only,
+                )
+                
             data["text"] = text_only
             await self.message_client.answer_message(data)
 
