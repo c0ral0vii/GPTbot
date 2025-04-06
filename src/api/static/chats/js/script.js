@@ -47,7 +47,7 @@ function get_messages() {
                 
                 data.messages.forEach(msg => {
                     const isUser = msg.role === 'user';
-                    const aiVersion = !isUser ? msg.role.toUpperCase() : null;
+                    const aiVersion = !isUser ? data.gpt_select.toUpperCase() : null;
                     addMessage(msg.message, isUser, aiVersion);
                 });
             } else {

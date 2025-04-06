@@ -85,16 +85,6 @@ class DialogORM:
     ) -> List[Message]:
         """Получить последние сообщения в диалоге по UUID (по умолчанию 32)"""
         
-        if not uuid or not isinstance(uuid, str):
-            print(f"Ошибка: Невалидный UUID: {uuid}, тип: {type(uuid)}")
-            return {
-                "title": "Ошибка",
-                "created_at": "",
-                "messages": []
-            }
-            
-        print(f"Получение диалога по UUID: {uuid}")
-        
         # Сначала получаем сам диалог, чтобы узнать заголовок и дату создания
         dialog_stmt = (
             select(Dialog)
@@ -122,6 +112,7 @@ class DialogORM:
             # Если сообщений нет, всё равно возвращаем информацию о диалоге
             return {
                 "title": dialog.title,
+                "gpt_select": dialog.gpt_select.value,
                 "created_at": dialog.created.isoformat(),
                 "messages": []
             }
