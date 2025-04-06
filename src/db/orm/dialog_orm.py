@@ -112,7 +112,7 @@ class DialogORM:
             # Если сообщений нет, всё равно возвращаем информацию о диалоге
             return {
                 "title": dialog.title,
-                "gpt_select": dialog.gpt_select.value,
+                "gpt_select": dialog.gpt_select,
                 "created_at": dialog.created.isoformat(),
                 "messages": []
             }
@@ -129,7 +129,7 @@ class DialogORM:
         # Возвращаем полные данные о диалоге
         return {
             "title": dialog.title,
-            "gpt_select": dialog.gpt_select.value,
+            "gpt_select": dialog.gpt_select,
             "created_at": dialog.created.isoformat(),
             "messages": messages_list
         }
