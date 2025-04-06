@@ -118,7 +118,7 @@ async def pages_handler(callback: types.CallbackQuery, state: FSMContext):
     action = callback.data.replace("page_", "")
     data = await state.get_data()
     select_model = data.get("select_model")
-    
+
     if not select_model:
         await callback.message.answer(
             "Изначально выберите версию ИИ в которой хотите посмотреть чаты"

@@ -4,7 +4,7 @@ from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-from src.api.v1 import routes, auth, payment
+from src.api.v1 import dialogs, routes, auth, payment
 
 
 app = FastAPI(title="Admin Woome AI")
@@ -25,7 +25,7 @@ app.mount("/static", StaticFiles(directory=static_dir), name="static")
 app.include_router(routes.router, prefix="/api/v1", tags=["Analytic API"])
 app.include_router(auth.router, prefix="/api/auth", tags=["Auth API"])
 app.include_router(payment.router, prefix="/payment", tags=["Payment API"])
-
+app.include_router(dialogs.router, prefix="/api/v1/dialogs", tags=["Dialogs API"])
 
 @app.get(
     "/admin",
@@ -37,7 +37,14 @@ async def root():
     return FileResponse(index_html)
 
 
-@app.get("/", response_class=FileResponse)
+@app.get("/auth", response_class=FileResponse)
 async def auth_page():
     auth_html = static_dir + "/auth.html"
     return FileResponse(auth_html)
+
+
+@app.get("/dialogs/chat/{chat_id}", response_class=FileResponse)
+async def get_chat(chat_id: str):
+    chat_path = static_dir + f"/chats/dialog.html"
+    
+    return FileResponse(chat_path)

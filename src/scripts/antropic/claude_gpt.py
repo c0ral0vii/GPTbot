@@ -35,10 +35,30 @@ class ClaudeGPT:
                         self.logger.error(f"Ошибка загрузки: {response.status}")
                         return ""
 
-                    file_content = await response.text()
-                    return file_content
+                    raw_data = await response.read()
+
+                    try:
+                        return raw_data.decode("utf-8")
+                    except UnicodeDecodeError:
+                        for encoding in [
+                            "windows-1251",
+                            "cp1251",
+                            "iso-8859-1",
+                            "koi8-r",
+                        ]:
+                            try:
+                                return raw_data.decode(encoding)
+                            except UnicodeDecodeError:
+                                continue
+
+                        self.logger.warning(
+                            "Не удалось определить кодировку, используется замена ошибок"
+                        )
+                        return raw_data.decode("utf-8", errors="replace")
+
         except Exception as e:
             self.logger.error(e)
+            return ""
 
     async def send_message(self, data: Dict[str, Any]):
         """Отправка сообщения"""

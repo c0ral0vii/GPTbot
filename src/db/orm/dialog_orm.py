@@ -56,9 +56,9 @@ class DialogORM:
     @staticmethod
     @with_session
     async def get_dialog_messages(
-        dialog: Dialog | int, session: AsyncSession = None, limit: int = 31
+        dialog: Dialog | int, session: AsyncSession = None, limit: int = 32
     ) -> List[Message]:
-        """Получить последние сообщения в диалоге (по умолчанию 31)"""
+        """Получить последние сообщения в диалоге (по умолчанию 32)"""
 
         if isinstance(dialog, int):
             stmt = select(Dialog).where(Dialog.id == dialog)
@@ -78,6 +78,70 @@ class DialogORM:
         messages = list(result.scalars().all())
         return messages
 
+    @staticmethod
+    @with_session
+    async def get_dialog_messages_by_uuid(
+        uuid: str, session: AsyncSession = None, limit: int = 32
+    ) -> List[Message]:
+        """Получить последние сообщения в диалоге по UUID (по умолчанию 32)"""
+        
+        if not uuid or not isinstance(uuid, str):
+            print(f"Ошибка: Невалидный UUID: {uuid}, тип: {type(uuid)}")
+            return {
+                "title": "Ошибка",
+                "created_at": "",
+                "messages": []
+            }
+            
+        print(f"Получение диалога по UUID: {uuid}")
+        
+        # Сначала получаем сам диалог, чтобы узнать заголовок и дату создания
+        dialog_stmt = (
+            select(Dialog)
+            .where(Dialog.uuid == uuid)
+        )
+        
+        dialog_result = await session.execute(dialog_stmt)
+        dialog = dialog_result.scalar_one_or_none()
+        
+        if not dialog:
+            return {}
+        
+        # Затем получаем сообщения
+        stmt = (
+            select(Message)
+            .where(Message.dialog_id == dialog.id)
+            .order_by(Message.message_id.asc())
+            .limit(limit)
+        )
+
+        result = await session.execute(stmt)
+        messages = list(result.scalars().all())
+        
+        if not messages:
+            # Если сообщений нет, всё равно возвращаем информацию о диалоге
+            return {
+                "title": dialog.title,
+                "created_at": dialog.created.isoformat(),
+                "messages": []
+            }
+        
+        # Формируем список сообщений
+        messages_list = []
+        for msg in messages:
+            messages_list.append({
+                "role": msg.role.value,
+                "message": msg.message,
+                "message_id": msg.message_id
+            })
+        
+        # Возвращаем полные данные о диалоге
+        return {
+            "title": dialog.title,
+            "created_at": dialog.created.isoformat(),
+            "messages": messages_list
+        }
+    
     @staticmethod
     @with_session
     async def add_message_to_dialog(
@@ -119,14 +183,14 @@ class DialogORM:
             dialog.title = title
             await session.commit()
             await session.refresh(dialog)
-            
+
         return dialog
 
     @staticmethod
     @with_session
     async def delete_dialog(dialog_id: int, session: AsyncSession = None):
         """Удалить диалог"""
-        
+
         stmt = select(Dialog).where(Dialog.id == dialog_id)
         result = await session.execute(stmt)
         dialog = result.scalar_one_or_none()

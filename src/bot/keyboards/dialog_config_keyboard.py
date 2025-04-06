@@ -1,7 +1,7 @@
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
-async def dialog_config_keyboard(dialog_id: int) -> InlineKeyboardMarkup:
+async def dialog_config_keyboard(dialog_id: int, dialog_uuid: str) -> InlineKeyboardMarkup:
     keyboard = InlineKeyboardMarkup(
         inline_keyboard=[
             [
@@ -12,8 +12,8 @@ async def dialog_config_keyboard(dialog_id: int) -> InlineKeyboardMarkup:
             ],
             [
                 InlineKeyboardButton(
-                    text="💬 Получить полный диалог(СКОРО)",
-                    callback_data=f"get_full_dialog_{dialog_id}",
+                    text="💬 Получить полный диалог",
+                    url=f"https://woome.ai/dialogs/chat/{dialog_uuid}",
                 )
             ],
             [

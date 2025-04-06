@@ -30,7 +30,7 @@ async function login(event) {
             alertBox.textContent = responseData.detail || 'Ошибка авторизации';
             alertBox.classList.remove('d-none');
         }
-    } catch (error) {
+    } catch (error) {   
         console.error('Ошибка сети или сервера:', error);
         const alertBox = document.getElementById('alertBox');
         alertBox.textContent = 'Ошибка сети или сервера';

@@ -6,7 +6,6 @@ from more_itertools import chunked
 from src.bot.keyboards.select_gpt import (
     change_dialog_kb,
     get_models_dialogs,
-    cancel_kb,
     paginate_models_dialogs,
 )
 from src.bot.states.text_state import GPTState
@@ -245,7 +244,6 @@ async def voice_handler(message: types.Message, state: FSMContext, bot: Bot):
     )
 
     await redis_manager.set(key=key, value="generate", ttl=120)
-
 
 
 async def _publish_message(**kwargs):

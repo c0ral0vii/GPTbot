@@ -1,3 +1,4 @@
+import uuid
 from decimal import Decimal
 from typing import List
 
@@ -16,6 +17,7 @@ from sqlalchemy import (
     Date,
     select,
     DECIMAL,
+    UUID,
 )
 
 from sqlalchemy.orm import Mapped, DeclarativeBase, relationship, mapped_column
@@ -124,6 +126,9 @@ class Dialog(Base):
     __tablename__ = "dialogs"
 
     id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+    uuid: Mapped[UUID] = mapped_column(
+        UUID(as_uuid=True), default=uuid.uuid4, nullable=False, index=True, unique=True
+    )
 
     user_id: Mapped["User"] = mapped_column(ForeignKey("users.user_id"))
     user: Mapped["User"] = relationship("User", back_populates="dialogs")

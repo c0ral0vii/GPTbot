@@ -21,3 +21,36 @@
 2025-04-03 04:53:22,051 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'error': {'message': "Invalid 'assistant_id': 'ChatGPT 4o-mini'. Expected an ID that contains letters, numbers, underscores, or dashes, but this value contained additional characters.", 'type': 'invalid_request_error', 'param': 'assistant_id', 'code': 'invalid_value'}}
 2025-04-03 04:53:22,051 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'error': {'message': "Invalid 'assistant_id': 'ChatGPT 4o-mini'. Expected an ID that contains letters, numbers, underscores, or dashes, but this value contained additional characters.", 'type': 'invalid_request_error', 'param': 'assistant_id', 'code': 'invalid_value'}}
 2025-04-03 04:53:22,051 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 400 - {'error': {'message': "Invalid 'assistant_id': 'ChatGPT 4o-mini'. Expected an ID that contains letters, numbers, underscores, or dashes, but this value contained additional characters.", 'type': 'invalid_request_error', 'param': 'assistant_id', 'code': 'invalid_value'}}
+2025-04-04 02:13:32,853 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.2', 5672)
+2025-04-04 02:13:32,853 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.2', 5672)
+2025-04-04 02:13:32,853 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.2', 5672)
+2025-04-04 12:44:00,809 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.5', 5672)
+2025-04-04 12:44:00,809 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.5', 5672)
+2025-04-04 12:44:00,809 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.5', 5672)
+2025-04-04 12:46:02,734 - src.scripts.chat_gpt.chat_gpt - ERROR - 'utf-8' codec can't decode byte 0xc4 in position 0: invalid continuation byte
+2025-04-04 12:46:03,053 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object is not subscriptable
+2025-04-04 12:46:03,053 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object is not subscriptable
+2025-04-04 12:46:03,053 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'NoneType' object is not subscriptable
+2025-04-04 12:52:21,704 - src.scripts.chat_gpt.chat_gpt - ERROR - Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-04-04 12:52:22,013 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-04-04 12:52:22,013 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-04-04 12:52:22,013 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-04-05 16:29:59,062 - src.scripts.chat_gpt.chat_gpt - ERROR - Ошибка при отправке сообщения: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-04-05 16:29:59,746 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-04-05 16:29:59,746 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-04-05 16:29:59,746 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-04-06 11:27:11,058 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno -2] Name or service not known
+2025-04-06 11:27:11,058 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno -2] Name or service not known
+2025-04-06 11:27:11,058 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno -2] Name or service not known
+2025-04-06 11:27:16,076 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno -2] Name or service not known
+2025-04-06 11:27:16,076 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno -2] Name or service not known
+2025-04-06 11:27:16,076 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno -2] Name or service not known
+2025-04-06 11:27:21,091 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno -2] Name or service not known
+2025-04-06 11:27:21,091 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno -2] Name or service not known
+2025-04-06 11:27:21,091 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno -2] Name or service not known
+2025-04-06 11:27:26,098 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.5', 5672)
+2025-04-06 11:27:26,098 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.5', 5672)
+2025-04-06 11:27:26,098 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.5', 5672)
+2025-04-06 11:27:31,103 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.5', 5672)
+2025-04-06 11:27:31,103 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.5', 5672)
+2025-04-06 11:27:31,103 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.5', 5672)

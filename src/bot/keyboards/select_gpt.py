@@ -49,9 +49,7 @@ async def paginate_models_dialogs(
         callback_data = f"{callback}{dialog.id}"
         user_dialogs.append(
             [
-                InlineKeyboardButton(
-                    text=dialog.title, callback_data=callback_data
-                ),
+                InlineKeyboardButton(text=dialog.title, callback_data=callback_data),
             ]
         )
 
@@ -89,7 +87,13 @@ async def paginate_models_dialogs(
         keyboard.append(pagination_buttons)
 
     if change_button:
-        keyboard.append([InlineKeyboardButton(text="🖋 Изменить диалоги", callback_data="configs_dialog")])
+        keyboard.append(
+            [
+                InlineKeyboardButton(
+                    text="🖋 Изменить диалоги", callback_data="configs_dialog"
+                )
+            ]
+        )
 
     return InlineKeyboardMarkup(inline_keyboard=keyboard)
 
@@ -119,14 +123,23 @@ async def get_models_dialogs(dialogs: list[Dialog] = None):
         inline_keyboard=[
             [InlineKeyboardButton(text="➕ Новый диалог", callback_data="dialog_new")],
             *user_dialogs,
-            [InlineKeyboardButton(text="🖋 Изменить диалоги", callback_data="configs_dialog")],
+            [
+                InlineKeyboardButton(
+                    text="🖋 Изменить диалоги", callback_data="configs_dialog"
+                )
+            ],
         ]
     )
+
 
 async def change_dialog_kb(dialog_id: int) -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         inline_keyboard=[
-            [InlineKeyboardButton(text="🖋 Изменить диалог", callback_data=f"config_dialog_{dialog_id}")],
+            [
+                InlineKeyboardButton(
+                    text="🖋 Изменить диалог", callback_data=f"config_dialog_{dialog_id}"
+                )
+            ],
         ]
     )
 

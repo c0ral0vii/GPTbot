@@ -1,0 +1,172 @@
+.footer {
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.logo {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.message-container {
+    margin-bottom: 100px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+}
+
+.message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.user-message {
+    background-color: #506e8c;
+    color: #000000;
+    margin-left: 20%;
+}
+
+.ai-message {
+    background-color: #000000;
+    color: #ffffff;
+    margin-right: 20%;
+}
+
+.message-time {
+    font-size: 0.8em;
+    color: #ebebeb;
+    text-align: right;
+}
+
+.message-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+    font-size: 0.8em;
+}
+
+.ai-version {
+    color: #b4b4b4;
+    font-style: italic;
+}
+
+.copy-button {
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    padding: 0;
+    font-size: 0.8em;
+}
+
+.copy-button:hover {
+    text-decoration: underline;
+}
+
+/* Стили для отображения Markdown */
+.message-content {
+    line-height: 1.5;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Стили для блоков кода */
+.message-content pre {
+    background-color: #2d2d2d;
+    border-radius: 5px;
+    padding: 10px;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+.message-content code {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+}
+
+/* Стили для инлайн-кода */
+.message-content p code {
+    background-color: #3d3d3d;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* Стили для заголовков */
+.message-content h1, 
+.message-content h2, 
+.message-content h3, 
+.message-content h4, 
+.message-content h5, 
+.message-content h6 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.message-content h1 { font-size: 1.8em; }
+.message-content h2 { font-size: 1.6em; }
+.message-content h3 { font-size: 1.4em; }
+.message-content h4 { font-size: 1.2em; }
+.message-content h5 { font-size: 1.1em; }
+.message-content h6 { font-size: 1.0em; }
+
+/* Стили для списков */
+.message-content ul, 
+.message-content ol {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.message-content li {
+    margin-bottom: 5px;
+}
+
+/* Стили для таблиц */
+.message-content table {
+    border-collapse: collapse;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.message-content th, 
+.message-content td {
+    border: 1px solid #4d4d4d;
+    padding: 6px 10px;
+    text-align: left;
+}
+
+.message-content th {
+    background-color: #383838;
+    font-weight: bold;
+}
+
+/* Стили для цитат */
+.message-content blockquote {
+    border-left: 4px solid #555;
+    padding-left: 10px;
+    margin: 10px 0;
+    color: #cccccc;
+    font-style: italic;
+}
+
+/* Стили для ссылок */
+.message-content a {
+    color: #58a6ff;
+    text-decoration: none;
+}
+
+.message-content a:hover {
+    text-decoration: underline;
+}
+
+/* Горизонтальная линия */
+.message-content hr {
+    border: none;
+    height: 1px;
+    background-color: #4d4d4d;
+    margin: 15px 0;
+} 
