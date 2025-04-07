@@ -18,13 +18,13 @@ class PaymentService:
 
         Configuration.configure(self.SHOP_ID, self.API_KEY)
 
-    async def generate_yookassa_link(self, user_id: int) -> Dict[str, Any]:
+    async def generate_yookassa_link(self, user_id: int, value: int = 1490) -> Dict[str, Any]:
         """Генерация ссылки на покупку"""
 
         payment = Payment.create(
             {
                 "amount": {
-                    "value": 1490,
+                    "value": value,
                     "currency": "RUB",
                 },
                 "confirmation": {
@@ -60,7 +60,7 @@ class PaymentService:
         self.logger.debug(payment.json())
         return payment.confirmation.confirmation_url
 
-    async def auto_pay(self, user_id: int, payment_method_id: str):
+    async def auto_pay(self, user_id: int, payment_method_id: str, value: int = 1490):
         """Автосписание"""
 
         self.logger.debug(payment_method_id)
@@ -68,7 +68,7 @@ class PaymentService:
             payment = Payment.create(
                 {
                     "amount": {
-                        "value": 1490,
+                        "value": value,
                         "currency": "RUB",
                     },
                     "metadata": {

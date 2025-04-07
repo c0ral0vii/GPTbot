@@ -1,4 +1,5 @@
 from typing import Dict, Any
+import json
 
 import aiohttp
 from anthropic import AsyncAnthropic
@@ -14,14 +15,16 @@ from src.utils.logger import setup_logger
 
 class ClaudeGPT:
     def __init__(self):
-        self.API_KEY = settings.get_claude_key
+        self.API_KEY = settings.MJ_KEY
         self.message_client = AnswerMessage()
         self.energy_service = EnergyService()
         self.dialog_service = DialogService()
 
-        self.client = AsyncAnthropic(api_key=self.API_KEY)
         self.logger = setup_logger(__name__)
-
+        self.HEADER = {
+            "Content-Type": "application/json",
+            "Authorization": self.API_KEY,
+        }
         self.timeout = [
             30,
         ]
@@ -63,6 +66,8 @@ class ClaudeGPT:
     async def send_message(self, data: Dict[str, Any]):
         """Отправка сообщения"""
 
+        api_link = "https://api.goapi.ai/v1/chat/completions"
+        
         try:
             status = await self.energy_service.upload_energy(data, "remove")
             if isinstance(status, dict):
@@ -100,17 +105,36 @@ class ClaudeGPT:
 
                 import_messages.append(message_data)
 
-            message = await self.client.messages.create(
-                max_tokens=4096,
-                messages=import_messages,
-                model=data["version"],
-            )
+            message = json.dumps(
+                {
+                    "model": data["version"],
+                    "messages": import_messages,
+                    "max_tokens": 4096,
+                }
+            ).encode("utf-8")
+            
+            self.logger.debug(message)
+            
+            async with aiohttp.ClientSession() as session:
+                response = await session.post(
+                    api_link,
+                    headers=self.HEADER,
+                    data=message,
+                )
+                    
+                if response.status != 200:
+                    self.logger.error(f"Ошибка загрузки: {response.status}")
+                    data["text"] = "Произошла ошибка, обратитесь в поддержку"
+                    await self.message_client.answer_message(data)
+                    return
+                
+                message_answer = await response.json()
+                self.logger.debug(message_answer)
+                
 
-            self.logger.debug(message.content)
-            text_only = " ".join(
-                [block.text for block in message.content if block.type == "text"]
-            )
-
+            text_only = message_answer["choices"][0]["message"]["content"]
+            self.logger.debug(text_only)
+            
             await self.dialog_service.add_message(
                 role=MessageRole.ASSISTANT,
                 dialog_id=data["dialog_id"],

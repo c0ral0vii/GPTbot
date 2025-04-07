@@ -54,3 +54,19 @@
 2025-04-06 11:27:31,103 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.5', 5672)
 2025-04-06 11:27:31,103 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.5', 5672)
 2025-04-06 11:27:31,103 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: [Errno 111] Connect call failed ('172.22.0.5', 5672)
+2025-04-06 23:45:51,138 - src.scripts.spammer.service - ERROR - Telegram server says - Bad Request: can't parse entities: Unsupported start tag "br" at byte offset 19
+2025-04-06 23:45:51,197 - src.scripts.spammer.service - ERROR - Telegram server says - Bad Request: can't parse entities: Unsupported start tag "br" at byte offset 19
+2025-04-06 23:45:51,255 - src.scripts.spammer.service - ERROR - Telegram server says - Bad Request: can't parse entities: Unsupported start tag "br" at byte offset 19
+2025-04-06 23:45:51,305 - src.scripts.spammer.service - ERROR - Telegram server says - Bad Request: can't parse entities: Unsupported start tag "br" at byte offset 19
+2025-04-07 10:25:03,690 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: 'bytes' object has no attribute 'content'
+2025-04-07 10:25:04,183 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'bytes' object has no attribute 'content'
+2025-04-07 10:25:04,183 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'bytes' object has no attribute 'content'
+2025-04-07 10:25:04,183 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'bytes' object has no attribute 'content'
+2025-04-07 10:26:59,564 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: 'bytes' object has no attribute 'content'
+2025-04-07 10:26:59,800 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'bytes' object has no attribute 'content'
+2025-04-07 10:26:59,800 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'bytes' object has no attribute 'content'
+2025-04-07 10:26:59,800 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'bytes' object has no attribute 'content'
+2025-04-07 10:34:04,250 - src.scripts.antropic.claude_gpt - ERROR - Failed to send message: 'bytes' object has no attribute 'content'
+2025-04-07 10:34:04,617 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'bytes' object has no attribute 'content'
+2025-04-07 10:34:04,617 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'bytes' object has no attribute 'content'
+2025-04-07 10:34:04,617 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: 'bytes' object has no attribute 'content'

@@ -84,10 +84,18 @@ class Settings(BaseSettings):
                 "premium_free": True,
                 "file_use": True,
                 "voice": False,
+                "disable": True,
             },
-            "claude-3-5-sonnet-latest": {
+            "claude-3-5-sonnet-20241022": {
                 "energy_cost": 10,
                 "select_model": "Claude 3.5 Sonnet",
+                "premium_free": True,
+                "file_use": True,
+                "voice": False,
+            },
+            "claude-3-7-sonnet-20250219": {
+                "energy_cost": 10,
+                "select_model": "Claude 3.7 Sonnet",
                 "premium_free": True,
                 "file_use": True,
                 "voice": False,

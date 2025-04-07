@@ -9,12 +9,21 @@ from src.api.v1 import dialogs, routes, auth, payment
 
 app = FastAPI(title="Admin Woome AI")
 
+ALLOWED_ORIGINS = [
+    "http://localhost",
+    "https://localhost",
+    "http://woome.io",
+    "https://woome.io",
+    "http://188.208.197.185",
+    "https://188.208.197.185",
+]
+
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "PUT", "DELETE"],
     allow_headers=["*"],
 )
 

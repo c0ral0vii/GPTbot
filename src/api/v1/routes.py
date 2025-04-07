@@ -1,3 +1,4 @@
+import asyncio
 import uuid
 from typing import Optional
 
@@ -248,11 +249,13 @@ async def crete_spam(
             spamText=spamText, forPremium=forPremium, forRegular=forRegular
         ).model_dump()
 
-        await TelegramBroadcaster().broadcast(
-            text=data["spamText"],
-            photo_path=image_data,
-            premium_only=data["forPremium"],
-            not_premium_only=data["forRegular"],
+        asyncio.create_task(
+            TelegramBroadcaster().broadcast(
+                text=data["spamText"],
+                photo_path=image_data,
+                premium_only=data["forPremium"],
+                not_premium_only=data["forRegular"],
+            )
         )
 
         return JSONResponse(content={"success": True}, status_code=201)

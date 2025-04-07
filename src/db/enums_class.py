@@ -9,8 +9,8 @@ class GPTConfig(Enum):
 
 
 class CLAUDEConfig(Enum):
-    CLAUDE_VERSION_SONNET = "claude-3-5-sonnet-latest"
-    CLAUDE_VERSION_HAIKU = "claude-3-5-haiku-latest"
+    CLAUDE_VERSION_SONNET = "claude-3-5-sonnet-20241022"
+    CLAUDE_VERSION_SONNET37 = "claude-3-7-sonnet-20250219"
 
 
 class MidjourneySpeedConfig(Enum):
