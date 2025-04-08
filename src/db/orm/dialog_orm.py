@@ -70,12 +70,13 @@ class DialogORM:
         stmt = (
             select(Message)
             .where(Message.dialog_id == dialog.id)
-            .order_by(Message.message_id.asc())
+            .order_by(Message.message_id.desc())
             .limit(limit)
         )
 
         result = await session.execute(stmt)
         messages = list(result.scalars().all())
+        messages.reverse()
         return messages
 
     @staticmethod
