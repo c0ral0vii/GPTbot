@@ -23,9 +23,14 @@ class TranslateService:
         self.translator = Translator()
 
     async def _check_to_prompt(self, text: str) -> list[str]:
-        """Убираем лишние --"""
+        """Убираем лишние -- и одиночные тире"""
 
         try:
+            # Заменяем двойные тире на --
+            text = text.replace("——", "--")
+            # Удаляем одиночные тире
+            text = text.replace("—", "").replace("-", "")
+            # Разделяем по --
             split_text = text.split("--")
             return split_text
         except Exception as e:
@@ -59,6 +64,10 @@ class TranslateService:
 
             collect_text = await self._collect_text(text_translate)
             logger.debug(translation.text)
+            
+            # Обрабатываем тире в переведенном тексте
+            collect_text = collect_text.replace("——", "--")
+            collect_text = collect_text.replace("—", "").replace("-", "")
 
             return collect_text
         except Exception as e:
