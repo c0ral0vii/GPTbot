@@ -29,7 +29,7 @@ class TranslateService:
             # Заменяем двойные тире на --
             text = text.replace("——", "--")
             # Удаляем одиночные тире
-            text = text.replace("—", "").replace("-", "")
+            text = text.replace("—", "")
             # Разделяем по --
             split_text = text.split("--")
             return split_text
@@ -67,7 +67,7 @@ class TranslateService:
             
             # Обрабатываем тире в переведенном тексте
             collect_text = collect_text.replace("——", "--")
-            collect_text = collect_text.replace("—", "").replace("-", "")
+            collect_text = collect_text.replace("—", "")
 
             return collect_text
         except Exception as e:
