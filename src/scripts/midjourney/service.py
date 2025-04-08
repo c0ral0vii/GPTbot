@@ -26,11 +26,7 @@ class TranslateService:
         """Убираем лишние -- и одиночные тире"""
 
         try:
-            # Заменяем двойные тире на --
             text = text.replace("——", "--")
-            # Удаляем одиночные тире
-            text = text.replace("—", "")
-            # Разделяем по --
             split_text = text.split("--")
             return split_text
         except Exception as e:
@@ -60,14 +56,12 @@ class TranslateService:
             translation = await self.translator.translate(
                 text_translate[0], dest=self.language
             )
-            text_translate[0] = translation.text
+            text_translate[0] = translation.text.replace("—", "").replace("-", "")
 
             collect_text = await self._collect_text(text_translate)
             logger.debug(translation.text)
             
             # Обрабатываем тире в переведенном тексте
-            collect_text = collect_text.replace("——", "--")
-            collect_text = collect_text.replace("—", "")
 
             return collect_text
         except Exception as e:
