@@ -31,23 +31,30 @@ function get_messages() {
             const messagesDiv = document.getElementById('messages');
             messagesDiv.innerHTML = '';
             
+            // Устанавливаем заголовок диалога
             const dialogNameElement = document.getElementById('dialog-name');
             if (dialogNameElement && data.title) {
                 dialogNameElement.textContent = data.title;
             }
             
+            // Добавляем дату создания диалога, если есть элемент для этого
             const dialogDateElement = document.getElementById('dialog-date');
             if (dialogDateElement && data.created_at) {
                 const dialogDate = new Date(data.created_at);
                 dialogDateElement.textContent = dialogDate.toLocaleString();
             }
             
+            // Добавляем полученные сообщения
             if (data.messages && data.messages.length > 0) {
-                data.messages.sort((a, b) => a.message_id - b.message_id);
+                // Сообщения уже отсортированы на сервере по message_id.asc()
+                // Если нужно изменить порядок, можно раскомментировать следующую строку:
+                // data.messages.sort((a, b) => b.message_id - a.message_id); // Для обратного порядка
                 
+                // Добавляем каждое сообщение
                 data.messages.forEach(msg => {
                     const isUser = msg.role === 'user';
-                    const aiVersion = !isUser ? data.gpt_select.toUpperCase() : null;
+                    // Используем gpt_select из данных диалога, если доступно
+                    const aiVersion = !isUser ? (data.gpt_select ? data.gpt_select.toUpperCase() : msg.role.toUpperCase()) : null;
                     addMessage(msg.message, isUser, aiVersion);
                 });
             } else {

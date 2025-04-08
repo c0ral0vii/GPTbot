@@ -70,7 +70,7 @@ class DialogORM:
         stmt = (
             select(Message)
             .where(Message.dialog_id == dialog.id)
-            .order_by(Message.message_id.asc())
+            .order_by(Message.message_id.desc())
             .limit(limit)
         )
 
@@ -81,7 +81,7 @@ class DialogORM:
     @staticmethod
     @with_session
     async def get_dialog_messages_by_uuid(
-        uuid: str, session: AsyncSession = None, limit: int = 32
+        uuid: str, session: AsyncSession = None
     ) -> List[Message]:
         """Получить последние сообщения в диалоге по UUID (по умолчанию 32)"""
         
@@ -102,14 +102,12 @@ class DialogORM:
             select(Message)
             .where(Message.dialog_id == dialog.id)
             .order_by(Message.message_id.asc())
-            .limit(limit)
         )
 
         result = await session.execute(stmt)
         messages = list(result.scalars().all())
         
         if not messages:
-            # Если сообщений нет, всё равно возвращаем информацию о диалоге
             return {
                 "title": dialog.title,
                 "gpt_select": dialog.gpt_select,
