@@ -179,11 +179,14 @@ class MidjourneyService:
                         )
 
                     await self.message_handler.answer_photo(data=body)
+                    await session.close()
                     return
 
                 elif status == "failed":
                     logger.error(f"Task failed: {response}")
                     if retry_count >= 4:
+                        await session.close()
+                        
                         logger.warning("Max retries reached for failed status")
                         await self.message_handler.answer_message(data=body)
                         return
@@ -208,10 +211,13 @@ class MidjourneyService:
                 retry_count += 1
                 await asyncio.sleep(current_delay)
                 current_delay *= backoff_factor
+
             except Exception as e:
+                await session.close()
+
                 logger.error(f"Unexpected error: {e}")
                 await self.message_handler.answer_message(data=body)
-                raise
+                return
 
     async def refresh_generate(self, body: Dict[str, Any]):
         """Повторная генерация"""

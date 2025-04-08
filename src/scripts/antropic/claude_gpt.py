@@ -1,3 +1,4 @@
+import asyncio
 from typing import Dict, Any
 import json
 
@@ -115,34 +116,58 @@ class ClaudeGPT:
             
             self.logger.debug(message)
             
-            async with aiohttp.ClientSession() as session:
-                response = await session.post(
-                    api_link,
-                    headers=self.HEADER,
-                    data=message,
-                )
-                    
-                if response.status != 200:
-                    self.logger.error(f"Ошибка загрузки: {response.status}-{response}")
-                    data["text"] = "Произошла ошибка, обратитесь в поддержку"
-                    await self.message_client.answer_message(data)
-                    return
-                
-                message_answer = await response.json()
-                self.logger.debug(message_answer)
-                
-
-            text_only = message_answer["choices"][0]["message"]["content"]
-            self.logger.debug(text_only)
+            max_retries = 5
+            retry_count = 0
+            retry_delay = 5
             
-            await self.dialog_service.add_message(
-                role=MessageRole.ASSISTANT,
-                dialog_id=data["dialog_id"],
-                message=text_only,
-            )
+            for attempt in range(3):
+                async with aiohttp.ClientSession() as session:
+                    response = await session.post(
+                        api_link,
+                        headers=self.HEADER,
+                        data=message,
+                    )
+           
+                    if response.status == 200:
+                        text_only = message_answer["choices"][0]["message"]["content"]
+                        self.logger.debug(text_only)
+                        
+                        await self.dialog_service.add_message(
+                            role=MessageRole.ASSISTANT,
+                            dialog_id=data["dialog_id"],
+                            message=text_only,
+                        )
 
-            data["text"] = text_only
-            await self.message_client.answer_message(data)
+                        data["text"] = text_only
+                        await self.message_client.answer_message(data)
+                        return
+                    
+                    elif response.status in [503, 524]:
+                        if retry_count < max_retries - 1:
+                            await asyncio.sleep(retry_delay * (attempt + 1))
+                            continue
+                        
+                        else:
+                            self.logger.error(f"Ошибка загрузки: {response.status}-{response}")
+                            data["text"] = "Произошла ошибка, обратитесь в поддержку"
+                            await self.message_client.answer_message(data)
+                            return
+                        
+                    message_answer = await response.json()
+                    self.logger.debug(message_answer)
+                
+
+            # text_only = message_answer["choices"][0]["message"]["content"]
+            # self.logger.debug(text_only)
+            
+            # await self.dialog_service.add_message(
+            #     role=MessageRole.ASSISTANT,
+            #     dialog_id=data["dialog_id"],
+            #     message=text_only,
+            # )
+
+            # data["text"] = text_only
+            # await self.message_client.answer_message(data)
 
         except Exception as e:
             await UserORM.add_energy(data["user_id"], data["energy_cost"])

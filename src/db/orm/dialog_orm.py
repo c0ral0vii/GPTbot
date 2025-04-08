@@ -77,6 +77,7 @@ class DialogORM:
         result = await session.execute(stmt)
         messages = list(result.scalars().all())
         messages.reverse()
+        
         return messages
 
     @staticmethod
