@@ -70,7 +70,7 @@ class DialogORM:
         stmt = (
             select(Message)
             .where(Message.dialog_id == dialog.id)
-            .order_by(Message.message_id.desc())
+            .order_by(Message.message_id.asc())
             .limit(limit)
         )
 

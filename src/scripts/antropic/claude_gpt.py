@@ -123,7 +123,7 @@ class ClaudeGPT:
                 )
                     
                 if response.status != 200:
-                    self.logger.error(f"Ошибка загрузки: {response.status}")
+                    self.logger.error(f"Ошибка загрузки: {response.status}-{response}")
                     data["text"] = "Произошла ошибка, обратитесь в поддержку"
                     await self.message_client.answer_message(data)
                     return
