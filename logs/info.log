@@ -2529,3 +2529,90 @@
 2025-04-09 16:37:27,397 - src.scripts.queue.rabbit_queue - INFO - Initializing queues
 2025-04-09 16:37:27,397 - src.scripts.queue.rabbit_queue - INFO - Initializing queues
 2025-04-09 16:37:27,397 - src.scripts.queue.rabbit_queue - INFO - Initializing queues
+2025-04-09 16:39:33,346 - __main__ - INFO - Инициализация комманд
+2025-04-09 16:39:33,486 - __main__ - INFO - Запуск воркера
+2025-04-09 16:39:33,766 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:39:33,766 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:39:33,766 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:39:38,775 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:39:38,775 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:39:38,775 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:39:43,788 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:39:43,788 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:39:43,788 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:39:48,801 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:39:48,801 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:39:48,801 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:02,202 - __main__ - INFO - Инициализация комманд
+2025-04-09 16:42:02,482 - __main__ - INFO - Запуск воркера
+2025-04-09 16:42:02,768 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:02,768 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:02,768 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:07,783 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:07,783 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:07,783 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:12,797 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:12,797 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:12,797 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:17,808 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:17,808 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:17,808 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:22,819 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:22,819 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:22,819 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:27,831 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:27,831 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:27,831 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:32,841 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:32,841 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:32,841 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:37,854 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:37,854 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:37,854 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:42,869 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:42,869 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:42,869 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:47,878 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:47,878 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:47,878 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:52,897 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:52,897 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:52,897 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:57,906 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:57,906 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:42:57,906 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:43:02,917 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:43:02,917 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:43:02,917 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:43:07,926 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:43:07,926 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:43:07,926 - src.scripts.queue.rabbit_queue - ERROR - Ошибка подключения к RabbitMQ: 'RabbitQueue' object has no attribute 'connection'
+2025-04-09 16:43:19,313 - __main__ - INFO - Инициализация комманд
+2025-04-09 16:43:19,678 - __main__ - INFO - Запуск воркера
+2025-04-09 16:43:19,940 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-04-09 16:43:19,940 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-04-09 16:43:19,940 - src.scripts.queue.rabbit_queue - INFO - Initializing queue
+2025-04-09 16:43:19,951 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt initialized
+2025-04-09 16:43:19,951 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt initialized
+2025-04-09 16:43:19,951 - src.scripts.queue.rabbit_queue - INFO - Queue chatgpt initialized
+2025-04-09 16:43:19,955 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-04-09 16:43:19,955 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-04-09 16:43:19,955 - src.scripts.queue.rabbit_queue - INFO - Queue claude initialized
+2025-04-09 16:43:19,958 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-04-09 16:43:19,958 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-04-09 16:43:19,958 - src.scripts.queue.rabbit_queue - INFO - Queue midjourney initialized
+2025-04-09 16:43:19,961 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-04-09 16:43:19,961 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-04-09 16:43:19,961 - src.scripts.queue.rabbit_queue - INFO - Queue upscale_midjourney initialized
+2025-04-09 16:43:19,966 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-04-09 16:43:19,966 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-04-09 16:43:19,966 - src.scripts.queue.rabbit_queue - INFO - Queue select_midjourney initialized
+2025-04-09 16:43:19,970 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-04-09 16:43:19,970 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-04-09 16:43:19,970 - src.scripts.queue.rabbit_queue - INFO - Queue variation_midjourney initialized
+2025-04-09 16:43:19,972 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-04-09 16:43:19,972 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-04-09 16:43:19,972 - src.scripts.queue.rabbit_queue - INFO - Queue referral initialized
+2025-04-09 16:43:20,008 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-04-09 16:43:20,008 - __main__ - INFO - Запуск бота
+2025-04-09 16:43:30,232 - __main__ - INFO - Запуск бота

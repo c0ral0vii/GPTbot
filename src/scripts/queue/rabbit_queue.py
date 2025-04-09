@@ -15,22 +15,22 @@ class RabbitQueue:
     def __init__(self):
         self.logger = setup_logger(__name__)
         self.message_client = AnswerMessage()
-        self.loop = None
-        
-    async def connect(self) -> tuple[aio_pika.RobustConnection, aio_pika.Channel]:
+        self.connection: Optional[aio_pika.RobustConnection] = None
+        self.channel: Optional[aio_pika.Channel] = None
+
+    async def connect(self):
         try:
-            connection: aio_pika.RobustConnection = await aio_pika.connect_robust(
-                settings.get_rabbit_link,
-                loop=self.loop if self.loop else None
-            )
-            channel: aio_pika.Channel = await self.connection.channel(publisher_confirms=True)
+            if not self.connection:
+                self.connection = await aio_pika.connect_robust(
+                    settings.get_rabbit_link,
+                )
+            self.channel = await self.connection.channel()
             await self.init_queue()
 
-            return connection, channel 
         except Exception as e:
             self.logger.error(f"Ошибка подключения к RabbitMQ: {e}")
             await asyncio.sleep(5)
-            return await self.connect()
+            await self.connect()
 
     async def stop(self):
         try:
@@ -38,7 +38,6 @@ class RabbitQueue:
                 await self.channel.close()
             if self.connection:
                 await self.connection.close()
-                
         except Exception as e:
             self.logger.error(f"Error closing connections: {e}")
 
@@ -117,12 +116,11 @@ class RabbitQueue:
     async def consume_messages(
         self, queue_name: str, callback: Callable, prefetch_count: int = 100
     ) -> None:
-        
         try:
             await self.channel.set_qos(prefetch_count=prefetch_count)
             queue = await self.declare_queue(queue_name)
 
-            async def process_message(message: aio_pika.abc.AbstractIncomingMessage) -> None:
+            async def process_message(message: aio_pika.IncomingMessage) -> None:
                 async with message.process():
                     try:
                         body = json.loads(message.body.decode())
