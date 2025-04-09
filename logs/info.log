@@ -4691,3 +4691,187 @@
 2025-04-09 17:03:04,545 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
 2025-04-09 17:03:04,545 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
 2025-04-09 17:06:19,008 - __main__ - INFO - Запуск бота
+2025-04-09 18:51:08,316 - __main__ - INFO - Инициализация комманд
+2025-04-09 18:51:08,566 - __main__ - INFO - Запуск воркера
+2025-04-09 18:51:08,835 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 18:51:08,835 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 18:51:08,835 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 18:51:08,855 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 18:51:08,855 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 18:51:08,855 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 18:51:08,883 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 18:51:08,883 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 18:51:08,883 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 18:51:08,925 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 18:51:08,925 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 18:51:08,925 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 18:51:08,930 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 18:51:08,930 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 18:51:08,930 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 18:51:08,937 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 18:51:08,937 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 18:51:08,937 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 18:51:08,951 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 18:51:08,951 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 18:51:08,951 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 18:51:08,961 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 18:51:08,961 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 18:51:08,961 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 18:51:08,966 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 18:51:08,966 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 18:51:08,966 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 18:51:08,969 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-04-09 18:51:08,970 - __main__ - INFO - Запуск бота
+2025-04-09 18:51:09,715 - src.scripts.chat_gpt.chat_gpt - ERROR - Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-04-09 18:51:10,364 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-04-09 18:51:10,364 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-04-09 18:51:10,364 - src.scripts.queue.rabbit_queue - ERROR - Error processing message: Error code: 403 - {'error': {'code': 'unsupported_country_region_territory', 'message': 'Country, region, or territory not supported', 'param': None, 'type': 'request_forbidden'}}
+2025-04-09 18:51:20,834 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 18:51:20,834 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 18:51:20,834 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 19:00:06,526 - src.scripts.midjourney.service - ERROR - Task failed: {'code': 200, 'data': {'task_id': '24694873-55c1-4dc9-84b1-4c17fafe840f', 'model': 'midjourney', 'task_type': 'imagine', 'status': 'failed', 'config': {'service_mode': 'public', 'webhook_config': {'endpoint': '', 'secret': ''}}, 'input': {'bot_id': 0, 'process_mode': 'turbo', 'prompt': 'cat', 'skip_prompt_check': False}, 'output': {'image_url': '', 'image_urls': None, 'temporary_image_urls': None, 'discord_image_url': '', 'actions': [], 'progress': 0, 'intermediate_image_urls': None}, 'meta': {'created_at': '2025-04-09T18:51:22Z', 'started_at': '2025-04-09T18:57:50Z', 'ended_at': '2025-04-09T18:57:51Z', 'usage': {'type': 'point', 'frozen': 700000, 'consume': 0}, 'is_using_private_pool': False, 'model_version': 'unknown', 'process_mode': 'turbo', 'failover_triggered': False}, 'detail': None, 'logs': [], 'error': {'code': 10000, 'raw_message': 'failed to create task: failed to create imagine task', 'message': 'task failed', 'detail': None}}, 'message': 'success'}
+2025-04-09 19:00:06,529 - src.scripts.midjourney.service - WARNING - Max retries reached for failed status
+2025-04-09 21:30:55,139 - __main__ - INFO - Запуск бота
+2025-04-09 22:09:03,658 - __main__ - INFO - Инициализация комманд
+2025-04-09 22:09:03,939 - __main__ - INFO - Запуск воркера
+2025-04-09 22:09:04,638 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:09:04,638 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:09:04,638 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:09:54,057 - __main__ - INFO - Инициализация комманд
+2025-04-09 22:09:54,143 - __main__ - INFO - Запуск воркера
+2025-04-09 22:09:54,461 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:09:54,461 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:09:54,461 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:09:54,725 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 22:09:54,725 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 22:09:54,725 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 22:09:54,728 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 22:09:54,728 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 22:09:54,728 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 22:09:54,730 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 22:09:54,730 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 22:09:54,730 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 22:09:54,733 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 22:09:54,733 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 22:09:54,733 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 22:09:54,736 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 22:09:54,736 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 22:09:54,736 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 22:09:54,760 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 22:09:54,760 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 22:09:54,760 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 22:09:54,764 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 22:09:54,764 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 22:09:54,764 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 22:09:54,767 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 22:09:54,767 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 22:09:54,767 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 22:09:54,769 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-04-09 22:09:54,770 - __main__ - INFO - Запуск бота
+2025-04-09 22:10:18,235 - __main__ - INFO - Запуск бота
+2025-04-09 22:39:59,014 - __main__ - INFO - Инициализация комманд
+2025-04-09 22:39:59,114 - __main__ - INFO - Запуск воркера
+2025-04-09 22:39:59,551 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:39:59,551 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:39:59,551 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:39:59,789 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 22:39:59,789 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 22:39:59,789 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 22:39:59,792 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 22:39:59,792 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 22:39:59,792 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 22:39:59,794 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 22:39:59,794 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 22:39:59,794 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 22:39:59,796 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 22:39:59,796 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 22:39:59,796 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 22:39:59,798 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 22:39:59,798 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 22:39:59,798 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 22:39:59,815 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 22:39:59,815 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 22:39:59,815 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 22:39:59,817 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 22:39:59,817 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 22:39:59,817 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 22:39:59,820 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 22:39:59,820 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 22:39:59,820 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 22:39:59,820 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-04-09 22:39:59,821 - __main__ - INFO - Запуск бота
+2025-04-09 22:41:21,030 - __main__ - INFO - Запуск бота
+2025-04-09 22:41:42,719 - __main__ - INFO - Инициализация комманд
+2025-04-09 22:41:42,854 - __main__ - INFO - Запуск воркера
+2025-04-09 22:41:43,269 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:41:43,269 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:41:43,269 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:41:43,531 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 22:41:43,531 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 22:41:43,531 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 22:41:43,533 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 22:41:43,533 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 22:41:43,533 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 22:41:43,536 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 22:41:43,536 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 22:41:43,536 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 22:41:43,540 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 22:41:43,540 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 22:41:43,540 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 22:41:43,543 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 22:41:43,543 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 22:41:43,543 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 22:41:43,563 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 22:41:43,563 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 22:41:43,563 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 22:41:43,567 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 22:41:43,567 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 22:41:43,567 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 22:41:43,570 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 22:41:43,570 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 22:41:43,570 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 22:41:43,571 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-04-09 22:41:43,571 - __main__ - INFO - Запуск бота
+2025-04-09 22:41:55,986 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:41:55,986 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:41:55,986 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:42:04,446 - src.scripts.midjourney.service - ERROR - Task failed: {'code': 200, 'data': {'task_id': '92a1aa11-31ab-46a8-95da-a10c7593c93b', 'model': 'midjourney', 'task_type': 'imagine', 'status': 'failed', 'config': {'service_mode': 'public', 'webhook_config': {'endpoint': '', 'secret': ''}}, 'input': {'bot_id': 0, 'process_mode': 'turbo', 'prompt': 'Hello', 'skip_prompt_check': False}, 'output': {'image_url': '', 'image_urls': None, 'temporary_image_urls': None, 'discord_image_url': '', 'actions': [], 'progress': 0, 'intermediate_image_urls': None}, 'meta': {'created_at': '2025-04-09T22:41:56Z', 'started_at': '2025-04-09T22:42:02Z', 'ended_at': '2025-04-09T22:42:02Z', 'usage': {'type': 'point', 'frozen': 700000, 'consume': 0}, 'is_using_private_pool': False, 'model_version': 'unknown', 'process_mode': 'turbo', 'failover_triggered': False}, 'detail': None, 'logs': [], 'error': {'code': 10000, 'raw_message': 'failed to create task: failed to create imagine task', 'message': 'task failed', 'detail': None}}, 'message': 'success'}
+2025-04-09 22:42:04,449 - src.scripts.midjourney.service - WARNING - Retrying after 3.0 seconds...
+2025-04-09 22:42:07,570 - src.scripts.midjourney.service - ERROR - Task failed: {'code': 200, 'data': {'task_id': '92a1aa11-31ab-46a8-95da-a10c7593c93b', 'model': 'midjourney', 'task_type': 'imagine', 'status': 'failed', 'config': {'service_mode': 'public', 'webhook_config': {'endpoint': '', 'secret': ''}}, 'input': {'bot_id': 0, 'process_mode': 'turbo', 'prompt': 'Hello', 'skip_prompt_check': False}, 'output': {'image_url': '', 'image_urls': None, 'temporary_image_urls': None, 'discord_image_url': '', 'actions': [], 'progress': 0, 'intermediate_image_urls': None}, 'meta': {'created_at': '2025-04-09T22:41:56Z', 'started_at': '2025-04-09T22:42:02Z', 'ended_at': '2025-04-09T22:42:02Z', 'usage': {'type': 'point', 'frozen': 700000, 'consume': 0}, 'is_using_private_pool': False, 'model_version': 'unknown', 'process_mode': 'turbo', 'failover_triggered': False}, 'detail': None, 'logs': [], 'error': {'code': 10000, 'raw_message': 'failed to create task: failed to create imagine task', 'message': 'task failed', 'detail': None}}, 'message': 'success'}
+2025-04-09 22:42:07,572 - src.scripts.midjourney.service - WARNING - Retrying after 4.5 seconds...
+2025-04-09 22:42:12,199 - src.scripts.midjourney.service - ERROR - Task failed: {'code': 200, 'data': {'task_id': '92a1aa11-31ab-46a8-95da-a10c7593c93b', 'model': 'midjourney', 'task_type': 'imagine', 'status': 'failed', 'config': {'service_mode': 'public', 'webhook_config': {'endpoint': '', 'secret': ''}}, 'input': {'bot_id': 0, 'process_mode': 'turbo', 'prompt': 'Hello', 'skip_prompt_check': False}, 'output': {'image_url': '', 'image_urls': None, 'temporary_image_urls': None, 'discord_image_url': '', 'actions': [], 'progress': 0, 'intermediate_image_urls': None}, 'meta': {'created_at': '2025-04-09T22:41:56Z', 'started_at': '2025-04-09T22:42:02Z', 'ended_at': '2025-04-09T22:42:02Z', 'usage': {'type': 'point', 'frozen': 700000, 'consume': 0}, 'is_using_private_pool': False, 'model_version': 'unknown', 'process_mode': 'turbo', 'failover_triggered': False}, 'detail': None, 'logs': [], 'error': {'code': 10000, 'raw_message': 'failed to create task: failed to create imagine task', 'message': 'task failed', 'detail': None}}, 'message': 'success'}
+2025-04-09 22:42:12,201 - src.scripts.midjourney.service - WARNING - Retrying after 6.75 seconds...
+2025-04-09 22:42:19,275 - src.scripts.midjourney.service - ERROR - Task failed: {'code': 200, 'data': {'task_id': '92a1aa11-31ab-46a8-95da-a10c7593c93b', 'model': 'midjourney', 'task_type': 'imagine', 'status': 'failed', 'config': {'service_mode': 'public', 'webhook_config': {'endpoint': '', 'secret': ''}}, 'input': {'bot_id': 0, 'process_mode': 'turbo', 'prompt': 'Hello', 'skip_prompt_check': False}, 'output': {'image_url': '', 'image_urls': None, 'temporary_image_urls': None, 'discord_image_url': '', 'actions': [], 'progress': 0, 'intermediate_image_urls': None}, 'meta': {'created_at': '2025-04-09T22:41:56Z', 'started_at': '2025-04-09T22:42:02Z', 'ended_at': '2025-04-09T22:42:02Z', 'usage': {'type': 'point', 'frozen': 700000, 'consume': 0}, 'is_using_private_pool': False, 'model_version': 'unknown', 'process_mode': 'turbo', 'failover_triggered': False}, 'detail': None, 'logs': [], 'error': {'code': 10000, 'raw_message': 'failed to create task: failed to create imagine task', 'message': 'task failed', 'detail': None}}, 'message': 'success'}
+2025-04-09 22:42:19,277 - src.scripts.midjourney.service - WARNING - Max retries reached for failed status
+2025-04-09 22:54:52,086 - __main__ - INFO - Запуск бота
+2025-04-09 22:55:08,081 - __main__ - INFO - Инициализация комманд
+2025-04-09 22:55:08,181 - __main__ - INFO - Запуск воркера
+2025-04-09 22:55:08,493 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:55:08,493 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:55:08,493 - src.scripts.queue.rabbit_queue - INFO - Successfully connected to RabbitMQ
+2025-04-09 22:55:08,505 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 22:55:08,505 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 22:55:08,505 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from gpt_assistant
+2025-04-09 22:55:08,508 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 22:55:08,508 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 22:55:08,508 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from chatgpt
+2025-04-09 22:55:08,510 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 22:55:08,510 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 22:55:08,510 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from claude
+2025-04-09 22:55:08,513 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 22:55:08,513 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 22:55:08,513 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from midjourney
+2025-04-09 22:55:08,515 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 22:55:08,515 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 22:55:08,515 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from referral
+2025-04-09 22:55:08,518 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 22:55:08,518 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 22:55:08,518 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from refresh_midjourney
+2025-04-09 22:55:08,521 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 22:55:08,521 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 22:55:08,521 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from upscale_midjourney
+2025-04-09 22:55:08,523 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 22:55:08,523 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 22:55:08,523 - src.scripts.queue.rabbit_queue - INFO - Started consuming messages from variation_midjourney
+2025-04-09 22:55:08,524 - src.scripts.queue.worker - INFO - queue worker started successfully
+2025-04-09 22:55:08,525 - __main__ - INFO - Запуск бота

@@ -1,0 +1,110 @@
+services:
+  rabbitmq:
+    image: rabbitmq:4.0-management
+    container_name: gpt_bot_rabbit
+    ports:
+      - "5672:5672"  # AMQP порт
+      - "15672:15672"  # Management UI
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    volumes:
+     - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: [ "CMD", "rabbitmqctl", "status" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - bot_network
+
+  db:
+    image: postgres:latest
+    container_name: gpt_bot_db
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB=${DB_NAME}
+    ports:
+      - "5432:5432"
+    networks:
+      - bot_network
+      - admin_network
+
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: "gpt_bot"
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - alembic_migrations
+      - rabbitmq
+    volumes:
+      - ~/.redis/:/root/.redis/
+      - .:/app
+    networks:
+      - bot_network
+
+  alembic_migrations:
+    container_name: alembic_migrations
+    command: ./run.sh
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      - "8001:8001"
+    networks:
+      - bot_network
+      - admin_network
+
+  admin:
+    build:
+      context: .
+      dockerfile: admin.Dockerfile
+    container_name: "admin"
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - ~/.redis/:/root/.redis/
+      - .:/app
+    networks:
+      - admin_network
+
+  nginx:
+    image: nginx:latest
+    container_name: "nginx"
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./src/api/static:/app/src/api/static
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/www/certbot:/var/www/certbot
+    depends_on:
+      - db
+      - admin
+    networks:
+      - admin_network
+
+
+volumes:
+  rabbitmq_data:
+  postgres_data:
+  redis_data:
+
+networks:
+  admin_network:
+    driver: bridge
+  bot_network:
+    driver: bridge

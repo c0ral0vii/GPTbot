@@ -1,3 +1,4 @@
+from typing import Generator
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine, AsyncSession
 from src.config.config import settings
 
@@ -15,3 +16,12 @@ engine = create_async_engine(
 )
 
 async_session = async_sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
+
+
+async def get_db() -> Generator:
+    """Dependency for getting async session"""
+    try:
+        session: AsyncSession = async_session()
+        yield session
+    finally:
+        await session.close()
