@@ -78,13 +78,13 @@ class Settings(BaseSettings):
                 "voice": True,
                 "disable": True,
             },
-            "claude-3-5-haiku-latest": {
+            "claude-3-5-haiku-20241022": {
                 "energy_cost": 10,
                 "select_model": "Claude 3.5 Haiku",
                 "premium_free": True,
                 "file_use": True,
                 "voice": False,
-                "disable": True,
+                "disable": False,
             },
             "claude-3-5-sonnet-20241022": {
                 "energy_cost": 10,

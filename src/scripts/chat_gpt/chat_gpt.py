@@ -42,6 +42,7 @@ class ChatGPT:
 
     async def _file_generate(self, path_to_file: str) -> str:
         """Создание файла для OpenAI из удалённой ссылки"""
+        
         try:
             async with aiohttp.ClientSession() as session:
                 async with session.get(path_to_file) as response:

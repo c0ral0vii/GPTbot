@@ -30,6 +30,11 @@ async def send_premium_offer(
         inline_keyboard=[
             [
                 InlineKeyboardButton(
+                    text="📝 ВВЕСТИ ПРОМОКОД(СКОРО)", callback_data="use_promo"
+                )
+            ],
+            [
+                InlineKeyboardButton(
                     text="💳 ОПЛАТИТЬ И СНЯТЬ ОГРАНИЧЕНИЯ", url=payment_link
                 )
             ],

@@ -41,7 +41,8 @@ class QueueWorker:
                 await self.queue_service.declare_queue(f"{queue_name}_errors")
 
             await self.queue_service.consume_messages(
-                "gpt_assistant", self.chat_gpt.send_message_assistant
+                "gpt_assistant",
+                self.chat_gpt.send_message_assistant
             )
 
             await self.queue_service.consume_messages(

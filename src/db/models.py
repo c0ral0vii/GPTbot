@@ -72,7 +72,7 @@ class UserConfig(Base):
         SQLEnum(GPTConfig), default=GPTConfig.GPT_VERSION_4o_mini
     )
     claude_select: Mapped[CLAUDEConfig] = mapped_column(
-        SQLEnum(CLAUDEConfig), default=CLAUDEConfig.CLAUDE_VERSION_SONNET
+        SQLEnum(CLAUDEConfig), default=CLAUDEConfig.CLAUDE_VERSION_HAIKU35
     )
     midjourney_speed: Mapped[MidjourneySpeedConfig] = mapped_column(
         SQLEnum(MidjourneySpeedConfig), default=MidjourneySpeedConfig.RELAX
@@ -116,12 +116,19 @@ class GenerateImage(Base):
 
     image_name: Mapped[str] = mapped_column(nullable=True)
     prompt: Mapped[str] = mapped_column(nullable=True)
-
+    original_prompt: Mapped[str] = mapped_column(nullable=True)
+    
     hash: Mapped[str] = mapped_column(nullable=False)
-
+    energy_cost: Mapped[Decimal] = mapped_column(DECIMAL(15, 1), nullable=True)
+    
     first_hash: Mapped[str] = mapped_column(nullable=False)
-
-
+    
+    first_image: Mapped[str] = mapped_column(nullable=True)
+    second_image: Mapped[str] = mapped_column(nullable=True)
+    third_image: Mapped[str] = mapped_column(nullable=True)
+    fourth_image: Mapped[str] = mapped_column(nullable=True)
+    
+    
 class Dialog(Base):
     __tablename__ = "dialogs"
 
@@ -172,7 +179,7 @@ class PaymentPromocode(Base):
     __tablename__ = "payment_promocodes"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    discount: Mapped[int] = mapped_column()
+    discount: Mapped[float] = mapped_column(nullable=False)
 
     enable: Mapped[bool] = mapped_column(default=True)
     count_active: Mapped[int] = mapped_column(default=0)

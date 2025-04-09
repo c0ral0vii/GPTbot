@@ -4,10 +4,10 @@ import io
 
 from typing import Dict, Any
 from PIL import Image
-from aiogoogletrans import Translator
 import aiohttp
 from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
+from gpytranslate import Translator
 from src.config.config import settings
 from src.utils.logger import setup_logger
 from src.scripts.answer_messages.answer_message import AnswerMessage
@@ -54,7 +54,7 @@ class TranslateService:
             logger.debug(text_translate)
 
             translation = await self.translator.translate(
-                text_translate[0], dest=self.language
+                text_translate[0], targetlang=self.language
             )
             text_translate[0] = translation.text.replace("—", "").replace("-", "")
 
