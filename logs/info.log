@@ -2509,3 +2509,8 @@
 2025-04-09 13:51:33,295 - src.scripts.queue.rabbit_queue - INFO - Published message to queue midjourney
 2025-04-09 13:51:33,295 - src.scripts.queue.rabbit_queue - INFO - Published message to queue midjourney
 2025-04-09 13:53:44,298 - __main__ - INFO - Запуск бота
+2025-04-09 16:03:28,594 - __main__ - INFO - Инициализация комманд
+2025-04-09 16:03:28,706 - __main__ - INFO - Запуск воркера
+2025-04-09 16:03:28,997 - src.scripts.queue.rabbit_queue - INFO - Initializing queues
+2025-04-09 16:03:28,997 - src.scripts.queue.rabbit_queue - INFO - Initializing queues
+2025-04-09 16:03:28,997 - src.scripts.queue.rabbit_queue - INFO - Initializing queues

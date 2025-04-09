@@ -61,8 +61,6 @@ class TranslateService:
             collect_text = await self._collect_text(text_translate)
             logger.debug(translation.text)
             
-            # Обрабатываем тире в переведенном тексте
-
             return collect_text
         except Exception as e:
             logger.error(e)
