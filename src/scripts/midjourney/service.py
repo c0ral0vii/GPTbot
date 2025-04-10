@@ -128,7 +128,7 @@ class MidjourneyService:
         self,
         body: Dict[str, Any],
         session: aiohttp.ClientSession,
-        max_retries: int = 10,
+        max_retries: int = 25,
         initial_delay: float = 2.0,
         backoff_factor: float = 1.5,
     ) -> None:

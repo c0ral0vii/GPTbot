@@ -12,10 +12,9 @@ class QueueWorker:
 
         self.claude = ClaudeGPT()
         self.chat_gpt = ChatGPT()
+        self.midjourney = MidjourneyService()
 
         self.message_service = AnswerMessage()
-
-        self.midjourney = MidjourneyService()
 
         self.logger = setup_logger(__name__)
 
@@ -82,8 +81,3 @@ class QueueWorker:
         except Exception as e:
             self.logger.error(f"Error starting parsing worker: {e}")
             raise
-
-
-async def worker_start():
-    worker = QueueWorker()
-    await worker.start()
