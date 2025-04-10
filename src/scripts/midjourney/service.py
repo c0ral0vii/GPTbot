@@ -128,7 +128,7 @@ class MidjourneyService:
         self,
         body: Dict[str, Any],
         session: aiohttp.ClientSession,
-        max_retries: int = 20,
+        max_retries: int = 10,
         initial_delay: float = 2.0,
         backoff_factor: float = 1.5,
     ) -> None:
@@ -184,20 +184,8 @@ class MidjourneyService:
                     return
 
                 elif status == "failed":
-                    logger.error(f"Task failed: {response}")
-                    if retry_count >= 4:
-                        await session.close()
-                        
-                        logger.warning("Max retries reached for failed status")
-                        await self.message_handler.answer_message(data=body)
-                        return
-
-                    retry_after = response.get("retry_after", current_delay)
-                    logger.warning(f"Retrying after {retry_after} seconds...")
-                    await asyncio.sleep(retry_after)
-                    retry_count += 1
-                    current_delay *= backoff_factor
-                    continue
+                    await self.message_handler.answer_message(data=body)
+                    return                    
 
                 else:  # pending or other statuses
                     logger.debug(f"Task status: {status}, waiting...")

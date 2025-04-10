@@ -80,9 +80,12 @@ async def run():
 
 
 async def run_workers():
-    worker = QueueWorker()
-    task = asyncio.create_task(worker.start())
-    await task
+    try:
+        worker = QueueWorker()
+        task = asyncio.create_task(worker.start())
+        await task
+    except Exception as e:
+        await run_workers()
 
 
 if __name__ == "__main__":
